@@ -11,7 +11,5 @@ void Exemple::setZ (int x) {
     this->z = x;
 }
 
-
-
 }
 

@@ -1,4 +1,4 @@
-# Install script for directory: /home/cleme/CLionProjects/plt/rapport
+# Install script for directory: /home/ismail/Documents/PLT/plt/rapport
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

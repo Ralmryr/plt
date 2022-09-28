@@ -67,11 +67,11 @@
 			[
 				{
 					"backtrace" : 4,
-					"path" : "/home/cleme/CLionProjects/plt/src/client"
+					"path" : "/home/ismail/Documents/PLT/plt/src/client"
 				},
 				{
 					"backtrace" : 3,
-					"path" : "/home/cleme/CLionProjects/plt/src/shared"
+					"path" : "/home/ismail/Documents/PLT/plt/src/shared"
 				}
 			],
 			"language" : "CXX",

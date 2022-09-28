@@ -215,14 +215,14 @@
 				{
 					"directoryIndex" : 3,
 					"id" : "client::@8ca63c80a879d0067daa",
-					"jsonFile" : "target-client-Debug-d9e09217f42cac91bc58.json",
+					"jsonFile" : "target-client-Debug-67747f8e805bdffce189.json",
 					"name" : "client",
 					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 3,
 					"id" : "client_static::@8ca63c80a879d0067daa",
-					"jsonFile" : "target-client_static-Debug-f6ee0b1ad9020b30a67f.json",
+					"jsonFile" : "target-client_static-Debug-a864d44c6710b2e85944.json",
 					"name" : "client_static",
 					"projectIndex" : 0
 				},
@@ -243,7 +243,7 @@
 				{
 					"directoryIndex" : 1,
 					"id" : "dia2code::@be3a0c191c247d543974",
-					"jsonFile" : "target-dia2code-Debug-98a10f19ed722ab80f4f.json",
+					"jsonFile" : "target-dia2code-Debug-246b91f644474db502b6.json",
 					"name" : "dia2code",
 					"projectIndex" : 1
 				},
@@ -285,21 +285,21 @@
 				{
 					"directoryIndex" : 2,
 					"id" : "shared_static::@98093a27b7e7f29c85ce",
-					"jsonFile" : "target-shared_static-Debug-fe90435322712171225b.json",
+					"jsonFile" : "target-shared_static-Debug-bdeb25ad558db9202cc8.json",
 					"name" : "shared_static",
 					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 7,
 					"id" : "test_client_dummy::@72fa32a39d54abdb8e25",
-					"jsonFile" : "target-test_client_dummy-Debug-4c9a2d8ad111f037dbd3.json",
+					"jsonFile" : "target-test_client_dummy-Debug-271de51e74ef5344eb25.json",
 					"name" : "test_client_dummy",
 					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 6,
 					"id" : "test_shared_dummy::@9e1e2a59b6770e8465e5",
-					"jsonFile" : "target-test_shared_dummy-Debug-50a6fea7f18e755a9eee.json",
+					"jsonFile" : "target-test_shared_dummy-Debug-af9ddcc68b89b378efed.json",
 					"name" : "test_shared_dummy",
 					"projectIndex" : 0
 				},
@@ -316,8 +316,8 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "/home/cleme/CLionProjects/plt/cmake-build-debug",
-		"source" : "/home/cleme/CLionProjects/plt"
+		"build" : "/home/ismail/Documents/PLT/plt/cmake-build-debug",
+		"source" : "/home/ismail/Documents/PLT/plt"
 	},
 	"version" : 
 	{

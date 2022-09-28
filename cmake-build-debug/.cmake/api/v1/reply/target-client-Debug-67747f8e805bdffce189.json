@@ -2,7 +2,7 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "/home/cleme/CLionProjects/plt/bin/client"
+			"path" : "/home/ismail/Documents/PLT/plt/bin/client"
 		}
 	],
 	"backtrace" : 1,
@@ -58,11 +58,11 @@
 			[
 				{
 					"backtrace" : 2,
-					"path" : "/home/cleme/CLionProjects/plt/src/client"
+					"path" : "/home/ismail/Documents/PLT/plt/src/client"
 				},
 				{
 					"backtrace" : 2,
-					"path" : "/home/cleme/CLionProjects/plt/src/shared"
+					"path" : "/home/ismail/Documents/PLT/plt/src/shared"
 				}
 			],
 			"language" : "CXX",

@@ -68,7 +68,7 @@ Les Points de Victoire proviennent :
 
 **Level Max :** 
 
-Lorsqu’un paramètre global a atteint son niveau optimal, il ne peut pas aller au-delà, et l’augmenter ne vous permettra plus d’améliorer votre NT. Vous pourrez continuer à jouer des cartes ou réaliser des actions qui augmentent un paranète, mais cela n’aura plus d’effet sur votre NT.
+Lorsqu’un paramètre global a atteint son niveau optimal, il ne peut pas aller au-delà, et l’augmenter ne vous permettra plus d’améliorer votre NT. Vous pourrez continuer à jouer des cartes ou réaliser des actions qui augmentent un paramètre, mais cela n’aura plus d’effet sur votre NT.
 
 ### Les tuiles :
 

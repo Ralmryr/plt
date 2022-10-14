@@ -31,3 +31,9 @@ endif()
 
 # vim: set sw=2 sts=2 et:
 
+set(shared_target shared)
+add_executable(${shared_target} main.cpp)
+target_link_libraries(${shared_target} ${lib_shared_target})
+if(BUILD_CODE_COVERAGE)
+  add_dependencies(code-coverage ${shared_target})
+endif()

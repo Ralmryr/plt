@@ -1,4 +1,4 @@
-# Install script for directory: /home/cleme/CLionProjects/plt
+# Install script for directory: /home/alex/Documents/3A/projet/plt
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -44,11 +44,11 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/home/cleme/CLionProjects/plt/cmake-build-debug/extern/dia2code/cmake_install.cmake")
-  include("/home/cleme/CLionProjects/plt/cmake-build-debug/src/shared/cmake_install.cmake")
-  include("/home/cleme/CLionProjects/plt/cmake-build-debug/src/client/cmake_install.cmake")
-  include("/home/cleme/CLionProjects/plt/cmake-build-debug/rapport/cmake_install.cmake")
-  include("/home/cleme/CLionProjects/plt/cmake-build-debug/test/cmake_install.cmake")
+  include("/home/alex/Documents/3A/projet/plt/cmake-build-debug/extern/dia2code/cmake_install.cmake")
+  include("/home/alex/Documents/3A/projet/plt/cmake-build-debug/src/shared/cmake_install.cmake")
+  include("/home/alex/Documents/3A/projet/plt/cmake-build-debug/src/client/cmake_install.cmake")
+  include("/home/alex/Documents/3A/projet/plt/cmake-build-debug/rapport/cmake_install.cmake")
+  include("/home/alex/Documents/3A/projet/plt/cmake-build-debug/test/cmake_install.cmake")
 
 endif()
 
@@ -60,5 +60,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/cleme/CLionProjects/plt/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/alex/Documents/3A/projet/plt/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

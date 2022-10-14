@@ -54,29 +54,9 @@
 			"value" : "/usr/include"
 		},
 		{
-			"name" : "Boost_UNIT_TEST_FRAMEWORK_LIBRARY_DEBUG",
-			"properties" : 
-			[
-				{
-					"name" : "ADVANCED",
-					"value" : "1"
-				},
-				{
-					"name" : "HELPSTRING",
-					"value" : "Boost unit_test_framework library (debug)"
-				}
-			],
-			"type" : "FILEPATH",
-			"value" : "Boost_UNIT_TEST_FRAMEWORK_LIBRARY_DEBUG-NOTFOUND"
-		},
-		{
 			"name" : "Boost_UNIT_TEST_FRAMEWORK_LIBRARY_RELEASE",
 			"properties" : 
 			[
-				{
-					"name" : "ADVANCED",
-					"value" : "1"
-				},
 				{
 					"name" : "HELPSTRING",
 					"value" : ""
@@ -139,7 +119,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/home/cleme/CLionProjects/plt/cmake-build-debug"
+			"value" : "/home/alex/Documents/3A/projet/plt/cmake-build-debug"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -187,7 +167,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/snap/clion/206/bin/cmake/linux/bin/cmake"
+			"value" : "/snap/clion/209/bin/cmake/linux/bin/cmake"
 		},
 		{
 			"name" : "CMAKE_CPACK_COMMAND",
@@ -199,7 +179,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/snap/clion/206/bin/cmake/linux/bin/cpack"
+			"value" : "/snap/clion/209/bin/cmake/linux/bin/cpack"
 		},
 		{
 			"name" : "CMAKE_CTEST_COMMAND",
@@ -211,7 +191,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/snap/clion/206/bin/cmake/linux/bin/ctest"
+			"value" : "/snap/clion/209/bin/cmake/linux/bin/ctest"
 		},
 		{
 			"name" : "CMAKE_CXX_COMPILER",
@@ -527,7 +507,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/snap/clion/206/bin/cmake/linux/bin/ccmake"
+			"value" : "/snap/clion/209/bin/cmake/linux/bin/ccmake"
 		},
 		{
 			"name" : "CMAKE_EXECUTABLE_FORMAT",
@@ -723,7 +703,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/home/cleme/CLionProjects/plt"
+			"value" : "/home/alex/Documents/3A/projet/plt"
 		},
 		{
 			"name" : "CMAKE_INSTALL_PREFIX",
@@ -775,7 +755,7 @@
 				}
 			],
 			"type" : "UNINITIALIZED",
-			"value" : "/snap/clion/206/bin/ninja/linux/ninja"
+			"value" : "/snap/clion/209/bin/ninja/linux/ninja"
 		},
 		{
 			"name" : "CMAKE_MODULE_LINKER_FLAGS",
@@ -1007,7 +987,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/snap/clion/206/bin/cmake/linux/share/cmake-3.23"
+			"value" : "/snap/clion/209/bin/cmake/linux/share/cmake-3.23"
 		},
 		{
 			"name" : "CMAKE_SHARED_LINKER_FLAGS",
@@ -1463,7 +1443,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "/usr/lib/x86_64-linux-gnu/libmicrohttpd.so"
+			"value" : "MHD_LIBRARY-NOTFOUND"
 		},
 		{
 			"name" : "PC_LIBXML_CFLAGS",
@@ -1807,7 +1787,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "Python;3;10;6;64;;cpython-310-x86_64-linux-gnu;/usr/lib/python3.10;/usr/lib/python3.10;/usr/local/lib/python3.10/dist-packages;/usr/local/lib/python3.10/dist-packages"
+			"value" : "Python;3;10;6;64;;cpython-310-x86_64-linux-gnu;/usr/lib/python3.10;/usr/lib/python3.10;/usr/lib/python3/dist-packages;/usr/lib/python3/dist-packages"
 		},
 		{
 			"name" : "_Python_INTERPRETER_SIGNATURE",
@@ -1887,7 +1867,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/home/cleme/CLionProjects/plt/cmake-build-debug/extern/dia2code"
+			"value" : "/home/alex/Documents/3A/projet/plt/cmake-build-debug/extern/dia2code"
 		},
 		{
 			"name" : "dia2code_IS_TOP_LEVEL",
@@ -1911,7 +1891,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/home/cleme/CLionProjects/plt/extern/dia2code"
+			"value" : "/home/alex/Documents/3A/projet/plt/extern/dia2code"
 		},
 		{
 			"name" : "plt_BINARY_DIR",
@@ -1923,7 +1903,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/home/cleme/CLionProjects/plt/cmake-build-debug"
+			"value" : "/home/alex/Documents/3A/projet/plt/cmake-build-debug"
 		},
 		{
 			"name" : "plt_IS_TOP_LEVEL",
@@ -1947,7 +1927,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/home/cleme/CLionProjects/plt"
+			"value" : "/home/alex/Documents/3A/projet/plt"
 		},
 		{
 			"name" : "shared_static_LIB_DEPENDS",

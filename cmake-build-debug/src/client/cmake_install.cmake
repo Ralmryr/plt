@@ -1,4 +1,4 @@
-# Install script for directory: /home/cleme/CLionProjects/plt/src/client
+# Install script for directory: /home/alex/Documents/3A/projet/plt/src/client
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

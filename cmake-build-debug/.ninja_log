@@ -1,4 +1,5 @@
 # ninja log v5
+<<<<<<< HEAD
 763	772	1666030382557346726	/home/cleme/CLionProjects/plt/cmake-build-debug/generate_header_state.stamp	6003cc1b63f3c7a
 773	795	1666030382577346963	src/client/CMakeFiles/client_static.dir/client/Exemple.cpp.o	d60db465ab9b2dc
 764	772	1666030382557346726	/home/cleme/CLionProjects/plt/cmake-build-debug/generate_header_client.stamp	40f59f49fada9b93
@@ -19,3 +20,23 @@
 764	772	1666030382557346726	generate_header_client.stamp	40f59f49fada9b93
 271	667	1666030382449345443	extern/dia2code/CMakeFiles/dia2code.dir/src/parse_diagram.c.o	e973751846929f9f
 86	215	1666030381997340073	extern/dia2code/CMakeFiles/dia2code.dir/src/includes.c.o	d21ce912cc1af040
+=======
+1	29	1664354435642544011	src/client/CMakeFiles/client_static.dir/client/Exemple.cpp.o	f23fcab298417689
+875	1374	1664352522279325700	src/client/CMakeFiles/client.dir/main.cpp.o	e4a5270675b49934
+2	300	1664352521203320530	extern/dia2code/CMakeFiles/dia2code.dir/src/main.c.o	df1291f15f411fea
+172	437	1664352521339321185	extern/dia2code/CMakeFiles/dia2code.dir/src/source_parser.c.o	56ee2d1afa185509
+2	618	1664352521523322069	extern/dia2code/CMakeFiles/dia2code.dir/src/generate_code_cpp.c.o	d54d5156fe080d15
+898	904	1664352521811323453	src/shared/libshared_static.a	7a9cc707ce1421d6
+35	113	1664354435726544068	../bin/client	2ea33d73a064b13
+1	116	1664352521019319647	extern/dia2code/CMakeFiles/dia2code.dir/src/comment_helper.c.o	dc08736d8dee9941
+875	898	1664352521803323414	src/shared/CMakeFiles/shared_static.dir/state/Exemple.cpp.o	9b618fcc38f82521
+784	865	1664352521771323260	../bin/dia2code	3d2d6bcca259693b
+29	35	1664354435650544016	src/client/libclient_static.a	a3ba1bb09d7a726b
+865	874	1664352521779323300	generate_header_state.stamp	26d9513c245bfd1d
+153	469	1664352521375321357	extern/dia2code/CMakeFiles/dia2code.dir/src/scan_tree.c.o	2ee037db262db0de
+1	172	1664352521075319916	extern/dia2code/CMakeFiles/dia2code.dir/src/decls.c.o	bfd68981939e3028
+2	691	1664352521595322414	extern/dia2code/CMakeFiles/dia2code.dir/src/dia2code.c.o	a92d896c2f588049
+1	6	1664354379094505184	generate_header_client.stamp	cd1315a419267938
+117	784	1664352521687322858	extern/dia2code/CMakeFiles/dia2code.dir/src/parse_diagram.c.o	178360af88491aa5
+1	153	1664352521059319838	extern/dia2code/CMakeFiles/dia2code.dir/src/includes.c.o	efcda2a3c1fe74fe
+>>>>>>> pre-merge

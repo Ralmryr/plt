@@ -4,4 +4,6 @@ bin
 nbproject
 src/*/*.h
 src/*/*/*.h
+cmake-build-debug
 .idea
+.vscode

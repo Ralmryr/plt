@@ -1,4 +1,4 @@
-# Install script for directory: /home/alex/Documents/3A/projet/plt/test/shared
+# Install script for directory: /home/cleme/CLionProjects/plt/test/shared
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

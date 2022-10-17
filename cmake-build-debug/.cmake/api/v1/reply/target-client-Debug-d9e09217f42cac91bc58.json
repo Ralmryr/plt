@@ -2,7 +2,7 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "/home/alex/Documents/3A/projet/plt/bin/client"
+			"path" : "/home/cleme/CLionProjects/plt/bin/client"
 		}
 	],
 	"backtrace" : 1,
@@ -58,11 +58,11 @@
 			[
 				{
 					"backtrace" : 2,
-					"path" : "/home/alex/Documents/3A/projet/plt/src/client"
+					"path" : "/home/cleme/CLionProjects/plt/src/client"
 				},
 				{
 					"backtrace" : 2,
-					"path" : "/home/alex/Documents/3A/projet/plt/src/shared"
+					"path" : "/home/cleme/CLionProjects/plt/src/shared"
 				}
 			],
 			"language" : "CXX",

@@ -67,11 +67,11 @@
 			[
 				{
 					"backtrace" : 4,
-					"path" : "/home/alex/Documents/3A/projet/plt/src/client"
+					"path" : "/home/cleme/CLionProjects/plt/src/client"
 				},
 				{
 					"backtrace" : 3,
-					"path" : "/home/alex/Documents/3A/projet/plt/src/shared"
+					"path" : "/home/cleme/CLionProjects/plt/src/shared"
 				}
 			],
 			"language" : "CXX",

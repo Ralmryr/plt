@@ -45,25 +45,19 @@
 				"parent" : 3
 			},
 			{
-				"command" : 2,
-				"file" : 2,
-				"line" : 38,
-				"parent" : 3
-			},
-			{
 				"file" : 4
 			},
 			{
 				"command" : 3,
 				"file" : 4,
 				"line" : 2,
-				"parent" : 6
+				"parent" : 5
 			},
 			{
 				"command" : 2,
 				"file" : 3,
 				"line" : 84,
-				"parent" : 7
+				"parent" : 6
 			},
 			{
 				"file" : 5
@@ -72,13 +66,13 @@
 				"command" : 3,
 				"file" : 5,
 				"line" : 3,
-				"parent" : 9
+				"parent" : 8
 			},
 			{
 				"command" : 2,
 				"file" : 3,
 				"line" : 84,
-				"parent" : 10
+				"parent" : 9
 			}
 		]
 	},
@@ -89,15 +83,11 @@
 			"id" : "client::@8ca63c80a879d0067daa"
 		},
 		{
-			"backtrace" : 5,
-			"id" : "shared::@8ca63c80a879d0067daa"
-		},
-		{
-			"backtrace" : 8,
+			"backtrace" : 7,
 			"id" : "test_shared_dummy::@9e1e2a59b6770e8465e5"
 		},
 		{
-			"backtrace" : 11,
+			"backtrace" : 10,
 			"id" : "test_client_dummy::@72fa32a39d54abdb8e25"
 		}
 	],

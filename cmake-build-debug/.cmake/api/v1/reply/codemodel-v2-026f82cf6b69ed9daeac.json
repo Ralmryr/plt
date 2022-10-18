@@ -57,7 +57,7 @@
 					"targetIndexes" : 
 					[
 						8,
-						13
+						12
 					]
 				},
 				{
@@ -74,8 +74,7 @@
 					[
 						2,
 						3,
-						7,
-						12
+						7
 					]
 				},
 				{
@@ -112,7 +111,7 @@
 					"targetIndexes" : 
 					[
 						0,
-						16
+						15
 					]
 				},
 				{
@@ -127,7 +126,7 @@
 					"source" : "test/shared",
 					"targetIndexes" : 
 					[
-						15
+						14
 					]
 				},
 				{
@@ -142,7 +141,7 @@
 					"source" : "test/client",
 					"targetIndexes" : 
 					[
-						14
+						13
 					]
 				}
 			],
@@ -181,8 +180,7 @@
 						12,
 						13,
 						14,
-						15,
-						16
+						15
 					]
 				},
 				{
@@ -231,7 +229,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "code-coverage::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-code-coverage-Debug-2308a91a2657e6a6a93c.json",
+					"jsonFile" : "target-code-coverage-Debug-38e10db989094aabd1f2.json",
 					"name" : "code-coverage",
 					"projectIndex" : 0
 				},
@@ -282,13 +280,6 @@
 					"id" : "rapport-diapdf-state::@f325e8a45689e7c93a6a",
 					"jsonFile" : "target-rapport-diapdf-state-Debug-7a3c8e10e22c580a0229.json",
 					"name" : "rapport-diapdf-state",
-					"projectIndex" : 0
-				},
-				{
-					"directoryIndex" : 3,
-					"id" : "shared::@8ca63c80a879d0067daa",
-					"jsonFile" : "target-shared-Debug-d057f2847f0280a660bf.json",
-					"name" : "shared",
 					"projectIndex" : 0
 				},
 				{

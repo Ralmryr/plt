@@ -14,7 +14,6 @@
 /home/alex/Documents/3A/projet/plt/cmake-build-debug/src/client/CMakeFiles/generate-header-client.dir
 /home/alex/Documents/3A/projet/plt/cmake-build-debug/src/client/CMakeFiles/client_static.dir
 /home/alex/Documents/3A/projet/plt/cmake-build-debug/src/client/CMakeFiles/client.dir
-/home/alex/Documents/3A/projet/plt/cmake-build-debug/src/client/CMakeFiles/shared.dir
 /home/alex/Documents/3A/projet/plt/cmake-build-debug/src/client/CMakeFiles/edit_cache.dir
 /home/alex/Documents/3A/projet/plt/cmake-build-debug/src/client/CMakeFiles/rebuild_cache.dir
 /home/alex/Documents/3A/projet/plt/cmake-build-debug/rapport/CMakeFiles/rapport.dir

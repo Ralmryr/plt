@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 # Install script for directory: /home/alex/Documents/3A/projet/plt/rapport
+=======
+# Install script for directory: /home/ismail/Documents/PLT/plt/rapport
+>>>>>>> dev-isma
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

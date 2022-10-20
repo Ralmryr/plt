@@ -1,4 +1,4 @@
-/snap/clion/206/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=/snap/clion/206/bin/ninja/linux/ninja -G Ninja -S /home/cleme/CLionProjects/plt -B /home/cleme/CLionProjects/plt/cmake-build-debug
+/snap/clion/206/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=/snap/clion/206/bin/ninja/linux/ninja -G Ninja -S /home/ismail/Documents/PLT/plt -B /home/ismail/Documents/PLT/plt/cmake-build-debug
 CMake Deprecation Warning at CMakeLists.txt:1 (cmake_minimum_required):
   Compatibility with CMake < 2.8.12 will be removed from a future version of
   CMake.
@@ -42,4 +42,4 @@ CMake Warning (dev):
   custom commands that produce these files.
 This warning is for project developers.  Use -Wno-dev to suppress it.
 
--- Build files have been written to: /home/cleme/CLionProjects/plt/cmake-build-debug
+-- Build files have been written to: /home/ismail/Documents/PLT/plt/cmake-build-debug

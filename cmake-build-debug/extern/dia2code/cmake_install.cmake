@@ -1,4 +1,4 @@
-# Install script for directory: /home/cleme/CLionProjects/plt/extern/dia2code
+# Install script for directory: /home/ismail/Documents/PLT/plt/extern/dia2code
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

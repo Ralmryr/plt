@@ -3,3 +3,7 @@
 //
 
 #include "CounterPV.h"
+
+state::CounterPV::CounterPV() {
+
+}

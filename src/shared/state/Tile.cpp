@@ -4,3 +4,10 @@
 
 #include "Tile.h"
 
+state::Tile::Tile(state::TileName name) {
+    this->name = name;
+}
+
+state::Tile::~Tile() {
+
+}

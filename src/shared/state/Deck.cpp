@@ -3,3 +3,11 @@
 //
 
 #include "Deck.h"
+
+state::Deck::Deck() {
+
+}
+
+state::Deck::~Deck() {
+
+}

@@ -4,16 +4,8 @@
 
 #include "Spot.h"
 
-state::Spot::Spot(int, int) {
-    this->x = x;
-    this->y = y;
+state::Spot::Spot(int x, int y) : x(x), y(y){
 }
 
-int state::Spot::getY() const {
-    return this->y;
-}
-
-int state::Spot::getX() const {
-    return this->x;
-}
+state::Spot::~Spot() = default;
 

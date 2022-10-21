@@ -265,13 +265,6 @@ build src/shared/CMakeFiles/shared_static.dir/state/AdjacentTo.cpp.o: CXX_COMPIL
   OBJECT_DIR = src/shared/CMakeFiles/shared_static.dir
   OBJECT_FILE_DIR = src/shared/CMakeFiles/shared_static.dir/state
 
-build src/shared/CMakeFiles/shared_static.dir/state/Badge.cpp.o: CXX_COMPILER__shared_static_Debug /home/cleme/CLionProjects/plt/src/shared/state/Badge.cpp || cmake_object_order_depends_target_shared_static
-  DEP_FILE = src/shared/CMakeFiles/shared_static.dir/state/Badge.cpp.o.d
-  FLAGS = -Wall -std=c++11 -pthread -g -g --coverage -fprofile-arcs -ftest-coverage -g -std=gnu++11
-  INCLUDES = -I/home/cleme/CLionProjects/plt/src/shared
-  OBJECT_DIR = src/shared/CMakeFiles/shared_static.dir
-  OBJECT_FILE_DIR = src/shared/CMakeFiles/shared_static.dir/state
-
 build src/shared/CMakeFiles/shared_static.dir/state/Board.cpp.o: CXX_COMPILER__shared_static_Debug /home/cleme/CLionProjects/plt/src/shared/state/Board.cpp || cmake_object_order_depends_target_shared_static
   DEP_FILE = src/shared/CMakeFiles/shared_static.dir/state/Board.cpp.o.d
   FLAGS = -Wall -std=c++11 -pthread -g -g --coverage -fprofile-arcs -ftest-coverage -g -std=gnu++11
@@ -307,8 +300,36 @@ build src/shared/CMakeFiles/shared_static.dir/state/Epassif.cpp.o: CXX_COMPILER_
   OBJECT_DIR = src/shared/CMakeFiles/shared_static.dir
   OBJECT_FILE_DIR = src/shared/CMakeFiles/shared_static.dir/state
 
-build src/shared/CMakeFiles/shared_static.dir/state/OnOcean.cpp.o: CXX_COMPILER__shared_static_Debug /home/cleme/CLionProjects/plt/src/shared/state/OnOcean.cpp || cmake_object_order_depends_target_shared_static
-  DEP_FILE = src/shared/CMakeFiles/shared_static.dir/state/OnOcean.cpp.o.d
+build src/shared/CMakeFiles/shared_static.dir/state/Gain.cpp.o: CXX_COMPILER__shared_static_Debug /home/cleme/CLionProjects/plt/src/shared/state/Gain.cpp || cmake_object_order_depends_target_shared_static
+  DEP_FILE = src/shared/CMakeFiles/shared_static.dir/state/Gain.cpp.o.d
+  FLAGS = -Wall -std=c++11 -pthread -g -g --coverage -fprofile-arcs -ftest-coverage -g -std=gnu++11
+  INCLUDES = -I/home/cleme/CLionProjects/plt/src/shared
+  OBJECT_DIR = src/shared/CMakeFiles/shared_static.dir
+  OBJECT_FILE_DIR = src/shared/CMakeFiles/shared_static.dir/state
+
+build src/shared/CMakeFiles/shared_static.dir/state/GlobalParameters.cpp.o: CXX_COMPILER__shared_static_Debug /home/cleme/CLionProjects/plt/src/shared/state/GlobalParameters.cpp || cmake_object_order_depends_target_shared_static
+  DEP_FILE = src/shared/CMakeFiles/shared_static.dir/state/GlobalParameters.cpp.o.d
+  FLAGS = -Wall -std=c++11 -pthread -g -g --coverage -fprofile-arcs -ftest-coverage -g -std=gnu++11
+  INCLUDES = -I/home/cleme/CLionProjects/plt/src/shared
+  OBJECT_DIR = src/shared/CMakeFiles/shared_static.dir
+  OBJECT_FILE_DIR = src/shared/CMakeFiles/shared_static.dir/state
+
+build src/shared/CMakeFiles/shared_static.dir/state/HandObserver.cpp.o: CXX_COMPILER__shared_static_Debug /home/cleme/CLionProjects/plt/src/shared/state/HandObserver.cpp || cmake_object_order_depends_target_shared_static
+  DEP_FILE = src/shared/CMakeFiles/shared_static.dir/state/HandObserver.cpp.o.d
+  FLAGS = -Wall -std=c++11 -pthread -g -g --coverage -fprofile-arcs -ftest-coverage -g -std=gnu++11
+  INCLUDES = -I/home/cleme/CLionProjects/plt/src/shared
+  OBJECT_DIR = src/shared/CMakeFiles/shared_static.dir
+  OBJECT_FILE_DIR = src/shared/CMakeFiles/shared_static.dir/state
+
+build src/shared/CMakeFiles/shared_static.dir/state/Observable.cpp.o: CXX_COMPILER__shared_static_Debug /home/cleme/CLionProjects/plt/src/shared/state/Observable.cpp || cmake_object_order_depends_target_shared_static
+  DEP_FILE = src/shared/CMakeFiles/shared_static.dir/state/Observable.cpp.o.d
+  FLAGS = -Wall -std=c++11 -pthread -g -g --coverage -fprofile-arcs -ftest-coverage -g -std=gnu++11
+  INCLUDES = -I/home/cleme/CLionProjects/plt/src/shared
+  OBJECT_DIR = src/shared/CMakeFiles/shared_static.dir
+  OBJECT_FILE_DIR = src/shared/CMakeFiles/shared_static.dir/state
+
+build src/shared/CMakeFiles/shared_static.dir/state/OnReserved.cpp.o: CXX_COMPILER__shared_static_Debug /home/cleme/CLionProjects/plt/src/shared/state/OnReserved.cpp || cmake_object_order_depends_target_shared_static
+  DEP_FILE = src/shared/CMakeFiles/shared_static.dir/state/OnReserved.cpp.o.d
   FLAGS = -Wall -std=c++11 -pthread -g -g --coverage -fprofile-arcs -ftest-coverage -g -std=gnu++11
   INCLUDES = -I/home/cleme/CLionProjects/plt/src/shared
   OBJECT_DIR = src/shared/CMakeFiles/shared_static.dir
@@ -316,6 +337,13 @@ build src/shared/CMakeFiles/shared_static.dir/state/OnOcean.cpp.o: CXX_COMPILER_
 
 build src/shared/CMakeFiles/shared_static.dir/state/OnRessource.cpp.o: CXX_COMPILER__shared_static_Debug /home/cleme/CLionProjects/plt/src/shared/state/OnRessource.cpp || cmake_object_order_depends_target_shared_static
   DEP_FILE = src/shared/CMakeFiles/shared_static.dir/state/OnRessource.cpp.o.d
+  FLAGS = -Wall -std=c++11 -pthread -g -g --coverage -fprofile-arcs -ftest-coverage -g -std=gnu++11
+  INCLUDES = -I/home/cleme/CLionProjects/plt/src/shared
+  OBJECT_DIR = src/shared/CMakeFiles/shared_static.dir
+  OBJECT_FILE_DIR = src/shared/CMakeFiles/shared_static.dir/state
+
+build src/shared/CMakeFiles/shared_static.dir/state/ParameterObserver.cpp.o: CXX_COMPILER__shared_static_Debug /home/cleme/CLionProjects/plt/src/shared/state/ParameterObserver.cpp || cmake_object_order_depends_target_shared_static
+  DEP_FILE = src/shared/CMakeFiles/shared_static.dir/state/ParameterObserver.cpp.o.d
   FLAGS = -Wall -std=c++11 -pthread -g -g --coverage -fprofile-arcs -ftest-coverage -g -std=gnu++11
   INCLUDES = -I/home/cleme/CLionProjects/plt/src/shared
   OBJECT_DIR = src/shared/CMakeFiles/shared_static.dir
@@ -349,8 +377,29 @@ build src/shared/CMakeFiles/shared_static.dir/state/ProjectStd.cpp.o: CXX_COMPIL
   OBJECT_DIR = src/shared/CMakeFiles/shared_static.dir
   OBJECT_FILE_DIR = src/shared/CMakeFiles/shared_static.dir/state
 
-build src/shared/CMakeFiles/shared_static.dir/state/Ressources.cpp.o: CXX_COMPILER__shared_static_Debug /home/cleme/CLionProjects/plt/src/shared/state/Ressources.cpp || cmake_object_order_depends_target_shared_static
-  DEP_FILE = src/shared/CMakeFiles/shared_static.dir/state/Ressources.cpp.o.d
+build src/shared/CMakeFiles/shared_static.dir/state/Ressource.cpp.o: CXX_COMPILER__shared_static_Debug /home/cleme/CLionProjects/plt/src/shared/state/Ressource.cpp || cmake_object_order_depends_target_shared_static
+  DEP_FILE = src/shared/CMakeFiles/shared_static.dir/state/Ressource.cpp.o.d
+  FLAGS = -Wall -std=c++11 -pthread -g -g --coverage -fprofile-arcs -ftest-coverage -g -std=gnu++11
+  INCLUDES = -I/home/cleme/CLionProjects/plt/src/shared
+  OBJECT_DIR = src/shared/CMakeFiles/shared_static.dir
+  OBJECT_FILE_DIR = src/shared/CMakeFiles/shared_static.dir/state
+
+build src/shared/CMakeFiles/shared_static.dir/state/RessourceObserver.cpp.o: CXX_COMPILER__shared_static_Debug /home/cleme/CLionProjects/plt/src/shared/state/RessourceObserver.cpp || cmake_object_order_depends_target_shared_static
+  DEP_FILE = src/shared/CMakeFiles/shared_static.dir/state/RessourceObserver.cpp.o.d
+  FLAGS = -Wall -std=c++11 -pthread -g -g --coverage -fprofile-arcs -ftest-coverage -g -std=gnu++11
+  INCLUDES = -I/home/cleme/CLionProjects/plt/src/shared
+  OBJECT_DIR = src/shared/CMakeFiles/shared_static.dir
+  OBJECT_FILE_DIR = src/shared/CMakeFiles/shared_static.dir/state
+
+build src/shared/CMakeFiles/shared_static.dir/state/RessourceSPE.cpp.o: CXX_COMPILER__shared_static_Debug /home/cleme/CLionProjects/plt/src/shared/state/RessourceSPE.cpp || cmake_object_order_depends_target_shared_static
+  DEP_FILE = src/shared/CMakeFiles/shared_static.dir/state/RessourceSPE.cpp.o.d
+  FLAGS = -Wall -std=c++11 -pthread -g -g --coverage -fprofile-arcs -ftest-coverage -g -std=gnu++11
+  INCLUDES = -I/home/cleme/CLionProjects/plt/src/shared
+  OBJECT_DIR = src/shared/CMakeFiles/shared_static.dir
+  OBJECT_FILE_DIR = src/shared/CMakeFiles/shared_static.dir/state
+
+build src/shared/CMakeFiles/shared_static.dir/state/RessourceSTD.cpp.o: CXX_COMPILER__shared_static_Debug /home/cleme/CLionProjects/plt/src/shared/state/RessourceSTD.cpp || cmake_object_order_depends_target_shared_static
+  DEP_FILE = src/shared/CMakeFiles/shared_static.dir/state/RessourceSTD.cpp.o.d
   FLAGS = -Wall -std=c++11 -pthread -g -g --coverage -fprofile-arcs -ftest-coverage -g -std=gnu++11
   INCLUDES = -I/home/cleme/CLionProjects/plt/src/shared
   OBJECT_DIR = src/shared/CMakeFiles/shared_static.dir
@@ -377,6 +426,13 @@ build src/shared/CMakeFiles/shared_static.dir/state/Tile.cpp.o: CXX_COMPILER__sh
   OBJECT_DIR = src/shared/CMakeFiles/shared_static.dir
   OBJECT_FILE_DIR = src/shared/CMakeFiles/shared_static.dir/state
 
+build src/shared/CMakeFiles/shared_static.dir/state/TileObserver.cpp.o: CXX_COMPILER__shared_static_Debug /home/cleme/CLionProjects/plt/src/shared/state/TileObserver.cpp || cmake_object_order_depends_target_shared_static
+  DEP_FILE = src/shared/CMakeFiles/shared_static.dir/state/TileObserver.cpp.o.d
+  FLAGS = -Wall -std=c++11 -pthread -g -g --coverage -fprofile-arcs -ftest-coverage -g -std=gnu++11
+  INCLUDES = -I/home/cleme/CLionProjects/plt/src/shared
+  OBJECT_DIR = src/shared/CMakeFiles/shared_static.dir
+  OBJECT_FILE_DIR = src/shared/CMakeFiles/shared_static.dir/state
+
 
 # =============================================================================
 # Link build statements for STATIC_LIBRARY target shared_static
@@ -385,7 +441,7 @@ build src/shared/CMakeFiles/shared_static.dir/state/Tile.cpp.o: CXX_COMPILER__sh
 #############################################
 # Link the static library src/shared/libshared_static.a
 
-build src/shared/libshared_static.a: CXX_STATIC_LIBRARY_LINKER__shared_static_Debug src/shared/CMakeFiles/shared_static.dir/main.cpp.o src/shared/CMakeFiles/shared_static.dir/state/AdjacentTo.cpp.o src/shared/CMakeFiles/shared_static.dir/state/Badge.cpp.o src/shared/CMakeFiles/shared_static.dir/state/Board.cpp.o src/shared/CMakeFiles/shared_static.dir/state/CounterPV.cpp.o src/shared/CMakeFiles/shared_static.dir/state/Deck.cpp.o src/shared/CMakeFiles/shared_static.dir/state/Eactif.cpp.o src/shared/CMakeFiles/shared_static.dir/state/Epassif.cpp.o src/shared/CMakeFiles/shared_static.dir/state/OnOcean.cpp.o src/shared/CMakeFiles/shared_static.dir/state/OnRessource.cpp.o src/shared/CMakeFiles/shared_static.dir/state/PlaceCondition.cpp.o src/shared/CMakeFiles/shared_static.dir/state/Player.cpp.o src/shared/CMakeFiles/shared_static.dir/state/ProjectCard.cpp.o src/shared/CMakeFiles/shared_static.dir/state/ProjectStd.cpp.o src/shared/CMakeFiles/shared_static.dir/state/Ressources.cpp.o src/shared/CMakeFiles/shared_static.dir/state/Spot.cpp.o src/shared/CMakeFiles/shared_static.dir/state/State.cpp.o src/shared/CMakeFiles/shared_static.dir/state/Tile.cpp.o || generate-headers
+build src/shared/libshared_static.a: CXX_STATIC_LIBRARY_LINKER__shared_static_Debug src/shared/CMakeFiles/shared_static.dir/main.cpp.o src/shared/CMakeFiles/shared_static.dir/state/AdjacentTo.cpp.o src/shared/CMakeFiles/shared_static.dir/state/Board.cpp.o src/shared/CMakeFiles/shared_static.dir/state/CounterPV.cpp.o src/shared/CMakeFiles/shared_static.dir/state/Deck.cpp.o src/shared/CMakeFiles/shared_static.dir/state/Eactif.cpp.o src/shared/CMakeFiles/shared_static.dir/state/Epassif.cpp.o src/shared/CMakeFiles/shared_static.dir/state/Gain.cpp.o src/shared/CMakeFiles/shared_static.dir/state/GlobalParameters.cpp.o src/shared/CMakeFiles/shared_static.dir/state/HandObserver.cpp.o src/shared/CMakeFiles/shared_static.dir/state/Observable.cpp.o src/shared/CMakeFiles/shared_static.dir/state/OnReserved.cpp.o src/shared/CMakeFiles/shared_static.dir/state/OnRessource.cpp.o src/shared/CMakeFiles/shared_static.dir/state/ParameterObserver.cpp.o src/shared/CMakeFiles/shared_static.dir/state/PlaceCondition.cpp.o src/shared/CMakeFiles/shared_static.dir/state/Player.cpp.o src/shared/CMakeFiles/shared_static.dir/state/ProjectCard.cpp.o src/shared/CMakeFiles/shared_static.dir/state/ProjectStd.cpp.o src/shared/CMakeFiles/shared_static.dir/state/Ressource.cpp.o src/shared/CMakeFiles/shared_static.dir/state/RessourceObserver.cpp.o src/shared/CMakeFiles/shared_static.dir/state/RessourceSPE.cpp.o src/shared/CMakeFiles/shared_static.dir/state/RessourceSTD.cpp.o src/shared/CMakeFiles/shared_static.dir/state/Spot.cpp.o src/shared/CMakeFiles/shared_static.dir/state/State.cpp.o src/shared/CMakeFiles/shared_static.dir/state/Tile.cpp.o src/shared/CMakeFiles/shared_static.dir/state/TileObserver.cpp.o || generate-headers
   LANGUAGE_COMPILE_FLAGS = -Wall -std=c++11 -pthread -g -g --coverage -fprofile-arcs -ftest-coverage -g
   OBJECT_DIR = src/shared/CMakeFiles/shared_static.dir
   POST_BUILD = :
@@ -409,8 +465,8 @@ build src/shared/CMakeFiles/shared.dir/main.cpp.o: CXX_COMPILER__shared_Debug /h
   OBJECT_DIR = src/shared/CMakeFiles/shared.dir
   OBJECT_FILE_DIR = src/shared/CMakeFiles/shared.dir
 
-build src/shared/CMakeFiles/shared.dir/state/Ressources.cpp.o: CXX_COMPILER__shared_Debug /home/cleme/CLionProjects/plt/src/shared/state/Ressources.cpp || cmake_object_order_depends_target_shared
-  DEP_FILE = src/shared/CMakeFiles/shared.dir/state/Ressources.cpp.o.d
+build src/shared/CMakeFiles/shared.dir/state/Ressource.cpp.o: CXX_COMPILER__shared_Debug /home/cleme/CLionProjects/plt/src/shared/state/Ressource.cpp || cmake_object_order_depends_target_shared
+  DEP_FILE = src/shared/CMakeFiles/shared.dir/state/Ressource.cpp.o.d
   FLAGS = -Wall -std=c++11 -pthread -g -g --coverage -fprofile-arcs -ftest-coverage -g -std=gnu++11
   INCLUDES = -I/home/cleme/CLionProjects/plt/src/shared
   OBJECT_DIR = src/shared/CMakeFiles/shared.dir
@@ -472,13 +528,6 @@ build src/shared/CMakeFiles/shared.dir/state/OnRessource.cpp.o: CXX_COMPILER__sh
   OBJECT_DIR = src/shared/CMakeFiles/shared.dir
   OBJECT_FILE_DIR = src/shared/CMakeFiles/shared.dir/state
 
-build src/shared/CMakeFiles/shared.dir/state/OnOcean.cpp.o: CXX_COMPILER__shared_Debug /home/cleme/CLionProjects/plt/src/shared/state/OnOcean.cpp || cmake_object_order_depends_target_shared
-  DEP_FILE = src/shared/CMakeFiles/shared.dir/state/OnOcean.cpp.o.d
-  FLAGS = -Wall -std=c++11 -pthread -g -g --coverage -fprofile-arcs -ftest-coverage -g -std=gnu++11
-  INCLUDES = -I/home/cleme/CLionProjects/plt/src/shared
-  OBJECT_DIR = src/shared/CMakeFiles/shared.dir
-  OBJECT_FILE_DIR = src/shared/CMakeFiles/shared.dir/state
-
 build src/shared/CMakeFiles/shared.dir/state/Epassif.cpp.o: CXX_COMPILER__shared_Debug /home/cleme/CLionProjects/plt/src/shared/state/Epassif.cpp || cmake_object_order_depends_target_shared
   DEP_FILE = src/shared/CMakeFiles/shared.dir/state/Epassif.cpp.o.d
   FLAGS = -Wall -std=c++11 -pthread -g -g --coverage -fprofile-arcs -ftest-coverage -g -std=gnu++11
@@ -514,15 +563,78 @@ build src/shared/CMakeFiles/shared.dir/state/Board.cpp.o: CXX_COMPILER__shared_D
   OBJECT_DIR = src/shared/CMakeFiles/shared.dir
   OBJECT_FILE_DIR = src/shared/CMakeFiles/shared.dir/state
 
-build src/shared/CMakeFiles/shared.dir/state/Badge.cpp.o: CXX_COMPILER__shared_Debug /home/cleme/CLionProjects/plt/src/shared/state/Badge.cpp || cmake_object_order_depends_target_shared
-  DEP_FILE = src/shared/CMakeFiles/shared.dir/state/Badge.cpp.o.d
+build src/shared/CMakeFiles/shared.dir/state/AdjacentTo.cpp.o: CXX_COMPILER__shared_Debug /home/cleme/CLionProjects/plt/src/shared/state/AdjacentTo.cpp || cmake_object_order_depends_target_shared
+  DEP_FILE = src/shared/CMakeFiles/shared.dir/state/AdjacentTo.cpp.o.d
   FLAGS = -Wall -std=c++11 -pthread -g -g --coverage -fprofile-arcs -ftest-coverage -g -std=gnu++11
   INCLUDES = -I/home/cleme/CLionProjects/plt/src/shared
   OBJECT_DIR = src/shared/CMakeFiles/shared.dir
   OBJECT_FILE_DIR = src/shared/CMakeFiles/shared.dir/state
 
-build src/shared/CMakeFiles/shared.dir/state/AdjacentTo.cpp.o: CXX_COMPILER__shared_Debug /home/cleme/CLionProjects/plt/src/shared/state/AdjacentTo.cpp || cmake_object_order_depends_target_shared
-  DEP_FILE = src/shared/CMakeFiles/shared.dir/state/AdjacentTo.cpp.o.d
+build src/shared/CMakeFiles/shared.dir/state/Gain.cpp.o: CXX_COMPILER__shared_Debug /home/cleme/CLionProjects/plt/src/shared/state/Gain.cpp || cmake_object_order_depends_target_shared
+  DEP_FILE = src/shared/CMakeFiles/shared.dir/state/Gain.cpp.o.d
+  FLAGS = -Wall -std=c++11 -pthread -g -g --coverage -fprofile-arcs -ftest-coverage -g -std=gnu++11
+  INCLUDES = -I/home/cleme/CLionProjects/plt/src/shared
+  OBJECT_DIR = src/shared/CMakeFiles/shared.dir
+  OBJECT_FILE_DIR = src/shared/CMakeFiles/shared.dir/state
+
+build src/shared/CMakeFiles/shared.dir/state/GlobalParameters.cpp.o: CXX_COMPILER__shared_Debug /home/cleme/CLionProjects/plt/src/shared/state/GlobalParameters.cpp || cmake_object_order_depends_target_shared
+  DEP_FILE = src/shared/CMakeFiles/shared.dir/state/GlobalParameters.cpp.o.d
+  FLAGS = -Wall -std=c++11 -pthread -g -g --coverage -fprofile-arcs -ftest-coverage -g -std=gnu++11
+  INCLUDES = -I/home/cleme/CLionProjects/plt/src/shared
+  OBJECT_DIR = src/shared/CMakeFiles/shared.dir
+  OBJECT_FILE_DIR = src/shared/CMakeFiles/shared.dir/state
+
+build src/shared/CMakeFiles/shared.dir/state/HandObserver.cpp.o: CXX_COMPILER__shared_Debug /home/cleme/CLionProjects/plt/src/shared/state/HandObserver.cpp || cmake_object_order_depends_target_shared
+  DEP_FILE = src/shared/CMakeFiles/shared.dir/state/HandObserver.cpp.o.d
+  FLAGS = -Wall -std=c++11 -pthread -g -g --coverage -fprofile-arcs -ftest-coverage -g -std=gnu++11
+  INCLUDES = -I/home/cleme/CLionProjects/plt/src/shared
+  OBJECT_DIR = src/shared/CMakeFiles/shared.dir
+  OBJECT_FILE_DIR = src/shared/CMakeFiles/shared.dir/state
+
+build src/shared/CMakeFiles/shared.dir/state/Observable.cpp.o: CXX_COMPILER__shared_Debug /home/cleme/CLionProjects/plt/src/shared/state/Observable.cpp || cmake_object_order_depends_target_shared
+  DEP_FILE = src/shared/CMakeFiles/shared.dir/state/Observable.cpp.o.d
+  FLAGS = -Wall -std=c++11 -pthread -g -g --coverage -fprofile-arcs -ftest-coverage -g -std=gnu++11
+  INCLUDES = -I/home/cleme/CLionProjects/plt/src/shared
+  OBJECT_DIR = src/shared/CMakeFiles/shared.dir
+  OBJECT_FILE_DIR = src/shared/CMakeFiles/shared.dir/state
+
+build src/shared/CMakeFiles/shared.dir/state/OnReserved.cpp.o: CXX_COMPILER__shared_Debug /home/cleme/CLionProjects/plt/src/shared/state/OnReserved.cpp || cmake_object_order_depends_target_shared
+  DEP_FILE = src/shared/CMakeFiles/shared.dir/state/OnReserved.cpp.o.d
+  FLAGS = -Wall -std=c++11 -pthread -g -g --coverage -fprofile-arcs -ftest-coverage -g -std=gnu++11
+  INCLUDES = -I/home/cleme/CLionProjects/plt/src/shared
+  OBJECT_DIR = src/shared/CMakeFiles/shared.dir
+  OBJECT_FILE_DIR = src/shared/CMakeFiles/shared.dir/state
+
+build src/shared/CMakeFiles/shared.dir/state/ParameterObserver.cpp.o: CXX_COMPILER__shared_Debug /home/cleme/CLionProjects/plt/src/shared/state/ParameterObserver.cpp || cmake_object_order_depends_target_shared
+  DEP_FILE = src/shared/CMakeFiles/shared.dir/state/ParameterObserver.cpp.o.d
+  FLAGS = -Wall -std=c++11 -pthread -g -g --coverage -fprofile-arcs -ftest-coverage -g -std=gnu++11
+  INCLUDES = -I/home/cleme/CLionProjects/plt/src/shared
+  OBJECT_DIR = src/shared/CMakeFiles/shared.dir
+  OBJECT_FILE_DIR = src/shared/CMakeFiles/shared.dir/state
+
+build src/shared/CMakeFiles/shared.dir/state/RessourceObserver.cpp.o: CXX_COMPILER__shared_Debug /home/cleme/CLionProjects/plt/src/shared/state/RessourceObserver.cpp || cmake_object_order_depends_target_shared
+  DEP_FILE = src/shared/CMakeFiles/shared.dir/state/RessourceObserver.cpp.o.d
+  FLAGS = -Wall -std=c++11 -pthread -g -g --coverage -fprofile-arcs -ftest-coverage -g -std=gnu++11
+  INCLUDES = -I/home/cleme/CLionProjects/plt/src/shared
+  OBJECT_DIR = src/shared/CMakeFiles/shared.dir
+  OBJECT_FILE_DIR = src/shared/CMakeFiles/shared.dir/state
+
+build src/shared/CMakeFiles/shared.dir/state/RessourceSPE.cpp.o: CXX_COMPILER__shared_Debug /home/cleme/CLionProjects/plt/src/shared/state/RessourceSPE.cpp || cmake_object_order_depends_target_shared
+  DEP_FILE = src/shared/CMakeFiles/shared.dir/state/RessourceSPE.cpp.o.d
+  FLAGS = -Wall -std=c++11 -pthread -g -g --coverage -fprofile-arcs -ftest-coverage -g -std=gnu++11
+  INCLUDES = -I/home/cleme/CLionProjects/plt/src/shared
+  OBJECT_DIR = src/shared/CMakeFiles/shared.dir
+  OBJECT_FILE_DIR = src/shared/CMakeFiles/shared.dir/state
+
+build src/shared/CMakeFiles/shared.dir/state/RessourceSTD.cpp.o: CXX_COMPILER__shared_Debug /home/cleme/CLionProjects/plt/src/shared/state/RessourceSTD.cpp || cmake_object_order_depends_target_shared
+  DEP_FILE = src/shared/CMakeFiles/shared.dir/state/RessourceSTD.cpp.o.d
+  FLAGS = -Wall -std=c++11 -pthread -g -g --coverage -fprofile-arcs -ftest-coverage -g -std=gnu++11
+  INCLUDES = -I/home/cleme/CLionProjects/plt/src/shared
+  OBJECT_DIR = src/shared/CMakeFiles/shared.dir
+  OBJECT_FILE_DIR = src/shared/CMakeFiles/shared.dir/state
+
+build src/shared/CMakeFiles/shared.dir/state/TileObserver.cpp.o: CXX_COMPILER__shared_Debug /home/cleme/CLionProjects/plt/src/shared/state/TileObserver.cpp || cmake_object_order_depends_target_shared
+  DEP_FILE = src/shared/CMakeFiles/shared.dir/state/TileObserver.cpp.o.d
   FLAGS = -Wall -std=c++11 -pthread -g -g --coverage -fprofile-arcs -ftest-coverage -g -std=gnu++11
   INCLUDES = -I/home/cleme/CLionProjects/plt/src/shared
   OBJECT_DIR = src/shared/CMakeFiles/shared.dir
@@ -536,7 +648,7 @@ build src/shared/CMakeFiles/shared.dir/state/AdjacentTo.cpp.o: CXX_COMPILER__sha
 #############################################
 # Link the executable ../bin/shared
 
-build ../bin/shared: CXX_EXECUTABLE_LINKER__shared_Debug src/shared/CMakeFiles/shared.dir/main.cpp.o src/shared/CMakeFiles/shared.dir/state/Ressources.cpp.o src/shared/CMakeFiles/shared.dir/state/Spot.cpp.o src/shared/CMakeFiles/shared.dir/state/State.cpp.o src/shared/CMakeFiles/shared.dir/state/Tile.cpp.o src/shared/CMakeFiles/shared.dir/state/ProjectStd.cpp.o src/shared/CMakeFiles/shared.dir/state/ProjectCard.cpp.o src/shared/CMakeFiles/shared.dir/state/Player.cpp.o src/shared/CMakeFiles/shared.dir/state/PlaceCondition.cpp.o src/shared/CMakeFiles/shared.dir/state/OnRessource.cpp.o src/shared/CMakeFiles/shared.dir/state/OnOcean.cpp.o src/shared/CMakeFiles/shared.dir/state/Epassif.cpp.o src/shared/CMakeFiles/shared.dir/state/Eactif.cpp.o src/shared/CMakeFiles/shared.dir/state/Deck.cpp.o src/shared/CMakeFiles/shared.dir/state/CounterPV.cpp.o src/shared/CMakeFiles/shared.dir/state/Board.cpp.o src/shared/CMakeFiles/shared.dir/state/Badge.cpp.o src/shared/CMakeFiles/shared.dir/state/AdjacentTo.cpp.o | src/shared/libshared_static.a || src/shared/libshared_static.a
+build ../bin/shared: CXX_EXECUTABLE_LINKER__shared_Debug src/shared/CMakeFiles/shared.dir/main.cpp.o src/shared/CMakeFiles/shared.dir/state/Ressource.cpp.o src/shared/CMakeFiles/shared.dir/state/Spot.cpp.o src/shared/CMakeFiles/shared.dir/state/State.cpp.o src/shared/CMakeFiles/shared.dir/state/Tile.cpp.o src/shared/CMakeFiles/shared.dir/state/ProjectStd.cpp.o src/shared/CMakeFiles/shared.dir/state/ProjectCard.cpp.o src/shared/CMakeFiles/shared.dir/state/Player.cpp.o src/shared/CMakeFiles/shared.dir/state/PlaceCondition.cpp.o src/shared/CMakeFiles/shared.dir/state/OnRessource.cpp.o src/shared/CMakeFiles/shared.dir/state/Epassif.cpp.o src/shared/CMakeFiles/shared.dir/state/Eactif.cpp.o src/shared/CMakeFiles/shared.dir/state/Deck.cpp.o src/shared/CMakeFiles/shared.dir/state/CounterPV.cpp.o src/shared/CMakeFiles/shared.dir/state/Board.cpp.o src/shared/CMakeFiles/shared.dir/state/AdjacentTo.cpp.o src/shared/CMakeFiles/shared.dir/state/Gain.cpp.o src/shared/CMakeFiles/shared.dir/state/GlobalParameters.cpp.o src/shared/CMakeFiles/shared.dir/state/HandObserver.cpp.o src/shared/CMakeFiles/shared.dir/state/Observable.cpp.o src/shared/CMakeFiles/shared.dir/state/OnReserved.cpp.o src/shared/CMakeFiles/shared.dir/state/ParameterObserver.cpp.o src/shared/CMakeFiles/shared.dir/state/RessourceObserver.cpp.o src/shared/CMakeFiles/shared.dir/state/RessourceSPE.cpp.o src/shared/CMakeFiles/shared.dir/state/RessourceSTD.cpp.o src/shared/CMakeFiles/shared.dir/state/TileObserver.cpp.o | src/shared/libshared_static.a || src/shared/libshared_static.a
   FLAGS = -Wall -std=c++11 -pthread -g -g --coverage -fprofile-arcs -ftest-coverage -g
   LINK_FLAGS = -rdynamic
   LINK_LIBRARIES = -lgcov  src/shared/libshared_static.a  -lgcov

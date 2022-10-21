@@ -3,3 +3,11 @@
 //
 
 #include "ProjectStd.h"
+
+state::ProjectStd::ProjectStd(std::string name, int cost) : name(name), cost(cost){
+
+}
+
+state::ProjectStd::~ProjectStd() {
+
+}

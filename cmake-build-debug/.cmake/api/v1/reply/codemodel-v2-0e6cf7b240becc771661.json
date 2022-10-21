@@ -287,14 +287,14 @@
 				{
 					"directoryIndex" : 2,
 					"id" : "shared::@98093a27b7e7f29c85ce",
-					"jsonFile" : "target-shared-Debug-1e9e04dd608aa06a8c44.json",
+					"jsonFile" : "target-shared-Debug-3535e325ffceed4ab797.json",
 					"name" : "shared",
 					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 2,
 					"id" : "shared_static::@98093a27b7e7f29c85ce",
-					"jsonFile" : "target-shared_static-Debug-c52a5c1e79b49d0f9aa0.json",
+					"jsonFile" : "target-shared_static-Debug-9a77872867e60129be35.json",
 					"name" : "shared_static",
 					"projectIndex" : 0
 				},

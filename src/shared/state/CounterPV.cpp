@@ -7,3 +7,7 @@
 state::CounterPV::CounterPV() {
 
 }
+
+state::CounterPV::~CounterPV() {
+
+}

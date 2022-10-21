@@ -67,11 +67,11 @@
 			[
 				{
 					"backtrace" : 4,
-					"path" : "/home/ismail/Documents/PLT/plt/src/client"
+					"path" : "/home/cleme/CLionProjects/plt/src/client"
 				},
 				{
 					"backtrace" : 3,
-					"path" : "/home/ismail/Documents/PLT/plt/src/shared"
+					"path" : "/home/cleme/CLionProjects/plt/src/shared"
 				}
 			],
 			"language" : "CXX",
@@ -85,7 +85,8 @@
 			},
 			"sourceIndexes" : 
 			[
-				0
+				0,
+				1
 			]
 		}
 	],
@@ -114,12 +115,19 @@
 			"name" : "Source Files",
 			"sourceIndexes" : 
 			[
-				0
+				0,
+				1
 			]
 		}
 	],
 	"sources" : 
 	[
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/client/client/Exemple.cpp",
+			"sourceGroupIndex" : 0
+		},
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,

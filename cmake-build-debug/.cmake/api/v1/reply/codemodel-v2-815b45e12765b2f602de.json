@@ -217,14 +217,14 @@
 				{
 					"directoryIndex" : 3,
 					"id" : "client::@8ca63c80a879d0067daa",
-					"jsonFile" : "target-client-Debug-0a90a615e1e094c71d59.json",
+					"jsonFile" : "target-client-Debug-54d251b59f31afe30024.json",
 					"name" : "client",
 					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 3,
 					"id" : "client_static::@8ca63c80a879d0067daa",
-					"jsonFile" : "target-client_static-Debug-78208515cd14f80bf1e0.json",
+					"jsonFile" : "target-client_static-Debug-eefd50f4a87a2ba30be6.json",
 					"name" : "client_static",
 					"projectIndex" : 0
 				},
@@ -245,7 +245,7 @@
 				{
 					"directoryIndex" : 1,
 					"id" : "dia2code::@be3a0c191c247d543974",
-					"jsonFile" : "target-dia2code-Debug-246b91f644474db502b6.json",
+					"jsonFile" : "target-dia2code-Debug-98a10f19ed722ab80f4f.json",
 					"name" : "dia2code",
 					"projectIndex" : 1
 				},
@@ -287,28 +287,28 @@
 				{
 					"directoryIndex" : 2,
 					"id" : "shared::@98093a27b7e7f29c85ce",
-					"jsonFile" : "target-shared-Debug-06a961168ec416bad1c2.json",
+					"jsonFile" : "target-shared-Debug-1e9e04dd608aa06a8c44.json",
 					"name" : "shared",
 					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 2,
 					"id" : "shared_static::@98093a27b7e7f29c85ce",
-					"jsonFile" : "target-shared_static-Debug-1667a5a5b1be97b85eb9.json",
+					"jsonFile" : "target-shared_static-Debug-c52a5c1e79b49d0f9aa0.json",
 					"name" : "shared_static",
 					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 7,
 					"id" : "test_client_dummy::@72fa32a39d54abdb8e25",
-					"jsonFile" : "target-test_client_dummy-Debug-271de51e74ef5344eb25.json",
+					"jsonFile" : "target-test_client_dummy-Debug-4c9a2d8ad111f037dbd3.json",
 					"name" : "test_client_dummy",
 					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 6,
 					"id" : "test_shared_dummy::@9e1e2a59b6770e8465e5",
-					"jsonFile" : "target-test_shared_dummy-Debug-af9ddcc68b89b378efed.json",
+					"jsonFile" : "target-test_shared_dummy-Debug-50a6fea7f18e755a9eee.json",
 					"name" : "test_shared_dummy",
 					"projectIndex" : 0
 				},
@@ -325,8 +325,8 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "/home/ismail/Documents/PLT/plt/cmake-build-debug",
-		"source" : "/home/ismail/Documents/PLT/plt"
+		"build" : "/home/cleme/CLionProjects/plt/cmake-build-debug",
+		"source" : "/home/cleme/CLionProjects/plt"
 	},
 	"version" : 
 	{

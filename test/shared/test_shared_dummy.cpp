@@ -13,6 +13,8 @@
 #include "../../src/shared/state/ProjectCard.h"
 #include "../../src/shared/state/RessourceObserver.h"
 #include "../../src/shared/state/ParameterObserver.h"
+#include "../../src/shared/state/HandObserver.h"
+#include "../../src/shared/state/TileObserver.h"
 
 
 using namespace state;
@@ -137,6 +139,65 @@ BOOST_AUTO_TEST_CASE(TestOnParameterObserver){
         auto* globalParams = new GlobalParameters(0, 0);
         auto* paramObserver = new ParameterObserver(globalParams);
         delete paramObserver;
+    }
+}
+
+BOOST_AUTO_TEST_CASE(TestDeck)
+{
+    {
+        auto* dc = new Deck();
+        delete dc;
+    }
+}
+
+BOOST_AUTO_TEST_CASE(TestEactif)
+{
+    {
+        std::vector<Badge> bd{NONE, CONSTRUCTION, ESPACE};
+        auto* pc = new ProjectCard("name", 0, "blue", bd);
+        auto* ea = new Eactif(new RessourceSTD(), new Gain(), pc);
+        delete ea;
+    }
+}
+
+BOOST_AUTO_TEST_CASE(TestGain)
+{
+    {
+        auto* gain = new Gain();
+        delete gain;
+    }
+}
+
+BOOST_AUTO_TEST_CASE(TestHandObserver)
+{
+    {
+        auto* handObserver = new HandObserver(0);
+        delete handObserver;
+    }
+}
+
+BOOST_AUTO_TEST_CASE(TestTileObserver)
+{
+    {
+        auto* tile = new Tile(FORET);
+        auto* tileObserver = new TileObserver(tile);
+        delete tile;
+    }
+}
+
+BOOST_AUTO_TEST_CASE(TestRessourceSTD)
+{
+    {
+        auto* ressourceSTD = new RessourceSTD();
+        delete ressourceSTD;
+    }
+}
+
+BOOST_AUTO_TEST_CASE(TestRessourceSPE)
+{
+    {
+        auto* ressourceSPE = new RessourceSPE();
+        delete ressourceSPE;
     }
 }
 

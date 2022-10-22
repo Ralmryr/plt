@@ -2,12 +2,21 @@
 278	428	1666393480215831524	src/shared/CMakeFiles/shared.dir/state/RessourceSPE.cpp.o	4c0a10ac4d38d4c
 581	855	1666399590887937818	src/shared/CMakeFiles/shared_static.dir/state/Board.cpp.o	228c5f818840b1a
 675	698	1666398327929434318	/home/cleme/CLionProjects/plt/cmake-build-debug/generate_header_state.stamp	8d3931e9fdad761f
+<<<<<<< HEAD
 1854	1868	1666399591895946371	src/client/CMakeFiles/client_static.dir/client/Exemple.cpp.o	d60db465ab9b2dc
 676	685	1666398327917434223	/home/cleme/CLionProjects/plt/cmake-build-debug/generate_header_client.stamp	fcf68c4bd4f710b5
 1582	1719	1666399591747945115	src/shared/CMakeFiles/shared_static.dir/state/RessourceSPE.cpp.o	1e5037eba12dcec6
 1292	1572	1666399591599943860	src/shared/CMakeFiles/shared_static.dir/state/ProjectCard.cpp.o	cace85a94a1d64e9
 923	1123	1666390320031844853	src/shared/CMakeFiles/shared.dir/main.cpp.o	5ff6cdc48c579468
 1015	1137	1666394525596791199	test/client/test_client_dummy	eb629e57ec55d28b
+=======
+676	685	1666398327917434223	/home/cleme/CLionProjects/plt/cmake-build-debug/generate_header_client.stamp	fcf68c4bd4f710b5
+1854	1868	1666399591895946371	src/client/CMakeFiles/client_static.dir/client/Exemple.cpp.o	d60db465ab9b2dc
+1582	1719	1666399591747945115	src/shared/CMakeFiles/shared_static.dir/state/RessourceSPE.cpp.o	1e5037eba12dcec6
+1292	1572	1666399591599943860	src/shared/CMakeFiles/shared_static.dir/state/ProjectCard.cpp.o	cace85a94a1d64e9
+1015	1137	1666394525596791199	test/client/test_client_dummy	eb629e57ec55d28b
+923	1123	1666390320031844853	src/shared/CMakeFiles/shared.dir/main.cpp.o	5ff6cdc48c579468
+>>>>>>> dev-clem
 814	1062	1666399591091939549	src/shared/CMakeFiles/shared_static.dir/state/Eactif.cpp.o	3a30e803aeb9f53
 1809	2023	1666393237009690325	src/shared/CMakeFiles/shared.dir/state/Epassif.cpp.o	673e1fb3ed76d3a6
 2449	2690	1666393237677696207	src/shared/CMakeFiles/shared.dir/state/ParameterObserver.cpp.o	28b17be19a99d806
@@ -15,6 +24,7 @@
 1550	1731	1666399591759945217	src/shared/CMakeFiles/shared_static.dir/state/ProjectStd.cpp.o	fc952b5f5a3e0823
 21	40	1664888953249263132	src/shared/CMakeFiles/shared_static.dir/state/Company.cpp.o	764aac0ff4811158
 2	462	1666386270488250364	src/client/CMakeFiles/client.dir/main.cpp.o	9edb42713abbad87
+<<<<<<< HEAD
 515	537	1664888953749275118	src/shared/CMakeFiles/shared.dir/state/Ressources.cpp.o	8c84b33329430eba
 1504	1809	1666393236793688421	src/shared/CMakeFiles/shared.dir/state/ProjectCard.cpp.o	e43c40baeb5f7f8b
 279	420	1666393480207831453	src/shared/CMakeFiles/shared.dir/state/RessourceSTD.cpp.o	6abe758808082d59
@@ -43,6 +53,36 @@
 0	56	1666399590087931030	extern/dia2code/CMakeFiles/dia2code.dir/src/comment_helper.c.o	e648104457a18a55
 1782	1820	1664354853944874513	src/shared/CMakeFiles/shared_static.dir/state/Exemple.cpp.o	d2d0d71aaba9d9ee
 1801	2059	1666399592087947999	src/shared/CMakeFiles/shared_static.dir/state/TileObserver.cpp.o	cf7cc3194e8622f
+=======
+279	420	1666393480207831453	src/shared/CMakeFiles/shared.dir/state/RessourceSTD.cpp.o	6abe758808082d59
+1504	1809	1666393236793688421	src/shared/CMakeFiles/shared.dir/state/ProjectCard.cpp.o	e43c40baeb5f7f8b
+515	537	1664888953749275118	src/shared/CMakeFiles/shared.dir/state/Ressources.cpp.o	8c84b33329430eba
+1126	1401	1666399591431942435	src/shared/CMakeFiles/shared_static.dir/state/OnRessource.cpp.o	fe115ecebb0f532f
+0	133	1666399590163931674	extern/dia2code/CMakeFiles/dia2code.dir/src/main.c.o	64d1a5bfbbc4dadb
+1049	1287	1666399591315941451	src/shared/CMakeFiles/shared_static.dir/state/Observable.cpp.o	1fe69d7549e736dc
+1719	1969	1666399591999947253	src/shared/CMakeFiles/shared_static.dir/state/State.cpp.o	d9e22c162f1e23c0
+1880	3099	1666399593127956816	test/shared/CMakeFiles/test_shared_dummy.dir/test_shared_dummy.cpp.o	3b565dde629fbae5
+420	659	1666393480447833565	src/shared/CMakeFiles/shared.dir/state/TileObserver.cpp.o	69553328d5774413
+2288	2555	1666393237541695010	src/shared/CMakeFiles/shared.dir/state/Observable.cpp.o	d92a6aa6ec3713c2
+1654	1801	1666399591827945793	src/shared/CMakeFiles/shared_static.dir/state/RessourceSTD.cpp.o	517dcbf6422bb9cc
+2179	2417	1666393237405693811	src/shared/CMakeFiles/shared.dir/state/Gain.cpp.o	d98b436a61301197
+659	747	1666393480535834340	../bin/shared	a0c66f9981b4f70b
+325	447	1666399590475934321	extern/dia2code/CMakeFiles/dia2code.dir/src/source_parser.c.o	a76787d8e157cd39
+188	208	1666393479987829517	src/shared/CMakeFiles/shared.dir/state/Ressource.cpp.o	e3992773515344a
+467	495	1664888953705274064	src/shared/CMakeFiles/shared_static.dir/state/Ressources.cpp.o	e1b9b4d70e115b55
+94	427	1666399590455934151	extern/dia2code/CMakeFiles/dia2code.dir/src/generate_code_cpp.c.o	1693f974dbd7a66c
+1611	1854	1666399591883946269	src/shared/CMakeFiles/shared_static.dir/state/RessourceObserver.cpp.o	cb412c33165dfc6
+1633	1914	1666393236901689373	src/shared/CMakeFiles/shared.dir/state/OnRessource.cpp.o	bd5b75a657ae03b9
+1868	1880	1666399591907946473	src/client/CMakeFiles/client_static.dir/client/test.cpp.o	3cd7d5bddcb6a03e
+1594	1611	1666399591639944198	src/shared/CMakeFiles/shared_static.dir/state/Spot.cpp.o	3ef26cd8403b69a0
+1433	1609	1666393236597686696	src/shared/CMakeFiles/shared.dir/state/ProjectStd.cpp.o	71e31a9d3f1f080d
+778	1049	1666399591079939447	src/shared/CMakeFiles/shared_static.dir/state/Deck.cpp.o	484eee4895ca272a
+717	865	1664355035338655185	../bin/client	2ea33d73a064b13
+2059	2174	1666399592199948947	src/shared/libshared_static.a	542d815d89bd44bf
+0	56	1666399590087931030	extern/dia2code/CMakeFiles/dia2code.dir/src/comment_helper.c.o	e648104457a18a55
+1801	2059	1666399592087947999	src/shared/CMakeFiles/shared_static.dir/state/TileObserver.cpp.o	cf7cc3194e8622f
+1782	1820	1664354853944874513	src/shared/CMakeFiles/shared_static.dir/state/Exemple.cpp.o	d2d0d71aaba9d9ee
+>>>>>>> dev-clem
 2201	2449	1666393237437694093	src/shared/CMakeFiles/shared.dir/state/HandObserver.cpp.o	40e3fb3421e1f01d
 3099	3211	1666399593235957733	test/shared/test_shared_dummy	a201b811cf088675
 1572	1582	1666399591611943962	src/shared/CMakeFiles/shared_static.dir/state/Ressource.cpp.o	cbbcd63cd70d1785
@@ -56,8 +96,13 @@
 581	817	1666399590847937478	src/shared/CMakeFiles/shared_static.dir/state/AdjacentTo.cpp.o	e902d8f632157365
 1914	2165	1666393237153691592	src/shared/CMakeFiles/shared.dir/state/Eactif.cpp.o	101f02d666de4adb
 675	698	1666398327929434318	generate_header_state.stamp	8d3931e9fdad761f
+<<<<<<< HEAD
 132	325	1666399590355933304	extern/dia2code/CMakeFiles/dia2code.dir/src/scan_tree.c.o	35bb4fdefc2d4d1b
 783	803	1664886080976449207	src/shared/CMakeFiles/shared.dir/state/OnOcean.cpp.o	221633dacc0003c6
+=======
+783	803	1664886080976449207	src/shared/CMakeFiles/shared.dir/state/OnOcean.cpp.o	221633dacc0003c6
+132	325	1666399590355933304	extern/dia2code/CMakeFiles/dia2code.dir/src/scan_tree.c.o	35bb4fdefc2d4d1b
+>>>>>>> dev-clem
 1963	2201	1666393237189691909	src/shared/CMakeFiles/shared.dir/state/CounterPV.cpp.o	d89af0f503bfbc16
 855	1126	1666399591155940093	src/shared/CMakeFiles/shared_static.dir/state/Gain.cpp.o	aafc78f603638062
 581	814	1666399590843937444	src/shared/CMakeFiles/shared_static.dir/state/CounterPV.cpp.o	ce5e22b62b852195
@@ -74,10 +119,17 @@
 829	838	1666388157780558172	src/shared/CMakeFiles/shared.dir/state/Badge.cpp.o	dc98ed6917cd610a
 0	94	1666399590119931301	extern/dia2code/CMakeFiles/dia2code.dir/src/decls.c.o	2a621d035b6f9830
 1401	1654	1666399591683944571	src/shared/CMakeFiles/shared_static.dir/state/PlaceCondition.cpp.o	8d61e2c03da9c947
+<<<<<<< HEAD
 0	401	1666399590431933947	extern/dia2code/CMakeFiles/dia2code.dir/src/dia2code.c.o	174201bd775d93c2
 1609	1930	1666393236917689513	src/shared/CMakeFiles/shared.dir/state/Player.cpp.o	12b00a618cc450c9
 676	685	1666398327917434223	generate_header_client.stamp	fcf68c4bd4f710b5
 1287	1594	1666399591623944063	src/shared/CMakeFiles/shared_static.dir/state/Player.cpp.o	5b9f43bf6c0e10e9
+=======
+1609	1930	1666393236917689513	src/shared/CMakeFiles/shared.dir/state/Player.cpp.o	12b00a618cc450c9
+0	401	1666399590431933947	extern/dia2code/CMakeFiles/dia2code.dir/src/dia2code.c.o	174201bd775d93c2
+1287	1594	1666399591623944063	src/shared/CMakeFiles/shared_static.dir/state/Player.cpp.o	5b9f43bf6c0e10e9
+676	685	1666398327917434223	generate_header_client.stamp	fcf68c4bd4f710b5
+>>>>>>> dev-clem
 1246	1504	1666393236489685744	src/shared/CMakeFiles/shared.dir/state/Tile.cpp.o	fbcb64bcb7cab84f
 1002	1021	1664886081196456221	src/shared/CMakeFiles/shared.dir/state/Company.cpp.o	8e77106e7bdc6498
 133	519	1666399590547934933	extern/dia2code/CMakeFiles/dia2code.dir/src/parse_diagram.c.o	e973751846929f9f
@@ -86,6 +138,7 @@
 2023	2288	1666393237273692649	src/shared/CMakeFiles/shared.dir/state/Board.cpp.o	2883157c6df00ef4
 2	1015	1666394525476790193	test/client/CMakeFiles/test_client_dummy.dir/test_client_dummy.cpp.o	e4f5bf420ad3ef0f
 1731	1986	1666399592019947423	src/shared/CMakeFiles/shared_static.dir/state/Tile.cpp.o	3eb750899daf7093
+<<<<<<< HEAD
 1	58	1666400802977939106	extern/dia2code/CMakeFiles/dia2code.dir/src/comment_helper.c.o	e648104457a18a55
 1	103	1666400803021939465	extern/dia2code/CMakeFiles/dia2code.dir/src/decls.c.o	2a621d035b6f9830
 1	131	1666400803049939693	extern/dia2code/CMakeFiles/dia2code.dir/src/main.c.o	64d1a5bfbbc4dadb
@@ -171,3 +224,84 @@
 307	430	1666401172548979990	../bin/shared	a0c66f9981b4f70b
 1	1258	1666401179589038377	test/shared/CMakeFiles/test_shared_dummy.dir/test_shared_dummy.cpp.o	3b565dde629fbae5
 1259	1367	1666401179701039306	test/shared/test_shared_dummy	a201b811cf088675
+=======
+0	136	1666402689193643107	build.ninja	f3705021987a1ee9
+1	70	1666402689285643872	extern/dia2code/CMakeFiles/dia2code.dir/src/comment_helper.c.o	e648104457a18a55
+1	143	1666402689357644470	extern/dia2code/CMakeFiles/dia2code.dir/src/decls.c.o	2a621d035b6f9830
+70	264	1666402689477645467	extern/dia2code/CMakeFiles/dia2code.dir/src/source_parser.c.o	a76787d8e157cd39
+143	311	1666402689525645867	extern/dia2code/CMakeFiles/dia2code.dir/src/main.c.o	64d1a5bfbbc4dadb
+264	375	1666402689589646398	extern/dia2code/CMakeFiles/dia2code.dir/src/includes.c.o	d21ce912cc1af040
+1	470	1666402689685647196	extern/dia2code/CMakeFiles/dia2code.dir/src/parse_diagram.c.o	e973751846929f9f
+1	485	1666402689697647295	extern/dia2code/CMakeFiles/dia2code.dir/src/dia2code.c.o	174201bd775d93c2
+375	521	1666402689737647628	extern/dia2code/CMakeFiles/dia2code.dir/src/scan_tree.c.o	35bb4fdefc2d4d1b
+311	657	1666402689869648725	extern/dia2code/CMakeFiles/dia2code.dir/src/generate_code_cpp.c.o	1693f974dbd7a66c
+657	716	1666402689929649223	../bin/dia2code	3d2d6bcca259693b
+717	722	1666402689937649290	generate_header_client.stamp	fcf68c4bd4f710b5
+717	722	1666402689937649290	/home/cleme/CLionProjects/plt/cmake-build-debug/generate_header_client.stamp	fcf68c4bd4f710b5
+716	737	1666402689949649390	generate_header_state.stamp	8d3931e9fdad761f
+716	737	1666402689949649390	/home/cleme/CLionProjects/plt/cmake-build-debug/generate_header_state.stamp	8d3931e9fdad761f
+737	998	1666402690213651584	src/shared/CMakeFiles/shared_static.dir/main.cpp.o	c9c7583419b5225f
+737	1052	1666402690265652015	src/shared/CMakeFiles/shared_static.dir/state/CounterPV.cpp.o	ce5e22b62b852195
+737	1057	1666402690269652049	src/shared/CMakeFiles/shared_static.dir/state/Board.cpp.o	228c5f818840b1a
+737	1069	1666402690281652149	src/shared/CMakeFiles/shared_static.dir/state/AdjacentTo.cpp.o	e902d8f632157365
+1057	1283	1666402690497653943	src/shared/CMakeFiles/shared_static.dir/state/Epassif.cpp.o	13467683c360ef3f
+1052	1295	1666402690509654044	src/shared/CMakeFiles/shared_static.dir/state/Eactif.cpp.o	3a30e803aeb9f53
+998	1299	1666402690513654076	src/shared/CMakeFiles/shared_static.dir/state/Deck.cpp.o	484eee4895ca272a
+1299	1315	1666402690529654209	src/shared/CMakeFiles/shared_static.dir/state/GlobalParameters.cpp.o	3546e1f031f84407
+1069	1330	1666402690545654342	src/shared/CMakeFiles/shared_static.dir/state/Gain.cpp.o	aafc78f603638062
+1315	1597	1666402690813656570	src/shared/CMakeFiles/shared_static.dir/state/OnReserved.cpp.o	19bb43cbf06c0376
+1284	1624	1666402690837656769	src/shared/CMakeFiles/shared_static.dir/state/HandObserver.cpp.o	e36293d31020e8ef
+1295	1636	1666402690849656869	src/shared/CMakeFiles/shared_static.dir/state/Observable.cpp.o	1fe69d7549e736dc
+1330	1643	1666402690857656936	src/shared/CMakeFiles/shared_static.dir/state/OnRessource.cpp.o	fe115ecebb0f532f
+1636	1886	1666402691101658963	src/shared/CMakeFiles/shared_static.dir/state/ParameterObserver.cpp.o	b4232d46be2063c3
+1643	1896	1666402691109659029	src/shared/CMakeFiles/shared_static.dir/state/PlaceCondition.cpp.o	8d61e2c03da9c947
+1896	1906	1666402691121659130	src/shared/CMakeFiles/shared_static.dir/state/Ressource.cpp.o	cbbcd63cd70d1785
+1597	1920	1666402691133659229	src/shared/CMakeFiles/shared_static.dir/state/Player.cpp.o	5b9f43bf6c0e10e9
+1624	1931	1666402691145659329	src/shared/CMakeFiles/shared_static.dir/state/ProjectCard.cpp.o	cace85a94a1d64e9
+1920	1936	1666402691149659361	src/shared/CMakeFiles/shared_static.dir/state/Spot.cpp.o	3ef26cd8403b69a0
+1906	2059	1666402691273660393	src/shared/CMakeFiles/shared_static.dir/state/RessourceSPE.cpp.o	1e5037eba12dcec6
+1887	2066	1666402691281660459	src/shared/CMakeFiles/shared_static.dir/state/ProjectStd.cpp.o	fc952b5f5a3e0823
+1937	2076	1666402691289660526	src/shared/CMakeFiles/shared_static.dir/state/RessourceSTD.cpp.o	517dcbf6422bb9cc
+1931	2200	1666402691413661555	src/shared/CMakeFiles/shared_static.dir/state/RessourceObserver.cpp.o	cb412c33165dfc6
+2200	2214	1666402691429661689	src/client/CMakeFiles/client_static.dir/client/Exemple.cpp.o	d60db465ab9b2dc
+2215	2225	1666402691437661756	src/client/CMakeFiles/client_static.dir/client/test.cpp.o	3cd7d5bddcb6a03e
+2066	2299	1666402691513662387	src/shared/CMakeFiles/shared_static.dir/state/Tile.cpp.o	3eb750899daf7093
+2076	2317	1666402691529662520	src/shared/CMakeFiles/shared_static.dir/state/TileObserver.cpp.o	cf7cc3194e8622f
+2059	2320	1666402691533662553	src/shared/CMakeFiles/shared_static.dir/state/State.cpp.o	d9e22c162f1e23c0
+2321	2434	1666402691645663484	src/shared/libshared_static.a	542d815d89bd44bf
+2434	2465	1666402691677663749	src/client/libclient_static.a	5e7f1f02f48a6caf
+2225	3060	1666402692273668703	test/client/CMakeFiles/test_client_dummy.dir/test_client_dummy.cpp.o	e4f5bf420ad3ef0f
+3060	3125	1666402692337669235	test/client/test_client_dummy	eb629e57ec55d28b
+1	1229	1666402704249768246	test/shared/CMakeFiles/test_shared_dummy.dir/test_shared_dummy.cpp.o	3b565dde629fbae5
+1229	1367	1666402704389769410	test/shared/test_shared_dummy	a201b811cf088675
+3	365	1666402922487586208	src/shared/CMakeFiles/shared_static.dir/state/Board.cpp.o	228c5f818840b1a
+3	393	1666402922515586442	src/shared/CMakeFiles/shared_static.dir/state/AdjacentTo.cpp.o	e902d8f632157365
+5	394	1666402922515586442	src/shared/CMakeFiles/shared_static.dir/state/Deck.cpp.o	484eee4895ca272a
+3	401	1666402922523586509	src/shared/CMakeFiles/shared_static.dir/state/CounterPV.cpp.o	ce5e22b62b852195
+393	636	1666402922759588479	src/shared/CMakeFiles/shared_static.dir/state/Epassif.cpp.o	13467683c360ef3f
+365	650	1666402922771588578	src/shared/CMakeFiles/shared_static.dir/state/Eactif.cpp.o	3a30e803aeb9f53
+401	660	1666402922783588678	src/shared/CMakeFiles/shared_static.dir/state/HandObserver.cpp.o	e36293d31020e8ef
+394	662	1666402922783588678	src/shared/CMakeFiles/shared_static.dir/state/Gain.cpp.o	aafc78f603638062
+650	667	1666402922791588746	src/shared/CMakeFiles/shared_static.dir/state/GlobalParameters.cpp.o	3546e1f031f84407
+636	906	1666402923027590715	src/shared/CMakeFiles/shared_static.dir/state/Observable.cpp.o	1fe69d7549e736dc
+660	936	1666402923059590982	src/shared/CMakeFiles/shared_static.dir/state/OnReserved.cpp.o	19bb43cbf06c0376
+662	958	1666402923079591149	src/shared/CMakeFiles/shared_static.dir/state/OnRessource.cpp.o	fe115ecebb0f532f
+667	979	1666402923099591316	src/shared/CMakeFiles/shared_static.dir/state/Player.cpp.o	5b9f43bf6c0e10e9
+979	1173	1666402923291592918	src/shared/CMakeFiles/shared_static.dir/state/ProjectStd.cpp.o	fc952b5f5a3e0823
+1173	1186	1666402923307593052	src/shared/CMakeFiles/shared_static.dir/state/Ressource.cpp.o	cbbcd63cd70d1785
+906	1202	1666402923323593185	src/shared/CMakeFiles/shared_static.dir/state/ProjectCard.cpp.o	cace85a94a1d64e9
+936	1205	1666402923327593219	src/shared/CMakeFiles/shared_static.dir/state/ParameterObserver.cpp.o	b4232d46be2063c3
+958	1216	1666402923339593319	src/shared/CMakeFiles/shared_static.dir/state/PlaceCondition.cpp.o	8d61e2c03da9c947
+1202	1219	1666402923343593353	src/shared/CMakeFiles/shared_static.dir/state/Spot.cpp.o	3ef26cd8403b69a0
+1186	1329	1666402923451594254	src/shared/CMakeFiles/shared_static.dir/state/RessourceSPE.cpp.o	1e5037eba12dcec6
+1216	1369	1666402923491594587	src/shared/CMakeFiles/shared_static.dir/state/RessourceSTD.cpp.o	517dcbf6422bb9cc
+1205	1458	1666402923583595355	src/shared/CMakeFiles/shared_static.dir/state/RessourceObserver.cpp.o	cb412c33165dfc6
+1219	1465	1666402923587595388	src/shared/CMakeFiles/shared_static.dir/state/State.cpp.o	d9e22c162f1e23c0
+1458	1474	1666402923595595455	src/client/CMakeFiles/client_static.dir/client/Exemple.cpp.o	d60db465ab9b2dc
+1329	1574	1666402923695596289	src/shared/CMakeFiles/shared_static.dir/state/Tile.cpp.o	3eb750899daf7093
+1369	1627	1666402923751596757	src/shared/CMakeFiles/shared_static.dir/state/TileObserver.cpp.o	cf7cc3194e8622f
+1627	1729	1666402923847597558	src/shared/libshared_static.a	542d815d89bd44bf
+1729	1764	1666402923883597859	src/client/libclient_static.a	5e7f1f02f48a6caf
+1465	2620	1666402924743605037	test/shared/CMakeFiles/test_shared_dummy.dir/test_shared_dummy.cpp.o	3b565dde629fbae5
+2620	2732	1666402924855605971	test/shared/test_shared_dummy	a201b811cf088675
+>>>>>>> dev-clem

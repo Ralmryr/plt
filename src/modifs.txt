@@ -1,0 +1,2 @@
+Changer l'enum ANIMAL de TileName (Ca correspond à quoi ? + conflit avec la ressource spéciale)
+

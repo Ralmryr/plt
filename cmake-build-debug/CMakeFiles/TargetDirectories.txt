@@ -9,6 +9,7 @@
 /home/cleme/CLionProjects/plt/cmake-build-debug/extern/dia2code/CMakeFiles/rebuild_cache.dir
 /home/cleme/CLionProjects/plt/cmake-build-debug/src/shared/CMakeFiles/generate-header-state.dir
 /home/cleme/CLionProjects/plt/cmake-build-debug/src/shared/CMakeFiles/shared_static.dir
+/home/cleme/CLionProjects/plt/cmake-build-debug/src/shared/CMakeFiles/shared.dir
 /home/cleme/CLionProjects/plt/cmake-build-debug/src/shared/CMakeFiles/edit_cache.dir
 /home/cleme/CLionProjects/plt/cmake-build-debug/src/shared/CMakeFiles/rebuild_cache.dir
 /home/cleme/CLionProjects/plt/cmake-build-debug/src/client/CMakeFiles/generate-header-client.dir

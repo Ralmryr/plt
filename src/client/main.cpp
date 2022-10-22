@@ -1,25 +1,22 @@
 #include <iostream>
-
-// Les lignes suivantes ne servent qu'à vérifier que la compilation avec SFML fonctionne
 #include <SFML/Graphics.hpp>
 
-void testSFML() {
-    sf::Texture texture;
-}
-
-// Fin test SFML
-
-#include "state.h"
-
 using namespace std;
-using namespace state;
 
 int main(int argc,char* argv[])
 {
-    Exemple example;
-    example.setX(53);
+    // Quick SFML test that launches a black window that can be closed
+    sf::Window window(sf::VideoMode(800, 600), "Our window");
 
-    cout << "It works !" << endl;
+    while (window.isOpen())
+    {
+        sf::Event event;
+        while (window.pollEvent(event))
+        {
+            if (event.type == sf::Event::Closed)
+                window.close();
+        }
+    }
 
     return 0;
 }

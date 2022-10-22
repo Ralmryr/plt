@@ -5,6 +5,14 @@
 #include "../../src/shared/state/AdjacentTo.h"
 #include "../../src/shared/state/OnRessource.h"
 #include "../../src/shared/state/OnReserved.h"
+#include "../../src/shared/state/Player.h"
+#include "../../src/shared/state/GlobalParameters.h"
+#include "../../src/shared/state/State.h"
+#include "../../src/shared/state/Observable.h"
+#include "../../src/shared/state/ProjectStd.h"
+#include "../../src/shared/state/ProjectCard.h"
+#include "../../src/shared/state/RessourceObserver.h"
+#include "../../src/shared/state/ParameterObserver.h"
 
 
 using namespace state;
@@ -71,4 +79,65 @@ BOOST_AUTO_TEST_CASE(TestOnRessource){
         delete onResource;
     }
 }
+
+BOOST_AUTO_TEST_CASE(TestOnPlayer){
+    {
+        auto* player = new Player();
+        delete player;
+    }
+}
+
+BOOST_AUTO_TEST_CASE(TestOnGlobalParameters){
+    {
+        auto* globalParams = new GlobalParameters(0, 0);
+        delete globalParams;
+    }
+}
+BOOST_AUTO_TEST_CASE(TestOnState){
+    {
+        auto* globalParams = new GlobalParameters(0, 0);
+        auto* board = new Board();
+        auto* state = new State(globalParams, board);
+        delete state;
+    }
+}
+
+BOOST_AUTO_TEST_CASE(TestOnObservable){
+    {
+        auto* observable = new Observable();
+        delete observable;
+    }
+}
+
+BOOST_AUTO_TEST_CASE(TestOnProjectStd){
+    {
+        auto* projectStd = new ProjectStd("Ocean", 25);
+        delete projectStd;
+    }
+}
+
+BOOST_AUTO_TEST_CASE(TestOnProjectCard){
+    {
+        std::vector<Badge> badges {state::ESPACE, state::JOVIEN};
+        auto* projectCard = new ProjectCard("Reconversion", 31, "EVENT", badges);
+        delete projectCard;
+    }
+}
+
+BOOST_AUTO_TEST_CASE(TestOnRessourceObserver){
+    {
+        auto* ressource = new RessourceSTD();
+        auto* ressourceObserver = new RessourceObserver(ressource);
+        delete ressourceObserver;
+    }
+}
+
+BOOST_AUTO_TEST_CASE(TestOnParameterObserver){
+    {
+        auto* globalParams = new GlobalParameters(0, 0);
+        auto* paramObserver = new ParameterObserver(globalParams);
+        delete paramObserver;
+    }
+}
+
 /* vim: set sw=2 sts=2 et : */

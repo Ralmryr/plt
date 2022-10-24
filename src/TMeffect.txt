@@ -1,0 +1,54 @@
+liste des effets qu'une carte peut fournir:
+
+gain de ressource std
+gain de prod de ressource std
+gain de ressource/prod en fonction du nombre de badge en votre possession
+gain de PV en fonction du nombre de badge en votre possession
+gain de ressource/prod en fonction du nombre de badge en possession des autres joueurs
+gain de ressource/prod en fonction du nombre de badge sur tout le terrain
+gain de ressource/prod en fonction du nombre de tuile* en votre possession              //a vérifier
+gain de ressource/prod en fonction du nombre de tuile* sur tout le terrain
+gain de PV en fonction du nombre de tuile* sur tout le terrain			//*selon les cartes, l'effet peut s'activer uniquement pour les tuiles posés sur mars
+gain de PV en fonction du nombre de ressource sur cette carte 			//doit préciser la quantité de PV/ressource, généralement 1/4,1/3,1/2,1/1 ou 2/1
+gain de PV si une carte possède une ressource					//peu d'exemplaire dans le jeu, plusieurs ressource ne donnent pas plus de point
+	
+gain de ressource spe (sur soi-même/sur une autre carte quelconque/sur une carte ayant un badge spécifique)
+
+poser une tuile sur mars ou sur un emplacement réservé.
+augmenter l'un des paramètres globaux.
+augmenter son NT
+
+pioche X cartes
+affiche X cartes et gardez en Y
+affiche X cartes et payer celles que vous voulez garder.
+pioche une carte ayant un badge spécifique                                     //peu d'exemplaire dans le jeu
+pioche des cartes en foncction de vos badges                                    //peu d'exemplaire dans le jeu
+modifie les prérequis en paramètre globaux d'une carte                          //peu d'exemplaire dans le jeu
+
+
+
+
+
+
+effets passifs :
+
+réduit le cout de toutes vos cartes
+réduit le cout de vos cartes ayant le badge donné
+donne des ressources (std ou spe) lorsque un badge est joué
+donne des ressources (std ou spe) lorsque une tuile* est joué                  //*selon les cartes, l'effet peut s'activer uniquement pour les tuiles posés sur mars
+donne des ressources (std ou spe) lorsque une tuile* est joué par vous 
+donne des ressources (std ou spe) lorsque une carte ayant un certain coût est joué     //peu d'exemplaire dans le jeu
+pioche lorsque une carte ayant un certain coût est joué     			       //peu d'exemplaire dans le jeu
+pioche lorsque un badge est joué
+défaussez puis piochez une carte lorsque'un badge est joué				//peu d'exemplaire dans le jeu
+empêche vos ressources d'être retiré par des adversaire                                //peu d'exemplaire dans le jeu, désigne une ressource précise mentionnée sur la carte
+empêche vos ressources d'être retiré de cette carte
+
+
+
+
+effets actifs :
+
+coût en ressource std pour activer un effet
+coût en ressource spe sur cette carte pour activer un effet.
+

@@ -232,9 +232,10 @@ function(SETUP_TARGET_FOR_COVERAGE_GCOVR_XML)
 
         # Running gcovr
         COMMAND ${GCOVR_PATH} --xml
-            -r ${PROJECT_SOURCE_DIR} ${GCOVR_EXCLUDES}
+            --root ${PROJECT_SOURCE_DIR} ${GCOVR_EXCLUDES}
             --object-directory=${PROJECT_BINARY_DIR}
-            -o ${Coverage_NAME}.xml
+            --output ${Coverage_NAME}.xml
+            -j
         WORKING_DIRECTORY ${PROJECT_BINARY_DIR}
         DEPENDS ${Coverage_DEPENDENCIES}
         COMMENT "Running gcovr to produce Cobertura code coverage report."

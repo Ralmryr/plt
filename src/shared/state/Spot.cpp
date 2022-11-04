@@ -3,3 +3,9 @@
 //
 
 #include "Spot.h"
+
+state::Spot::Spot(int x, int y) : x(x), y(y){
+}
+
+state::Spot::~Spot() = default;
+

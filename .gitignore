@@ -1,8 +1,10 @@
 *~
 build
+cmake-build-debug
 bin
 nbproject
 src/*/*.h
 src/*/*/*.h
 .idea
-cmake-build-debug
+*.autosave
+

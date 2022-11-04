@@ -3,3 +3,11 @@
 //
 
 #include "Player.h"
+
+state::Player::Player() {
+
+}
+
+state::Player::~Player() {
+
+}

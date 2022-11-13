@@ -181,7 +181,7 @@ BOOST_AUTO_TEST_CASE(TestTileObserver)
     {
         auto* tile = new Tile(FORET);
         auto* tileObserver = new TileObserver(tile);
-        delete tile;
+        delete tileObserver;
     }
 }
 

@@ -248,8 +248,8 @@ L'image suivante est utilisée comme fond sur lequel est inscrit les points de v
 
 Les images suivantes sont celles représentant les paramètres globaux oxygène et température :
 
-<img src="src/client/img/oxygen.png" alt="Oxygène" width="100"/>
-<img src="src/client/img/temperature.png" alt="Température" width="30"/>
+<img src="src/client/img/oxygen.png" alt="Oxygène" width="150"/>
+<img src="src/client/img/temperature.png" alt="Température" width="40"/>
 
 
 

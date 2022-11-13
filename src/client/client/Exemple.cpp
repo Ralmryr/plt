@@ -2,9 +2,5 @@
 
 namespace client {
 
-void Exemple::setZ (int x) {
-
-}
-
 }
 

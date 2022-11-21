@@ -24,4 +24,8 @@ void ClickableArea::setSize(const sf::Vector2f& size){
 
 void ClickableArea::setCallback(const function<void()>& callback){
     this->callback = callback;
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 71918308e09dafee78746f5e79d4d278e21716cc

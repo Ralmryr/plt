@@ -37,7 +37,4 @@ void Image::setSize(const sf::Vector2f& size){
     this->size = size;
 }
 
-void Image::update(){
-
-}
 

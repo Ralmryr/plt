@@ -9,15 +9,7 @@ using namespace state;
 
 
 Board::Board() {
-    int joe = 0;
-    int mama = 0;
-    for(int y = -4; i < 5; i++) {
-        if( y <= 0) joe--;
-        if( y > 0) mama--;
-        for(int x = joe; x < mama; x++) {
-            listTiles.insert()
-        }
-    }
+
 }
 
 Board::~Board() {

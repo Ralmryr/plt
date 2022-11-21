@@ -19,6 +19,12 @@ void Popup::close(){
     this->isOpen = false;
 }
 
+void Popup::update(){
+    for(auto const &component : this->listComponents){
+        component.update();
+    }
+}
+
 void Popup::draw(sf::RenderWindow& window){
     if(isOpen) { // if the popup is open we draw all the components
         for(const auto &component : this->listComponents){
@@ -28,6 +34,6 @@ void Popup::draw(sf::RenderWindow& window){
 
 }
 
-void Popup::setListComponents(const std::vector<std::unique_ptr<UiComponent>>& listComponents){
+void Popup::setListComponents(const std::vector<std::unique_ptr<sf::Drawable>>& listComponents){
 
 }

@@ -42,7 +42,7 @@ StdProjectDisplay::StdProjectDisplay() {
     posOceanButton.y=0;
     ClickableArea clickAreaOceanButton=ClickableArea();
     this->oceanButton=make_shared<Button>(Button("../src/client/img/std_project_ocean", clickAreaOceanButton,posOceanButton));
-    listComponents.push_back(oceanButton));
+    listComponents.push_back(oceanButton);
 
     //forestButton
     sf::Vector2f posForestButton;

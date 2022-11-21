@@ -34,7 +34,7 @@ MenuDisplay :: MenuDisplay (){
     //define Images
 
     this->frameImage = make_shared<Image>(Image("badge_wild.png",vframe));
-    this->resourcesImage = make_shared<Image>(Image("badge_wild.png",vResource));
+    this->resourceImage = make_shared<Image>(Image("badge_wild.png",vResource));
     this->pvImage = make_shared<Image>(Image("mars.png",vPoints));
 
     //define buttons

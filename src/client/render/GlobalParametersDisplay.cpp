@@ -4,7 +4,7 @@
 using namespace render;
 using namespace std;
 
-GlobalParameters::GlobalParametersDisplay(){
+GlobalParametersDisplay::GlobalParametersDisplay(){
 
 }
 

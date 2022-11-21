@@ -15,10 +15,11 @@ Tile::~Tile() {
 
 }
 
-std::unordered_map<std::string, std::string> Tile::serializeUiData() const {
-    unordered_map<string, string> uiData;
-    auto strData = to_string(coords.first) + "," + to_string(coords.second) + "," + to_string(type);
-    uiData.insert({"Tile", strData});
+// [ { "x, y" : "type" } ]
+std::pair<std::string, std::string> Tile::serializeUiData() const {
+    pair<string, string> uiData;
+    auto strCoords = to_string(coords.first) + "," + to_string(coords.second);
+    uiData.insert({strData, to_string(type)});
     return uiData;
 }
 

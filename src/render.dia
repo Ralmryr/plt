@@ -4089,13 +4089,13 @@
         <dia:point val="98.7989,-22.4262"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="98.7489,-22.4762;121.679,-11.7762"/>
+        <dia:rectangle val="98.7489,-22.4762;122.064,-11.7762"/>
       </dia:attribute>
       <dia:attribute name="elem_corner">
         <dia:point val="98.7989,-22.4262"/>
       </dia:attribute>
       <dia:attribute name="elem_width">
-        <dia:real val="22.830000000000002"/>
+        <dia:real val="23.215"/>
       </dia:attribute>
       <dia:attribute name="elem_height">
         <dia:real val="10.6"/>
@@ -4288,7 +4288,7 @@
             <dia:string>#listComponents#</dia:string>
           </dia:attribute>
           <dia:attribute name="type">
-            <dia:string>#std::vector&lt;std::unique_ptr&lt;UiComponent&gt;&gt;#</dia:string>
+            <dia:string>#std::vector&lt;std::unique_ptr&lt;sf::Drawable&gt;&gt;#</dia:string>
           </dia:attribute>
           <dia:attribute name="value">
             <dia:string>##</dia:string>
@@ -5943,7 +5943,7 @@
         <dia:point val="135.049,11.4843"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="121.579,-19.6712;135.799,12.3393"/>
+        <dia:rectangle val="121.964,-19.6712;135.799,12.3393"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
@@ -5952,7 +5952,7 @@
         <dia:point val="135.049,11.4843"/>
         <dia:point val="129.673,11.4843"/>
         <dia:point val="129.673,-18.9262"/>
-        <dia:point val="121.629,-18.9262"/>
+        <dia:point val="122.014,-18.9262"/>
       </dia:attribute>
       <dia:attribute name="orth_orient">
         <dia:enum val="0"/>
@@ -6918,13 +6918,13 @@
         <dia:point val="98.7494,-36.1417"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="98.6994,-36.1917;121.629,-24.6917"/>
+        <dia:rectangle val="98.6994,-36.1917;122.014,-24.6917"/>
       </dia:attribute>
       <dia:attribute name="elem_corner">
         <dia:point val="98.7494,-36.1417"/>
       </dia:attribute>
       <dia:attribute name="elem_width">
-        <dia:real val="22.830000000000002"/>
+        <dia:real val="23.215"/>
       </dia:attribute>
       <dia:attribute name="elem_height">
         <dia:real val="11.4"/>
@@ -7186,7 +7186,7 @@
             <dia:string>#listComponents#</dia:string>
           </dia:attribute>
           <dia:attribute name="type">
-            <dia:string>#std::vector&lt;std::unique_ptr&lt;UiComponent&gt;&gt;#</dia:string>
+            <dia:string>#std::vector&lt;std::unique_ptr&lt;sf::Drawable&gt;&gt;#</dia:string>
           </dia:attribute>
           <dia:attribute name="value">
             <dia:string>##</dia:string>
@@ -7599,7 +7599,7 @@
         <dia:point val="135.049,9.58431"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="121.529,-32.5867;135.799,10.4393"/>
+        <dia:rectangle val="121.914,-32.5867;135.799,10.4393"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
@@ -7608,7 +7608,7 @@
         <dia:point val="135.049,9.58431"/>
         <dia:point val="131.712,9.58431"/>
         <dia:point val="131.712,-31.8417"/>
-        <dia:point val="121.579,-31.8417"/>
+        <dia:point val="121.964,-31.8417"/>
       </dia:attribute>
       <dia:attribute name="orth_orient">
         <dia:enum val="0"/>

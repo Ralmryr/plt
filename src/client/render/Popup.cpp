@@ -5,8 +5,8 @@ using namespace render;
 using namespace std;
 
 Popup::Popup() {
-    /*this->listComponents.push_back(make_unique<Image>(frameImage));
-    this->listComponents.push_back(make_unique<Button>(closeButton));*/
+    this->listComponents.push_back(make_unique<Image>(frameImage));
+    this->listComponents.push_back(make_unique<Button>(closeButton));
 }
 
 Popup::~Popup(){}
@@ -20,9 +20,9 @@ void Popup::close(){
 }
 
 void Popup::draw(sf::RenderWindow& window){
-    if(isOpen) {
-        for(auto &component : this->listComponents){
-            window.draw(component);
+    if(isOpen) { // if the popup is open we draw all the components
+        for(const auto &component : this->listComponents){
+            window.draw(*component);
         }
     }
 

@@ -5,8 +5,8 @@ using namespace render;
 using namespace std;
 
 Popup::Popup() {
-    this->listComponents.push_back(make_unique<Image>(frameImage));
-    this->listComponents.push_back(make_unique<Button>(closeButton));
+    this->listComponents.push_back(frameImage);
+    this->listComponents.push_back(closeButton);
 }
 
 Popup::~Popup(){}
@@ -32,6 +32,6 @@ void Popup::draw(sf::RenderWindow& window){
 
 }
 
-void Popup::setListComponents(const std::vector<std::unique_ptr<sf::Drawable>>& listComponents){
+void Popup::setListComponents(const std::vector<std::shared_ptr<sf::Drawable>>& listComponents){
 
 }

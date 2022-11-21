@@ -33,41 +33,47 @@ MenuDisplay :: MenuDisplay (){
 
     //define Images
 
-    this->frameImage = Image("badge_wild.png",vframe);
-    this->RessourcesImage = Image("badge_wild.png",vResource);
-    this->pvImage = Image("mars.png",vPoints);
+    this->frameImage = make_shared<Image>(Image("badge_wild.png",vframe));
+    this->resourcesImage = make_shared<Image>(Image("badge_wild.png",vResource));
+    this->pvImage = make_shared<Image>(Image("mars.png",vPoints));
 
     //define buttons
 
     ClickableArea cardClick = ClickableArea();
     cardClick.setPosition(vCard);
     cardClick.setSize(sizeButtonCard);
-    this->cardButton = Button("card.png",cardClick,vCard);
+    this->cardButton = make_shared<Button>(Button("card.png",cardClick,vCard));
 
     ClickableArea BlueCardClick = ClickableArea();
     BlueCardClick.setPosition(vBlueCard);
     BlueCardClick.setSize(sizeBlueCardButton);
-    this->blueCardButton = Button("blue_card.png",BlueCardClick,vBlueCard);
+    this->blueCardButton = make_shared<Button>(Button("blue_card.png",BlueCardClick,vBlueCard));
 
     ClickableArea BadgeClick = ClickableArea();
     BadgeClick.setPosition(vBadge);
     BadgeClick.setSize(sizeBadgeButton);
-    this->badgeButton = Button("badge_wild.png",BadgeClick,vBadge);
+    this->badgeButton = make_shared<Button>(Button("badge_wild.png",BadgeClick,vBadge));
 
     //define all texts
 
-    this->badgeText= Text("Badges",posBadgeText);
-    this->pvText = Text("0",posPVText);
+    this->badgeText = make_shared<Text>(Text("Badges",posBadgeText));
+    this->pvText = make_shared<Text>(Text("0",posPVText));
 
+    listComponents.push_back(frameImage);
+    listComponents.push_back(cardButton);
+    listComponents.push_back(blueCardButton);
+    listComponents.push_back(badgeButton);
+    listComponents.push_back(badgeText);
+    listComponents.push_back(pvImage);
+    listComponents.push_back(pvText);
 }
 
 MenuDisplay::~MenuDisplay() {
 
 }
 
-void MenuDisplay::update() {
+void MenuDisplay::update(std::unordered_map<std::string,std::string> data) {
     //update ressources texts and pvtext
-
 }
 
 void MenuDisplay::draw (sf::RenderWindow& window){

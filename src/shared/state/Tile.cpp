@@ -19,7 +19,7 @@ Tile::~Tile() {
 std::pair<std::string, std::string> Tile::serializeUiData() const {
     pair<string, string> uiData;
     auto strCoords = to_string(coords.first) + "," + to_string(coords.second);
-    uiData.insert({strData, to_string(type)});
+    uiData = {strCoords, to_string(type)};
     return uiData;
 }
 

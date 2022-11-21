@@ -4,7 +4,7 @@
 using namespace render;
 using namespace std;
 
-Button::Button(string fileName, ClickableArea clickableArea) {
+Button::Button(string fileName, ClickableArea clickableArea, sf::Vector2f position) {
     this->clickableArea=clickableArea;
     //Define texture
     string path="../src/resources/"+fileName;
@@ -15,6 +15,9 @@ Button::Button(string fileName, ClickableArea clickableArea) {
 
     //Define sprite
     this->sprite.setTexture(this->texture);
+
+    //Set position
+    this->position = position;
 }
 
 Button::~Button() {

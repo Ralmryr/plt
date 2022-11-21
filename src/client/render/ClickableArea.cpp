@@ -11,6 +11,7 @@ ClickableArea::ClickableArea() {
 ClickableArea::~ClickableArea() {}
 
 void ClickableArea::onClick(){
+    //Call callback function
     this->callback();
 }
 

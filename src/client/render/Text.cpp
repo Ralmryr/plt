@@ -4,11 +4,12 @@
 using namespace render;
 using namespace std;
 
+Text::Text(std::string text, sf::Vector2f position) {
 Text::Text() {}
 
 Text::Text(std::string text) {
     //Setting text
-    this->text=text;
+    this->text = text;
 
     //Loading font
     if(!this->font.loadFromFile("../src/resources/arial.ttf")){
@@ -46,7 +47,7 @@ void Text::draw(sf::RenderTarget &target, sf::RenderStates states) const {
     target.draw(textToDraw,states);
 }
 
-void Text::update() {
-    //To code
-}
+
+
+
 

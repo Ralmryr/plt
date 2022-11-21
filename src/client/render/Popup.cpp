@@ -19,6 +19,10 @@ void Popup::close(){
     this->isOpen = false;
 }
 
+void Popup::update(unordered_map<string,string> data){
+
+}
+
 void Popup::draw(sf::RenderWindow& window){
     if(isOpen) { // if the popup is open we draw all the components
         for(const auto &component : this->listComponents){

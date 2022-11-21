@@ -28,6 +28,6 @@ void Popup::draw(sf::RenderWindow& window){
 
 }
 
-void Popup::setListComponents(const std::vector<std::unique_ptr<UiComponent>>& listComponents){
+void Popup::setListComponents(const std::vector<std::unique_ptr<sf::Drawable>>& listComponents){
 
 }

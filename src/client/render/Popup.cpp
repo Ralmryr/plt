@@ -19,10 +19,8 @@ void Popup::close(){
     this->isOpen = false;
 }
 
-void Popup::update(){
-    for(auto const &component : this->listComponents){
-        component.update();
-    }
+void Popup::update(unordered_map<string,string> data){
+
 }
 
 void Popup::draw(sf::RenderWindow& window){

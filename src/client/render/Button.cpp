@@ -28,6 +28,3 @@ void Button::draw(sf::RenderTarget &target, sf::RenderStates states) const  {
     target.draw(this->sprite,states);
 }
 
-void Button::update() {
-    //To code
-}

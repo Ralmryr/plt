@@ -173,83 +173,83 @@ Le joueur qui joue en premier change à chaque génération.
 
 Cette image est celle qui sert de fond d'écran pour notre jeu.
 
-<img src="src/client/img/background.png" alt="Background" width="600"/>
+<img src="src/resources/background.png" alt="Background" width="600"/>
 
 ### Badges :
 
 Ces images sont utilisées pour indiquer les badges sur les cartes.
 
-<img src="src/client/img/badge_animal.png" alt="Animal" width="60"/>
-<img src="src/client/img/badge_building.png" alt="Construction" width="60"/>
-<img src="src/client/img/badge_city.png" alt="Cité" width="60"/>
-<img src="src/client/img/badge_earth.png" alt="Terre" width="60"/>
-<img src="src/client/img/badge_event.png" alt="Événement" width="60"/>
-<img src="src/client/img/badge_jovian.png" alt="Jovien" width="60"/>
-<img src="src/client/img/badge_microbe.png" alt="Microbe" width="60"/>
-<img src="src/client/img/badge_plant.png" alt="Plante" width="60"/>
-<img src="src/client/img/badge_power.png" alt="Électricité" width="60"/>
-<img src="src/client/img/badge_science.png" alt="Science" width="60"/>
-<img src="src/client/img/badge_space.png" alt="Espace" width="60"/>
-<img src="src/client/img/badge_venus.png" alt="Vénus" width="60"/>
-<img src="src/client/img/badge_wild.png" alt="Indéterminé" width="60"/>
+<img src="src/resources/badge_animal.png" alt="Animal" width="60"/>
+<img src="src/resources/badge_building.png" alt="Construction" width="60"/>
+<img src="src/resources/badge_city.png" alt="Cité" width="60"/>
+<img src="src/resources/badge_earth.png" alt="Terre" width="60"/>
+<img src="src/resources/badge_event.png" alt="Événement" width="60"/>
+<img src="src/resources/badge_jovian.png" alt="Jovien" width="60"/>
+<img src="src/resources/badge_microbe.png" alt="Microbe" width="60"/>
+<img src="src/resources/badge_plant.png" alt="Plante" width="60"/>
+<img src="src/resources/badge_power.png" alt="Électricité" width="60"/>
+<img src="src/resources/badge_science.png" alt="Science" width="60"/>
+<img src="src/resources/badge_space.png" alt="Espace" width="60"/>
+<img src="src/resources/badge_venus.png" alt="Vénus" width="60"/>
+<img src="src/resources/badge_wild.png" alt="Indéterminé" width="60"/>
 
 ### Ressources :
 
 Ces images sont utilisées pour illustrer les ressources et/ou leurs productions.  La production d'une ressource est réalisée en superposant l'image d'une production sur le fond production. L'image de mégacrédit est vide et nécessite de rajouter un texte par dessus pour définir la valeur de la ressource ou du coût.
 
-<img src="src/client/img/animal.png" alt="Animal" width="60"/>
-<img src="src/client/img/floater.png" alt="Flotteur" width="60"/>
-<img src="src/client/img/heat.png" alt="Chaleur" width="60"/>
-<img src="src/client/img/megacredit.png" alt="Méga crédit" width="60"/>
-<img src="src/client/img/microbe.png" alt="Microbe" width="60"/>
-<img src="src/client/img/plant.png" alt="Plante" width="60"/>
-<img src="src/client/img/power.png" alt="Électricité" width="60"/>
-<img src="src/client/img/production.png" alt="Production" width="60"/>
-<img src="src/client/img/steel.png" alt="Acier" width="60"/>
-<img src="src/client/img/titanium.png" alt="Titane" width="60"/>
-<img src="src/client/img/tr.png" alt="Niveau de terraformation" width="80"/>
+<img src="src/resources/animal.png" alt="Animal" width="60"/>
+<img src="src/resources/floater.png" alt="Flotteur" width="60"/>
+<img src="src/resources/heat.png" alt="Chaleur" width="60"/>
+<img src="src/resources/megacredit.png" alt="Méga crédit" width="60"/>
+<img src="src/resources/microbe.png" alt="Microbe" width="60"/>
+<img src="src/resources/plant.png" alt="Plante" width="60"/>
+<img src="src/resources/power.png" alt="Électricité" width="60"/>
+<img src="src/resources/production.png" alt="Production" width="60"/>
+<img src="src/resources/steel.png" alt="Acier" width="60"/>
+<img src="src/resources/titanium.png" alt="Titane" width="60"/>
+<img src="src/resources/tr.png" alt="Niveau de terraformation" width="80"/>
 
 ### Tuiles :
 
 L'image d'astéroïde suivante est ajoutée sur l'arrière plan du jeu et délimite un emplacement réservé pour une tuile spéciale :
 
 
-<img src="src/client/img/asteroid.png" alt="Astéroïde" width="150"/>
+<img src="src/resources/asteroid.png" alt="Astéroïde" width="150"/>
 
 Les images suivantes représentes les différentes tuiles pouvant être placées au cours d'une partie. La dernière est utilisée comme base pour générer les tuiles spéciales :
 
-<img src="src/client/img/city.png" alt="Cité" width="60"/>
-<img src="src/client/img/forest.png" alt="Forêt" width="60"/>
-<img src="src/client/img/ocean.png" alt="Océan" width="60"/>
-<img src="src/client/img/special.png" alt="Tuile spéciale" width="60"/>
+<img src="src/resources/city.png" alt="Cité" width="60"/>
+<img src="src/resources/forest.png" alt="Forêt" width="60"/>
+<img src="src/resources/ocean.png" alt="Océan" width="60"/>
+<img src="src/resources/special.png" alt="Tuile spéciale" width="60"/>
 
 Les images suivantes sont placées sur la tuile marron pour former une tuile spéciale :
 
-<img src="src/client/img/commercial_district.png" alt="District commercial" width="80"/>
-<img src="src/client/img/ecological_zone.png" alt="Zone écologique" width="80"/>
-<img src="src/client/img/industrial_center.png" alt="Centre industriel" width="80"/>
-<img src="src/client/img/lava_flows.png" alt="Volcan" width="80"/>
-<img src="src/client/img/mining_area.png" alt="Mine" width="80"/>
-<img src="src/client/img/mohole_area.png" alt="Zone de mohol" width="80"/>
-<img src="src/client/img/natural_preserve.png" alt="Réserve naturelle" width="80"/>
-<img src="src/client/img/nuclear_zone.png" alt="Zone nucléaire" width="80"/>
-<img src="src/client/img/restricted_area.png" alt="Zone interdite" width="80"/>
+<img src="src/resources/commercial_district.png" alt="District commercial" width="80"/>
+<img src="src/resources/ecological_zone.png" alt="Zone écologique" width="80"/>
+<img src="src/resources/industrial_center.png" alt="Centre industriel" width="80"/>
+<img src="src/resources/lava_flows.png" alt="Volcan" width="80"/>
+<img src="src/resources/mining_area.png" alt="Mine" width="80"/>
+<img src="src/resources/mohole_area.png" alt="Zone de mohol" width="80"/>
+<img src="src/resources/natural_preserve.png" alt="Réserve naturelle" width="80"/>
+<img src="src/resources/nuclear_zone.png" alt="Zone nucléaire" width="80"/>
+<img src="src/resources/restricted_area.png" alt="Zone interdite" width="80"/>
 
 
 ### Cartes et paramètres globaux :
 
 L'image suivante représente le dos d'une carte :
 
-<img src="src/client/img/card.png" alt="Carte" width="150"/>
+<img src="src/resources/card.png" alt="Carte" width="150"/>
 
 L'image suivante est utilisée comme fond sur lequel est inscrit les points de victoire d'une carte :
 
-<img src="src/client/img/mars.png" alt="Point de victoire" width="150"/>
+<img src="src/resources//mars.png" alt="Point de victoire" width="150"/>
 
 Les images suivantes sont celles représentant les paramètres globaux oxygène et température :
 
-<img src="src/client/img/oxygen.png" alt="Oxygène" width="100"/>
-<img src="src/client/img/temperature.png" alt="Température" width="30"/>
+<img src="src/resources/oxygen.png" alt="Oxygène" width="100"/>
+<img src="src/resources/temperature.png" alt="Température" width="30"/>
 
 
 

@@ -1,6 +1,3 @@
-//
-// Created by arthur on 21/11/22.
-//
 
 #include "MenuDisplay.h"
 #include <iostream>
@@ -68,15 +65,30 @@ MenuDisplay :: MenuDisplay (){
     listComponents.push_back(pvText);
 }
 
-MenuDisplay::~MenuDisplay() {
-
-}
+MenuDisplay::~MenuDisplay() = default;
 
 void MenuDisplay::update(std::unordered_map<std::string,std::string> data) {
-    //update ressources texts and pvtext
+    //update resources texts and pvtext
+
+    for(const auto& resource : data){
+        int i = stoi(resource.first);
+        string txt = resource.second;
+        if(i%2==1){
+            //one element in 2 correspond to a prod
+            listResourceProd[(i-1)/2].setText(txt);
+        }
+        else{
+            listResourceReserv[i/2].setText(txt);
+        }
+    }
 }
 
 void MenuDisplay::draw (sf::RenderWindow& window){
+    for(auto const &component : listComponents){
+        window.draw(*component);
+    }
 
 }
+
+
 

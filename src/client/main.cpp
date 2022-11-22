@@ -1,28 +1,20 @@
 #include <iostream>
+#include "render.h"
+#include "state.h"
+#include "../constants.hpp"
 #include <SFML/Graphics.hpp>
 
+using namespace render;
+using namespace state;
 using namespace std;
 
 int main(int argc,char* argv[])
 {
     // Quick SFML test that launches a black window that can be closed
     //create window
-    sf::RenderWindow window(sf::VideoMode(1920,1080), "Terraforming Mars");
-    //sf::RenderWindow window(sf::VideoMode(1920,1080), "Terraforming Mars",sf::Style::Fullscreen);
+    sf::RenderWindow window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "Terraforming Mars");
 
-    //define font text
-    sf::Font font;
-    if (!font.loadFromFile("../src/client/arial.ttf")){
-        printf("Erreur: la police d'écriture n'a pas été trouvée");
-    }
-
-    //define text
-    sf::Text textRessource;
-    textRessource.setFont(font);
-    textRessource.setString("Ressource");
-    textRessource.setPosition(sf::Vector2f(50,50));
-    textRessource.setCharacterSize(24);
-    textRessource.setFillColor(sf::Color::White);
+    //initializing scene
 
     //create textures
 
@@ -59,7 +51,6 @@ int main(int argc,char* argv[])
 
         window.draw(RessourceCadre);
         window.draw(RessourceLocation);
-        window.draw(textRessource);
         //
 
         window.display();

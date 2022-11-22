@@ -1,3 +1,4 @@
+#include "../constants.hpp"
 #include "Text.h"
 #include <iostream>
 
@@ -11,12 +12,12 @@ Text::Text(std::string text, sf::Vector2f position){
     this->text=std::move(text);
 
     //Loading font
-    if(!this->font.loadFromFile("../src/resources/arial.ttf")){
+    if(!this->font.loadFromFile(RESS_PATH + "arial.ttf")){
     cout<<"Error: font file not found"<<endl;
     }
 
     //Setting text size
-    this->sizeText=24;
+    this->sizeText=FONT_SIZE_DEFAULT;
 
     this->position = position;
 }

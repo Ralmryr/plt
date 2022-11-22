@@ -15,7 +15,7 @@ Image::Image(string fileName, sf::Vector2f position){
     this->position = position;
 
     //Loading image file
-    if(!this->texture.loadFromFile( IMAGE_PATH + fileName)){
+    if(!this->texture.loadFromFile( RESS_PATH + fileName)){
         cout << "Erreur : la texture n'a pas été générée.." << endl;
     }
     this->texture.setSmooth(true);

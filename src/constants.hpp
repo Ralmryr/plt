@@ -7,13 +7,14 @@
 using namespace std;
 
 //--------SYSTEM CONSTANTS-----------
-const string IMAGE_PATH = "ressources/";
+const string RESS_PATH = "ressources/";
 const int WINDOW_WIDTH = 1920;
 const int WINDOW_HEIGHT = 1080;
 const sf::Vector2f WINDOW_SIZE(WINDOW_WIDTH,WINDOW_HEIGHT);
 
 //--------ENGINE CONSTANTS-----------
 const int MAX_PLAYER = 5;
+const int FONT_SIZE_DEFAULT = 24;
 const int MIN_TEMPERATURE = -30;
 const int MAX_TEMPERATURE = 8;
 const int STARTING_TEMPERATURE = MIN_TEMPERATURE;

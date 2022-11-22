@@ -1,7 +1,6 @@
 #include "Scene.h"
 
 render::Scene::Scene() {
-    this->popupBadge=Popup();
     this->popupBlueCards=PopupCard();
     this->popupHandCards=PopupCard();
     this->playerScoreDisplay=PlayerScoreDisplay();

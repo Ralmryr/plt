@@ -25,5 +25,12 @@ void render::Scene::draw(sf::RenderWindow window) {
 }
 
 void render::Scene::update() {
+    /*popupBadge.update();
+    popupBlueCards.update();
+    popupHandCards.update();
+    playerScoreDisplay.update();
+    globalParametersDisplay.update();
+    boardDisplay.update();
+    menu.update();*/
 
 }

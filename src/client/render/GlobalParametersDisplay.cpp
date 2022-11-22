@@ -1,3 +1,4 @@
+#include <iostream>
 #include "GlobalParametersDisplay.h"
 
 using namespace render;

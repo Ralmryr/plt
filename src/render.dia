@@ -2347,7 +2347,7 @@
             <dia:string>#popupBadge#</dia:string>
           </dia:attribute>
           <dia:attribute name="type">
-            <dia:string>#Popup#</dia:string>
+            <dia:string>#PopupBadge#</dia:string>
           </dia:attribute>
           <dia:attribute name="value">
             <dia:string>##</dia:string>
@@ -2370,7 +2370,7 @@
             <dia:string>#popupBlueCards#</dia:string>
           </dia:attribute>
           <dia:attribute name="type">
-            <dia:string>#Popup#</dia:string>
+            <dia:string>#PopupBadge#</dia:string>
           </dia:attribute>
           <dia:attribute name="value">
             <dia:string>##</dia:string>
@@ -2393,7 +2393,7 @@
             <dia:string>#popupHandCards#</dia:string>
           </dia:attribute>
           <dia:attribute name="type">
-            <dia:string>#Popup#</dia:string>
+            <dia:string>#PopupBadge#</dia:string>
           </dia:attribute>
           <dia:attribute name="value">
             <dia:string>##</dia:string>
@@ -3842,7 +3842,7 @@
             <dia:string>#listCompanyText#</dia:string>
           </dia:attribute>
           <dia:attribute name="type">
-            <dia:string>#std::vector&lt;Text&gt;#</dia:string>
+            <dia:string>#std::vector&lt;std::shared_ptr&lt;Text&gt;&gt;#</dia:string>
           </dia:attribute>
           <dia:attribute name="value">
             <dia:string>##</dia:string>
@@ -4053,7 +4053,7 @@
         <dia:point val="99.0947,-21.3133"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="99.0447,-21.3633;122.36,-9.86335"/>
+        <dia:rectangle val="99.0447,-21.3633;122.36,-9.0633"/>
       </dia:attribute>
       <dia:attribute name="elem_corner">
         <dia:point val="99.0947,-21.3133"/>
@@ -4062,10 +4062,10 @@
         <dia:real val="23.215"/>
       </dia:attribute>
       <dia:attribute name="elem_height">
-        <dia:real val="11.399999999999999"/>
+        <dia:real val="12.199999999999999"/>
       </dia:attribute>
       <dia:attribute name="name">
-        <dia:string>#Popup#</dia:string>
+        <dia:string>#PopupBadge#</dia:string>
       </dia:attribute>
       <dia:attribute name="stereotype">
         <dia:string>##</dia:string>
@@ -4270,11 +4270,34 @@
             <dia:boolean val="false"/>
           </dia:attribute>
         </dia:composite>
+        <dia:composite type="umlattribute">
+          <dia:attribute name="name">
+            <dia:string>#listBadgeQuantity#</dia:string>
+          </dia:attribute>
+          <dia:attribute name="type">
+            <dia:string>#std::vector&lt;std::shared_ptr&lt;Text&gt;&gt;#</dia:string>
+          </dia:attribute>
+          <dia:attribute name="value">
+            <dia:string>##</dia:string>
+          </dia:attribute>
+          <dia:attribute name="comment">
+            <dia:string>##</dia:string>
+          </dia:attribute>
+          <dia:attribute name="visibility">
+            <dia:enum val="1"/>
+          </dia:attribute>
+          <dia:attribute name="abstract">
+            <dia:boolean val="false"/>
+          </dia:attribute>
+          <dia:attribute name="class_scope">
+            <dia:boolean val="false"/>
+          </dia:attribute>
+        </dia:composite>
       </dia:attribute>
       <dia:attribute name="operations">
         <dia:composite type="umloperation">
           <dia:attribute name="name">
-            <dia:string>#Popup#</dia:string>
+            <dia:string>#PopupBadge#</dia:string>
           </dia:attribute>
           <dia:attribute name="stereotype">
             <dia:string>##</dia:string>
@@ -4304,7 +4327,7 @@
         </dia:composite>
         <dia:composite type="umloperation">
           <dia:attribute name="name">
-            <dia:string>#~Popup#</dia:string>
+            <dia:string>#~PopupBadge#</dia:string>
           </dia:attribute>
           <dia:attribute name="stereotype">
             <dia:string>##</dia:string>
@@ -5237,17 +5260,17 @@
     </dia:object>
     <dia:object type="UML - Association" version="2" id="O20">
       <dia:attribute name="obj_pos">
-        <dia:point val="99.0947,-15.2133"/>
+        <dia:point val="99.0947,-14.4133"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="78.8504,-15.9633;99.8447,18.6008"/>
+        <dia:rectangle val="78.8504,-15.1633;99.8447,18.6008"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
       </dia:attribute>
       <dia:attribute name="orth_points">
-        <dia:point val="99.0947,-15.2133"/>
-        <dia:point val="96.4577,-15.2133"/>
+        <dia:point val="99.0947,-14.4133"/>
+        <dia:point val="96.4577,-14.4133"/>
         <dia:point val="96.4577,17.7458"/>
         <dia:point val="78.9004,17.7458"/>
       </dia:attribute>
@@ -5311,7 +5334,7 @@
         <dia:color val="#000000ff"/>
       </dia:attribute>
       <dia:connections>
-        <dia:connection handle="0" to="O16" connection="18"/>
+        <dia:connection handle="0" to="O16" connection="20"/>
         <dia:connection handle="1" to="O8" connection="11"/>
       </dia:connections>
       <dia:childnode parent="O0"/>
@@ -5722,16 +5745,16 @@
     </dia:object>
     <dia:object type="UML - Association" version="2" id="O26">
       <dia:attribute name="obj_pos">
-        <dia:point val="99.1084,44.053"/>
+        <dia:point val="99.1085,44.053"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="78.8504,22.0008;99.8584,44.908"/>
+        <dia:rectangle val="78.8504,22.0008;99.8585,44.908"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
       </dia:attribute>
       <dia:attribute name="orth_points">
-        <dia:point val="99.1084,44.053"/>
+        <dia:point val="99.1085,44.053"/>
         <dia:point val="80.1443,44.053"/>
         <dia:point val="80.1443,22.7458"/>
         <dia:point val="78.9004,22.7458"/>

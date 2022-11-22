@@ -1,9 +1,9 @@
 #include "Scene.h"
 
 render::Scene::Scene() {
-    this->popupBadge=Popup();
-    this->popupBlueCards=Popup();
-    this->popupHandCards=Popup();
+    this->popupBadge=PopupBadge();
+    this->popupBlueCards=PopupBadge(); //to change for PopupCard
+    this->popupHandCards=PopupBadge();//to change for PopupCard
     this->playerScoreDisplay=PlayerScoreDisplay();
     this->globalParametersDisplay=GlobalParametersDisplay();
     this->boardDisplay=BoardDisplay();
@@ -25,5 +25,12 @@ void render::Scene::draw(sf::RenderWindow window) {
 }
 
 void render::Scene::update() {
+    /*popupBadge.update();
+    popupBlueCards.update();
+    popupHandCards.update();
+    playerScoreDisplay.update();
+    globalParametersDisplay.update();
+    boardDisplay.update();
+    menu.update();*/
 
 }

@@ -6,7 +6,7 @@ using namespace std;
 
 BoardDisplay::BoardDisplay(){
     //Initializing images
-    this->boardImage = make_shared<Image>(Image("background.png", sf::Vector2f(15,15)));
+    this->boardImage = make_shared<Image>(Image("background.png", sf::Vector2f(0,0)));
 
     //Adding the components to the list
     this->listComponents.push_back(boardImage);

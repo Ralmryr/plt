@@ -7,7 +7,7 @@
 using namespace std;
 
 //--------SYSTEM CONSTANTS-----------
-const string RESS_PATH = "ressources/";
+const string RESS_PATH = "../src/resources/";
 const int WINDOW_WIDTH = 1920;
 const int WINDOW_HEIGHT = 1080;
 const sf::Vector2f WINDOW_SIZE(WINDOW_WIDTH,WINDOW_HEIGHT);

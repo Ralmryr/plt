@@ -4,6 +4,8 @@
 using namespace render;
 using namespace std;
 
+Text :: Text()= default;
+
 Text::Text(std::string text, sf::Vector2f position){
     //Setting text
     this->text=std::move(text);
@@ -19,7 +21,7 @@ Text::Text(std::string text, sf::Vector2f position){
     this->position = position;
 }
 
-Text::~Text() {}
+Text::~Text() = default;
 
 void Text::draw(sf::RenderTarget &target, sf::RenderStates states) const {
     //Setting text parameters
@@ -34,6 +36,7 @@ void Text::draw(sf::RenderTarget &target, sf::RenderStates states) const {
 void Text::setText(const string& text){
     this->text = text;
 }
+
 
 
 

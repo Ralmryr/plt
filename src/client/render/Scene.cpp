@@ -2,8 +2,8 @@
 
 render::Scene::Scene() {
     this->popupBadge=Popup();
-    this->popupBlueCards=Popup();
-    this->popupHandCards=Popup();
+    this->popupBlueCards=PopupCard();
+    this->popupHandCards=PopupCard();
     this->playerScoreDisplay=PlayerScoreDisplay();
     this->globalParametersDisplay=GlobalParametersDisplay();
     this->boardDisplay=BoardDisplay();

@@ -24,6 +24,5 @@ std::unordered_map<std::string, std::string> ResourceBoard::serializeUiData() co
     for(const auto& res : resourceMap) {
         uiData.insert({to_string(res.first), to_string(res.second)});
     }
-
     return uiData;
 }

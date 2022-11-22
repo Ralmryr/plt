@@ -1,27 +1,45 @@
 #include <iostream>
+#include "../constants.hpp"
 #include "GlobalParametersDisplay.h"
 
 using namespace render;
 using namespace std;
 
 GlobalParametersDisplay::GlobalParametersDisplay(){
+    //Setting positions for components
+    sf::Vector2f vtempFrame;
+    sf::Vector2f vtempFill;
+    sf::Vector2f vtempLogo;
+    sf::Vector2f voxyFrame;
+    sf::Vector2f voxyFill;
+    sf::Vector2f voxyLogo;
+    sf::Vector2f voceanLogo;
+    sf::Vector2f vtempMin;
+    sf::Vector2f vtempMax;
+    sf::Vector2f vtempCurrent;
+    sf::Vector2f voxyMin;
+    sf::Vector2f voxyMax;
+    sf::Vector2f voxyCurrent;
+    sf::Vector2f voceanCurrent;
+
+
     //Initializing images
-    tempFrameImage = make_shared<Image>(Image("tempFrameImage.png", sf::Vector2f(15,15)));
-    tempFillImage = make_shared<Image>(Image("tempFillImage.png", sf::Vector2f(15,15)));
-    tempLogoImage = make_shared<Image>(Image("tempLogoImage.png", sf::Vector2f(15,15)));
-    oxyFrameImage = make_shared<Image>(Image("oxyFrameImage.png", sf::Vector2f(15,15)));
-    oxyFillImage = make_shared<Image>(Image("oxyFillImage.png", sf::Vector2f(15,15)));
-    oxyLogoImage = make_shared<Image>(Image("oxyLogoImage.png", sf::Vector2f(15,15)));
-    oceanLogoImage = make_shared<Image>(Image("oceanLogoImage.png", sf::Vector2f(15,15)));
+    tempFrameImage = make_shared<Image>(Image("tempFrameImage.png", vtempFrame));
+    tempFillImage = make_shared<Image>(Image("tempFillImage.png", vtempFill));
+    tempLogoImage = make_shared<Image>(Image("temperature.png", vtempLogo));
+    oxyFrameImage = make_shared<Image>(Image("oxyFrameImage.png", voxyFrame));
+    oxyFillImage = make_shared<Image>(Image("oxyFillImage.png", voxyFill));
+    oxyLogoImage = make_shared<Image>(Image("oxygen.png", voxyLogo));
+    oceanLogoImage = make_shared<Image>(Image("ocean.png", voceanLogo));
 
     //Initializing texts
-    tempMinText = make_shared<Text>(Text("-30 °C", sf::Vector2f(15,15)));
-    tempMaxText = make_shared<Text>(Text("8 °C", sf::Vector2f(15,15)));
-    tempCurrentText = make_shared<Text>(Text("-30 °C", sf::Vector2f(15,15)));
-    oxyMinText = make_shared<Text>(Text("0 %", sf::Vector2f(15,15)));
-    oxyMaxText = make_shared<Text>(Text("14 %", sf::Vector2f(15,15)));
-    oxyCurrentText = make_shared<Text>(Text("0 %", sf::Vector2f(15,15)));
-    oceanCurrentText = make_shared<Text>(Text("0/9", sf::Vector2f(15,15)));
+    tempMinText = make_shared<Text>(Text(to_string(MIN_TEMPERATURE)+" °", vtempMin));
+    tempMaxText = make_shared<Text>(Text(to_string(MAX_TEMPERATURE)+" °", vtempMax));
+    tempCurrentText = make_shared<Text>(Text(to_string(STARTING_TEMPERATURE)+" °", vtempCurrent));
+    oxyMinText = make_shared<Text>(Text(to_string(MIN_OXYGEN)+" %", voxyMin));
+    oxyMaxText = make_shared<Text>(Text(to_string(MAX_OXYGEN)+" %", voxyMax));
+    oxyCurrentText = make_shared<Text>(Text(to_string(STARTING_OXYGEN)+" %", voxyCurrent));
+    oceanCurrentText = make_shared<Text>(Text(to_string(STARTING_OCEAN)+"/"+to_string(MAX_OCEAN), voceanCurrent));
 
 
     //Adding the components to the list
@@ -51,7 +69,7 @@ void GlobalParametersDisplay::update(unordered_map<string,string> data){
     //Setting new data texts
     tempCurrentText->setText(data["Temperature"] + " ° C");
     oxyCurrentText->setText(data["Oxygene"] + " %");
-    oceanCurrentText->setText(data["Ocean"] + "/9");
+    oceanCurrentText->setText(data["Ocean"] + "/" + to_string(MAX_OCEAN));
 
     //Setting new sprite size for the fillers
     tempFillImage->setSize(sf::Vector2f(tempFillImage->getSize().x*temp, tempFillImage->getSize().y*temp));

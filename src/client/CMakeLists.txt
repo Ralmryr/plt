@@ -23,7 +23,7 @@ target_link_libraries(${lib_client_target} PUBLIC
 
 # Compile "client" executable
 set(client_target client)
-add_executable(${client_target} main.cpp client/test.cpp render/Text.cpp render/Button.cpp render/StdProjectDisplay.cpp render/ClickableArea.cpp)
+add_executable(${client_target} main.cpp client/test.cpp render/Text.cpp render/Button.cpp render/StdProjectDisplay.cpp render/ClickableArea.cpp ../constants.hpp)
 target_link_libraries(${client_target} ${lib_client_target})
 if(BUILD_CODE_COVERAGE)
   add_dependencies(code-coverage ${client_target})

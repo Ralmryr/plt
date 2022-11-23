@@ -61,9 +61,21 @@ MenuDisplay :: MenuDisplay (){
     listComponents.push_back(cardButton);
     listComponents.push_back(blueCardButton);
     listComponents.push_back(badgeButton);
-    //listComponents.push_back(badgeText);
-    //listComponents.push_back(pvImage);
-    //listComponents.push_back(pvText);
+
+    // Initialize production of resources texts
+    for(int i = 0; i < 6; i++){
+        float posX = 160.0f + float(i) * 127.0f;
+        sf::Vector2f textPos = {posX, 915};
+        listResourceProd.push_back(make_shared<Text>("100", textPos));
+        listComponents.push_back(listResourceProd.back());
+    }
+    // Initialize amount of resources texts
+    for(int i = 0; i < 6; i++){
+        float posX = 160.0f + float(i) * 127.0f;
+        sf::Vector2f textPos = {posX, 1000};
+        listResourceAmount.push_back(make_shared<Text>("100", textPos));
+        listComponents.push_back(listResourceAmount.back());
+    }
 }
 
 MenuDisplay::~MenuDisplay() = default;
@@ -76,10 +88,10 @@ void MenuDisplay::update(std::unordered_map<std::string,std::string> data) {
         string txt = resource.second;
         if(i%2==1){
             //one element in 2 correspond to a prod
-            listResourceProd[(i-1)/2].setText(txt);
+            listResourceProd[(i-1)/2]->setText(txt);
         }
         else{
-            listResourceReserv[i/2].setText(txt);
+            listResourceAmount[i/2]->setText(txt);
         }
     }
 }

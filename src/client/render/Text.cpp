@@ -37,6 +37,7 @@ void Text::draw(sf::RenderTarget &target, sf::RenderStates states) const {
 
 void Text::setText(const string& text){
     this->text = text;
+    this->textToDraw.setString(this->text);
 }
 
 void Text::setSizeText(int sizeText) {

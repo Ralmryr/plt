@@ -9,7 +9,7 @@ StdProjectDisplay::StdProjectDisplay() {
     sf::Vector2f posFrameImage;
     posFrameImage.x=0;
     posFrameImage.y=0;
-    this->frameImage = make_shared<Image("../src/resources/std_project_background",posFrameImage);
+    this->frameImage = make_shared<Image>("../src/resources/std_project_background",posFrameImage);
     listComponents.push_back(frameImage);
 
     //discardButton

@@ -7,19 +7,21 @@ render::Scene::Scene() {
     this->globalParametersDisplay=GlobalParametersDisplay();
     this->boardDisplay=BoardDisplay();
     this->menu=MenuDisplay();
+    this->stdProject = StdProjectDisplay();
 }
 
 render::Scene::~Scene() {
 
 }
 
-void render::Scene::draw(sf::RenderWindow window) {
-    popupBadge.draw(window);
-    popupBlueCards.draw(window);
-    popupHandCards.draw(window);
-    playerScoreDisplay.draw(window);
-    globalParametersDisplay.draw(window);
+void render::Scene::draw(sf::RenderWindow& window) {
     boardDisplay.draw(window);
+    //popupBadge.draw(window);
+    //popupBlueCards.draw(window);
+    //popupHandCards.draw(window);
+    globalParametersDisplay.draw(window);
+    stdProject.draw(window);
+    playerScoreDisplay.draw(window);
     menu.draw(window);
 }
 

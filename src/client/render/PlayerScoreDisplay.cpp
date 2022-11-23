@@ -6,12 +6,11 @@ using namespace std;
 
 PlayerScoreDisplay::PlayerScoreDisplay(){
     //Setting positions for components
-    sf::Vector2f vframe;
+    sf::Vector2f vframe = {0, 0};
     sf::Vector2f vtitle;
 
-
     //Initializing images
-    this->frameImage = make_shared<Image>("frameImage.png", vframe);
+    this->frameImage = make_shared<Image>("scorePlayerFrameImage.png", vframe);
 
 
     //Initializing texts

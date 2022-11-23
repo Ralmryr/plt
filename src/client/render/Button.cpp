@@ -27,7 +27,7 @@ Button::Button(std::string fileName, sf::Vector2f position) {
     this->clickableArea = ClickableArea();
 
     //Settinig size
-    this->size = sf::Vector2f(this->texture.getSize());
+    this->size = this->texture.getSize();
 }
 
 Button::Button(string fileName, ClickableArea clickableArea, sf::Vector2f position) {
@@ -47,7 +47,7 @@ Button::Button(string fileName, ClickableArea clickableArea, sf::Vector2f positi
     this->sprite.setPosition(this->position);
 
     //Setting size
-    this->size = sf::Vector2f(this->texture.getSize());
+    this->size = this->texture.getSize();
 }
 
 Button::~Button() {
@@ -58,10 +58,14 @@ void Button::draw(sf::RenderTarget &target, sf::RenderStates states) const  {
     target.draw(this->sprite,states);
 }
 
-void Button::setSize(const sf::Vector2f &size) {
-    sf::Vector2f ratioScale(size.x/this->size.x, size.y/this->size.y);
+void Button::setSize(const sf::Vector2u &size) {
+    sf::Vector2f ratioScale(float(size.x)/this->size.x, float(size.y)/this->size.y);
     this->size = size;
     this->sprite.setScale(ratioScale);
 
+}
+
+void Button::setScale(float scale) {
+    this->sprite.setScale(scale, scale);
 }
 

@@ -1,18 +1,19 @@
 #include <iostream>
 #include "BoardDisplay.h"
+#include "../../constants.hpp"
 
 using namespace render;
 using namespace std;
 
 BoardDisplay::BoardDisplay(){
     //Initializing images
-    this->boardImage = make_shared<Image>("mars.png", sf::Vector2f(15,15));
+    this->boardImage = make_shared<Image>("background.png", sf::Vector2f(0,0));
 
     //Adding the components to the list
     this->listComponents.push_back(boardImage);
 };
 
-BoardDisplay::~BoardDisplay(){}
+BoardDisplay::~BoardDisplay()= default;
 
 void BoardDisplay::update(unordered_map<string, string> data){
     for(auto const& dataEl : data){

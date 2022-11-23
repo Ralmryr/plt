@@ -19,7 +19,7 @@ void ClickableArea::setPosition(const sf::Vector2f& position){
     this->position = position;
 }
 
-void ClickableArea::setSize(const sf::Vector2f& size){
+void ClickableArea::setSize(const sf::Vector2u& size){
     this->size = size;
 }
 

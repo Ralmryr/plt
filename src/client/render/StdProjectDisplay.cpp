@@ -6,10 +6,8 @@ using namespace std;
 
 StdProjectDisplay::StdProjectDisplay() {
     //frameImage
-    sf::Vector2f posFrameImage;
-    posFrameImage.x=0;
-    posFrameImage.y=0;
-    this->frameImage = make_shared<Image>("../src/resources/std_project_background",posFrameImage);
+    sf::Vector2f posFrameImage = {0, 450};
+    this->frameImage = make_shared<Image>("stdProjectFrameImage.png",posFrameImage);
     listComponents.push_back(frameImage);
 
     //discardButton

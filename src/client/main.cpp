@@ -12,31 +12,42 @@ int main(int argc,char* argv[])
 {
     // Quick SFML test that launches a black window that can be closed
     //create window
-    sf::RenderWindow window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "Terraforming Mars");
-
+    sf::RenderWindow window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT),
+                            "Terraforming Mars",
+                            sf::Style::Fullscreen);
     //initializing scene
-    Image image = Image("background.png", sf::Vector2f(0,0));
-    image.setSize(sf::Vector2f(WINDOW_WIDTH, WINDOW_HEIGHT));
-    Text text = Text("Terraforming !!", sf::Vector2f(WINDOW_WIDTH/2, WINDOW_HEIGHT/2));
-    text.setSizeText(50);
-    Button button = Button("badge_wild.png", sf::Vector2f(WINDOW_WIDTH/2 + 50, WINDOW_HEIGHT/2 + 50));
-    button.setSize(sf::Vector2f(50,50));
-    BoardDisplay bd = BoardDisplay();
+    Scene scene = Scene();
+
+    sf::Clock clock;
+    sf::Time elapsedTime;
 
     while (window.isOpen())
     {
+        clock.restart();
+
         sf::Event event;
         while (window.pollEvent(event))
         {
-            if (event.type == sf::Event::Closed)
-                window.close();
+            switch(event.type)
+            {
+                case sf::Event::Closed:
+                    window.close();
+                    break;
+                case sf::Event::KeyPressed:
+                    if(event.key.code == sf::Keyboard::Q || event.key.code == sf::Keyboard::Escape)
+                        window.close();
+                    break;
+            }
+
         }
 
         window.clear(sf::Color::Black);
-        window.draw(image);
-        window.draw(text);
-        window.draw(button);
+        scene.draw(window);
         window.display();
+
+        elapsedTime = clock.getElapsedTime();
+        //cout << "Elapsed time : " << elapsedTime.asMilliseconds() << endl;
+        clock.restart();
     }
 
     return 0;

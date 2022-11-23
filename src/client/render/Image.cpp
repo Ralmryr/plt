@@ -29,21 +29,50 @@ Image::Image(string fileName, sf::Vector2f position) {
     this->sprite.setPosition(this->position);
 
     //Setting size
-    this->size = sf::Vector2f(this->texture.getSize());
+    this->size = this->texture.getSize();
+}
+
+
+Image::Image(std::string fileName, sf::Vector2f position, sf::Vector2u size) {
+    //Setting position
+    this->position = position;
+
+    //Loading image file
+    if (!this->texture.loadFromFile(RESS_PATH + fileName)) {
+        cout << "Erreur : la texture n'a pas été générée.." << endl;
+    }
+    this->texture.setSmooth(true);
+
+    //Setting texture to the sprite
+    this->sprite.setTexture(this->texture);
+    this->sprite.setPosition(this->position);
+
+    //Setting size
+    auto spriteSize = this->texture.getSize();
+    sf::Vector2f ratioScale(float(size.x)/spriteSize.x, float(size.y)/spriteSize.y);
+    this->size = size;
+    this->sprite.setScale(ratioScale);
 }
 
 void Image::draw(sf::RenderTarget &target, sf::RenderStates states) const {
     target.draw(this->sprite,states);
 }
 
-/*void Image::setTexture(const sf::Texture &texture) {
+void Image::setTexture(const sf::Texture &texture) {
     this->texture = texture;
 }
 
-void Image::setSize(const sf::Vector2f &size) {
-    sf::Vector2f ratioScale(size.x/this->size.x, size.y/this->size.y);
+void Image::setSize(const sf::Vector2u &size) {
+    sf::Vector2f ratioScale(float(size.x)/this->size.x, float(size.y)/this->size.y);
     this->size = size;
     this->sprite.setScale(ratioScale);
+}
 
+void Image::setScale(float scale) {
+    this->sprite.setScale(scale, scale);
+}
+
+void Image::setRect(const sf::IntRect& rect) {
+    this->sprite.setTextureRect(rect);
 }
 

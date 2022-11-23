@@ -13,7 +13,7 @@ Text::Text(std::string text, sf::Vector2f position){
     this->textToDraw.setString(this->text);
 
     //Loading font
-    if(!this->font.loadFromFile(RESS_PATH + "arial.ttf")){
+    if(!this->font.loadFromFile(RESS_PATH + "Prototype.ttf")){
     cout<<"Error: font file not found"<<endl;
     }
 
@@ -42,6 +42,10 @@ void Text::setText(const string& text){
 void Text::setSizeText(int sizeText) {
     this->sizeText = sizeText;
     this->textToDraw.setCharacterSize(sizeText);
+}
+
+void Text::setColor(const sf::Color& color) {
+    this->textToDraw.setFillColor(color);
 }
 
 

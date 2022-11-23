@@ -10,27 +10,28 @@ using namespace std;
 MenuDisplay :: MenuDisplay (){
 
     //define positions for all button and image in the menu
-    sf::Vector2<float> vframe ;
-    sf::Vector2<float> vResource ;
-    sf::Vector2<float> vCard ;
-    sf::Vector2<float> vBlueCard ;
-    sf::Vector2<float> vBadge ;
-    sf::Vector2<float> vPoints ;
+    sf::Vector2f vframe = {0, 850};
+    sf::Vector2f vResource ;
+    sf::Vector2f vCard = {900, 810};
+    sf::Vector2f vBlueCard = {1225, 870};
+    sf::Vector2f vBadge = {1475, 900};
+    sf::Vector2f vPoints;
 
-    //define the size of all buttons
-    sf::Vector2<float> sizeButtonCard;
-    sf::Vector2<float> sizeBlueCardButton;
-    sf::Vector2<float> sizeBadgeButton;
+    //define the size of all sprites
+    //sf::Vector2u sizeFrame = {1920, 230};
+    //sf::Vector2u sizeRessource;
+    sf::Vector2u sizeBlueCardButton = {150, 200};
+    sf::Vector2u sizeBadgeButton;
 
     //define all texts positions
 
-    sf::Vector2<float> posBadgeText;
-    sf::Vector2<float> posPVText;
+    sf::Vector2f posBadgeText;
+    sf::Vector2f posPVText;
 
 
     //define Images
 
-    this->frameImage = make_shared<Image>("badge_wild.png",vframe);
+    this->frameImage = make_shared<Image>("menuFrame.png",vframe);
     this->resourceImage = make_shared<Image>("badge_wild.png",vResource);
     this->pvImage = make_shared<Image>("mars.png",vPoints);
 
@@ -38,18 +39,18 @@ MenuDisplay :: MenuDisplay (){
 
     ClickableArea cardClick = ClickableArea();
     cardClick.setPosition(vCard);
-    cardClick.setSize(sizeButtonCard);
     this->cardButton = make_shared<Button>("card.png",cardClick,vCard);
+    this->cardButton->setScale(0.55f);
 
     ClickableArea BlueCardClick = ClickableArea();
     BlueCardClick.setPosition(vBlueCard);
-    BlueCardClick.setSize(sizeBlueCardButton);
-    this->blueCardButton = make_shared<Button>("blue_card.png",BlueCardClick,vBlueCard);
+    this->blueCardButton = make_shared<Button>("blue.png",BlueCardClick,vBlueCard);
+    this->blueCardButton->setSize(sizeBlueCardButton);
 
     ClickableArea BadgeClick = ClickableArea();
     BadgeClick.setPosition(vBadge);
-    BadgeClick.setSize(sizeBadgeButton);
     this->badgeButton = make_shared<Button>("badge_wild.png",BadgeClick,vBadge);
+    this->badgeButton->setScale(1.2f);
 
     //define all texts
 
@@ -60,9 +61,9 @@ MenuDisplay :: MenuDisplay (){
     listComponents.push_back(cardButton);
     listComponents.push_back(blueCardButton);
     listComponents.push_back(badgeButton);
-    listComponents.push_back(badgeText);
-    listComponents.push_back(pvImage);
-    listComponents.push_back(pvText);
+    //listComponents.push_back(badgeText);
+    //listComponents.push_back(pvImage);
+    //listComponents.push_back(pvText);
 }
 
 MenuDisplay::~MenuDisplay() = default;

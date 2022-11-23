@@ -36,7 +36,7 @@ void Image::draw(sf::RenderTarget &target, sf::RenderStates states) const {
     target.draw(this->sprite,states);
 }
 
-void Image::setTexture(const sf::Texture &texture) {
+/*void Image::setTexture(const sf::Texture &texture) {
     this->texture = texture;
 }
 

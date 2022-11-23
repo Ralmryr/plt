@@ -3,6 +3,12 @@
 using namespace std;
 
 render::PopupCard::PopupCard() {
+    sf::Vector2f vbackground;
+    sf::Vector2f vcloseButton;
+    this->background = make_shared<Image>("background.png", vbackground);
+    this->closeButton = make_shared<Button>("closeButton.png", vcloseButton);
+    this->listComponents.push_back(this->background);
+    this->listComponents.push_back(this->closeButton);
 
 }
 

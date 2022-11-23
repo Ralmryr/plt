@@ -11,14 +11,14 @@ PlayerScoreDisplay::PlayerScoreDisplay(){
 
 
     //Initializing images
-    this->frameImage = make_shared<Image>(Image("frameImage.png", vframe));
+    this->frameImage = make_shared<Image>("frameImage.png", vframe);
 
 
     //Initializing texts
-    this->titleText = make_shared<Text>(Text("Niveau de terraformation", vtitle));
-    this->listPlayerText.push_back(make_shared<Text>(Text("Joueur 1", sf::Vector2f(15,15))));
-    this->listScorePlayer.push_back(make_shared<Text>(Text("0", sf::Vector2f(15,15))));
-    this->listCompanyText.push_back(make_shared<Text>(Text("Company : None", sf::Vector2f(15,15))));
+    this->titleText = make_shared<Text>("Niveau de terraformation", vtitle);
+    this->listPlayerText.push_back(make_shared<Text>("Joueur 1", sf::Vector2f(15,15)));
+    this->listScorePlayer.push_back(make_shared<Text>("0", sf::Vector2f(15,15)));
+    this->listCompanyText.push_back(make_shared<Text>("Company : None", sf::Vector2f(15,15)));
 
     //Adding the components to the list
     this->listComponents.push_back(this->frameImage);

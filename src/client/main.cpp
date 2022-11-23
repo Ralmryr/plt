@@ -16,6 +16,11 @@ int main(int argc,char* argv[])
 
     //initializing scene
     Image image = Image("background.png", sf::Vector2f(0,0));
+    image.setSize(sf::Vector2f(WINDOW_WIDTH, WINDOW_HEIGHT));
+    Text text = Text("Terraforming !!", sf::Vector2f(WINDOW_WIDTH/2, WINDOW_HEIGHT/2));
+    text.setSizeText(50);
+    Button button = Button("badge_wild.png", sf::Vector2f(WINDOW_WIDTH/2 + 50, WINDOW_HEIGHT/2 + 50));
+    button.setSize(sf::Vector2f(50,50));
     BoardDisplay bd = BoardDisplay();
 
     while (window.isOpen())
@@ -28,7 +33,9 @@ int main(int argc,char* argv[])
         }
 
         window.clear(sf::Color::Black);
-        bd.draw(window);
+        window.draw(image);
+        window.draw(text);
+        window.draw(button);
         window.display();
     }
 

@@ -1,4 +1,4 @@
-cmake_minimum_required (VERSION 2.8)
+cmake_minimum_required (VERSION 3.18)
 project (plt)
 
 # CMP0074 policy enable find_* to use <PackageName>_ROOT variables to find
@@ -14,8 +14,8 @@ include(GenerateDiaHeader)
 # Export executables to "bin" directory
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/bin)
 
-# Enable C++11
-set(CMAKE_CXX_STANDARD 11)
+# Enable C++14
+set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # Enable Debug and Release builds
@@ -57,10 +57,11 @@ if(BUILD_CODE_COVERAGE)
     "${PROJECT_SOURCE_DIR}/extern/")
   # Create script to run tests for code coverage
   set(test_runner "${CMAKE_CURRENT_BINARY_DIR}/run_test.sh")
-  file(WRITE ${test_runner}
-    "cd \"${CMAKE_CURRENT_BINARY_DIR}/test\"\n"
-    "ctest --timeout 300 ||/bin/true"
-    )
+  file(CONFIGURE
+          OUTPUT ${test_runner}
+          CONTENT
+          "cd \"${CMAKE_CURRENT_BINARY_DIR}/test\" && ctest --timeout 300 ||/bin/true\n"
+          )
   # Create target for code coverage
   SETUP_TARGET_FOR_COVERAGE_LCOV(
     NAME code-coverage

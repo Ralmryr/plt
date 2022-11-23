@@ -17,7 +17,7 @@ target_include_directories(${lib_shared_target} PUBLIC
   )
 
 set(shared_target shared)
-add_executable(${shared_target} main.cpp main.cpp main.h state/Ressources.cpp state/Spot.cpp state/State.cpp state/Tile.cpp state/ProjectStd.cpp state/ProjectCard.cpp state/Player.cpp state/PlaceCondition.cpp state/OnRessource.cpp state/OnOcean.cpp state/Epassif.cpp state/Eactif.cpp state/Deck.cpp state/CounterPV.cpp state/Company.cpp state/Board.cpp state/Badge.cpp state/AdjacentTo.cpp)
+add_executable(${shared_target} main.cpp main.cpp state/Board.cpp state/Card.cpp state/CardBoard.cpp state/CardsHand.cpp state/GlobalParameters.cpp state/Player.cpp state/ResourceBoard.cpp state/Tile.cpp state/UiDataProvider.cpp ../constants.hpp)
 target_link_libraries(${shared_target} ${lib_shared_target})
 if(BUILD_CODE_COVERAGE)
     add_dependencies(code-coverage ${shared_target})

@@ -19,7 +19,7 @@ int main(int argc,char* argv[])
     //create textures
 
     sf::Texture textureBackground;
-    if (!textureBackground.loadFromFile("../src/client/img/background.png",sf::IntRect(0,0,1200,728))){
+    if (!textureBackground.loadFromFile("../src/resources/background.png",sf::IntRect(0,0,1200,728))){
         printf("Erreur: la texture n'a pas été générée");
     }
     textureBackground.setSmooth(true);

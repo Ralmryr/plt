@@ -16,8 +16,15 @@ int main(int argc,char* argv[])
                             "Terraforming Mars",
                             sf::Style::Fullscreen);
     window.setFramerateLimit(60);
-    //initializing scene
+
+    // Initialize scene
     Scene scene = Scene();
+    // Initialize state
+    State state = State();
+    // Creates a bridge between the ui and the state
+    scene.hookData(state.getUiDataProvider());
+    // Simply calls update function
+    scene.update();
 
     sf::Clock clock;
     sf::Time elapsedTime;

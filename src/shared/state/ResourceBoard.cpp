@@ -19,10 +19,14 @@ ResourceBoard::~ResourceBoard() {
 
 }
 
+/*
+ *  [   "resource i" : "amount" ]
+ */
 std::unordered_map<std::string, std::string> ResourceBoard::serializeUiData() const {
     unordered_map<string, string> uiData;
-    for(const auto& res : resourceMap) {
-        uiData.insert({to_string(res.first), to_string(res.second)});
+    for(int i = R_FIRST+1; i != R_LAST; i++) {
+        auto resAmount = resourceMap.at(Resource(i));
+        uiData.insert({"resource " + to_string(i), to_string(resAmount)});
     }
     return uiData;
 }

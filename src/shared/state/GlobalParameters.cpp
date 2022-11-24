@@ -8,13 +8,19 @@ using namespace std;
 using namespace state;
 
 GlobalParameters::GlobalParameters() {
-
+    this->temp = 0;
+    this->numberOcean = 0;
+    this->oxygen = 0;
 }
 
 GlobalParameters::~GlobalParameters() {
 
 }
 
+/* [    "Oxygen" : "amount"
+        "Temperature" : "temperature"
+        "NumberOceans" : "numberOceans" ]
+ */
 std::unordered_map<std::string, std::string> GlobalParameters::serializeUiData() const {
     unordered_map<string, string> uiData;
     uiData.insert({"Oxygen", to_string(oxygen)});

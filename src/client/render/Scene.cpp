@@ -1,5 +1,10 @@
 #include "Scene.h"
 
+#include <utility>
+#include <iostream>
+
+using namespace std;
+
 render::Scene::Scene() {
     this->popupBlueCards=PopupCard();
     this->popupHandCards=PopupCard();
@@ -26,6 +31,11 @@ void render::Scene::draw(sf::RenderWindow& window) {
 }
 
 void render::Scene::update() {
+    auto data = dataProvider->providePlayerData(3);
+    cout << "---------- NEW DATA ----------------" << endl;
+    for(const auto& dataEl : data) {
+        cout << "{ First : " << dataEl.first << ", Second : " << dataEl.second << " }"<< endl;
+    }
     /*popupBadge.update();
     popupBlueCards.update();
     popupHandCards.update();
@@ -34,4 +44,8 @@ void render::Scene::update() {
     boardDisplay.update();
     menu.update();*/
 
+}
+
+void render::Scene::hookData(std::shared_ptr<state::UiDataProvider> dataProvider) {
+    this->dataProvider = dataProvider;
 }

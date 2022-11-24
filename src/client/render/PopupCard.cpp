@@ -16,7 +16,7 @@ render::PopupCard::~PopupCard() {
 
 }
 
-void render::PopupCard::update(std::unordered_map<std::string, std::string> data) {
+void render::PopupCard::update(const std::unordered_map<std::string, std::string>& data) {
     if(data.size() > listComponents.size()) return;
     for(const auto& card : data) {
         string filename = "blabla/" + card.second;

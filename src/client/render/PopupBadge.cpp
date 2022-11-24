@@ -26,7 +26,7 @@ void PopupBadge::close(){
     this->isOpen = false;
 }
 
-void PopupBadge::update(unordered_map<string,string> data) {
+void PopupBadge::update(const unordered_map<string,string>& data) {
     for (auto const &dataEl: data) {
         string badge = dataEl.second.substr(0, dataEl.second.find(","));
         string amount = dataEl.second.substr(1, dataEl.second.find(","));

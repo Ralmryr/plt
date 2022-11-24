@@ -63,5 +63,5 @@ void StdProjectDisplay::draw(sf::RenderWindow &window) {
     }
 }
 
-void StdProjectDisplay::update(std::unordered_map<std::string,std::string> data) {
+void StdProjectDisplay::update(const std::unordered_map<std::string,std::string>& data) {
 }

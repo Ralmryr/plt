@@ -15,14 +15,27 @@ UiDataProvider::~UiDataProvider() {
 
 }
 
+/*
+ *  [   "resource i" : "amount"
+ *      "idCardBoard i" : "id"
+ *      "badge i" : "badge, amount"
+ *      "idCardHand i" : "id" ]
+ */
 std::unordered_map<std::string, std::string> UiDataProvider::providePlayerData(int idPlayer) {
     return pPlayerList[idPlayer]->serializeUiData();
 }
 
+/*
+ * [ "x, y" : "type, idOwner" ]
+ */
 std::unordered_map<std::string, std::string> UiDataProvider::provideBoardData() {
     return pBoard->serializeUiData();
 }
 
+/* [    "Oxygen" : "amount"
+        "Temperature" : "temperature"
+        "NumberOceans" : "numberOceans" ]
+ */
 std::unordered_map<std::string, std::string> UiDataProvider::provideGlobalParameters() {
     return pGlobalParameters->serializeUiData();
 }
@@ -39,7 +52,7 @@ unordered_map<std::string, std::string> UiDataProvider::provideScoreData() {
     int idPlayer = 0;
     for(const auto& pPlayer : pPlayerList) {
         auto tmp = pPlayer->serializeUiData();
-        string nt = tmp[to_string(NT)];
+        string nt = tmp["NT"];
         uiData.insert({to_string(idPlayer), nt});
         idPlayer++;
     }

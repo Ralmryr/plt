@@ -15,6 +15,7 @@ int main(int argc,char* argv[])
     sf::RenderWindow window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT),
                             "Terraforming Mars",
                             sf::Style::Fullscreen);
+
     window.setFramerateLimit(60);
 
     // Initialize scene
@@ -53,6 +54,7 @@ int main(int argc,char* argv[])
         }
 
         window.clear(sf::Color::Black);
+        //scene.update();
         scene.draw(window);
 
         // Displays mouse position and FPS
@@ -60,7 +62,7 @@ int main(int argc,char* argv[])
         mouseText.setText("Pos : " + to_string(mousePosition.x) + "," + to_string(mousePosition.y));
         window.draw(mouseText);
         elapsedTime = clock.getElapsedTime();
-        if(counterFps++%10 == 0) // Will count fps every 30 frames
+        if(counterFps++%10 == 0) // Will count fps every 10 frames
             fpsText.setText(to_string(1000/elapsedTime.asMilliseconds()));
         window.draw(fpsText);
 

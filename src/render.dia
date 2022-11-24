@@ -974,7 +974,7 @@
             <dia:string>##</dia:string>
           </dia:attribute>
           <dia:attribute name="visibility">
-            <dia:enum val="0"/>
+            <dia:enum val="2"/>
           </dia:attribute>
           <dia:attribute name="abstract">
             <dia:boolean val="false"/>
@@ -1420,7 +1420,7 @@
             <dia:string>##</dia:string>
           </dia:attribute>
           <dia:attribute name="visibility">
-            <dia:enum val="0"/>
+            <dia:enum val="2"/>
           </dia:attribute>
           <dia:attribute name="abstract">
             <dia:boolean val="false"/>
@@ -2049,7 +2049,7 @@
             <dia:string>##</dia:string>
           </dia:attribute>
           <dia:attribute name="visibility">
-            <dia:enum val="0"/>
+            <dia:enum val="2"/>
           </dia:attribute>
           <dia:attribute name="abstract">
             <dia:boolean val="false"/>
@@ -3178,7 +3178,7 @@
             <dia:string>##</dia:string>
           </dia:attribute>
           <dia:attribute name="visibility">
-            <dia:enum val="0"/>
+            <dia:enum val="1"/>
           </dia:attribute>
           <dia:attribute name="abstract">
             <dia:boolean val="false"/>
@@ -3189,10 +3189,10 @@
         </dia:composite>
         <dia:composite type="umlattribute">
           <dia:attribute name="name">
-            <dia:string>#listTilesImage#</dia:string>
+            <dia:string>#listTilesPlaced#</dia:string>
           </dia:attribute>
           <dia:attribute name="type">
-            <dia:string>#std::vector&lt;std::shared_ptr&lt;Image&gt;&gt;#</dia:string>
+            <dia:string>#std::unordered_set&lt;std::string&gt;#</dia:string>
           </dia:attribute>
           <dia:attribute name="value">
             <dia:string>##</dia:string>
@@ -3201,7 +3201,7 @@
             <dia:string>##</dia:string>
           </dia:attribute>
           <dia:attribute name="visibility">
-            <dia:enum val="0"/>
+            <dia:enum val="1"/>
           </dia:attribute>
           <dia:attribute name="abstract">
             <dia:boolean val="false"/>
@@ -3224,7 +3224,7 @@
             <dia:string>##</dia:string>
           </dia:attribute>
           <dia:attribute name="visibility">
-            <dia:enum val="0"/>
+            <dia:enum val="1"/>
           </dia:attribute>
           <dia:attribute name="abstract">
             <dia:boolean val="false"/>
@@ -3329,7 +3329,7 @@
                 <dia:string>#data#</dia:string>
               </dia:attribute>
               <dia:attribute name="type">
-                <dia:string>#std::unordered_map&lt;std::string,std::string&gt;#</dia:string>
+                <dia:string>#const std::unordered_map&lt;std::string,std::string&gt;&amp;#</dia:string>
               </dia:attribute>
               <dia:attribute name="value">
                 <dia:string>##</dia:string>
@@ -4022,7 +4022,7 @@
                 <dia:string>#data#</dia:string>
               </dia:attribute>
               <dia:attribute name="type">
-                <dia:string>#std::unordered_map&lt;std::string,std::string&gt;#</dia:string>
+                <dia:string>#const std::unordered_map&lt;std::string,std::string&gt;&amp;#</dia:string>
               </dia:attribute>
               <dia:attribute name="value">
                 <dia:string>##</dia:string>
@@ -4432,7 +4432,7 @@
                 <dia:string>#data#</dia:string>
               </dia:attribute>
               <dia:attribute name="type">
-                <dia:string>#std::unordered_map&lt;std::string,std::string&gt;#</dia:string>
+                <dia:string>#const std::unordered_map&lt;std::string,std::string&gt;&amp;#</dia:string>
               </dia:attribute>
               <dia:attribute name="value">
                 <dia:string>##</dia:string>
@@ -4950,7 +4950,7 @@
                 <dia:string>#data#</dia:string>
               </dia:attribute>
               <dia:attribute name="type">
-                <dia:string>#std::unordered_map&lt;std::string,std::string&gt;#</dia:string>
+                <dia:string>#const std::unordered_map&lt;std::string,std::string&gt;&amp;#</dia:string>
               </dia:attribute>
               <dia:attribute name="value">
                 <dia:string>##</dia:string>
@@ -5450,7 +5450,7 @@
                 <dia:string>#data#</dia:string>
               </dia:attribute>
               <dia:attribute name="type">
-                <dia:string>#std::unordered_map&lt;std::string,std::string&gt;#</dia:string>
+                <dia:string>#const std::unordered_map&lt;std::string,std::string&gt;&amp;#</dia:string>
               </dia:attribute>
               <dia:attribute name="value">
                 <dia:string>##</dia:string>
@@ -7280,7 +7280,7 @@
                 <dia:string>#data#</dia:string>
               </dia:attribute>
               <dia:attribute name="type">
-                <dia:string>#std::unordered_map&lt;std::string,std::string&gt;#</dia:string>
+                <dia:string>#const std::unordered_map&lt;std::string,std::string&gt;&amp;#</dia:string>
               </dia:attribute>
               <dia:attribute name="value">
                 <dia:string>##</dia:string>
@@ -7730,7 +7730,7 @@
         <dia:point val="179.381,13.1378"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="179.331,13.0878;186.823,14.5878"/>
+        <dia:rectangle val="179.331,13.0878;186.824,14.5878"/>
       </dia:attribute>
       <dia:attribute name="elem_corner">
         <dia:point val="179.381,13.1378"/>
@@ -7841,19 +7841,19 @@
     </dia:object>
     <dia:object type="UML - Dependency" version="1" id="O41">
       <dia:attribute name="obj_pos">
-        <dia:point val="162.226,13.3646"/>
+        <dia:point val="162.225,13.3646"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="162.176,12.8562;179.78,14.4562"/>
+        <dia:rectangle val="162.175,12.8562;179.781,14.4562"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
       </dia:attribute>
       <dia:attribute name="orth_points">
-        <dia:point val="162.226,13.3646"/>
+        <dia:point val="162.225,13.3646"/>
         <dia:point val="170.578,13.3646"/>
         <dia:point val="170.578,13.8378"/>
-        <dia:point val="179.33,13.8378"/>
+        <dia:point val="179.331,13.8378"/>
       </dia:attribute>
       <dia:attribute name="orth_orient">
         <dia:enum val="0"/>
@@ -8187,7 +8187,7 @@
                 <dia:string>#data#</dia:string>
               </dia:attribute>
               <dia:attribute name="type">
-                <dia:string>#std::unordered_map&lt;std::string, std::string&gt;#</dia:string>
+                <dia:string>#const std::unordered_map&lt;std::string, std::string&gt;&amp;#</dia:string>
               </dia:attribute>
               <dia:attribute name="value">
                 <dia:string>##</dia:string>

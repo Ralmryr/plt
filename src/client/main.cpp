@@ -12,47 +12,61 @@ int main(int argc,char* argv[])
 {
     // Quick SFML test that launches a black window that can be closed
     //create window
-    sf::RenderWindow window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "Terraforming Mars");
+    sf::RenderWindow window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT),
+                            "Terraforming Mars",
+                            sf::Style::Fullscreen);
 
-    //initializing scene
+    window.setFramerateLimit(60);
 
-    //create textures
+    // Initialize scene
+    Scene scene = Scene();
+    // Initialize state
+    State state = State();
+    // Creates a bridge between the ui and the state
+    scene.hookData(state.getUiDataProvider());
+    // Simply calls update function
+    scene.update();
 
-    sf::Texture textureBackground;
-    if (!textureBackground.loadFromFile("../src/resources/background.png",sf::IntRect(0,0,1200,728))){
-        printf("Erreur: la texture n'a pas été générée");
-    }
-    textureBackground.setSmooth(true);
+    sf::Clock clock;
+    sf::Time elapsedTime;
 
-    //create sprites
-    sf::Sprite spriteBackground;
-    spriteBackground.setTexture(textureBackground);
-
-    sf::RectangleShape RessourceCadre(sf::Vector2f(1850,310));
-    RessourceCadre.setFillColor(sf::Color(250,250,250));
-    RessourceCadre.setPosition((sf::Vector2f(0,770)));
-
-    sf::RectangleShape RessourceLocation(sf::Vector2f(1835,235));
-    RessourceLocation.setFillColor(sf::Color(0,0,0));
-    RessourceLocation.setPosition((sf::Vector2f(5,775)));
+    // Assets to display FPS and mouse position
+    auto fpsText = Text("0", sf::Vector2f(1700, 10));
+    auto mouseText = Text("0, 0", sf::Vector2f(1700,50));
+    int counterFps = 0;
 
     while (window.isOpen())
     {
         sf::Event event;
         while (window.pollEvent(event))
         {
-            if (event.type == sf::Event::Closed)
-                window.close();
+            switch(event.type)
+            {
+                case sf::Event::Closed:
+                    window.close();
+                    break;
+                case sf::Event::KeyPressed:
+                    if(event.key.code == sf::Keyboard::Q || event.key.code == sf::Keyboard::Escape)
+                        window.close();
+                    break;
+            }
+
         }
+
         window.clear(sf::Color::Black);
-        //Define what is inside the window
+        //scene.update();
+        scene.draw(window);
 
-        window.draw(spriteBackground);
+        // Displays mouse position and FPS
+        auto mousePosition = sf::Mouse::getPosition();
+        mouseText.setText("Pos : " + to_string(mousePosition.x) + "," + to_string(mousePosition.y));
+        window.draw(mouseText);
+        elapsedTime = clock.getElapsedTime();
+        if(counterFps++%10 == 0) // Will count fps every 10 frames
+            fpsText.setText(to_string(1000/elapsedTime.asMilliseconds()));
+        window.draw(fpsText);
 
-        window.draw(RessourceCadre);
-        window.draw(RessourceLocation);
-        //
-
+        clock.restart();
         window.display();
     }
 

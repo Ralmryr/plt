@@ -10,7 +10,7 @@ using namespace std;
 const string RESS_PATH = "../src/resources/";
 const int WINDOW_WIDTH = 1920;
 const int WINDOW_HEIGHT = 1080;
-const sf::Vector2f WINDOW_SIZE(WINDOW_WIDTH,WINDOW_HEIGHT);
+const sf::Vector2u WINDOW_SIZE(WINDOW_WIDTH,WINDOW_HEIGHT);
 
 //--------ENGINE CONSTANTS-----------
 const int MAX_PLAYER = 5;
@@ -24,6 +24,8 @@ const int STARTING_OXYGEN = MIN_OXYGEN;
 const int MAX_OCEAN = 9;
 const int STARTING_OCEAN = 0;
 
-
+//---------SF CONSTANTS--------------
+const sf::Color COLOR_BLACK(0, 0, 0);
+const sf::Color COLOR_WHITE(0, 0, 0);
 
 #endif //PLT_CONSTANTS_HPP

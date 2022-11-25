@@ -207,7 +207,7 @@ Ces images sont utilisées pour illustrer les ressources et/ou leurs productions
 <img src="src/resources/production.png" alt="Production" width="60"/>
 <img src="src/resources/steel.png" alt="Acier" width="60"/>
 <img src="src/resources/titanium.png" alt="Titane" width="60"/>
-<img src="src/resources/tr.png" alt="Niveau de terraformation" width="80"/>
+<img src="src/resources/nt.png" alt="Niveau de terraformation" width="80"/>
 
 ### Tuiles :
 

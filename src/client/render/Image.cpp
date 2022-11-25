@@ -10,32 +10,87 @@ Image::Image(){
     this->position.y = 0;
 }
 
-Image::Image(string fileName, sf::Vector2f position){
+
+Image::~Image(){
+
+}
+
+
+Image::Image(string fileName, sf::Vector2f position) {
     //Setting position
     this->position = position;
 
     //Loading image file
-    if(!this->texture.loadFromFile( RESS_PATH + fileName)){
+    if (!this->texture.loadFromFile(RESS_PATH + fileName)) {
         cout << "Erreur : la texture n'a pas été générée.." << endl;
     }
     this->texture.setSmooth(true);
 
     //Setting texture to the sprite
     this->sprite.setTexture(this->texture);
+    this->sprite.setPosition(this->position);
+
+    //Setting size
+    this->size = this->texture.getSize();
 }
 
-Image::~Image() {}
 
-void Image::draw(sf::RenderTarget& target, sf::RenderStates states) const{
-    target.draw(this->sprite, states);
-}
+Image::Image(std::string fileName, sf::Vector2f position, sf::Vector2u size) {
+    //Setting position
+    this->position = position;
 
-void Image::setTexture(const sf::Texture &texture) {
-    this->texture = texture;
-}
+    //Loading image file
+    if (!this->texture.loadFromFile(RESS_PATH + fileName)) {
+        cout << "Erreur : la texture n'a pas été générée.." << endl;
+    }
+    this->texture.setSmooth(true);
 
-void Image::setSize(const sf::Vector2f& size){
+    //Setting texture to the sprite
+    this->sprite.setTexture(this->texture);
+    this->sprite.setPosition(this->position);
+
+    //Setting size
+    auto spriteSize = this->texture.getSize();
+    sf::Vector2f ratioScale(float(size.x)/spriteSize.x, float(size.y)/spriteSize.y);
     this->size = size;
+    this->sprite.setScale(ratioScale);
 }
 
+
+void Image::draw(sf::RenderTarget &target, sf::RenderStates states) const {
+    target.draw(this->sprite,states);
+}
+
+
+void Image::setSize(const sf::Vector2u &size) {
+    sf::Vector2f ratioScale(float(size.x)/this->size.x, float(size.y)/this->size.y);
+    this->size = size;
+    this->sprite.setScale(ratioScale);
+}
+
+
+void Image::setScale(float scale) {
+    this->sprite.setScale(scale, scale);
+    this->size.x = unsigned(size.x * scale);
+    this->size.y = unsigned(size.y * scale);
+}
+
+
+void Image::setRect(const sf::IntRect& rect) {
+    this->sprite.setTextureRect(rect);
+}
+
+
+const sf::Vector2u &Image::getSize() const {
+    return this->size;
+}
+
+void Image::setPosition(const sf::Vector2f &position) {
+    this->position = position;
+    this->sprite.setPosition(position);
+}
+
+const sf::Vector2f &Image::getPosition() const {
+    return this->position;
+}
 

@@ -1,6 +1,7 @@
 
 #include "MenuDisplay.h"
 #include <iostream>
+#include "../constants.hpp"
 
 using namespace render;
 using namespace std;
@@ -10,77 +11,93 @@ using namespace std;
 MenuDisplay :: MenuDisplay (){
 
     //define positions for all button and image in the menu
-    sf::Vector2<float> vframe ;
-    sf::Vector2<float> vResource ;
-    sf::Vector2<float> vCard ;
-    sf::Vector2<float> vBlueCard ;
-    sf::Vector2<float> vBadge ;
-    sf::Vector2<float> vPoints ;
+    sf::Vector2f vframe = {0, 850};
+    sf::Vector2f vCard = {900, 810};
+    sf::Vector2f vBlueCard = {1225, 870};
+    sf::Vector2f vBadge = {1475, 900};
+    sf::Vector2f vPoints;
 
-    //define the size of all buttons
-    sf::Vector2<float> sizeButtonCard;
-    sf::Vector2<float> sizeBlueCardButton;
-    sf::Vector2<float> sizeBadgeButton;
+    //define the size of all sprites
+    //sf::Vector2u sizeFrame = {1920, 230};
+    //sf::Vector2u sizeRessource;
+    sf::Vector2u sizeBlueCardButton = {150, 200};
+    sf::Vector2u sizeBadgeButton;
 
     //define all texts positions
 
-    sf::Vector2<float> posBadgeText;
-    sf::Vector2<float> posPVText;
+    sf::Vector2f posBadgeText;
+    sf::Vector2f posPVText = {1775, 905};
 
 
     //define Images
 
-    this->frameImage = make_shared<Image>(Image("badge_wild.png",vframe));
-    this->resourceImage = make_shared<Image>(Image("badge_wild.png",vResource));
-    this->pvImage = make_shared<Image>(Image("mars.png",vPoints));
+    this->frameImage = make_shared<Image>("menuFrame.png",vframe);
 
     //define buttons
 
     ClickableArea cardClick = ClickableArea();
     cardClick.setPosition(vCard);
-    cardClick.setSize(sizeButtonCard);
-    this->cardButton = make_shared<Button>(Button("card.png",cardClick,vCard));
+    this->cardButton = make_shared<Button>("card.png",cardClick,vCard);
+    this->cardButton->setScale(0.55f);
 
     ClickableArea BlueCardClick = ClickableArea();
     BlueCardClick.setPosition(vBlueCard);
-    BlueCardClick.setSize(sizeBlueCardButton);
-    this->blueCardButton = make_shared<Button>(Button("blue_card.png",BlueCardClick,vBlueCard));
+    this->blueCardButton = make_shared<Button>("blue.png",BlueCardClick,vBlueCard);
+    this->blueCardButton->setSize(sizeBlueCardButton);
 
     ClickableArea BadgeClick = ClickableArea();
     BadgeClick.setPosition(vBadge);
-    BadgeClick.setSize(sizeBadgeButton);
-    this->badgeButton = make_shared<Button>(Button("badge_wild.png",BadgeClick,vBadge));
+    this->badgeButton = make_shared<Button>("badge_wild.png",BadgeClick,vBadge);
+    this->badgeButton->setScale(1.2f);
 
     //define all texts
 
-    this->badgeText = make_shared<Text>(Text("Badges",posBadgeText));
-    this->pvText = make_shared<Text>(Text("0",posPVText));
+    this->badgeText = make_shared<Text>("Badges",posBadgeText);
+    this->pvText = make_shared<Text>("0",posPVText);
+    this->pvText->setSizeText(80);
+    this->pvText->setColor(COLOR_BLACK);
 
     listComponents.push_back(frameImage);
     listComponents.push_back(cardButton);
     listComponents.push_back(blueCardButton);
     listComponents.push_back(badgeButton);
-    listComponents.push_back(badgeText);
-    listComponents.push_back(pvImage);
     listComponents.push_back(pvText);
+
+    // Initialize production of resources texts
+    for(int i = 0; i < 6; i++){
+        float posX = 160.0f + float(i) * 127.0f;
+        sf::Vector2f textPos = {posX, 915};
+        listResourceProd.push_back(make_shared<Text>("100", textPos));
+        listComponents.push_back(listResourceProd.back());
+    }
+    // Initialize amount of resources texts
+    for(int i = 0; i < 6; i++){
+        float posX = 160.0f + float(i) * 127.0f;
+        sf::Vector2f textPos = {posX, 1000};
+        listResourceAmount.push_back(make_shared<Text>("100", textPos));
+        listComponents.push_back(listResourceAmount.back());
+    }
 }
 
 MenuDisplay::~MenuDisplay() = default;
 
-void MenuDisplay::update(std::unordered_map<std::string,std::string> data) {
+void MenuDisplay::update(const std::unordered_map<std::string,std::string>& data) {
     //update resources texts and pvtext
 
-    for(const auto& resource : data){
-        int i = stoi(resource.first);
-        string txt = resource.second;
-        if(i%2==1){
-            //one element in 2 correspond to a prod
-            listResourceProd[(i-1)/2].setText(txt);
+    for (const auto &dataEl: data) {
+        // Gets the index in the Resource enum of the current resource that is processed
+        auto resIndex = stoi(dataEl.first.substr(dataEl.first.find(" ")+1));
+        // It is a production if the index is even
+        if(resIndex % 2 == 0) {
+            listResourceProd[(resIndex - 2) / 2]->setText(dataEl.second);
         }
-        else{
-            listResourceReserv[i/2].setText(txt);
+        // Else it is an amount of resource
+        else {
+            listResourceAmount[(resIndex-1)/2]->setText(dataEl.second);
         }
     }
+
+
 }
 
 void MenuDisplay::draw (sf::RenderWindow& window){

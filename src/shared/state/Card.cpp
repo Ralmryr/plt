@@ -7,13 +7,14 @@ using namespace state;
 using namespace std;
 
 Card::Card(int id) : id(id){
-
+    this->id = id;
 }
 
 Card::~Card() {
 
 }
 
+// [ "idCard" : "id" ]
 std::pair<std::string, std::string> Card::serializeUiData() const {
     std::pair<string, string> uiData;
     uiData.first = "idCard";

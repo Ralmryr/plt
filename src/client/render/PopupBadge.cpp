@@ -5,6 +5,13 @@ using namespace render;
 using namespace std;
 
 PopupBadge::PopupBadge() {
+    sf::Vector2f vframeImage;
+    sf::Vector2f vcloseButton;
+    sf::Vector2f vbadge;
+
+    this->frameImage = make_shared<Image>("frameImage.png", vframeImage);
+    this->closeButton = make_shared<Button>("closeButton.png", vcloseButton);
+    this->badgesImage = make_shared<Image>("badgesImage", vbadge);
     this->listComponents.push_back(frameImage);
     this->listComponents.push_back(closeButton);
 }
@@ -19,7 +26,7 @@ void PopupBadge::close(){
     this->isOpen = false;
 }
 
-void PopupBadge::update(unordered_map<string,string> data) {
+void PopupBadge::update(const unordered_map<string,string>& data) {
     for (auto const &dataEl: data) {
         string badge = dataEl.second.substr(0, dataEl.second.find(","));
         string amount = dataEl.second.substr(1, dataEl.second.find(","));
@@ -83,15 +90,15 @@ void PopupBadge::update(unordered_map<string,string> data) {
     }
 }
 
-    void PopupBadge::draw(sf::RenderWindow& window){
-        if(isOpen) { // if the popup is open we draw all the components
-            for(const auto &component : this->listComponents){
-                window.draw(*component);
-            }
+void PopupBadge::draw(sf::RenderWindow& window){
+    if(isOpen) { // if the popup is open we draw all the components
+        for(const auto &component : this->listComponents){
+            window.draw(*component);
         }
-
     }
 
-    void PopupBadge::setListComponents(const std::vector<std::shared_ptr<sf::Drawable>>& listComponents){
+}
 
-    }
+void PopupBadge::setListComponents(const std::vector<std::shared_ptr<sf::Drawable>>& listComponents){
+
+}

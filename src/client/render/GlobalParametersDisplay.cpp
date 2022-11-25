@@ -5,40 +5,63 @@
 using namespace render;
 using namespace std;
 
-GlobalParametersDisplay::GlobalParametersDisplay(){
-    //Setting positions for components
-    sf::Vector2f vtempFrame;
-    sf::Vector2f vtempFill;
-    sf::Vector2f vtempLogo;
-    sf::Vector2f voxyFrame;
-    sf::Vector2f voxyFill;
-    sf::Vector2f voxyLogo;
-    sf::Vector2f voceanLogo;
-    sf::Vector2f vtempMin;
-    sf::Vector2f vtempMax;
-    sf::Vector2f vtempCurrent;
-    sf::Vector2f voxyMin;
-    sf::Vector2f voxyMax;
-    sf::Vector2f voxyCurrent;
-    sf::Vector2f voceanCurrent;
+using vec2f = sf::Vector2f;
+using vec2u = sf::Vector2u;
 
-    //Initializing images
-    tempFrameImage = make_shared<Image>(Image("tempFrameImage.png", vtempFrame));
-    tempFillImage = make_shared<Image>(Image("tempFillImage.png", vtempFill));
-    tempLogoImage = make_shared<Image>(Image("temperature.png", vtempLogo));
-    oxyFrameImage = make_shared<Image>(Image("oxyFrameImage.png", voxyFrame));
-    oxyFillImage = make_shared<Image>(Image("oxyFillImage.png", voxyFill));
-    oxyLogoImage = make_shared<Image>(Image("oxygen.png", voxyLogo));
-    oceanLogoImage = make_shared<Image>(Image("ocean.png", voceanLogo));
+GlobalParametersDisplay::GlobalParametersDisplay(){
+
+    subdivisionOxy = 35;
+    subdivisionTemp = 13;
+
+    vec2f baseCoords = {1500, 70};
+
+    unsigned int frameWidth = 60;
+    unsigned int frameHeight = 548;
+
+    // Temperature bar
+    vec2f vTempFrame = baseCoords + vec2f(100, 60);
+    vec2f vTempLogo = {vTempFrame.x + 10, vTempFrame.y + frameHeight - 125};
+    vec2u sTempFrame = {frameWidth, frameHeight};
+    vec2u sTempLogo = {frameWidth - 24, 100};
+
+    // Oxygen bar
+    vec2f vOxyFrame = baseCoords + vec2f(240, 60);
+    vec2f vOxyLogo = {vOxyFrame.x + 5, vOxyFrame.y + frameHeight - 100};
+    vec2u sOxyFrame = {frameWidth, frameHeight};
+    vec2u sOxyLogo = {frameWidth - 10, frameWidth - 10};
+
+    // Ocean logo
+    vec2f vOceanLogo = baseCoords + vec2f(140, 600);
+
+    // Text
+    vec2f vTempMin = {vTempFrame.x - 70, vTempFrame.y + frameHeight - 30};
+    vec2f vTempMax = {vTempFrame.x - 55, vTempFrame.y};
+    vec2f vTempCurrent = {vTempFrame.x, vTempFrame.y + 30};
+    vec2f vOxyMin = {vOxyFrame.x - 50, vOxyFrame.y + frameHeight - 30};
+    vec2f vOxyMax = {vOxyFrame.x - 55, vOxyFrame.y};
+    vec2f vOxyCurrent = {vOxyFrame.x + 10, vOxyFrame.y + 30};
+    vec2f vOceanCurrent = {vOceanLogo.x + 30, vOceanLogo.y + 30};
+
+    //Initializing image
+    tempFrameImage = make_shared<Image>("frameTempOxy.png", vTempFrame, sTempFrame);
+    tempFillImage = make_shared<Image>("tempFill.png", vec2f(0, 0));
+
+    tempLogoImage = make_shared<Image>("temperature.png", vTempLogo, sTempLogo);
+    oxyFrameImage = make_shared<Image>("frameTempOxy.png", vOxyFrame, sOxyFrame);
+    oxyFillImage = make_shared<Image>("oxyFill.png", vec2f(0, 0));
+
+    oxyLogoImage = make_shared<Image>("oxygen.png", vOxyLogo, sOxyLogo);
+    oceanLogoImage = make_shared<Image>("ocean.png", vOceanLogo);
+    oceanLogoImage->setScale(0.25f);
 
     //Initializing texts
-    tempMinText = make_shared<Text>(Text(to_string(MIN_TEMPERATURE)+" °", vtempMin));
-    tempMaxText = make_shared<Text>(Text(to_string(MAX_TEMPERATURE)+" °", vtempMax));
-    tempCurrentText = make_shared<Text>(Text(to_string(STARTING_TEMPERATURE)+" °", vtempCurrent));
-    oxyMinText = make_shared<Text>(Text(to_string(MIN_OXYGEN)+" %", voxyMin));
-    oxyMaxText = make_shared<Text>(Text(to_string(MAX_OXYGEN)+" %", voxyMax));
-    oxyCurrentText = make_shared<Text>(Text(to_string(STARTING_OXYGEN)+" %", voxyCurrent));
-    oceanCurrentText = make_shared<Text>(Text(to_string(STARTING_OCEAN)+"/"+to_string(MAX_OCEAN), voceanCurrent));
+    tempMinText = make_shared<Text>(to_string(MIN_TEMPERATURE) + " C", vTempMin);
+    tempMaxText = make_shared<Text>(to_string(MAX_TEMPERATURE)+" C", vTempMax);
+    tempCurrentText = make_shared<Text>(to_string(MIN_TEMPERATURE)+" C", vTempCurrent);
+    oxyMinText = make_shared<Text>(to_string(MIN_OXYGEN)+" %", vOxyMin);
+    oxyMaxText = make_shared<Text>(to_string(MAX_OXYGEN)+" %", vOxyMax);
+    oxyCurrentText = make_shared<Text>(to_string(MIN_OXYGEN)+" %", vOxyCurrent);
+    oceanCurrentText = make_shared<Text>(to_string(STARTING_OCEAN)+"/"+to_string(MAX_OCEAN), vOceanCurrent);
 
     //Adding the components to the list
     this->listComponents.push_back(tempFrameImage);
@@ -59,19 +82,29 @@ GlobalParametersDisplay::GlobalParametersDisplay(){
 
 GlobalParametersDisplay::~GlobalParametersDisplay(){}
 
-void GlobalParametersDisplay::update(unordered_map<string,string> data){
-    //Getting current temperature oxygene and ocean datas
-    int temp = stoi(data["Temperature"]);
-    int oxy = stoi(data["Oxygene"]);
+void GlobalParametersDisplay::update(const unordered_map<string,string>& data){
+    //Getting current temperature and oxygen
+    int temp = stoi(data.at("Temperature"));
+    int oxy = stoi(data.at("Oxygen"));
 
     //Setting new data texts
-    tempCurrentText->setText(data["Temperature"] + " ° C");
-    oxyCurrentText->setText(data["Oxygene"] + " %");
-    oceanCurrentText->setText(data["Ocean"] + "/" + to_string(MAX_OCEAN));
+    tempCurrentText->setText(data.at("Temperature") + " C");
+    oxyCurrentText->setText(data.at("Oxygen") + " %");
+    oceanCurrentText->setText(data.at("NumberOceans")+ "/" + to_string(MAX_OCEAN));
 
     //Setting new sprite size for the fillers
-    tempFillImage->setSize(sf::Vector2f(tempFillImage->getSize().x*temp, tempFillImage->getSize().y*temp));
-    oxyFillImage->setSize(sf::Vector2f(oxyFillImage->getSize().x*oxy, oxyFillImage->getSize().y*oxy));
+
+    vec2f baseTempFill = {1608, 140};
+    auto tempFillSize = tempFillImage->getSize();
+
+    tempFillImage->setRect(sf::IntRect(0, abs(MAX_TEMPERATURE - temp)*subdivisionTemp, int(tempFillSize.x), (temp + 30) * subdivisionTemp));
+    tempFillImage->setPosition(sf::Vector2f(baseTempFill.x, baseTempFill.y + abs(MAX_TEMPERATURE - temp)*subdivisionTemp));
+
+    vec2f baseOxyFill = {1748, 140};
+    auto oxyFillSize = oxyFillImage->getSize();
+
+    oxyFillImage->setRect(sf::IntRect(0, (MAX_OXYGEN - oxy)*subdivisionOxy, int(oxyFillSize.x), oxy * subdivisionOxy));
+    oxyFillImage->setPosition(sf::Vector2f(baseOxyFill.x, baseOxyFill.y + (MAX_OXYGEN - oxy)*subdivisionOxy));
 }
 
 void GlobalParametersDisplay::draw(sf::RenderWindow& window){

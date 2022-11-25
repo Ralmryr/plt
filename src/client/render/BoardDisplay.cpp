@@ -17,7 +17,7 @@ BoardDisplay::~BoardDisplay()= default;
 
 void BoardDisplay::update(const unordered_map<string, string> &data){
 
-        cout << "----------- NEW DATA -------------" << endl;
+    cout << "----------- NEW DATA -------------" << endl;
 
     for (const auto &dataEl: data) {
         cout << "{ First : " << dataEl.first << "; Second : " << dataEl.second << " }" << endl;
@@ -89,7 +89,7 @@ void BoardDisplay::update(const unordered_map<string, string> &data){
         auto newTileImage = make_unique<Image>(filename, sf::Vector2f(x, y));
         newTileImage->setSize(sf::Vector2u(60, 69));
 
-        string arrayColors[5] = {"cyan", "green", "pink", "red", "yellow"};
+        string arrayColors[5] = {"blue", "darkgreen", "pink", "red", "orange"};
         filename = arrayColors[stoi(idPlayer)] + "Hexagon.png";
         auto newHexagonImage = make_unique<Image>(filename, sf::Vector2f(x-3, y-3));
         newHexagonImage->setSize(sf::Vector2u(65, 74));

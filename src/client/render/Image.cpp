@@ -6,9 +6,6 @@
 using namespace render;
 using namespace std;
 
-// Declare the texture pool that will be used by all Images
-TexturePool Image::texturePool;
-
 Image::Image(){
     this->position.x = 0;
     this->position.y = 0;

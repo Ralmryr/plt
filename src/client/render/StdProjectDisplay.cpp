@@ -21,38 +21,43 @@ StdProjectDisplay::StdProjectDisplay() {
     sf::Vector2f posProdEnergyButton = {25, 525};
     ClickableArea clickAreaProdEnergyButton=ClickableArea();
     this->prodEnergyButton=make_shared<Button>("megacredit.png", clickAreaProdEnergyButton,posProdEnergyButton);
-    this->prodEnergyButton->setScale(0.08f);
+    this->prodEnergyButton->setScale(0.09f);
     listComponents.push_back(prodEnergyButton);
 
     //temperatureButton
     sf::Vector2f posTemperatureButton = {25, 585};
     ClickableArea clickAreaTemperatureButton=ClickableArea();
     this->temperatureButton=make_shared<Button>("megacredit.png", clickAreaTemperatureButton,posTemperatureButton);
-    this->temperatureButton->setScale(0.08f);
+    this->temperatureButton->setScale(0.09f);
     listComponents.push_back(temperatureButton);
 
     //oceanButton
     sf::Vector2f posOceanButton = {25, 645};
     ClickableArea clickAreaOceanButton=ClickableArea();
     this->oceanButton=make_shared<Button>("megacredit.png", clickAreaOceanButton,posOceanButton);
-    this->oceanButton->setScale(0.08f);
+    this->oceanButton->setScale(0.09f);
     listComponents.push_back(oceanButton);
 
     //forestButton
     sf::Vector2f posForestButton = {25, 705};
     ClickableArea clickAreaForestButton=ClickableArea();
     this->forestButton= make_shared<Button>("megacredit.png", clickAreaForestButton,posForestButton);
-    this->forestButton->setScale(0.08f);
+    this->forestButton->setScale(0.09f);
     listComponents.push_back(forestButton);
 
     //cityButton
     sf::Vector2f posCityButton = {25, 765};
     ClickableArea clickAreaCityButton=ClickableArea();
     this->cityButton=make_shared<Button>("megacredit.png", clickAreaCityButton,posCityButton);
-    this->cityButton->setScale(0.08f);
+    this->cityButton->setScale(0.09f);
     listComponents.push_back(cityButton);
 
-
+    string arrayCost[6] = {"X", "11", "14", "18", "23", "25"};
+    for(int i = 0; i < 6; i++) {
+        auto newText = make_shared<Text>(arrayCost[i], sf::Vector2f(80, 470 + 60*i));
+        newText->setSizeText(30);
+        listComponents.push_back(std::move(newText));
+    }
 }
 
 StdProjectDisplay::~StdProjectDisplay() {}

@@ -29,8 +29,12 @@ void render::PopupCard::update(const std::unordered_map<std::string, std::string
     sf::Vector2f offset = {60, 50};
     sf::Vector2f cardSpacing = {230, 270};
     float ratio = 0.55f;
+    string filename;
     for(const auto& card : data) {
-        string filename = "cardPlant.png";
+        if(i < 8)
+            filename = "cardPlant.png";
+        else
+            filename = "cardNT.png";
         int row = i/cardsPerRow;
         float x = cardSpacing.x * (i%cardsPerRow);
         float y = cardSpacing.y * (i/cardsPerRow);

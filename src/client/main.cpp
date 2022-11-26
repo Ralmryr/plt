@@ -29,6 +29,8 @@ int main(int argc,char* argv[])
     // Simply calls update function
     scene.update();
 
+    bool cardsEnabled = false;
+
     sf::Clock clock;
     sf::Time elapsedTime;
 
@@ -51,13 +53,23 @@ int main(int argc,char* argv[])
                     if(event.key.code == sf::Keyboard::Q || event.key.code == sf::Keyboard::Escape)
                         window.close();
                     break;
-            }
 
+                // Added a temporary function to display cards on click anywhere
+                case sf::Event::MouseButtonPressed:
+                    if(event.mouseButton.button == sf::Mouse::Button::Left) {
+                        if(cardsEnabled) {
+                            scene.setScene(BOARD_VIEW);
+                            cardsEnabled = false;
+                        }
+                        else {
+                            scene.setScene(render::CARDS_HAND_VIEW);
+                            cardsEnabled = true;
+                    }
+                    break;
+                }
+            }
         }
         scene.update();
-        if(sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
-            scene.setScene(CARDS_HAND_VIEW);
-        }
         scene.draw(window);
 
         // Displays mouse position and FPS

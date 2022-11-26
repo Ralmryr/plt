@@ -1,9 +1,13 @@
 #include <iostream>
+#include <utility>
 #include "../constants.hpp"
 #include "Image.h"
 
 using namespace render;
 using namespace std;
+
+// Declare the texture pool that will be used by all Images
+TexturePool Image::texturePool;
 
 Image::Image(){
     this->position.x = 0;
@@ -20,18 +24,13 @@ Image::Image(string fileName, sf::Vector2f position) {
     //Setting position
     this->position = position;
 
-    //Loading image file
-    if (!this->texture.loadFromFile(RESS_PATH + fileName)) {
-        cout << "Erreur : la texture n'a pas été générée.." << endl;
-    }
-    this->texture.setSmooth(true);
-
     //Setting texture to the sprite
-    this->sprite.setTexture(this->texture);
+    auto texturePtr = texturePool.getTexturePtr(std::move(fileName));
+    this->sprite.setTexture(*texturePtr);
     this->sprite.setPosition(this->position);
 
     //Setting size
-    this->size = this->texture.getSize();
+    this->size = texturePtr->getSize();
 }
 
 
@@ -39,18 +38,12 @@ Image::Image(std::string fileName, sf::Vector2f position, sf::Vector2u size) {
     //Setting position
     this->position = position;
 
-    //Loading image file
-    if (!this->texture.loadFromFile(RESS_PATH + fileName)) {
-        cout << "Erreur : la texture n'a pas été générée.." << endl;
-    }
-    this->texture.setSmooth(true);
-
-    //Setting texture to the sprite
-    this->sprite.setTexture(this->texture);
+    auto texturePtr = texturePool.getTexturePtr(std::move(fileName));
+    this->sprite.setTexture(*texturePtr);
     this->sprite.setPosition(this->position);
 
     //Setting size
-    auto spriteSize = this->texture.getSize();
+    auto spriteSize = texturePtr->getSize();
     sf::Vector2f ratioScale(float(size.x)/spriteSize.x, float(size.y)/spriteSize.y);
     this->size = size;
     this->sprite.setScale(ratioScale);

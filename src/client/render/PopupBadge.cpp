@@ -9,9 +9,9 @@ PopupBadge::PopupBadge() {
     sf::Vector2f vcloseButton;
     sf::Vector2f vbadge;
 
-    this->frameImage = make_shared<Image>("frameImage.png", vframeImage);
-    this->closeButton = make_shared<Button>("closeButton.png", vcloseButton);
-    this->badgesImage = make_shared<Image>("badgesImage", vbadge);
+    this->frameImage = make_shared<Image>("animal.png", vframeImage);
+    this->closeButton = make_shared<Button>("animal.png", vcloseButton);
+    this->badgesImage = make_shared<Image>("animal.png", vbadge);
     this->listComponents.push_back(frameImage);
     this->listComponents.push_back(closeButton);
 }

@@ -167,13 +167,100 @@ Le joueur qui joue en premier change à chaque génération.
 
 3. **Phase de production :** Tous les joueurs réalisent cette phase simultanément. Premièrement, toute l’énergie est convertie en chaleur (déplacez tous les cubes Ressource de la zone Énergie à la zone Chaleur de votre plateau individuel). Ensuite, tous les joueurs reçoivent leurs nouvelles ressources. Les joueurs reçoivent des M€ pour un total équivalent à la somme de leur Niveau de Terraformation et de leur production de M€ (qui peut être négative !). Ils reçoivent ensuite toutes les ressources qu’Us produisent, selon les niveaux indiqués par leur plateau individuel. Toutes les ressources produites sont placées dans les cadres correspondants. 
 
-## Ressources :
+## Architecture et classes utilisées :
+
+Certaines constantes utilisées dans notre programme sont définies dans le fichier constants.hpp.
+
+### State :
+
+Dans le diagramme de classes du state, nous avons défini les différents objets permettant de définir l'état du jeu à un instant t.
+
+1. **Player :** Le joueur ainsi que les ressources qu'il possède et les cartes qu'il a en main.
+2.  **GlobalParameters :** Les paramètres globaux qui doivent atteindre leurs objectifs pour finir la partie.
+3.   **Board :** Les tuiles placées et les joueurs les ayants placés.
+4.    **State :** Regroupe les précédentes données. Il s'agit de la classe qui va instancier toutes les autres classes du state.
+5.    **RenderAPI :** Communique les informations du state au Render pour afficher ce qui est nécessaire.
+
+Cette dernière classe, **RenderAPI** est un peu particulière. En effet, elle est directement reliée à la scene du render, et elle propose une interface de données pour que la scene puisse les afficher en temps réel. Chaque classe du state possède une fonction **map<string, string> serializeUiData()** qui va récupérer ses données, les transformer en map de string puis les retourner au lanceur de la fonction. Cela permet au RenderAPI de pouvoir mettre à jour ses données grâce à un simple appel de cette fonction.
+
+Les données sont sous la forme suivante :
+
+- Player : [   "resource i" : "amount", idCardBoard i" : "id", "badge i" : "badge, amount", idCardHand i" : "id" ]
+- Board : [ "x, y" : "type, idOwner" ]
+- GlobalParameters : [    "Oxygen" : "amount" , "Temperature" : "temperature", "NumberOceans" : "numberOceans" ]
+
+Cette API propose alors 4 fonctions pour permettre au render de mettre à jour l'affichage :
+- **providePlayerData**
+- **provideBoardData**
+- **provideGlobalParametersData**
+- **provideScoreData**
+
+### Render :
+
+##### Résumé :
+
+Le render contient toutes les classes nécessaire à l'affichage.
+1. **Text :** Composant de base contenant un texte.
+2. **Image :** Composant de base contenant un sprite et une texture.
+3. **Button :** Composant de base contenant une image et une zone cliquable.
+4. **TexturePool :** Interface permettant de n'instancier qu'une seule fois les textures. Tous les sprites utilisants la même texture pointent vers la même.
+5. **StdProjectDisplay :** Regroupe les éléments pour le menu des projets standards.
+6.  **PopupCard :** Une fenêtre qui contient des cartes. Elle s'affiche par dessus le plateau.
+7.   **PopupBadge :** Une fenêtre listant le nombre de badges possédés.
+8.   **PlayerScoreDisplay :** Les niveaux de terraformations de chacun des joueurs et la compagnie à laquelle ils appartiennent.
+9.   **BoardDisplay :** Le plateau de jeu et les tuiles placées.
+10.   **MenuDisplay :** Le menu avec les ressources, les cartes en mains, les badges possédées et le nombre de point de victoire du joueur en cours.
+11.   **Scene :** Regroupe les différentes classes précédentes et permet d'afficher tout les éléments avec une seule méthode. Elle communique également avec le state afin de recevoir les informations en temps réel.
+ 
+##### Architecture :
+Notre architecture ici repose sur le principe de composition : nous créons des éléments de base, ici **Texte**, **Image** et **Button** qui dérivent de **sf::Drawable** pour autoriser la syntaxe **window.draw(Image)** qui est très pratique et très logique, à condition d'override la fonction **draw**.
+
+##### Textures :
+Cependant, nous nous sommes vites aperçus que notre jeu consommait beaucoup de mémoire lorsque beaucoup d'éléments étaient présents à l'écran. C'est parce que pour chaque Image, même si elles utilisaient la même texture, nous la rechargions en mémoire.
+Nous avons donc crée une classe **TexturePool** par laquelle passe toute instanciation de texture. Cette dernière garde une map dont la clé est le chemin vers la ressource, et la valeur est un pointeur vers cette ressource. Si on demande une texture qui a déjà été créée, alors celui-ci retourne un pointeur vers la texture déjà existante. Si elle n'existe pas, alors elle est chargée et ajoutée à la map.
+
+##### Liste des composants :
+Nous avons ensuite décidé de créer une classe pour chaque "bloc" d'éléments présents sur l'écran, chacun obéissant à leur propre logique. Ils sont donc tous composés de **shared_ptr** vers des composants de base. Ces **shared_ptr** ont 2 intêrets :
+- Il est maintenant possible de les stocker dans une grande liste que nous avons nommé **listComponents** qui est en réalité un **vector\<shared_ptr\<sf::Drawable\>\>**. Nous avons donc *downcast* les composants de base en drawable, ce qui permet d'avoir accès à une fonction **draw** extrêmement pratique et propre :
+  ```C++
+	for(const auto& drawable : this->listComponents){
+		window.draw(*drawable);
+	}
+  ```
+- Comme les éléments de **listComponents** sont directement rattachés au composant via un shared_ptr, lorsqu'on agit directement sur le composant, l'affichage est automatiquement mis à jour.
+
+##### Affichage des tuiles :
+On remarque très vite uen chose atypique par rapport au plateau : il est composé de tuiles hexagonales. Il est donc difficile de se repérer avec les coordonnées classiques cartésiennes. Pour résoudre ce problème, nous avons tout simplement défini notre propre repère et nos propres coordonnées :
+
+<img src="rapport/background.png" alt="Background" width="600"/>
+
+Nous avons l'axe des abscisses classique mais l'axe des ordonnées est en biais. Quelques coordonnées sont affichées pour mieux saisir le fonctionnement.
+Ensuite, en utilisant la taille d'un sprite, le centre du plateau ainsi que les coordonnées dans notre repère, il est possible d'afficher les tuiles au bon endroit.
+
+##### Mise à jour de l'affichage
+
+L'affichage est mis à jour avec les valeurs du state lors de l'appel de la fonction **state.update()**. Cette fonction va chercher les données (sous forme de map de string) depuis le renderAPI, puis va décomposer les messages reçus pour les envoyer à chaque bloc d'affichage. On remarquera que seules les données du joueur concerné sont transmises par ces messages (mis à part les NT), ce qui veut dire que le jeu est sécurisé.
+
+Chaque bloc va ensuite interpréter différement leurs données. Par exemple, le menu des ressources en bas va simplement changer le texte en fonction du nombre de resources du joueur. Le plateau lui va récupérer les coordonnées de chaque tuile (si il y en a une nouvelle) et les ajouter à la liste des tuiles à afficher. Les paramètres à gauche eux vont modifier la région de la texture qui est affichée en fonction des paramètres, pour créer cet effet de jauge qui se remplit.
+
+
+## Images utilisées :
 
 ### Fond d'écran :
 
 Cette image est celle qui sert de fond d'écran pour notre jeu.
 
 <img src="src/resources/background.png" alt="Background" width="600"/>
+
+Sur ce fond d'écran viennent se rajouter ceux des menus :
+
+<img src="src/resources/scorePlayerFrameImage.png" alt="Fond pour les scores des joueurs" width="200"/>
+<img src="src/resources/stdProjectFrameImage.png" alt="Projets standards" width="200"/>
+<img src="src/resources/blueCardsbutton.png" alt="Bouton carte bleue" width="150"/>
+<img src="src/resources/menuFrame.png" alt="Cadre orange" width="500"/>
+
+
+
 
 ### Badges :
 
@@ -221,19 +308,31 @@ Les images suivantes représentes les différentes tuiles pouvant être placées
 <img src="src/resources/city.png" alt="Cité" width="60"/>
 <img src="src/resources/forest.png" alt="Forêt" width="60"/>
 <img src="src/resources/ocean.png" alt="Océan" width="60"/>
-<img src="src/resources/special.png" alt="Tuile spéciale" width="60"/>
+<img src="src/resources/commercial.png" alt="Centre commercial" width="60"/>
+<img src="src/resources/ecological.png" alt="Zone écologique" width="60"/>
+<img src="src/resources/industrial.png" alt="Centre industriel" width="60"/>
+<img src="src/resources/lava.png" alt="Volcan" width="60"/>
+<img src="src/resources/mining.png" alt="Mine" width="60"/>
+<img src="src/resources/mohole.png" alt="Zone de mohole" width="60"/>
+<img src="src/resources/natural.png" alt="Réserve naturelle" width="60"/>
+<img src="src/resources/nuclear.png" alt="Zone nucléaire" width="60"/>
+<img src="src/resources/restricted.png" alt="Zone restreinte" width="60"/>
 
-Les images suivantes sont placées sur la tuile marron pour former une tuile spéciale :
+Lorsque ces tuiles sont posées par un joueur on ajoute un cadre de la couleur du joueur autour d'elles. Les cadres pouvant être utilisés sont les suivants :
 
-<img src="src/resources/commercial_district.png" alt="District commercial" width="80"/>
-<img src="src/resources/ecological_zone.png" alt="Zone écologique" width="80"/>
-<img src="src/resources/industrial_center.png" alt="Centre industriel" width="80"/>
-<img src="src/resources/lava_flows.png" alt="Volcan" width="80"/>
-<img src="src/resources/mining_area.png" alt="Mine" width="80"/>
-<img src="src/resources/mohole_area.png" alt="Zone de mohol" width="80"/>
-<img src="src/resources/natural_preserve.png" alt="Réserve naturelle" width="80"/>
-<img src="src/resources/nuclear_zone.png" alt="Zone nucléaire" width="80"/>
-<img src="src/resources/restricted_area.png" alt="Zone interdite" width="80"/>
+<img src="src/resources/blueHexagon.png" alt="Cadre bleu" width="60"/>
+<img src="src/resources/redHexagon.png" alt="Cadre rouge" width="60"/>
+<img src="src/resources/cyanHexagon.png" alt="Cadre cyan" width="60"/>
+<img src="src/resources/orangeHexagon.png" alt="Cadre orange" width="60"/>
+<img src="src/resources/darkgreenHexagon.png" alt="Cadre vert foncé" width="60"/>
+<img src="src/resources/darkblueHexagon.png" alt="Cadre bleu foncé" width="60"/>
+<img src="src/resources/greenHexagon.png" alt="Cadre vert" width="60"/>
+<img src="src/resources/darkredHexagon.png" alt="Cadre rouge foncé" width="60"/>
+<img src="src/resources/darkyellowHexagon.png" alt="Cadre jaune foncé" width="60"/>
+<img src="src/resources/pinkHexagon.png" alt="Cadre rose" width="60"/>
+<img src="src/resources/yellowHexagon.png" alt="Cadre bleu" width="60"/>
+
+
 
 
 ### Cartes et paramètres globaux :
@@ -241,6 +340,12 @@ Les images suivantes sont placées sur la tuile marron pour former une tuile sp�
 L'image suivante représente le dos d'une carte :
 
 <img src="src/resources/card.png" alt="Carte" width="150"/>
+
+
+Voici un exemple de carte pouvant être utilisées:
+
+<img src="src/resources/cardPlant.png" alt="Exemple de carte" width="150"/>
+
 
 L'image suivante est utilisée comme fond sur lequel est inscrit les points de victoire d'une carte :
 
@@ -251,6 +356,11 @@ Les images suivantes sont celles représentant les paramètres globaux oxygène 
 <img src="src/resources/oxygen.png" alt="Oxygène" width="100"/>
 <img src="src/resources/temperature.png" alt="Température" width="30"/>
 
+On ajoute également une jauge pour la température et pour l'oxygène grâce aux images suivantes :
+
+<img src="src/resources/frameTempOxy.png" alt="Fond pour les jauges" width="50"/>
+<img src="src/resources/oxyFill.png" alt="Jauge Oxygène" width="40"/>
+<img src="src/resources/tempFill.png" alt="Jauge température" width="40"/>
 
 
 

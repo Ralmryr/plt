@@ -19,6 +19,8 @@ Board::Board() {
         if(y<=0) joe--;
         if(y>0) mama--;
         for (int x = joe; x <= mama; x++) {
+            // 1 chance out of 3 to generate a Tile
+            if(rand()%3 == 0) continue;
             auto randTileType = rand()%3+1;
             auto randPlayer = rand()%5;
             Tile newTile = Tile({x, y}, Type(randTileType));

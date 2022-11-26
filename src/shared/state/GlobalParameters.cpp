@@ -10,7 +10,7 @@ using namespace state;
 GlobalParameters::GlobalParameters() {
     this->temp = 6;
     this->numberOcean = 4;
-    this->oxygen = 14;
+    this->oxygen = 7;
 }
 
 GlobalParameters::~GlobalParameters() {

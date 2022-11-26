@@ -17,6 +17,12 @@ PlayerScoreDisplay::PlayerScoreDisplay(){
     this->listComponents.push_back(this->frameImage);
     this->listComponents.push_back(this->titleText);
 
+    sf::Color arrayColors[5] = {sf::Color::Blue,
+                                sf::Color::Green,
+                                sf::Color(255, 0, 220),
+                                sf::Color::Red,
+                                sf::Color(200, 125, 0)};
+
     for(int i = 0; i < 5; i++) {
         // Defines the position of each element
         sf::Vector2f posPlayerName = {15, float(50 + 70*i)};
@@ -24,6 +30,7 @@ PlayerScoreDisplay::PlayerScoreDisplay(){
         sf::Vector2f posPlayerCompany = {40, float(80 + 70*i)};
         // Creates each text and add them to its sorresponding list
         this->listPlayerText.push_back(make_shared<Text>("Joueur " + to_string(i+1), posPlayerName));
+        listPlayerText[i]->setColor(arrayColors[i]);
         this->listScorePlayer.push_back(make_shared<Text>(to_string(i*100), posPlayerScore));
         this->listCompanyText.push_back(make_shared<Text>("Company : None", posPlayerCompany));
         this->listCompanyText.back()->setSizeText(20);

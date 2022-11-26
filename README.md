@@ -178,25 +178,70 @@ Dans le diagramme de classes du state, nous avons défini les différents objets
 1. **Player :** Le joueur ainsi que les ressources qu'il possède et les cartes qu'il a en main.
 2.  **GlobalParameters :** Les paramètres globaux qui doivent atteindre leurs objectifs pour finir la partie.
 3.   **Board :** Les tuiles placées et les joueurs les ayants placés.
-4.    **State :** Regroupe les précédentes données.
+4.    **State :** Regroupe les précédentes données. Il s'agit de la classe qui va instancier toutes les autres classes du state.
 5.    **RenderAPI :** Communique les informations du state au Render pour afficher ce qui est nécessaire.
+
+Cette dernière classe, **RenderAPI** est un peu particulière. En effet, elle est directement reliée à la scene du render, et elle propose une interface de données pour que la scene puisse les afficher en temps réel. Chaque classe du state possède une fonction **map<string, string> serializeUiData()** qui va récupérer ses données, les transformer en map de string puis les retourner au lanceur de la fonction. Cela permet au RenderAPI de pouvoir mettre à jour ses données grâce à un simple appel de cette fonction.
+
+Les données sont sous la forme suivante :
+
+- Player : [   "resource i" : "amount", idCardBoard i" : "id", "badge i" : "badge, amount", idCardHand i" : "id" ]
+- Board : [ "x, y" : "type, idOwner" ]
+- GlobalParameters : [    "Oxygen" : "amount" , "Temperature" : "temperature", "NumberOceans" : "numberOceans" ]
+
+Cette API propose alors 4 fonctions pour permettre au render de mettre à jour l'affichage :
+- **providePlayerData**
+- **provideBoardData**
+- **provideGlobalParametersData**
+- **provideScoreData**
 
 ### Render :
 
+##### Résumé :
+
 Le render contient toutes les classes nécessaire à l'affichage.
-1. **Text :** Le texte que l'on souhaite afficher.
-2. **Image :** Les images à afficher.
-3. **Button :** Les boutons qui ont un aspect visuel mais sur lesquels on peut cliquer.
-4. **TexturePool :** Permet de réutiliser une texture par plusieurs sprites. Cela permet d'optimiser en ne générant pas plusieurs fois une même texture.
+1. **Text :** Composant de base contenant un texte.
+2. **Image :** Composant de base contenant un sprite et une texture.
+3. **Button :** Composant de base contenant une image et une zone cliquable.
+4. **TexturePool :** Interface permettant de n'instancier qu'une seule fois les textures. Tous les sprites utilisants la même texture pointent vers la même.
 5. **StdProjectDisplay :** Regroupe les éléments pour le menu des projets standards.
 6.  **PopupCard :** Une fenêtre qui contient des cartes. Elle s'affiche par dessus le plateau.
 7.   **PopupBadge :** Une fenêtre listant le nombre de badges possédés.
-8.   **PlayerScoreDisplay :** Les niveaux de terraformations de chacun des joueurs et la compagnie auquelle ils appartiennent.
-9.   **BoardDisplay :** Le plateau sur de jeu et les tuiles placées.
-10.   **MenuDisplay :** Le menu avec les ressources, les cartes en mains, les badges possédées et le nombre de point de victoire du joueur.
-11.   **Scene :** Regroupe les différentes classes précédentes et permet d'afficher tout les éléments avec une seule méthode. Elle communique également avec le state afin d'envoyer les informations aux différentes classes.
+8.   **PlayerScoreDisplay :** Les niveaux de terraformations de chacun des joueurs et la compagnie à laquelle ils appartiennent.
+9.   **BoardDisplay :** Le plateau de jeu et les tuiles placées.
+10.   **MenuDisplay :** Le menu avec les ressources, les cartes en mains, les badges possédées et le nombre de point de victoire du joueur en cours.
+11.   **Scene :** Regroupe les différentes classes précédentes et permet d'afficher tout les éléments avec une seule méthode. Elle communique également avec le state afin de recevoir les informations en temps réel.
  
-Nous avons également ajouté une méthode afin d'actualiser l'affichage lorsque le state change.
+##### Architecture :
+Notre architecture ici repose sur le principe de composition : nous créons des éléments de base, ici **Texte**, **Image** et **Button** qui dérivent de **sf::Drawable** pour autoriser la syntaxe **window.draw(Image)** qui est très pratique et très logique, à condition d'override la fonction **draw**.
+
+##### Textures :
+Cependant, nous nous sommes vites aperçus que notre jeu consommait beaucoup de mémoire lorsque beaucoup d'éléments étaient présents à l'écran. C'est parce que pour chaque Image, même si elles utilisaient la même texture, nous la rechargions en mémoire.
+Nous avons donc crée une classe **TexturePool** par laquelle passe toute instanciation de texture. Cette dernière garde une map dont la clé est le chemin vers la ressource, et la valeur est un pointeur vers cette ressource. Si on demande une texture qui a déjà été créée, alors celui-ci retourne un pointeur vers la texture déjà existante. Si elle n'existe pas, alors elle est chargée et ajoutée à la map.
+
+##### Liste des composants :
+Nous avons ensuite décidé de créer une classe pour chaque "bloc" d'éléments présents sur l'écran, chacun obéissant à leur propre logique. Ils sont donc tous composés de **shared_ptr** vers des composants de base. Ces **shared_ptr** ont 2 intêrets :
+- Il est maintenant possible de les stocker dans une grande liste que nous avons nommé **listComponents** qui est en réalité un **vector\<shared_ptr\<sf::Drawable\>\>**. Nous avons donc *downcast* les composants de base en drawable, ce qui permet d'avoir accès à une fonction **draw** extrêmement pratique et propre :
+  ```C++
+	for(const auto& drawable : this->listComponents){
+		window.draw(*drawable);
+	}
+  ```
+- Comme les éléments de **listComponents** sont directement rattachés au composant via un shared_ptr, lorsqu'on agit directement sur le composant, l'affichage est automatiquement mis à jour.
+
+##### Affichage des tuiles :
+On remarque très vite uen chose atypique par rapport au plateau : il est composé de tuiles hexagonales. Il est donc difficile de se repérer avec les coordonnées classiques cartésiennes. Pour résoudre ce problème, nous avons tout simplement défini notre propre repère et nos propres coordonnées :
+
+<img src="rapport/background.png" alt="Background" width="600"/>
+
+Nous avons l'axe des abscisses classique mais l'axe des ordonnées est en biais. Quelques coordonnées sont affichées pour mieux saisir le fonctionnement.
+Ensuite, en utilisant la taille d'un sprite, le centre du plateau ainsi que les coordonnées dans notre repère, il est possible d'afficher les tuiles au bon endroit.
+
+##### Mise à jour de l'affichage
+
+L'affichage est mis à jour avec les valeurs du state lors de l'appel de la fonction **state.update()**. Cette fonction va chercher les données (sous forme de map de string) depuis le renderAPI, puis va décomposer les messages reçus pour les envoyer à chaque bloc d'affichage. On remarquera que seules les données du joueur concerné sont transmises par ces messages (mis à part les NT), ce qui veut dire que le jeu est sécurisé.
+
+Chaque bloc va ensuite interpréter différement leurs données. Par exemple, le menu des ressources en bas va simplement changer le texte en fonction du nombre de resources du joueur. Le plateau lui va récupérer les coordonnées de chaque tuile (si il y en a une nouvelle) et les ajouter à la liste des tuiles à afficher. Les paramètres à gauche eux vont modifier la région de la texture qui est affichée en fonction des paramètres, pour créer cet effet de jauge qui se remplit.
 
 
 ## Images utilisées :

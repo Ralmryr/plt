@@ -47,6 +47,8 @@ void RenderAPI::hookComponents(std::vector<std::shared_ptr<Player>> pPlayerList,
     this->pGlobalParameters = pGlobalParameters;
 }
 
+/* [    "idPlayer" : "NT"   ]
+*/
 unordered_map<std::string, std::string> RenderAPI::provideScoreData() {
     unordered_map<string, string> uiData;
     int idPlayer = 0;

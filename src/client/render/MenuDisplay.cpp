@@ -42,7 +42,7 @@ MenuDisplay :: MenuDisplay (){
 
     ClickableArea BlueCardClick = ClickableArea();
     BlueCardClick.setPosition(vBlueCard);
-    this->blueCardButton = make_shared<Button>("blue.png",BlueCardClick,vBlueCard);
+    this->blueCardButton = make_shared<Button>("blueCardsbutton.png",BlueCardClick,vBlueCard);
     this->blueCardButton->setSize(sizeBlueCardButton);
 
     ClickableArea BadgeClick = ClickableArea();

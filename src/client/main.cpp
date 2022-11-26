@@ -19,7 +19,9 @@ int main(int argc,char* argv[])
     window.setFramerateLimit(60);
 
     // Initialize scene
+    cout << "Enter scene constructor" << endl;
     Scene scene = Scene();
+    cout << "Exti scene constructor " << endl;
     // Initialize state
     State state = State();
     // Creates a bridge between the ui and the state
@@ -52,9 +54,10 @@ int main(int argc,char* argv[])
             }
 
         }
-
-        window.clear(sf::Color::Black);
-        //scene.update();
+        scene.update();
+        if(sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
+            scene.setScene(CARDS_HAND_VIEW);
+        }
         scene.draw(window);
 
         // Displays mouse position and FPS
@@ -69,6 +72,8 @@ int main(int argc,char* argv[])
         clock.restart();
         window.display();
     }
+
+
 
     return 0;
 }

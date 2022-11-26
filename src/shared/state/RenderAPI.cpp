@@ -2,16 +2,16 @@
 // Created by cleme on 21/11/22.
 //
 
-#include "UiDataProvider.h"
+#include "RenderAPI.h"
 
 using namespace std;
 using namespace state;
 
-UiDataProvider::UiDataProvider() {
+RenderAPI::RenderAPI() {
 
 }
 
-UiDataProvider::~UiDataProvider() {
+RenderAPI::~RenderAPI() {
 
 }
 
@@ -21,14 +21,14 @@ UiDataProvider::~UiDataProvider() {
  *      "badge i" : "badge, amount"
  *      "idCardHand i" : "id" ]
  */
-std::unordered_map<std::string, std::string> UiDataProvider::providePlayerData(int idPlayer) {
+std::unordered_map<std::string, std::string> RenderAPI::providePlayerData(int idPlayer) {
     return pPlayerList[idPlayer]->serializeUiData();
 }
 
 /*
  * [ "x, y" : "type, idOwner" ]
  */
-std::unordered_map<std::string, std::string> UiDataProvider::provideBoardData() {
+std::unordered_map<std::string, std::string> RenderAPI::provideBoardData() {
     return pBoard->serializeUiData();
 }
 
@@ -36,18 +36,18 @@ std::unordered_map<std::string, std::string> UiDataProvider::provideBoardData() 
         "Temperature" : "temperature"
         "NumberOceans" : "numberOceans" ]
  */
-std::unordered_map<std::string, std::string> UiDataProvider::provideGlobalParameters() {
+std::unordered_map<std::string, std::string> RenderAPI::provideGlobalParameters() {
     return pGlobalParameters->serializeUiData();
 }
 
-void UiDataProvider::hookComponents(std::vector<std::shared_ptr<Player>> pPlayerList, std::shared_ptr<Board> pBoard,
-                                    std::shared_ptr<GlobalParameters> pGlobalParameters) {
+void RenderAPI::hookComponents(std::vector<std::shared_ptr<Player>> pPlayerList, std::shared_ptr<Board> pBoard,
+                               std::shared_ptr<GlobalParameters> pGlobalParameters) {
     this->pPlayerList = pPlayerList;
     this->pBoard = pBoard;
     this->pGlobalParameters = pGlobalParameters;
 }
 
-unordered_map<std::string, std::string> UiDataProvider::provideScoreData() {
+unordered_map<std::string, std::string> RenderAPI::provideScoreData() {
     unordered_map<string, string> uiData;
     int idPlayer = 0;
     for(const auto& pPlayer : pPlayerList) {

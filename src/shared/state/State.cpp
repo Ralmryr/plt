@@ -11,7 +11,7 @@ State::State() {
     }
     board = make_shared<Board>();
     globalParameters = make_shared<GlobalParameters>();
-    uiDataProvider = make_shared<UiDataProvider>();
+    uiDataProvider = make_shared<RenderAPI>();
 
     // Creates the link between the data provider and the game elements
     uiDataProvider->hookComponents(listPlayers, board, globalParameters);
@@ -21,6 +21,6 @@ State::~State() {
 
 }
 
-const std::shared_ptr<UiDataProvider> &State::getUiDataProvider() const {
+const std::shared_ptr<RenderAPI> &State::getUiDataProvider() const {
     return this->uiDataProvider;
 }

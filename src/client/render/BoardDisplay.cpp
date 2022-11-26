@@ -7,7 +7,7 @@ using namespace std;
 
 BoardDisplay::BoardDisplay(){
     //Initializing images
-    this->boardImage = make_shared<Image>("backgroundNew.png", sf::Vector2f(0,0));
+    this->boardImage = make_shared<Image>("background.png", sf::Vector2f(0,0));
 
     //Adding the components to the list
     this->listComponents.push_back(boardImage);
@@ -16,6 +16,7 @@ BoardDisplay::BoardDisplay(){
 BoardDisplay::~BoardDisplay()= default;
 
 void BoardDisplay::update(const unordered_map<string, string> &data){
+
     // Early exit (clause guard) if there is no new tile
     if(data.size() == listTilesPlaced.size()) return;
 
@@ -25,15 +26,13 @@ void BoardDisplay::update(const unordered_map<string, string> &data){
 
         // Else that means the tile has not been placed yet, so we unpack its data
         string type = dataEl.second.substr(0, dataEl.second.find(","));
-        string player = dataEl.second.substr(dataEl.second.find(",")+1);
+        string idPlayer = dataEl.second.substr(dataEl.second.find(",")+1);
 
         // Coordinates of tile in board reference
         int posX = stoi(dataEl.first.substr(0, dataEl.first.find(",")));
         int posY = stoi(dataEl.first.substr(dataEl.first.find(",")+1));
 
         // Everything we will need to calculate the final position
-        sf::Vector2f spriteSize = {60, 69};
-        sf::Vector2f centerBoard = {960, 420};
         string filename;
 
         switch(stoi(type)){
@@ -75,12 +74,23 @@ void BoardDisplay::update(const unordered_map<string, string> &data){
                 break;
         }
 
-        float x = centerBoard.x + (float(posY) - 1) * spriteSize.x/2;
-        float y = centerBoard.y  - (2 * float(posX)+ 1) * spriteSize.y/2;
+        sf::Vector2f spriteSize = {60, 69};
+        sf::Vector2f centerBoard = {960, 423};
 
-        auto newImage = make_unique<Image>(filename, sf::Vector2f(x, y));
-        newImage->setSize(sf::Vector2u(60, 69));
-        this->listComponents.push_back(std::move(newImage));
+        // Operation to convert { i, i } into coordinates on screen
+        float x = centerBoard.x + spriteSize.x*(float(posY) + 2*float(posX) - 1)/2 + float(posX)*13 + float(posY)*7;
+        float y = centerBoard.y - spriteSize.y*(1 + 2*float(posY))/2 + float(posY)*2;
+
+        auto newTileImage = make_unique<Image>(filename, sf::Vector2f(x, y));
+        newTileImage->setSize(sf::Vector2u(60, 69));
+
+        string arrayColors[5] = {"blue", "darkgreen", "pink", "red", "orange"};
+        filename = arrayColors[stoi(idPlayer)] + "Hexagon.png";
+        auto newHexagonImage = make_unique<Image>(filename, sf::Vector2f(x-3, y-3));
+        newHexagonImage->setSize(sf::Vector2u(65, 74));
+
+        this->listComponents.push_back(std::move(newTileImage));
+        this->listComponents.push_back(std::move(newHexagonImage));
         listTilesPlaced.insert(dataEl.first);
     }
 }

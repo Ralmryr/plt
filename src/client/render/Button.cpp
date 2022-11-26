@@ -10,14 +10,12 @@ Button::Button() {
 }
 
 Button::Button(std::string fileName, sf::Vector2f position) {
-    string path="../src/resources/"+fileName;
-    if (!this->texture.loadFromFile(path)){
-        cout<<"Error: font file not found"<<endl;
-    }
-    this->texture.setSmooth(true);
 
-    //Define sprite
-    this->sprite.setTexture(this->texture);
+    //Setting texture to the sprite
+    auto texturePtr = texturePool.getTexturePtr(std::move(fileName));
+    if(texturePtr != nullptr)
+        this->sprite.setTexture(*texturePtr);
+    this->sprite.setPosition(this->position);
 
     //Set position
     this->position = position;

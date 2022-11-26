@@ -10,25 +10,25 @@ using vec2u = sf::Vector2u;
 
 GlobalParametersDisplay::GlobalParametersDisplay(){
 
-    subdivisionOxy = 35;
-    subdivisionTemp = 13;
+    subdivisionOxy = 38;
+    subdivisionTemp = 14;
 
     vec2f baseCoords = {1500, 70};
 
-    unsigned int frameWidth = 60;
+    unsigned int frameWidth = 76;
     unsigned int frameHeight = 548;
 
     // Temperature bar
     vec2f vTempFrame = baseCoords + vec2f(100, 60);
-    vec2f vTempLogo = {vTempFrame.x + 10, vTempFrame.y + frameHeight - 125};
+    vec2f vTempLogo = {vTempFrame.x + 20, vTempFrame.y + frameHeight - 125};
     vec2u sTempFrame = {frameWidth, frameHeight};
-    vec2u sTempLogo = {frameWidth - 24, 100};
+    vec2u sTempLogo = {frameWidth - 40, 100};
 
     // Oxygen bar
     vec2f vOxyFrame = baseCoords + vec2f(240, 60);
-    vec2f vOxyLogo = {vOxyFrame.x + 5, vOxyFrame.y + frameHeight - 100};
+    vec2f vOxyLogo = {vOxyFrame.x + 15, vOxyFrame.y + frameHeight - 90};
     vec2u sOxyFrame = {frameWidth, frameHeight};
-    vec2u sOxyLogo = {frameWidth - 10, frameWidth - 10};
+    vec2u sOxyLogo = {frameWidth - 30, frameWidth - 30};
 
     // Ocean logo
     vec2f vOceanLogo = baseCoords + vec2f(140, 600);
@@ -36,11 +36,11 @@ GlobalParametersDisplay::GlobalParametersDisplay(){
     // Text
     vec2f vTempMin = {vTempFrame.x - 70, vTempFrame.y + frameHeight - 30};
     vec2f vTempMax = {vTempFrame.x - 55, vTempFrame.y};
-    vec2f vTempCurrent = {vTempFrame.x, vTempFrame.y + 30};
+    vec2f vTempCurrent = {vTempFrame.x + 10, vTempFrame.y + 30};
     vec2f vOxyMin = {vOxyFrame.x - 50, vOxyFrame.y + frameHeight - 30};
     vec2f vOxyMax = {vOxyFrame.x - 55, vOxyFrame.y};
-    vec2f vOxyCurrent = {vOxyFrame.x + 10, vOxyFrame.y + 30};
-    vec2f vOceanCurrent = {vOceanLogo.x + 30, vOceanLogo.y + 30};
+    vec2f vOxyCurrent = {vOxyFrame.x + 15, vOxyFrame.y + 30};
+    vec2f vOceanCurrent = {vOceanLogo.x + 30, vOceanLogo.y + 50};
 
     //Initializing image
     tempFrameImage = make_shared<Image>("frameTempOxy.png", vTempFrame, sTempFrame);
@@ -94,13 +94,13 @@ void GlobalParametersDisplay::update(const unordered_map<string,string>& data){
 
     //Setting new sprite size for the fillers
 
-    vec2f baseTempFill = {1608, 140};
+    vec2f baseTempFill = {1608, 138};
     auto tempFillSize = tempFillImage->getSize();
 
     tempFillImage->setRect(sf::IntRect(0, abs(MAX_TEMPERATURE - temp)*subdivisionTemp, int(tempFillSize.x), (temp + 30) * subdivisionTemp));
     tempFillImage->setPosition(sf::Vector2f(baseTempFill.x, baseTempFill.y + abs(MAX_TEMPERATURE - temp)*subdivisionTemp));
 
-    vec2f baseOxyFill = {1748, 140};
+    vec2f baseOxyFill = {1748, 138};
     auto oxyFillSize = oxyFillImage->getSize();
 
     oxyFillImage->setRect(sf::IntRect(0, (MAX_OXYGEN - oxy)*subdivisionOxy, int(oxyFillSize.x), oxy * subdivisionOxy));

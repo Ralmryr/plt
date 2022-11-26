@@ -43,12 +43,6 @@ PlayerScoreDisplay::~PlayerScoreDisplay() {
 
 void PlayerScoreDisplay::update(const std::unordered_map<std::string, std::string>& data){
 
-//    cout << "----------- NEW DATA -------------" << endl;
-//
-//    for (const auto &dataEl: data) {
-//        cout << "{ First : " << dataEl.first << "; Second : " << dataEl.second << " }" << endl;
-//    }
-
     // Updates the score for each player
     for (const auto &dataEl: data) {
         int idPlayer = stoi(dataEl.first);

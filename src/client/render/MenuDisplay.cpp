@@ -77,6 +77,10 @@ MenuDisplay :: MenuDisplay (){
         listResourceAmount.push_back(make_shared<Text>("100", textPos));
         listComponents.push_back(listResourceAmount.back());
     }
+
+    listButtons.push_back(cardButton);
+    listButtons.push_back(blueCardButton);
+    listButtons.push_back(badgeButton);
 }
 
 MenuDisplay::~MenuDisplay() = default;

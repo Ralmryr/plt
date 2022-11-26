@@ -167,13 +167,55 @@ Le joueur qui joue en premier change à chaque génération.
 
 3. **Phase de production :** Tous les joueurs réalisent cette phase simultanément. Premièrement, toute l’énergie est convertie en chaleur (déplacez tous les cubes Ressource de la zone Énergie à la zone Chaleur de votre plateau individuel). Ensuite, tous les joueurs reçoivent leurs nouvelles ressources. Les joueurs reçoivent des M€ pour un total équivalent à la somme de leur Niveau de Terraformation et de leur production de M€ (qui peut être négative !). Ils reçoivent ensuite toutes les ressources qu’Us produisent, selon les niveaux indiqués par leur plateau individuel. Toutes les ressources produites sont placées dans les cadres correspondants. 
 
-## Ressources :
+## Architecture et classes utilisées :
+
+Certaines constantes utilisées dans notre programme sont définies dans le fichier constants.hpp.
+
+### State :
+
+Dans le diagramme de classes du state, nous avons défini les différents objets permettant de définir l'état du jeu à un instant t.
+
+1. **Player :** Le joueur ainsi que les ressources qu'il possède et les cartes qu'il a en main.
+2.  **GlobalParameters :** Les paramètres globaux qui doivent atteindre leurs objectifs pour finir la partie.
+3.   **Board :** Les tuiles placées et les joueurs les ayants placés.
+4.    **State :** Regroupe les précédentes données.
+5.    **RenderAPI :** Communique les informations du state au Render pour afficher ce qui est nécessaire.
+
+### Render :
+
+Le render contient toutes les classes nécessaire à l'affichage.
+1. **Text :** Le texte que l'on souhaite afficher.
+2. **Image :** Les images à afficher.
+3. **Button :** Les boutons qui ont un aspect visuel mais sur lesquels on peut cliquer.
+4. **TexturePool :** Permet de réutiliser une texture par plusieurs sprites. Cela permet d'optimiser en ne générant pas plusieurs fois une même texture.
+5. **StdProjectDisplay :** Regroupe les éléments pour le menu des projets standards.
+6.  **PopupCard :** Une fenêtre qui contient des cartes. Elle s'affiche par dessus le plateau.
+7.   **PopupBadge :** Une fenêtre listant le nombre de badges possédés.
+8.   **PlayerScoreDisplay :** Les niveaux de terraformations de chacun des joueurs et la compagnie auquelle ils appartiennent.
+9.   **BoardDisplay :** Le plateau sur de jeu et les tuiles placées.
+10.   **MenuDisplay :** Le menu avec les ressources, les cartes en mains, les badges possédées et le nombre de point de victoire du joueur.
+11.   **Scene :** Regroupe les différentes classes précédentes et permet d'afficher tout les éléments avec une seule méthode. Elle communique également avec le state afin d'envoyer les informations aux différentes classes.
+ 
+Nous avons également ajouté une méthode afin d'actualiser l'affichage
+
+
+## Images utilisées :
 
 ### Fond d'écran :
 
 Cette image est celle qui sert de fond d'écran pour notre jeu.
 
 <img src="src/resources/background.png" alt="Background" width="600"/>
+
+Sur ce fond d'écran viennent se rajouter ceux des menus :
+
+<img src="src/resources/scorePlayerFrameImage.png" alt="Fond pour les scores des joueurs" width="200"/>
+<img src="src/resources/stdProjectFrameImage.png" alt="Projets standards" width="200"/>
+<img src="src/resources/blueCardsbutton.png" alt="Bouton carte bleue" width="150"/>
+<img src="src/resources/menuFrame.png" alt="Cadre orange" width="500"/>
+
+
+
 
 ### Badges :
 
@@ -207,7 +249,7 @@ Ces images sont utilisées pour illustrer les ressources et/ou leurs productions
 <img src="src/resources/production.png" alt="Production" width="60"/>
 <img src="src/resources/steel.png" alt="Acier" width="60"/>
 <img src="src/resources/titanium.png" alt="Titane" width="60"/>
-<img src="src/resources/tr.png" alt="Niveau de terraformation" width="80"/>
+<img src="src/resources/nt.png" alt="Niveau de terraformation" width="80"/>
 
 ### Tuiles :
 
@@ -221,19 +263,31 @@ Les images suivantes représentes les différentes tuiles pouvant être placées
 <img src="src/resources/city.png" alt="Cité" width="60"/>
 <img src="src/resources/forest.png" alt="Forêt" width="60"/>
 <img src="src/resources/ocean.png" alt="Océan" width="60"/>
-<img src="src/resources/special.png" alt="Tuile spéciale" width="60"/>
+<img src="src/resources/commercial.png" alt="Centre commercial" width="60"/>
+<img src="src/resources/ecological.png" alt="Zone écologique" width="60"/>
+<img src="src/resources/industrial.png" alt="Centre industriel" width="60"/>
+<img src="src/resources/lava.png" alt="Volcan" width="60"/>
+<img src="src/resources/mining.png" alt="Mine" width="60"/>
+<img src="src/resources/mohole.png" alt="Zone de mohole" width="60"/>
+<img src="src/resources/natural.png" alt="Réserve naturelle" width="60"/>
+<img src="src/resources/nuclear.png" alt="Zone nucléaire" width="60"/>
+<img src="src/resources/restricted.png" alt="Zone restreinte" width="60"/>
 
-Les images suivantes sont placées sur la tuile marron pour former une tuile spéciale :
+Lorsque ces tuiles sont posées par un joueur on ajoute un cadre de la couleur du joueur autour d'elles. Les cadres pouvant être utilisés sont les suivants :
 
-<img src="src/resources/commercial_district.png" alt="District commercial" width="80"/>
-<img src="src/resources/ecological_zone.png" alt="Zone écologique" width="80"/>
-<img src="src/resources/industrial_center.png" alt="Centre industriel" width="80"/>
-<img src="src/resources/lava_flows.png" alt="Volcan" width="80"/>
-<img src="src/resources/mining_area.png" alt="Mine" width="80"/>
-<img src="src/resources/mohole_area.png" alt="Zone de mohol" width="80"/>
-<img src="src/resources/natural_preserve.png" alt="Réserve naturelle" width="80"/>
-<img src="src/resources/nuclear_zone.png" alt="Zone nucléaire" width="80"/>
-<img src="src/resources/restricted_area.png" alt="Zone interdite" width="80"/>
+<img src="src/resources/blueHexagon.png" alt="Cadre bleu" width="60"/>
+<img src="src/resources/redHexagon.png" alt="Cadre rouge" width="60"/>
+<img src="src/resources/cyanHexagon.png" alt="Cadre cyan" width="60"/>
+<img src="src/resources/orangeHexagon.png" alt="Cadre orange" width="60"/>
+<img src="src/resources/darkgreenHexagon.png" alt="Cadre vert foncé" width="60"/>
+<img src="src/resources/darkblueHexagon.png" alt="Cadre bleu foncé" width="60"/>
+<img src="src/resources/greenHexagon.png" alt="Cadre vert" width="60"/>
+<img src="src/resources/darkredHexagon.png" alt="Cadre rouge foncé" width="60"/>
+<img src="src/resources/darkyellowHexagon.png" alt="Cadre jaune foncé" width="60"/>
+<img src="src/resources/pinkHexagon.png" alt="Cadre rose" width="60"/>
+<img src="src/resources/yellowHexagon.png" alt="Cadre bleu" width="60"/>
+
+
 
 
 ### Cartes et paramètres globaux :
@@ -241,6 +295,12 @@ Les images suivantes sont placées sur la tuile marron pour former une tuile sp�
 L'image suivante représente le dos d'une carte :
 
 <img src="src/resources/card.png" alt="Carte" width="150"/>
+
+
+Voici un exemple de carte pouvant être utilisées:
+
+<img src="src/resources/cardPlant.png" alt="Exemple de carte" width="150"/>
+
 
 L'image suivante est utilisée comme fond sur lequel est inscrit les points de victoire d'une carte :
 
@@ -251,6 +311,11 @@ Les images suivantes sont celles représentant les paramètres globaux oxygène 
 <img src="src/resources/oxygen.png" alt="Oxygène" width="100"/>
 <img src="src/resources/temperature.png" alt="Température" width="30"/>
 
+On ajoute également une jauge pour la température et pour l'oxygène grâce aux images suivantes :
+
+<img src="src/resources/frameTempOxy.png" alt="Fond pour les jauges" width="50"/>
+<img src="src/resources/oxyFill.png" alt="Jauge Oxygène" width="40"/>
+<img src="src/resources/tempFill.png" alt="Jauge température" width="40"/>
 
 
 

@@ -12,45 +12,57 @@ StdProjectDisplay::StdProjectDisplay() {
 
     //discardButton
     sf::Vector2f posDiscardButton = {30, 460};
-    ClickableArea clickAreaDiscardButton=ClickableArea();
-    this->discardButton=make_shared<Button>("card.png", clickAreaDiscardButton,posDiscardButton);
+    this->discardButton=make_shared<Button>("card.png",posDiscardButton);
     this->discardButton->setScale(0.1f);
+    this->discardButton->updateClickableArea();
+    this->discardButton->setFunctionStr("Discard Cards STD");
     listComponents.push_back(discardButton);
+    listButtons.push_back(discardButton);
 
     //prodEnergyButton
     sf::Vector2f posProdEnergyButton = {25, 525};
-    ClickableArea clickAreaProdEnergyButton=ClickableArea();
-    this->prodEnergyButton=make_shared<Button>("megacredit.png", clickAreaProdEnergyButton,posProdEnergyButton);
+    this->prodEnergyButton=make_shared<Button>("megacredit.png",posProdEnergyButton);
     this->prodEnergyButton->setScale(0.09f);
+    this->prodEnergyButton->updateClickableArea();
+    this->prodEnergyButton->setFunctionStr("Increase Energy STD");
     listComponents.push_back(prodEnergyButton);
+    listButtons.push_back(prodEnergyButton);
 
     //temperatureButton
     sf::Vector2f posTemperatureButton = {25, 585};
-    ClickableArea clickAreaTemperatureButton=ClickableArea();
-    this->temperatureButton=make_shared<Button>("megacredit.png", clickAreaTemperatureButton,posTemperatureButton);
+    this->temperatureButton=make_shared<Button>("megacredit.png",posTemperatureButton);
     this->temperatureButton->setScale(0.09f);
+    this->temperatureButton->updateClickableArea();
+    this->temperatureButton->setFunctionStr("Increase Temperature STD");
     listComponents.push_back(temperatureButton);
+    listButtons.push_back(temperatureButton);
 
     //oceanButton
     sf::Vector2f posOceanButton = {25, 645};
-    ClickableArea clickAreaOceanButton=ClickableArea();
-    this->oceanButton=make_shared<Button>("megacredit.png", clickAreaOceanButton,posOceanButton);
+    this->oceanButton=make_shared<Button>("megacredit.png",posOceanButton);
     this->oceanButton->setScale(0.09f);
+    this->oceanButton->updateClickableArea();
+    this->oceanButton->setFunctionStr("Place Ocean STD");
     listComponents.push_back(oceanButton);
+    listButtons.push_back(oceanButton);
 
     //forestButton
     sf::Vector2f posForestButton = {25, 705};
-    ClickableArea clickAreaForestButton=ClickableArea();
-    this->forestButton= make_shared<Button>("megacredit.png", clickAreaForestButton,posForestButton);
+    this->forestButton= make_shared<Button>("megacredit.png",posForestButton);
     this->forestButton->setScale(0.09f);
+    this->forestButton->updateClickableArea();
+    this->forestButton->setFunctionStr("Place Forest STD");
     listComponents.push_back(forestButton);
+    listButtons.push_back(forestButton);
 
     //cityButton
     sf::Vector2f posCityButton = {25, 765};
-    ClickableArea clickAreaCityButton=ClickableArea();
-    this->cityButton=make_shared<Button>("megacredit.png", clickAreaCityButton,posCityButton);
+    this->cityButton=make_shared<Button>("megacredit.png",posCityButton);
     this->cityButton->setScale(0.09f);
+    this->cityButton->updateClickableArea();
+    this->cityButton->setFunctionStr("Place City STD");
     listComponents.push_back(cityButton);
+    listButtons.push_back(cityButton);
 
     string arrayCost[6] = {"X", "11", "14", "18", "23", "25"};
     for(int i = 0; i < 6; i++) {
@@ -69,4 +81,8 @@ void StdProjectDisplay::draw(sf::RenderWindow &window) {
 }
 
 void StdProjectDisplay::update(const std::unordered_map<std::string,std::string>& data) {
+}
+
+std::vector<std::shared_ptr<Button>> StdProjectDisplay::getListButtons() {
+    return this->listButtons;
 }

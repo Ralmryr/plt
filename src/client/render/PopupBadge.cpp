@@ -14,6 +14,8 @@ PopupBadge::PopupBadge() {
     this->badgesImage = make_shared<Image>("animal.png", vbadge);
     this->listComponents.push_back(frameImage);
     this->listComponents.push_back(closeButton);
+
+    this->listButtons.push_back(closeButton);
 }
 
 PopupBadge::~PopupBadge(){}

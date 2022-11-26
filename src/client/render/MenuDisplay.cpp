@@ -15,13 +15,9 @@ MenuDisplay :: MenuDisplay (){
     sf::Vector2f vCard = {900, 810};
     sf::Vector2f vBlueCard = {1225, 870};
     sf::Vector2f vBadge = {1475, 900};
-    sf::Vector2f vPoints;
 
     //define the size of all sprites
-    //sf::Vector2u sizeFrame = {1920, 230};
-    //sf::Vector2u sizeRessource;
     sf::Vector2u sizeBlueCardButton = {150, 200};
-    sf::Vector2u sizeBadgeButton;
 
     //define all texts positions
 
@@ -34,21 +30,22 @@ MenuDisplay :: MenuDisplay (){
     this->frameImage = make_shared<Image>("menuFrame.png",vframe);
 
     //define buttons
-
-    ClickableArea cardClick = ClickableArea();
-    cardClick.setPosition(vCard);
-    this->cardButton = make_shared<Button>("card.png",cardClick,vCard);
+    this->cardButton = make_shared<Button>("card.png",vCard);
     this->cardButton->setScale(0.55f);
+    this->cardButton->updateClickableArea();
+    this->cardButton->setFunctionStr("Open Cards Hand");
 
-    ClickableArea BlueCardClick = ClickableArea();
-    BlueCardClick.setPosition(vBlueCard);
-    this->blueCardButton = make_shared<Button>("blueCardsbutton.png",BlueCardClick,vBlueCard);
+
+    this->blueCardButton = make_shared<Button>("blueCardsbutton.png",vBlueCard);
     this->blueCardButton->setSize(sizeBlueCardButton);
+    this->blueCardButton->updateClickableArea();
+    this->blueCardButton->setFunctionStr("Open Cards Blue");
 
-    ClickableArea BadgeClick = ClickableArea();
-    BadgeClick.setPosition(vBadge);
-    this->badgeButton = make_shared<Button>("badge_wild.png",BadgeClick,vBadge);
+
+    this->badgeButton = make_shared<Button>("badge_wild.png",vBadge);
     this->badgeButton->setScale(1.2f);
+    this->badgeButton->updateClickableArea();
+    this->badgeButton->setFunctionStr("Open Badge Popup");
 
     //define all texts
 
@@ -100,8 +97,6 @@ void MenuDisplay::update(const std::unordered_map<std::string,std::string>& data
             listResourceAmount[(resIndex-1)/2]->setText(dataEl.second);
         }
     }
-
-
 }
 
 void MenuDisplay::draw (sf::RenderWindow& window){
@@ -109,6 +104,10 @@ void MenuDisplay::draw (sf::RenderWindow& window){
         window.draw(*component);
     }
 
+}
+
+std::vector<std::shared_ptr<Button>> MenuDisplay::getListButtons() {
+    return this->listButtons;
 }
 
 

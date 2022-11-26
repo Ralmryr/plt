@@ -8,7 +8,7 @@ using namespace std;
 
 // This technique prevents the double call of the constructor of each class
 render::Scene::Scene() : popupBlueCards(), popupHandCards(), playerScoreDisplay(), globalParametersDisplay(), boardDisplay(), menu(), stdProject(){
-    this->currentScene = BOARD_VIEW;
+    engineAPI = make_shared<EngineAPI>();
 }
 
 render::Scene::~Scene() {
@@ -16,11 +16,13 @@ render::Scene::~Scene() {
 }
 
 void render::Scene::draw(sf::RenderWindow& window) {
+    if (currentScene == CARDS_HAND_VIEW || currentScene == BOARD_VIEW) {
     boardDisplay.draw(window);
     globalParametersDisplay.draw(window);
     stdProject.draw(window);
     playerScoreDisplay.draw(window);
     menu.draw(window);
+    }
     if(currentScene == CARDS_HAND_VIEW) {
         popupHandCards.draw(window);
     }
@@ -79,4 +81,33 @@ void render::Scene::hookData(std::shared_ptr<state::RenderAPI> dataProvider) {
 
 void render::Scene::setScene(render::SceneID sceneID) {
     this->currentScene = sceneID;
+    this->update();
+
+    if(sceneID == BOARD_VIEW){
+        vector<shared_ptr<Button>> listButtons;
+        auto temp = menu.getListButtons();
+        listButtons.insert(listButtons.end(), temp.begin(), temp.end());
+        temp = stdProject.getListButtons();
+        listButtons.insert(listButtons.end(), temp.begin(), temp.end());
+        engineAPI->loadButtons(listButtons);
+    }
+
+    if(sceneID == CARDS_HAND_VIEW) {
+        auto listButtons = popupHandCards.getListButtons();
+        engineAPI->loadButtons(listButtons);
+    }
+}
+
+void render::Scene::print() {
+    cout << " USE COUNT : " << this->popupHandCards.closeButton.use_count() << endl;
+}
+
+void render::Scene::handleEvent(sf::Event event) {
+
+    if(event.type == sf::Event::MouseButtonPressed){
+        engineAPI->onClick(sf::Vector2f(event.mouseButton.x, event.mouseButton.y), *this);
+    }
+    else if(event.type == sf::Event::MouseMoved) {
+        engineAPI->onMouseMoved(sf::Vector2f(event.mouseMove.x, event.mouseMove.y));
+    }
 }

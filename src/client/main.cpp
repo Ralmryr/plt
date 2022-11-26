@@ -19,17 +19,13 @@ int main(int argc,char* argv[])
     window.setFramerateLimit(60);
 
     // Initialize scene
-    cout << "Enter scene constructor" << endl;
     Scene scene = Scene();
-    cout << "Exti scene constructor " << endl;
     // Initialize state
     State state = State();
     // Creates a bridge between the ui and the state
     scene.hookData(state.getUiDataProvider());
-    // Simply calls update function
-    scene.update();
 
-    bool cardsEnabled = false;
+    scene.setScene(render::BOARD_VIEW);
 
     sf::Clock clock;
     sf::Time elapsedTime;
@@ -42,32 +38,17 @@ int main(int argc,char* argv[])
     while (window.isOpen())
     {
         sf::Event event;
-        while (window.pollEvent(event))
-        {
-            switch(event.type)
-            {
+        while (window.pollEvent(event)) {
+            switch (event.type) {
                 case sf::Event::Closed:
                     window.close();
                     break;
                 case sf::Event::KeyPressed:
-                    if(event.key.code == sf::Keyboard::Q || event.key.code == sf::Keyboard::Escape)
+                    if (event.key.code == sf::Keyboard::Q || event.key.code == sf::Keyboard::Escape)
                         window.close();
                     break;
-
-                // Added a temporary function to display cards on click anywhere
-                case sf::Event::MouseButtonPressed:
-                    if(event.mouseButton.button == sf::Mouse::Button::Left) {
-                        if(cardsEnabled) {
-                            scene.setScene(BOARD_VIEW);
-                            cardsEnabled = false;
-                        }
-                        else {
-                            scene.setScene(render::CARDS_HAND_VIEW);
-                            cardsEnabled = true;
-                    }
-                    break;
-                }
             }
+            scene.handleEvent(event);
         }
         scene.update();
         scene.draw(window);
@@ -84,8 +65,5 @@ int main(int argc,char* argv[])
         clock.restart();
         window.display();
     }
-
-
-
     return 0;
 }

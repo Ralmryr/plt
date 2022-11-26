@@ -1,14 +1,16 @@
 #include "PopupCard.h"
-
+#include <iostream>
 using namespace std;
 
 render::PopupCard::PopupCard() {
-    sf::Vector2f vbackground;
+    sf::Vector2f vbackground = {0, 0};
     sf::Vector2f vcloseButton;
-    this->background = make_shared<Image>("background.png", vbackground);
+    this->background = make_shared<Image>("popupFrame.png", vbackground);
     this->closeButton = make_shared<Button>("closeButton.png", vcloseButton);
     this->listComponents.push_back(this->background);
     this->listComponents.push_back(this->closeButton);
+
+    this->cardSize = {};
 
 }
 
@@ -17,10 +19,28 @@ render::PopupCard::~PopupCard() {
 }
 
 void render::PopupCard::update(const std::unordered_map<std::string, std::string>& data) {
-    if(data.size() > listComponents.size()) return;
+
+//        cout << "----------- NEW DATA -------------" << endl;
+//
+//    for (const auto &dataEl: data) {
+//        cout << "{ First : " << dataEl.first << "; Second : " << dataEl.second << " }" << endl;
+//    }
+
+    if(data.size() <= listComponents.size() - 2) return;
+    int i = 0;
+    int cardsPerRow = 8;
+    sf::Vector2f offset = {60, 50};
+    sf::Vector2f cardSpacing = {230, 270};
+    float ratio = 0.55f;
     for(const auto& card : data) {
-        string filename = "blabla/" + card.second;
-        listComponents.push_back(make_shared<Button>(filename, sf::Vector2f(30, 30)));
+        string filename = "cardPlant.png";
+        int row = i/cardsPerRow;
+        float x = cardSpacing.x * (i%cardsPerRow);
+        float y = cardSpacing.y * (i/cardsPerRow);
+        auto newCard = make_shared<Button>(filename, sf::Vector2f(x, y) + offset);
+        newCard->setScale(ratio);
+        listComponents.push_back(std::move(newCard));
+        i++;
     }
 }
 

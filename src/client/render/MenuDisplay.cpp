@@ -11,7 +11,7 @@ using namespace std;
 MenuDisplay :: MenuDisplay (){
 
     //define positions for all button and image in the menu
-    sf::Vector2f vframe = {0, 850};
+    sf::Vector2f vframe = {-10, 850};
     sf::Vector2f vCard = {900, 810};
     sf::Vector2f vBlueCard = {1225, 870};
     sf::Vector2f vBadge = {1475, 900};
@@ -26,7 +26,7 @@ MenuDisplay :: MenuDisplay (){
     //define all texts positions
 
     sf::Vector2f posBadgeText;
-    sf::Vector2f posPVText = {1775, 905};
+    sf::Vector2f posPVText = {1765, 905};
 
 
     //define Images
@@ -65,14 +65,14 @@ MenuDisplay :: MenuDisplay (){
 
     // Initialize production of resources texts
     for(int i = 0; i < 6; i++){
-        float posX = 160.0f + float(i) * 127.0f;
+        float posX = 150.0f + float(i) * 127.0f;
         sf::Vector2f textPos = {posX, 915};
         listResourceProd.push_back(make_shared<Text>("100", textPos));
         listComponents.push_back(listResourceProd.back());
     }
     // Initialize amount of resources texts
     for(int i = 0; i < 6; i++){
-        float posX = 160.0f + float(i) * 127.0f;
+        float posX = 150.0f + float(i) * 127.0f;
         sf::Vector2f textPos = {posX, 1000};
         listResourceAmount.push_back(make_shared<Text>("100", textPos));
         listComponents.push_back(listResourceAmount.back());

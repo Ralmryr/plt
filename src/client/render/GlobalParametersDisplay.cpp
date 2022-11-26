@@ -40,7 +40,7 @@ GlobalParametersDisplay::GlobalParametersDisplay(){
     vec2f vOxyMin = {vOxyFrame.x - 50, vOxyFrame.y + frameHeight - 30};
     vec2f vOxyMax = {vOxyFrame.x - 55, vOxyFrame.y};
     vec2f vOxyCurrent = {vOxyFrame.x + 15, vOxyFrame.y + 30};
-    vec2f vOceanCurrent = {vOceanLogo.x + 30, vOceanLogo.y + 30};
+    vec2f vOceanCurrent = {vOceanLogo.x + 30, vOceanLogo.y + 50};
 
     //Initializing image
     tempFrameImage = make_shared<Image>("frameTempOxy.png", vTempFrame, sTempFrame);

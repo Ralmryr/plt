@@ -10,7 +10,7 @@ using namespace state;
 
 // Creates a list of cards with ids ranging from 70 to 79
 CardsHand::CardsHand() {
-    for(int i = 0; i < 10; i++) {
+    for(int i = 0; i < 24; i++) {
         listCards.emplace_back(70 + i);
     }
 }

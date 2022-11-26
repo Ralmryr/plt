@@ -8,8 +8,8 @@ using namespace std;
 using namespace state;
 
 GlobalParameters::GlobalParameters() {
-    this->temp = 38;
-    this->numberOcean = 9;
+    this->temp = 6;
+    this->numberOcean = 4;
     this->oxygen = 14;
 }
 

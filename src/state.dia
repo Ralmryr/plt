@@ -3523,22 +3523,22 @@
     </dia:object>
     <dia:object type="UML - LargePackage" version="0" id="O17">
       <dia:attribute name="obj_pos">
-        <dia:point val="123.83,5.29221"/>
+        <dia:point val="122.062,6.40717"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="123.78,4.24221;134.501,13.8953"/>
+        <dia:rectangle val="122.012,5.35717;132.733,13.966"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
       </dia:attribute>
       <dia:attribute name="elem_corner">
-        <dia:point val="123.83,5.29221"/>
+        <dia:point val="122.062,6.40717"/>
       </dia:attribute>
       <dia:attribute name="elem_width">
         <dia:real val="10.621189294539057"/>
       </dia:attribute>
       <dia:attribute name="elem_height">
-        <dia:real val="8.5531234471786153"/>
+        <dia:real val="7.5088771293309833"/>
       </dia:attribute>
       <dia:attribute name="name">
         <dia:string>#render#</dia:string>
@@ -3582,7 +3582,7 @@
         <dia:real val="14.600000000000001"/>
       </dia:attribute>
       <dia:attribute name="name">
-        <dia:string>#UiDataProvider#</dia:string>
+        <dia:string>#RenderAPI#</dia:string>
       </dia:attribute>
       <dia:attribute name="stereotype">
         <dia:string>##</dia:string>
@@ -3745,7 +3745,7 @@
       <dia:attribute name="operations">
         <dia:composite type="umloperation">
           <dia:attribute name="name">
-            <dia:string>#UiDataProvider#</dia:string>
+            <dia:string>#RenderAPI#</dia:string>
           </dia:attribute>
           <dia:attribute name="stereotype">
             <dia:string>##</dia:string>
@@ -3775,7 +3775,7 @@
         </dia:composite>
         <dia:composite type="umloperation">
           <dia:attribute name="name">
-            <dia:string>#~UiDataProvider#</dia:string>
+            <dia:string>#~RenderAPI#</dia:string>
           </dia:attribute>
           <dia:attribute name="stereotype">
             <dia:string>##</dia:string>
@@ -4032,13 +4032,13 @@
     </dia:object>
     <dia:object type="UML - Class" version="0" id="O19">
       <dia:attribute name="obj_pos">
-        <dia:point val="127.223,9.33956"/>
+        <dia:point val="125.455,9.41027"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="127.173,9.28956;130.478,10.7896"/>
+        <dia:rectangle val="125.405,9.36027;128.71,10.8603"/>
       </dia:attribute>
       <dia:attribute name="elem_corner">
-        <dia:point val="127.223,9.33956"/>
+        <dia:point val="125.455,9.41027"/>
       </dia:attribute>
       <dia:attribute name="elem_width">
         <dia:real val="3.2050000000000001"/>
@@ -4770,18 +4770,18 @@
     </dia:object>
     <dia:object type="UML - Dependency" version="1" id="O23">
       <dia:attribute name="obj_pos">
-        <dia:point val="127.173,10.0396"/>
+        <dia:point val="125.405,10.1103"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="91.3252,9.26335;127.223,10.8634"/>
+        <dia:rectangle val="91.3252,9.29871;125.455,10.8987"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
       </dia:attribute>
       <dia:attribute name="orth_points">
-        <dia:point val="127.173,10.0396"/>
-        <dia:point val="109.674,10.0396"/>
-        <dia:point val="109.674,9.97714"/>
+        <dia:point val="125.405,10.1103"/>
+        <dia:point val="108.79,10.1103"/>
+        <dia:point val="108.79,9.97714"/>
         <dia:point val="91.7752,9.97714"/>
       </dia:attribute>
       <dia:attribute name="orth_orient">
@@ -5002,7 +5002,7 @@
             <dia:string>#uiDataProvider#</dia:string>
           </dia:attribute>
           <dia:attribute name="type">
-            <dia:string>#std::shared_ptr&lt;UiDataProvider&gt;#</dia:string>
+            <dia:string>#std::shared_ptr&lt;RenderAPI&gt;#</dia:string>
           </dia:attribute>
           <dia:attribute name="value">
             <dia:string>##</dia:string>

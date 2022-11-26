@@ -54,7 +54,7 @@ int main(int argc,char* argv[])
         }
 
         window.clear(sf::Color::Black);
-        //scene.update();
+        scene.update();
         scene.draw(window);
 
         // Displays mouse position and FPS

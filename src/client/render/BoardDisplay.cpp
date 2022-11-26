@@ -7,7 +7,7 @@ using namespace std;
 
 BoardDisplay::BoardDisplay(){
     //Initializing images
-    this->boardImage = make_shared<Image>("backgroundNew.png", sf::Vector2f(0,0));
+    this->boardImage = make_shared<Image>("background.png", sf::Vector2f(0,0));
 
     //Adding the components to the list
     this->listComponents.push_back(boardImage);
@@ -17,11 +17,6 @@ BoardDisplay::~BoardDisplay()= default;
 
 void BoardDisplay::update(const unordered_map<string, string> &data){
 
-        cout << "----------- NEW DATA -------------" << endl;
-
-    for (const auto &dataEl: data) {
-        cout << "{ First : " << dataEl.first << "; Second : " << dataEl.second << " }" << endl;
-    }
     // Early exit (clause guard) if there is no new tile
     if(data.size() == listTilesPlaced.size()) return;
 
@@ -89,7 +84,7 @@ void BoardDisplay::update(const unordered_map<string, string> &data){
         auto newTileImage = make_unique<Image>(filename, sf::Vector2f(x, y));
         newTileImage->setSize(sf::Vector2u(60, 69));
 
-        string arrayColors[5] = {"cyan", "green", "pink", "red", "yellow"};
+        string arrayColors[5] = {"orange", "green", "pink", "red", "yellow"};
         filename = arrayColors[stoi(idPlayer)] + "Hexagon.png";
         auto newHexagonImage = make_unique<Image>(filename, sf::Vector2f(x-3, y-3));
         newHexagonImage->setSize(sf::Vector2u(65, 74));

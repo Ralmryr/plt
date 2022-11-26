@@ -6,14 +6,13 @@ render::PopupCard::PopupCard() {
     sf::Vector2f vbackground = {0, 0};
     sf::Vector2f vcloseButton;
     this->background = make_shared<Image>("popupFrame.png", vbackground);
-    this->closeButton = make_shared<Button>("animal.png", vcloseButton);
+    this->closeButton = make_shared<Button>("lmksqjdf.png", vcloseButton);
     this->listComponents.push_back(this->background);
     this->listComponents.push_back(this->closeButton);
-
 }
 
 render::PopupCard::~PopupCard() {
-
+    cout << "popupCard Destructor" << endl;
 }
 
 void render::PopupCard::update(const std::unordered_map<std::string, std::string>& data) {

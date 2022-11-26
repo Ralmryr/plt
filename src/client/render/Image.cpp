@@ -13,7 +13,6 @@ Image::Image(){
 
 
 Image::~Image(){
-
 }
 
 
@@ -23,7 +22,8 @@ Image::Image(string fileName, sf::Vector2f position) {
 
     //Setting texture to the sprite
     auto texturePtr = texturePool.getTexturePtr(std::move(fileName));
-    this->sprite.setTexture(*texturePtr);
+    if(texturePtr != nullptr)
+        this->sprite.setTexture(*texturePtr);
     this->sprite.setPosition(this->position);
 
     //Setting size

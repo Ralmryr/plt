@@ -1,57 +1,91 @@
 #include <iostream>
+#include "render.h"
+#include "state.h"
+#include "../constants.hpp"
 #include <SFML/Graphics.hpp>
 
+using namespace render;
+using namespace state;
 using namespace std;
 
 int main(int argc,char* argv[])
 {
     // Quick SFML test that launches a black window that can be closed
     //create window
-    sf::RenderWindow window(sf::VideoMode(1920,1080), "Terraforming Mars");
-    //sf::RenderWindow window(sf::VideoMode(1920,1080), "Terraforming Mars",sf::Style::Fullscreen);
+    sf::RenderWindow window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT),
+                            "Terraforming Mars",
+                            sf::Style::Fullscreen);
 
-    //define font text
-    /*sf::Font font;
-    if (!font.loadFromFile("arial.ttf")){
-        printf("Erreur: la police d'écriture n'a pas été trouvée");
-    }*/
+    window.setFramerateLimit(60);
 
-    //define text
-    sf::Text textRessource;
-    textRessource.setString("Ressource");
-    textRessource.setCharacterSize(24);
-    textRessource.setFillColor(sf::Color::White);
-    //create textures
-    sf::Texture textureBackground;
-    if (!textureBackground.loadFromFile("Mars.jpeg",sf::IntRect(0,0,1200,728))){
-        printf("Erreur: la texture n'a pas été générée");
-    }
-    textureBackground.setSmooth(true);
+    // Initialize scene
+    cout << "Enter scene constructor" << endl;
+    Scene scene = Scene();
+    cout << "Exti scene constructor " << endl;
+    // Initialize state
+    State state = State();
+    // Creates a bridge between the ui and the state
+    scene.hookData(state.getUiDataProvider());
+    // Simply calls update function
+    scene.update();
 
-    //create sprites
-    sf::Sprite spriteBackground;
-    spriteBackground.setTexture(textureBackground);
+    bool cardsEnabled = false;
 
-    sf::RectangleShape RessourceLocation(sf::Vector2f(250,728));
-    RessourceLocation.setFillColor(sf::Color(100,100,100));
+    sf::Clock clock;
+    sf::Time elapsedTime;
+
+    // Assets to display FPS and mouse position
+    auto fpsText = Text("0", sf::Vector2f(1700, 10));
+    auto mouseText = Text("0, 0", sf::Vector2f(1700,50));
+    int counterFps = 0;
 
     while (window.isOpen())
     {
         sf::Event event;
         while (window.pollEvent(event))
         {
-            if (event.type == sf::Event::Closed)
-                window.close();
-        }
-        window.clear(sf::Color::Black);
-        //Define what is inside the window
-        window.draw(spriteBackground);
-        window.draw(RessourceLocation);
-        window.draw(textRessource);
-        //
+            switch(event.type)
+            {
+                case sf::Event::Closed:
+                    window.close();
+                    break;
+                case sf::Event::KeyPressed:
+                    if(event.key.code == sf::Keyboard::Q || event.key.code == sf::Keyboard::Escape)
+                        window.close();
+                    break;
 
+                // Added a temporary function to display cards on click anywhere
+                case sf::Event::MouseButtonPressed:
+                    if(event.mouseButton.button == sf::Mouse::Button::Left) {
+                        if(cardsEnabled) {
+                            scene.setScene(BOARD_VIEW);
+                            cardsEnabled = false;
+                        }
+                        else {
+                            scene.setScene(render::CARDS_HAND_VIEW);
+                            cardsEnabled = true;
+                    }
+                    break;
+                }
+            }
+        }
+        scene.update();
+        scene.draw(window);
+
+        // Displays mouse position and FPS
+        auto mousePosition = sf::Mouse::getPosition();
+        mouseText.setText("Pos : " + to_string(mousePosition.x) + "," + to_string(mousePosition.y));
+        window.draw(mouseText);
+        elapsedTime = clock.getElapsedTime();
+        if(counterFps++%10 == 0) // Will count fps every 10 frames
+            fpsText.setText(to_string(1000/elapsedTime.asMilliseconds()));
+        window.draw(fpsText);
+
+        clock.restart();
         window.display();
     }
+
+
 
     return 0;
 }

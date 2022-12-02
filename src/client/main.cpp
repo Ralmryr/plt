@@ -6,6 +6,7 @@
 
 using namespace render;
 using namespace state;
+using namespace engine;
 using namespace std;
 
 int main(int argc,char* argv[])
@@ -26,6 +27,8 @@ int main(int argc,char* argv[])
     scene.hookData(state.getUiDataProvider());
 
     scene.setScene(render::BOARD_VIEW);
+
+    auto eventManager = EventManager();
 
     sf::Clock clock;
     sf::Time elapsedTime;

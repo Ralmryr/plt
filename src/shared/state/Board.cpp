@@ -23,17 +23,17 @@ Board::Board() {
             if(rand()%3 == 0) continue;
             auto randTileType = rand()%3+1;
             auto randPlayer = rand()%5;
-            Tile newTile = Tile({x, y}, Type(randTileType));
+            Tile newTile = Tile({x, y}, TileType(randTileType));
             listTiles.push_back(newTile);
             listOwners.push_back(randPlayer);
         }
     }
 
-    Tile newTile = Tile({-9, 5}, Type(2));
+    Tile newTile = Tile({-9, 5}, TileType(2));
     listTiles.push_back(newTile);
     listOwners.push_back(1);
 
-    Tile new2Tile = Tile({-8, 2}, Type(2));
+    Tile new2Tile = Tile({-8, 2}, TileType(2));
     listTiles.push_back(new2Tile);
     listOwners.push_back(1);
 }

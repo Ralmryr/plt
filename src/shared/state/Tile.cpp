@@ -11,7 +11,7 @@ Tile::Tile() {
 
 }
 
-Tile::Tile(std::pair<int, int> coords, Type type) {
+Tile::Tile(std::pair<int, int> coords, TileType type) {
     this->coords = coords;
     this->type = type;
 }

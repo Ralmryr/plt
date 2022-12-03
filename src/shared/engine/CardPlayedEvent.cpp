@@ -14,5 +14,5 @@ CardPlayedEvent::~CardPlayedEvent() {
 }
 
 bool CardPlayedEvent::onNotify(EventManager& eventManager) {
-    return false;
+    return true;
 }

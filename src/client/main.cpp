@@ -11,14 +11,11 @@ using namespace std;
 
 int main(int argc,char* argv[])
 {
-    // Quick SFML test that launches a black window that can be closed
-    //create window
-    /*
     sf::RenderWindow window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT),
                             "Terraforming Mars",
                             sf::Style::Fullscreen);
 
-    window.setFramerateLimit(60); */
+    window.setFramerateLimit(60);
 
     // Initialize scene
     Scene scene = Scene();
@@ -48,7 +45,7 @@ int main(int argc,char* argv[])
     auto fpsText = Text("0", sf::Vector2f(1700, 10));
     auto mouseText = Text("0, 0", sf::Vector2f(1700,50));
     int counterFps = 0;
-    /*
+
     while (window.isOpen())
     {
         sf::Event event;
@@ -79,5 +76,5 @@ int main(int argc,char* argv[])
         clock.restart();
         window.display();
     }
-    return 0; */
+    return 0; 
 }

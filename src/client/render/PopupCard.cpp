@@ -40,13 +40,10 @@ void render::PopupCard::update(const std::unordered_map<std::string, std::string
     float ratio = 0.55f;
     string filename;
     for(const auto& card : data) {
-        if(i < 8)
-            filename = "cardPlant.png";
-        else
-            filename = "cardNT.png";
+        filename = "card_"+ to_string(i+1) + ".png";
         float x = cardSpacing.x * (i%cardsPerRow);
         float y = cardSpacing.y * (i/cardsPerRow);
-        auto newCard = make_shared<Button>(filename, sf::Vector2f(x, y) + offset);
+        auto newCard = make_shared<Button>("cards/" + filename, sf::Vector2f(x, y) + offset);
         newCard->setScale(ratio);
         newCard->updateClickableArea();
         newCard->setFunctionStr("Card " + to_string(i) + " Played");

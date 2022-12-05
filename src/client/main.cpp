@@ -1,9 +1,11 @@
 #include <iostream>
+#include <fstream>
 #include "render.h"
 #include "state.h"
 #include "../constants.hpp"
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
+#include <../../extern/jsoncpp-1.8.0/json/json.h>
 
 using namespace render;
 using namespace state;
@@ -46,9 +48,23 @@ int main(int argc,char* argv[])
     auto fpsText = Text("0", sf::Vector2f(1700, 10));
     auto mouseText = Text("0, 0", sf::Vector2f(1700,50));
     int counterFps = 0;
-    sf::SoundBuffer buffer;
-    if (!buffer.loadFromFile("sound.wav"))
-        return -1;
+
+    //Testing JSON
+    ifstream ifs(RESS_PATH + "cards_description.json");
+    Json::Reader reader;
+    Json::Value obj;
+    reader.parse(ifs, obj);
+
+
+    for(int i = 0; i < obj.size(); i++) {
+        cout << "Id: " << obj[i]["id"].asString() << " ";
+        cout << "Cost: " << obj[i]["cost"].asString() << " ";
+        cout << "Badges: " << obj[i]["badges"].asString() << " ";
+        cout << "Effects: " << obj[i]["effects"].asString() << " ";
+        cout << "Condition: " << obj[i]["condition"].asString() << endl;
+    }
+
+
 
 
     while (window.isOpen())
@@ -79,6 +95,7 @@ int main(int argc,char* argv[])
         window.draw(fpsText);
 
         clock.restart();
+
         window.display();
     }
     return 0; 

@@ -36,3 +36,7 @@ const std::shared_ptr<GlobalParameters> &State::getGlobalParameters() const {
 const std::shared_ptr<Board> &State::getBoard() const {
     return this->board;
 }
+
+const std::shared_ptr<Player> State::getSpecificPlayer (int idPlayer) const {
+    return this->listPlayers[idPlayer];
+}

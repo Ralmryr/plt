@@ -36,3 +36,6 @@ std::unordered_map<std::string, std::string> Player::serializeUiData() const {
     uiData.insert(cardHandData.begin(), cardHandData.end());
     return uiData;
 }
+ResourceBoard Player::getResourceBoard(){
+    return this->resourceBoard;
+}

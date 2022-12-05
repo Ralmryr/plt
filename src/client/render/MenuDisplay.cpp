@@ -52,7 +52,7 @@ MenuDisplay :: MenuDisplay (){
     this->badgeText = make_shared<Text>("Badges",posBadgeText);
     this->pvText = make_shared<Text>("0",posPVText);
     this->pvText->setSizeText(80);
-    this->pvText->setColor(COLOR_BLACK);
+    this->pvText->setColor(sf::Color::Black);
 
     listComponents.push_back(frameImage);
     listComponents.push_back(cardButton);

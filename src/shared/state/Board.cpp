@@ -52,3 +52,12 @@ std::unordered_map<std::string, std::string> Board::serializeUiData() const {
     }
     return uiData;
 }
+
+const std::vector<Tile> &Board::getListTiles() const {
+    return listTiles;
+}
+
+const std::vector<int> &Board::getListOwners() const {
+    return listOwners;
+}
+

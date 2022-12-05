@@ -12,8 +12,6 @@ using namespace std;
 
 int main(int argc,char* argv[])
 {
-    // Quick SFML test that launches a black window that can be closed
-    //create window
     sf::RenderWindow window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT),
                             "Terraforming Mars",
                             sf::Style::Fullscreen);
@@ -23,13 +21,23 @@ int main(int argc,char* argv[])
     // Initialize scene
     Scene scene = Scene();
     // Initialize state
-    State state = State();
+    auto state = make_shared<State>();
     // Creates a bridge between the ui and the state
-    scene.hookData(state.getUiDataProvider());
+    scene.hookData(state->getUiDataProvider());
 
     scene.setScene(render::BOARD_VIEW);
 
     auto eventManager = EventManager();
+    eventManager.hookState(state);
+
+
+    auto eventDetails1 = StateEventDetails(engine::CARD_PLAYED);
+    eventDetails1.setTilePosition({0, 0}).setIdPlayer(0);
+    auto eventDetails2 = StateEventDetails(engine::TILE_PLACED);
+    eventDetails2.setTilePosition({1, 2}).setIdPlayer(0);
+    eventManager.notify(eventDetails1);
+    eventManager.notify(eventDetails2);
+
 
     sf::Clock clock;
     sf::Time elapsedTime;
@@ -73,5 +81,5 @@ int main(int argc,char* argv[])
         clock.restart();
         window.display();
     }
-    return 0;
+    return 0; 
 }

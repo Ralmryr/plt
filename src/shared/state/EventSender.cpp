@@ -15,11 +15,11 @@ EventSender::~EventSender() {
 }
 
 void EventSender::notifyCardPlayed(int idCard) {
-    eventManager->notifyCardPlayed(idCard);
+    //eventManager->notifyCardPlayed(idCard);
 }
 
 void EventSender::notifyTilePlaced(TileType tileType, std::pair<int, int> position) {
-    eventManager->notifyTilePlaced(tileType, position);
+    //eventManager->notifyTilePlaced(tileType, position);
 }
 
 void EventSender::hookEventManager(std::shared_ptr<engine::EventManager> eventManager) {

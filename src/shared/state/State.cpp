@@ -24,3 +24,15 @@ State::~State() {
 const std::shared_ptr<RenderAPI> &State::getUiDataProvider() const {
     return this->uiDataProvider;
 }
+
+const std::vector<std::shared_ptr<Player>> &State::getListPlayers() const {
+    return this->listPlayers;
+}
+
+const std::shared_ptr<GlobalParameters> &State::getGlobalParameters() const {
+    return this->globalParameters;
+}
+
+const std::shared_ptr<Board> &State::getBoard() const {
+    return this->board;
+}

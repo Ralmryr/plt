@@ -3,6 +3,7 @@
 #include "state.h"
 #include "../constants.hpp"
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 
 using namespace render;
 using namespace state;
@@ -45,6 +46,10 @@ int main(int argc,char* argv[])
     auto fpsText = Text("0", sf::Vector2f(1700, 10));
     auto mouseText = Text("0, 0", sf::Vector2f(1700,50));
     int counterFps = 0;
+    sf::SoundBuffer buffer;
+    if (!buffer.loadFromFile("sound.wav"))
+        return -1;
+
 
     while (window.isOpen())
     {

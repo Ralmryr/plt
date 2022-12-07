@@ -39,3 +39,7 @@ std::unordered_map<std::string, std::string> Player::serializeUiData() const {
 ResourceBoard Player::getResourceBoard(){
     return this->resourceBoard;
 }
+
+CardsHand Player::getCardsHand() {
+    return this->cardsHand;
+}

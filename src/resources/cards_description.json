@@ -65,7 +65,7 @@
       "PLANT"
     ],
     "effects": [
-      "Instant:ModifiyRessourceReaction:+1:PLANT_PROD/",
+      "Instant:ModifiyRessourceReaction:+1:PLANT_PROD",
       "Instant:ModifiyRessourceReaction:+2:GOLD_PROD",
       "Instant:ModifiyRessourceReaction:+1:PLANT"
     ],

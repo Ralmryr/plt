@@ -17,7 +17,7 @@ DrawCardReaction::~DrawCardReaction ()= default;
 
 
 void DrawCardReaction::execute (){
-    this->player->getCardsHand().Draw(*deck);
+    this->player->getCardsHand().draw(deck);
 }
 
 bool DrawCardReaction::query (){

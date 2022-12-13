@@ -36,6 +36,6 @@ ResourceBoard Player::getResourceBoard(){
     return this->resourceBoard;
 }
 
-CardsHand Player::getCardsHand() {
+CardsHand Player::getCardsHand(){
     return this->cardsHand;
 }

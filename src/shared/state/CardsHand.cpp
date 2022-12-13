@@ -32,15 +32,15 @@ std::unordered_map<std::string, std::string> CardsHand::serializeUiData() const 
 
 void CardsHand :: draw(std::shared_ptr<Deck> deck){ //a modifier en utilisant le cardreader pour générer correctement la carte
     int IDcard = rand();
-    if(deck.removeCard(IDcard)) {
+    if(deck->removeCard(IDcard)) {
         listCards.emplace_back(Card(IDcard));
     }
 }
 
 
 void CardsHand :: draw(std::shared_ptr<Deck> deck, int cardID){ //a modifier en utilisant le cardreader pour générer correctement la carte
-    if(deck.removeCard(IDcard)) {
-        listCards.emplace_back(Card(IDcard));
+    if(deck->removeCard(cardID)) {
+        listCards.emplace_back(Card(cardID));
     }
 }
 

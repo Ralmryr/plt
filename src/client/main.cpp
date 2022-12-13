@@ -33,12 +33,12 @@ int main(int argc,char* argv[])
     eventManager.hookState(state);
 
 
-    auto eventDetails1 = StateEventDetails(engine::CARD_PLAYED);
-    eventDetails1.setTilePosition({0, 0}).setIdPlayer(0);
-    auto eventDetails2 = StateEventDetails(engine::TILE_PLACED);
-    eventDetails2.setTilePosition({1, 2}).setIdPlayer(0);
-    eventManager.notify(eventDetails1);
-    eventManager.notify(eventDetails2);
+//    auto eventDetails1 = EventDetails(engine::CARD_PLAYED);
+//    eventDetails1.setTilePosition({0, 0}).setIdPlayer(0);
+//    auto eventDetails2 = EventDetails(engine::TILE_PLACED);
+//    eventDetails2.setTilePosition({1, 2}).setIdPlayer(0);
+//    eventManager.notify(eventDetails1);
+//    eventManager.notify(eventDetails2);
 
 
     sf::Clock clock;

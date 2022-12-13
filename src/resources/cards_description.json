@@ -2,701 +2,1126 @@
   {
     "id": 1,
     "cost": 9,
-    "badges": "EARTH/SCIENCE",
-    "effects": "",
+    "badges": [
+      "EARTH",
+      "SCIENCE"
+    ],
+    "effects": [
+      ""
+    ],
     "condition": ""
   },
   {
     "id": 2,
     "cost": 10,
-    "badges": "EARTH",
-    "effects": "Instant:ModifiyRessourceReaction:+3:GOLD",
+    "badges": [
+      "EARTH"
+    ],
+    "effects": [
+      "Instant:ModifiyRessourceReaction:+3:GOLD"
+    ],
     "condition": ""
   },
   {
     "id": 3,
     "cost": 15,
-    "badges": "BUILDING",
-    "effects": "",
+    "badges": [
+      "BUILDING"
+    ],
+    "effects": [
+      ""
+    ],
     "condition": ""
   },
   {
     "id": 4,
     "cost": 5,
-    "badges": "MICROBE",
-    "effects": "",
+    "badges": [
+      "MICROBE"
+    ],
+    "effects": [
+      ""
+    ],
     "condition": ""
   },
   {
     "id": 5,
     "cost": 16,
-    "badges": "PLANT",
-    "effects": "Instant:ModifiyRessourceReaction:+2:PLANT_PROD/Instant:ModifiyRessourceReaction:+2:GOLD_PROD/Instant:ModifiyRessourceReaction:+2:PLANT/Instant:ModifyRessourceReaction:+2:PV",
+    "badges": [
+      "PLANT"
+    ],
+    "effects": [
+      "Instant:ModifiyRessourceReaction:+2:PLANT_PROP",
+      "Instant:ModifiyRessourceReaction:+2:GOLD_PROD",
+      "Instant:ModifiyRessourceReaction:+2:PLANT",
+      "Instant:ModifyRessourceReaction:+2:PV"
+    ],
     "condition": "temp:MIN+4"
   },
   {
     "id": 6,
     "cost": 16,
-    "badges": "PLANT",
-    "effects": "Instant:ModifiyRessourceReaction:+1:PLANT_PROD/Instant:ModifiyRessourceReaction:+2:GOLD_PROD/Instant:ModifiyRessourceReaction:+1:PLANT",
+    "badges": [
+      "PLANT"
+    ],
+    "effects": [
+      "Instant:ModifiyRessourceReaction:+1:PLANT_PROD/",
+      "Instant:ModifiyRessourceReaction:+2:GOLD_PROD",
+      "Instant:ModifiyRessourceReaction:+1:PLANT"
+    ],
     "condition": "temp:MIN:-6"
   },
   {
     "id": 7,
     "cost": 12,
-    "badges": "PLANT",
-    "effects": "",
+    "badges": [
+      "PLANT"
+    ],
+    "effects": [
+      ""
+    ],
     "condition": ""
   },
   {
     "id": 8,
     "cost": 12,
-    "badges": "PLANT",
-    "effects": "Instant:ModifiyRessourceReaction:+2:PLANT_PROD/Instant:ModifiyRessourceReaction:+2:HEAT_PROD",
+    "badges": [
+      "PLANT"
+    ],
+    "effects": [
+      "Instant:ModifiyRessourceReaction:+2:PLANT_PROD",
+      "Instant:ModifiyRessourceReaction:+2:HEAT_PROD"
+    ],
     "condition": "numberOcean:MIN:2"
   },
   {
     "id": 9,
     "cost": 10,
-    "badges": "PLANT",
-    "effects": "Instant:ModifiyRessourceReaction:+2:PLANT_PROD/Instant:ModifiyRessourceReaction:+1:PLANT",
+    "badges": [
+      "PLANT"
+    ],
+    "effects": [
+      "Instant:ModifiyRessourceReaction:+2:PLANT_PROD",
+      "Instant:ModifiyRessourceReaction:+1:PLANT"
+    ],
     "condition": "numberOcean:MIN:5"
   },
   {
     "id": 10,
     "cost": 9,
-    "badges": "SCIENCE",
-    "effects": "",
+    "badges": [
+      "SCIENCE"
+    ],
+    "effects": [
+      ""
+    ],
     "condition": ""
   },
   {
     "id": 11,
     "cost": 3,
-    "badges": "SPACE",
-    "effects": "",
+    "badges": [
+      "SPACE"
+    ],
+    "effects": [
+      ""
+    ],
     "condition": ""
   },
   {
     "id": 12,
     "cost": 9,
-    "badges": "SCIENCE/MICROBE",
-    "effects": "",
+    "badges": [
+      "SCIENCE",
+      "MICROBE"
+    ],
+    "effects": [
+      ""
+    ],
     "condition": ""
   },
   {
     "id": 13,
     "cost": 10,
-    "badges": "EARTH/ANIMAL",
-    "effects": "",
+    "badges": [
+      "EARTH",
+      "ANIMAL"
+    ],
+    "effects": [
+      ""
+    ],
     "condition": ""
   },
   {
     "id": 14,
     "cost": 13,
-    "badges": "PLANT",
-    "effects": "Instant:ModifiyRessourceReaction:+3:PLANT_PROD/Instant:ModifiyRessourceReaction:+1:PLANT/Instant:ModifyRessourceReaction:+1:PV",
+    "badges": [
+      "PLANT"
+    ],
+    "effects": [
+      "Instant:ModifiyRessourceReaction:+3:PLANT_PROD",
+      "Instant:ModifiyRessourceReaction:+1:PLANT",
+      "Instant:ModifyRessourceReaction:+1:PV"
+    ],
     "condition": "temp:MIN:-4"
   },
   {
     "id": 15,
     "cost": 6,
-    "badges": "MICROBE",
-    "effects": "Instant:ModifiyRessourceReaction:+1:PLANT_PROD",
+    "badges": [
+      "MICROBE"
+    ],
+    "effects": [
+      "Instant:ModifiyRessourceReaction:+1:PLANT_PROD"
+    ],
     "condition": ""
   },
   {
     "id": 16,
     "cost": 27,
-    "badges": "SPACE/BUILDING",
-    "effects": "",
+    "badges": [
+      "SPACE",
+      "BUILDING"
+    ],
+    "effects": [
+      ""
+    ],
     "condition": ""
   },
   {
     "id": 17,
     "cost": 43,
-    "badges": "SPACE/EARTH",
-    "effects": "Instant:ModifiyRessourceReaction:+3:TITANIUM_PROD/Instant:ModifiyRessourceReaction:+4:PV",
+    "badges": [
+      "SPACE",
+      "EARTH"
+    ],
+    "effects": [
+      "Instant:ModifiyRessourceReaction:+3:TITANIUM_PROD",
+      "Instant:ModifiyRessourceReaction:+4:PV"
+    ],
     "condition": "temp:MAX:-18"
   },
   {
     "id": 18,
     "cost": 14,
-    "badges": "SPACE/EVENT",
-    "effects": "",
+    "badges": [
+      "SPACE",
+      "EVENT"
+    ],
+    "effects": [
+      ""
+    ],
     "condition": ""
   },
   {
     "id": 19,
     "cost": 16,
-    "badges": "SPACE/EVENT",
-    "effects": "",
+    "badges": [
+      "SPACE",
+      "EVENT"
+    ],
+    "effects": [
+      ""
+    ],
     "condition": ""
   },
   {
     "id": 20,
     "cost": 23,
-    "badges": "SPACE/EVENT",
-    "effects": "Instant:PlaceTileReaction:+2:OCEAN",
+    "badges": [
+      "SPACE",
+      "EVENT"
+    ],
+    "effects": [
+      "Instant:PlaceTileReaction:+2:OCEAN"
+    ],
     "condition": ""
   },
   {
     "id": 21,
     "cost": 36,
-    "badges": "SPACE/EVENT",
-    "effects": "",
+    "badges": [
+      "SPACE",
+      "EVENT"
+    ],
+    "effects": [
+      ""
+    ],
     "condition": ""
   },
   {
     "id": 22,
     "cost": 27,
-    "badges": "SPACE/EVENT",
-    "effects": "",
+    "badges": [
+      "SPACE",
+      "EVENT"
+    ],
+    "effects": [
+      ""
+    ],
     "condition": ""
   },
   {
     "id": 23,
     "cost": 31,
-    "badges": "SPACE/EVENT",
-    "effects": "",
+    "badges": [
+      "SPACE",
+      "EVENT"
+    ],
+    "effects": [
+      ""
+    ],
     "condition": ""
   },
   {
     "id": 24,
     "cost": 30,
-    "badges": "JOVIAN/SPACE",
-    "effects": "Instant:ModifiyRessourceReaction:+2:TITANIUM_PROD/Instant:ModifiyRessourceReaction:+2:PV",
+    "badges": [
+      "JOVIAN",
+      "SPACE"
+    ],
+    "effects": [
+      "Instant:ModifiyRessourceReaction:+2:TITANIUM_PROD",
+      "Instant:ModifiyRessourceReaction:+2:PV"
+    ],
     "condition": ""
   },
   {
     "id": 25,
     "cost": 2,
-    "badges": "EARTH/EVENT",
-    "effects": "",
+    "badges": [
+      "EARTH",
+      "EVENT"
+    ],
+    "effects": [
+      ""
+    ],
     "condition": ""
   },
   {
     "id": 26,
     "cost": 11,
-    "badges": "NONE",
-    "effects": "",
+    "badges": [
+      "NONE"
+    ],
+    "effects": [
+      ""
+    ],
     "condition": ""
   },
   {
     "id": 27,
     "cost": 25,
-    "badges": "JOVIAN/SPACE",
-    "effects": "",
+    "badges": [
+      "JOVIAN",
+      "SPACE"
+    ],
+    "effects": [
+      ""
+    ],
     "condition": ""
   },
   {
     "id": 28,
     "cost": 23,
-    "badges": "EARTH/SPACE/EVENT",
-    "effects": "",
+    "badges": [
+      "EARTH",
+      "SPACE",
+      "EVENT"
+    ],
+    "effects": [
+      ""
+    ],
     "condition": ""
   },
   {
     "id": 29,
     "cost": 11,
-    "badges": "MICROBE",
-    "effects": "",
+    "badges": [
+      "MICROBE"
+    ],
+    "effects": [
+      ""
+    ],
     "condition": ""
   },
   {
     "id": 30,
     "cost": "",
-    "badges": "",
-    "effects": "",
+    "badges": [
+      ""
+    ],
+    "effects": [
+      ""
+    ],
     "condition": ""
   },
   {
     "id": 31,
     "cost": "",
-    "badges": "",
-    "effects": "",
+    "badges": [
+      ""
+    ],
+    "effects": [
+      ""
+    ],
     "condition": ""
   },
   {
     "id": 32,
     "cost": "",
-    "badges": "",
-    "effects": "",
+    "badges": [
+      ""
+    ],
+    "effects": [
+      ""
+    ],
     "condition": ""
   },
   {
     "id": 33,
     "cost": "",
-    "badges": "",
-    "effects": "",
+    "badges": [
+      ""
+    ],
+    "effects": [
+      ""
+    ],
     "condition": ""
   },
   {
     "id": 34,
     "cost": "",
-    "badges": "",
-    "effects": "",
+    "badges": [
+      ""
+    ],
+    "effects": [
+      ""
+    ],
     "condition": ""
   },
   {
     "id": 35,
     "cost": "",
-    "badges": "",
-    "effects": "",
+    "badges": [
+      ""
+    ],
+    "effects": [
+      ""
+    ],
     "condition": ""
   },
   {
     "id": 36,
     "cost": "",
-    "badges": "",
-    "effects": "",
+    "badges": [
+      ""
+    ],
+    "effects": [
+      ""
+    ],
     "condition": ""
   },
   {
     "id": 37,
     "cost": "",
-    "badges": "",
-    "effects": "",
+    "badges": [
+      ""
+    ],
+    "effects": [
+      ""
+    ],
     "condition": ""
   },
   {
     "id": 38,
     "cost": "",
-    "badges": "",
-    "effects": "",
+    "badges": [
+      ""
+    ],
+    "effects": [
+      ""
+    ],
     "condition": ""
   },
   {
     "id": 39,
     "cost": "",
-    "badges": "",
-    "effects": "",
+    "badges": [
+      ""
+    ],
+    "effects": [
+      ""
+    ],
     "condition": ""
   },
   {
     "id": 40,
     "cost": "",
-    "badges": "",
-    "effects": "",
+    "badges": [
+      ""
+    ],
+    "effects": [
+      ""
+    ],
     "condition": ""
   },
   {
     "id": 41,
     "cost": "",
-    "badges": "",
-    "effects": "",
+    "badges": [
+      ""
+    ],
+    "effects": [
+      ""
+    ],
     "condition": ""
   },
   {
     "id": 42,
     "cost": "",
-    "badges": "",
-    "effects": "",
+    "badges": [
+      ""
+    ],
+    "effects": [
+      ""
+    ],
     "condition": ""
   },
   {
     "id": 43,
     "cost": "",
-    "badges": "",
-    "effects": "",
+    "badges": [
+      ""
+    ],
+    "effects": [
+      ""
+    ],
     "condition": ""
   },
   {
     "id": 44,
     "cost": "",
-    "badges": "",
-    "effects": "",
+    "badges": [
+      ""
+    ],
+    "effects": [
+      ""
+    ],
     "condition": ""
   },
   {
     "id": 45,
     "cost": "",
-    "badges": "",
-    "effects": "",
+    "badges": [
+      ""
+    ],
+    "effects": [
+      ""
+    ],
     "condition": ""
   },
   {
     "id": 46,
     "cost": "",
-    "badges": "",
-    "effects": "",
+    "badges": [
+      ""
+    ],
+    "effects": [
+      ""
+    ],
     "condition": ""
   },
   {
     "id": 47,
     "cost": "",
-    "badges": "",
-    "effects": "",
+    "badges": [
+      ""
+    ],
+    "effects": [
+      ""
+    ],
     "condition": ""
   },
   {
     "id": 48,
     "cost": "",
-    "badges": "",
-    "effects": "",
+    "badges": [
+      ""
+    ],
+    "effects": [
+      ""
+    ],
     "condition": ""
   },
   {
     "id": 49,
     "cost": "",
     "badges": "",
-    "effects": "",
+    "effects": [
+      ""
+    ],
     "condition": ""
   },
   {
     "id": 50,
     "cost": "",
-    "badges": "",
-    "effects": "",
+    "badges": [
+      ""
+    ],
+    "effects": [
+      ""
+    ],
     "condition": ""
   },
   {
     "id": 51,
     "cost": "",
-    "badges": "",
-    "effects": "",
+    "badges": [
+      ""
+    ],
+    "effects": [
+      ""
+    ],
     "condition": ""
   },
   {
     "id": 52,
     "cost": "",
-    "badges": "",
-    "effects": "",
+    "badges": [
+      ""
+    ],
+    "effects": [
+      ""
+    ],
     "condition": ""
   },
   {
     "id": 53,
     "cost": "",
-    "badges": "",
-    "effects": "",
+    "badges": [
+      ""
+    ],
+    "effects": [
+      ""
+    ],
     "condition": ""
   },
   {
     "id": 54,
     "cost": "",
-    "badges": "",
-    "effects": "",
+    "badges": [
+      ""
+    ],
+    "effects": [
+      ""
+    ],
     "condition": ""
   },
   {
     "id": 55,
     "cost": "",
-    "badges": "",
-    "effects": "",
+    "badges": [
+      ""
+    ],
+    "effects": [
+      ""
+    ],
     "condition": ""
   },
   {
     "id": 56,
     "cost": "",
-    "badges": "",
-    "effects": "",
+    "badges": [
+      ""
+    ],
+    "effects": [
+      ""
+    ],
     "condition": ""
   },
   {
     "id": 57,
     "cost": "",
-    "badges": "",
-    "effects": "",
+    "badges": [
+      ""
+    ],
+    "effects": [
+      ""
+    ],
     "condition": ""
   },
   {
     "id": 58,
     "cost": "",
-    "badges": "",
-    "effects": "",
+    "badges": [
+      ""
+    ],
+    "effects": [
+      ""
+    ],
     "condition": ""
   },
   {
     "id": 59,
     "cost": "",
-    "badges": "",
-    "effects": "",
+    "badges": [
+      ""
+    ],
+    "effects": [
+      ""
+    ],
     "condition": ""
   },
   {
     "id": 60,
     "cost": "",
-    "badges": "",
-    "effects": "",
+    "badges": [
+      ""
+    ],
+    "effects": [
+      ""
+    ],
     "condition": ""
   },
   {
     "id": 61,
     "cost": "",
-    "badges": "",
-    "effects": "",
+    "badges": [
+      ""
+    ],
+    "effects": [
+      ""
+    ],
     "condition": ""
   },
   {
     "id": 62,
     "cost": "",
-    "badges": "",
-    "effects": "",
+    "badges": [
+      ""
+    ],
+    "effects": [
+      ""
+    ],
     "condition": ""
   },
   {
     "id": 63,
     "cost": "",
-    "badges": "",
-    "effects": "",
+    "badges": [
+      ""
+    ],
+    "effects": [
+      ""
+    ],
     "condition": ""
   },
   {
     "id": 64,
     "cost": "",
-    "badges": "",
-    "effects": "",
+    "badges": [
+      ""
+    ],
+    "effects": [
+      ""
+    ],
     "condition": ""
   },
   {
     "id": 65,
     "cost": "",
-    "badges": "",
-    "effects": "",
+    "badges": [
+      ""
+    ],
+    "effects": [
+      ""
+    ],
     "condition": ""
   },
   {
     "id": 66,
     "cost": "",
-    "badges": "",
-    "effects": "",
+    "badges": [
+      ""
+    ],
+    "effects": [
+      ""
+    ],
     "condition": ""
   },
   {
     "id": 67,
     "cost": "",
-    "badges": "",
-    "effects": "",
+    "badges": [
+      ""
+    ],
+    "effects": [
+      ""
+    ],
     "condition": ""
   },
   {
     "id": 68,
     "cost": "",
-    "badges": "",
-    "effects": "",
+    "badges": [
+      ""
+    ],
+    "effects": [
+      ""
+    ],
     "condition": ""
   },
   {
     "id": 69,
     "cost": "",
-    "badges": "",
-    "effects": "",
+    "badges": [
+      ""
+    ],
+    "effects": [
+      ""
+    ],
     "condition": ""
   },
   {
     "id": 70,
     "cost": "",
-    "badges": "",
-    "effects": "",
+    "badges": [
+      ""
+    ],
+    "effects": [
+      ""
+    ],
     "condition": ""
   },
   {
     "id": 71,
     "cost": "",
-    "badges": "",
-    "effects": "",
+    "badges": [
+      ""
+    ],
+    "effects": [
+      ""
+    ],
     "condition": ""
   },
   {
     "id": 72,
     "cost": "",
-    "badges": "",
-    "effects": "",
+    "badges": [
+      ""
+    ],
+    "effects": [
+      ""
+    ],
     "condition": ""
   },
   {
     "id": 73,
     "cost": "",
-    "badges": "",
-    "effects": "",
+    "badges": [
+      ""
+    ],
+    "effects": [
+      ""
+    ],
     "condition": ""
   },
   {
     "id": 74,
     "cost": "",
-    "badges": "",
-    "effects": "",
+    "badges": [
+      ""
+    ],
+    "effects": [
+      ""
+    ],
     "condition": ""
   },
   {
     "id": 75,
     "cost": "",
-    "badges": "",
-    "effects": "",
+    "badges": [
+      ""
+    ],
+    "effects": [
+      ""
+    ],
     "condition": ""
   },
   {
     "id": 76,
     "cost": "",
-    "badges": "",
-    "effects": "",
+    "badges": [
+      ""
+    ],
+    "effects": [
+      ""
+    ],
     "condition": ""
   },
   {
     "id": 77,
     "cost": "",
-    "badges": "",
-    "effects": "",
+    "badges": [
+      ""
+    ],
+    "effects": [
+      ""
+    ],
     "condition": ""
   },
   {
     "id": 78,
     "cost": "",
-    "badges": "",
-    "effects": "",
+    "badges": [
+      ""
+    ],
+    "effects": [
+      ""
+    ],
     "condition": ""
   },
   {
     "id": 79,
     "cost": "",
-    "badges": "",
-    "effects": "",
+    "badges": [
+      ""
+    ],
+    "effects": [
+      ""
+    ],
     "condition": ""
   },
   {
     "id": 80,
     "cost": "",
-    "badges": "",
-    "effects": "",
+    "badges": [
+      ""
+    ],
+    "effects": [
+      ""
+    ],
     "condition": ""
   },
   {
     "id": 81,
     "cost": "",
-    "badges": "",
-    "effects": "",
+    "badges": [
+      ""
+    ],
+    "effects": [
+      ""
+    ],
     "condition": ""
   },
   {
     "id": 82,
     "cost": "",
-    "badges": "",
-    "effects": "",
+    "badges": [
+      ""
+    ],
+    "effects": [
+      ""
+    ],
     "condition": ""
   },
   {
     "id": 83,
     "cost": "",
-    "badges": "",
-    "effects": "",
+    "badges": [
+      ""
+    ],
+    "effects": [
+      ""
+    ],
     "condition": ""
   },
   {
     "id": 84,
     "cost": "",
-    "badges": "",
-    "effects": "",
+    "badges": [
+      ""
+    ],
+    "effects": [
+      ""
+    ],
     "condition": ""
   },
   {
     "id": 85,
     "cost": "",
-    "badges": "",
-    "effects": "",
+    "badges": [
+      ""
+    ],
+    "effects": [
+      ""
+    ],
     "condition": ""
   },
   {
     "id": 86,
     "cost": "",
-    "badges": "",
-    "effects": "",
+    "badges": [
+      ""
+    ],
+    "effects": [
+      ""
+    ],
     "condition": ""
   },
   {
     "id": 87,
     "cost": "",
-    "badges": "",
-    "effects": "",
+    "badges": [
+      ""
+    ],
+    "effects": [
+      ""
+    ],
     "condition": ""
   },
   {
     "id": 88,
     "cost": "",
-    "badges": "",
-    "effects": "",
+    "badges": [
+      ""
+    ],
+    "effects": [
+      ""
+    ],
     "condition": ""
   },
   {
     "id": 89,
     "cost": "",
-    "badges": "",
-    "effects": "",
+    "badges": [
+      ""
+    ],
+    "effects": [
+      ""
+    ],
     "condition": ""
   },
   {
     "id": 90,
     "cost": "",
-    "badges": "",
-    "effects": "",
+    "badges": [
+      ""
+    ],
+    "effects": [
+      ""
+    ],
     "condition": ""
   },
   {
     "id": 91,
     "cost": "",
-    "badges": "",
-    "effects": "",
+    "badges": [
+      ""
+    ],
+    "effects": [
+      ""
+    ],
     "condition": ""
   },
   {
     "id": 92,
     "cost": "",
-    "badges": "",
-    "effects": "",
+    "badges": [
+      ""
+    ],
+    "effects": [
+      ""
+    ],
     "condition": ""
   },
   {
     "id": 93,
     "cost": "",
-    "badges": "",
-    "effects": "",
+    "badges": [
+      ""
+    ],
+    "effects": [
+      ""
+    ],
     "condition": ""
   },
   {
     "id": 94,
     "cost": "",
-    "badges": "",
-    "effects": "",
+    "badges": [
+      ""
+    ],
+    "effects": [
+      ""
+    ],
     "condition": ""
   },
   {
     "id": 95,
     "cost": "",
-    "badges": "",
-    "effects": "",
+    "badges": [
+      ""
+    ],
+    "effects": [
+      ""
+    ],
     "condition": ""
   },
   {
     "id": 96,
     "cost": "",
-    "badges": "",
-    "effects": "",
+    "badges": [
+      ""
+    ],
+    "effects": [
+      ""
+    ],
     "condition": ""
   },
   {
     "id": 97,
     "cost": "",
-    "badges": "",
-    "effects": "",
+    "badges": [
+      ""
+    ],
+    "effects": [
+      ""
+    ],
     "condition": ""
   },
   {
     "id": 98,
     "cost": "",
-    "badges": "",
-    "effects": "",
+    "badges": [
+      ""
+    ],
+    "effects": [
+      ""
+    ],
     "condition": ""
   },
   {
     "id": 99,
     "cost": "",
-    "badges": "",
-    "effects": "",
+    "badges": [
+      ""
+    ],
+    "effects": [
+      ""
+    ],
     "condition": ""
   },
   {
     "id": 100,
     "cost": "",
-    "badges": "",
-    "effects": "",
+    "badges": [
+      ""
+    ],
+    "effects": [
+      ""
+    ],
     "condition": ""
   }
 ]

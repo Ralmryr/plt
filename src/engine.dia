@@ -8112,24 +8112,24 @@
         <dia:connection handle="1" to="O49" connection="8"/>
       </dia:connections>
     </dia:object>
-    <dia:object type="UML - Dependency" version="1" id="O56">
+    <dia:object type="UML - Realizes" version="1" id="O56">
       <dia:attribute name="obj_pos">
-        <dia:point val="79.071,40.4496"/>
+        <dia:point val="57.6065,63.1977"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="57.1565,40.3996;79.121,64.7977"/>
+        <dia:rectangle val="57.5565,40.3996;79.121,64.7977"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
       </dia:attribute>
       <dia:attribute name="orth_points">
-        <dia:point val="79.071,40.4496"/>
-        <dia:point val="79.071,63.1977"/>
         <dia:point val="57.6065,63.1977"/>
+        <dia:point val="79.071,63.1977"/>
+        <dia:point val="79.071,40.4496"/>
       </dia:attribute>
       <dia:attribute name="orth_orient">
-        <dia:enum val="1"/>
         <dia:enum val="0"/>
+        <dia:enum val="1"/>
       </dia:attribute>
       <dia:attribute name="orth_autoroute">
         <dia:boolean val="true"/>
@@ -8139,9 +8139,6 @@
       </dia:attribute>
       <dia:attribute name="stereotype">
         <dia:string>##</dia:string>
-      </dia:attribute>
-      <dia:attribute name="draw_arrow">
-        <dia:boolean val="true"/>
       </dia:attribute>
       <dia:attribute name="text_font">
         <dia:font family="monospace" style="0" name="Courier"/>
@@ -8159,8 +8156,8 @@
         <dia:color val="#000000ff"/>
       </dia:attribute>
       <dia:connections>
-        <dia:connection handle="0" to="O4" connection="7"/>
-        <dia:connection handle="1" to="O2" connection="9"/>
+        <dia:connection handle="0" to="O2" connection="9"/>
+        <dia:connection handle="1" to="O4" connection="7"/>
       </dia:connections>
       <dia:childnode parent="O0"/>
     </dia:object>

@@ -37,7 +37,7 @@ void EventManager::registerEvent(EventType eventType, shared_ptr<Listener> event
  *      - Executes all actions if the request is valid, otherwise doesn't do anything
  *      - Registers permanent listeners
  */
-void EventManager::notify(const StateEventDetails &eventDetails) {
+void EventManager::notify(const EventDetails &eventDetails) {
     // Stops an event to propagate if the previous action was invalid
     if(!isActionValid) return;
 
@@ -51,7 +51,6 @@ void EventManager::notify(const StateEventDetails &eventDetails) {
     // Creates a new event of the right type based on the event details received
     EventType eventType = eventDetails.getEventType();
     auto newEvent = eventFactory[eventType](*state, eventDetails);
-    newEvent->setIsPermanent(true);
     // Trigger the event
     isActionValid = newEvent->onNotify(*this);
 
@@ -72,9 +71,9 @@ void EventManager::notify(const StateEventDetails &eventDetails) {
             reactionQueue.clearAll();
 
             // If the event had a permanent effect
-            if(newEvent->getIsPermanent()) {
+/*            if(newEvent->getIsPermanent()) {
                 listenersMap[eventType].push_back(newEvent);
-            }
+            }*/
         }
         // This case is when an action was invalid and this is the last call, so we reset the flag
         else {

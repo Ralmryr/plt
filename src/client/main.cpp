@@ -59,8 +59,16 @@ int main(int argc,char* argv[])
     for(int i = 0; i < obj.size(); i++) {
         cout << "Id: " << obj[i]["id"].asString() << " ";
         cout << "Cost: " << obj[i]["cost"].asString() << " ";
-        cout << "Badges: " << obj[i]["badges"].asString() << " ";
-        cout << "Effects: " << obj[i]["effects"].asString() << " ";
+        cout << "Badges: ";
+        for(int j = 0; j < obj[i]["badges"].size(); j++)
+        {
+            cout << obj[i]["badges"][j].asString() << ", ";
+        }
+        cout << "Effects: ";
+        for(int j = 0; j < obj[i]["badges"].size(); j++)
+        {
+            cout << obj[i]["effects"][j].asString() << ", ";
+        }
         cout << "Condition: " << obj[i]["condition"].asString() << endl;
     }
 

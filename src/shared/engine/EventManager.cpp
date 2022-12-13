@@ -1,7 +1,7 @@
 #include <iostream>
 #include "EventManager.h"
-#include "TilePlacedEvent.h"
-#include "CardPlayedEvent.h"
+#include "BadgePlayedListener.h"
+#include "TilePlacedListener.h"
 
 using namespace std;
 using namespace engine;
@@ -10,17 +10,15 @@ using namespace engine;
 // Helper function to populate the eventFactory
 template<class T>
 void addNewEvent(EventManager& eventManager, EventType eventType) {
-    eventManager.getEventFactory()[eventType] = [] (const state::State& state, const StateEventDetails& eventDetails) {
+    eventManager.getEventFactory()[eventType] = [] (const state::State& state, const EventDetails& eventDetails) {
         return make_shared<T>(state, eventDetails);
     };
 }
 
 EventManager::EventManager() : reactionQueue() {
     // Adds the types to the factory to easily create new Events
-    addNewEvent<CardPlayedEvent>(*this, CARD_PLAYED);
-    addNewEvent<TilePlacedEvent>(*this, TILE_PLACED);
-
-    isActionValid = true;
+    addNewEvent<BadgePlayedListener>(*this, CARD_PLAYED);
+    addNewEvent<TilePlacedListener>(*this, TILE_PLACED);
 }
 
 EventManager::~EventManager() {
@@ -28,7 +26,7 @@ EventManager::~EventManager() {
 }
 
 // Adds a new permanent effect to a listener, typically a blue card effect
-void EventManager::registerEvent(EventType eventType, shared_ptr<Event> event) {
+void EventManager::registerEvent(EventType eventType, shared_ptr<Listener> event) {
 
 }
 
@@ -89,7 +87,7 @@ ReactionQueue &EventManager::getReactionQueue() {
     return reactionQueue;
 }
 
-std::map<EventType, std::function<std::shared_ptr<Event>(const state::State &, const StateEventDetails &eventDetails)>>&
+std::map<EventType, std::function<std::shared_ptr<Listener>(const state::State &, const EventDetails &eventDetails)>>&
 EventManager::getEventFactory() {
     return this->eventFactory;
 }

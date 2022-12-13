@@ -1,13 +1,13 @@
 //
 // Created by cleme on 02/12/22.
 //
-#include "Event.h"
+#include "Listener.h"
 
-engine::Event::Event() {
+engine::Listener::Listener() {
 
 }
 
-engine::Event::~Event() {
+engine::Listener::~Listener() {
 
 }
 

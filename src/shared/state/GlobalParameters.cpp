@@ -1,8 +1,5 @@
-//
-// Created by cleme on 21/11/22.
-//
-
 #include "GlobalParameters.h"
+#include "../constants.hpp"
 
 using namespace std;
 using namespace state;

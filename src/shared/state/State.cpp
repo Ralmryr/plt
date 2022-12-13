@@ -41,6 +41,6 @@ const std::shared_ptr<Player> State::getSpecificPlayer (int idPlayer) const {
     return this->listPlayers[idPlayer];
 }
 
-const std::shared_ptr<Deck> State::getDeck() const{
+const std::shared_ptr<Deck>& State::getDeck() const{
     return this->deck;
 }

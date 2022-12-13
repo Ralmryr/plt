@@ -10,12 +10,3 @@ engine::Listener::Listener() {
 engine::Listener::~Listener() {
 
 }
-
-bool engine::Event::getIsPermanent() const {
-    return isPermanent;
-}
-
-void engine::Event::setIsPermanent(bool isPermanent) {
-    this->isPermanent = isPermanent;
-}
-

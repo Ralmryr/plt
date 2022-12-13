@@ -1,0 +1,380 @@
+[
+  {
+    "x": 0,
+    "y": -4,
+    "reserved": "NONE",
+    "ressource": "IRON:1"
+  },
+  {
+    "x": 1,
+    "y": -4,
+    "reserved": "NONE",
+    "ressource": "IRON:2"
+  },
+  {
+    "x": 2,
+    "y": -4,
+    "reserved": "NONE",
+    "ressource": "NONE"
+  },
+  {
+    "x": 3,
+    "y": -4,
+    "reserved": "NONE",
+    "ressource": "NONE"
+  },
+  {
+    "x": 4,
+    "y": -4,
+    "reserved": "OCEAN",
+    "ressource": "TITANIUM:2"
+  },
+  {
+    "x": -1,
+    "y": -3,
+    "reserved": "NONE",
+    "ressource": "IRON:2"
+  },
+  {
+    "x": 0,
+    "y": -3,
+    "reserved": "NONE",
+    "ressource": "NONE"
+  },
+  {
+    "x": 1,
+    "y": -3,
+    "reserved": "NONE",
+    "ressource": "NONE"
+  },
+  {
+    "x": 2,
+    "y": -3,
+    "reserved": "NONE",
+    "ressource": "CARDS:1"
+  },
+  {
+    "x": 3,
+    "y": -3,
+    "reserved": "NONE",
+    "ressource": "NONE"
+  },
+  {
+    "x": 4,
+    "y": -3,
+    "reserved": "NONE",
+    "ressource": "TITANIUM:1"
+  },
+  {
+    "x": -2,
+    "y": -2,
+    "reserved": "NONE",
+    "ressource": "NONE"
+  },
+  {
+    "x": -1,
+    "y": -2,
+    "reserved": "NONE",
+    "ressource": "NONE"
+  },
+  {
+    "x": 0,
+    "y": -2,
+    "reserved": "NONE",
+    "ressource": "NONE"
+  },
+  {
+    "x": 1,
+    "y": -2,
+    "reserved": "NONE",
+    "ressource": "NONE"
+  },
+  {
+    "x": 2,
+    "y": -2,
+    "reserved": "NONE",
+    "ressource": "NONE"
+  },
+  {
+    "x": 3,
+    "y": -2,
+    "reserved": "NONE",
+    "ressource": "PLANT:1"
+  },
+  {
+    "x": 4,
+    "y": -2,
+    "reserved": "NONE",
+    "ressource": "NONE"
+  },
+  {
+    "x": -3,
+    "y": -1,
+    "reserved": "NONE",
+    "ressource": "PLANT:1"
+  },
+  {
+    "x": -2,
+    "y": -1,
+    "reserved": "NONE",
+    "ressource": "PLANT:2"
+  },
+  {
+    "x": -1,
+    "y": -1,
+    "reserved": "NONE",
+    "ressource": "PLANT:1"
+  },
+  {
+    "x": 0,
+    "y": -1,
+    "reserved": "NONE",
+    "ressource": "PLANT:1"
+  },
+  {
+    "x": 1,
+    "y": -1,
+    "reserved": "NONE",
+    "ressource": "PLANT:1"
+  },
+  {
+    "x": 2,
+    "y": -1,
+    "reserved": "OCEAN",
+    "ressource": "PLANT:1"
+  },
+  {
+    "x": 3,
+    "y": -1,
+    "reserved": "OCEAN",
+    "ressource": "PLANT:1"
+  },
+  {
+    "x": 4,
+    "y": -1,
+    "reserved": "OCEAN",
+    "ressource": "PLANT:1"
+  },
+  {
+    "x": -4,
+    "y": 0,
+    "reserved": "NONE",
+    "ressource": "PLANT:2"
+  },
+  {
+    "x": -3,
+    "y": 0,
+    "reserved": "NONE",
+    "ressource": "PLANT:2"
+  },
+  {
+    "x": -2,
+    "y": 0,
+    "reserved": "NOCTIS",
+    "ressource": "PLANT:2"
+  },
+  {
+    "x": -1,
+    "y": 0,
+    "reserved": "OCEAN",
+    "ressource": "PLANT:2"
+  },
+  {
+    "x": 0,
+    "y": 0,
+    "reserved": "OCEAN",
+    "ressource": "PLANT:2"
+  },
+  {
+    "x": 1,
+    "y": 0,
+    "reserved": "OCEAN",
+    "ressource": "PLANT:2"
+  },
+  {
+    "x": 2,
+    "y": 0,
+    "reserved": "NONE",
+    "ressource": "PLANT:2"
+  },
+  {
+    "x": 3,
+    "y": 0,
+    "reserved": "NONE",
+    "ressource": "PLANT:2"
+  },
+  {
+    "x": 4,
+    "y": 0,
+    "reserved": "NONE",
+    "ressource": "PLANT:2"
+  },
+  {
+    "x": -4,
+    "y": 1,
+    "reserved": "NONE",
+    "ressource": "PLANT:1"
+  },
+  {
+    "x": -3,
+    "y": 1,
+    "reserved": "NONE",
+    "ressource": "PLANT:1"
+  },
+  {
+    "x": -2,
+    "y": 1,
+    "reserved": "NONE",
+    "ressource": "PLANT:1"
+  },
+  {
+    "x": -1,
+    "y": 1,
+    "reserved": "NONE",
+    "ressource": "PLANT:1"
+  },
+  {
+    "x": 0,
+    "y": 1,
+    "reserved": "NONE",
+    "ressource": "PLANT:2"
+  },
+  {
+    "x": 1,
+    "y": 1,
+    "reserved": "NONE",
+    "ressource": "PLANT:1"
+  },
+  {
+    "x": 2,
+    "y": 1,
+    "reserved": "NONE",
+    "ressource": "PLANT:1"
+  },
+  {
+    "x": 3,
+    "y": 1,
+    "reserved": "OCEAN",
+    "ressource": "PLANT:2"
+  },
+  {
+    "x": -4,
+    "y": 2,
+    "reserved": "NONE",
+    "ressource": "CARDS:1"
+  },
+  {
+    "x": -3,
+    "y": 2,
+    "reserved": "NONE",
+    "ressource": "NONE"
+  },
+  {
+    "x": -2,
+    "y": 2,
+    "reserved": "NONE",
+    "ressource": "NONE"
+  },
+  {
+    "x": -1,
+    "y": 2,
+    "reserved": "NONE",
+    "ressource": "NONE"
+  },
+  {
+    "x": 0,
+    "y": 2,
+    "reserved": "NONE",
+    "ressource": "NONE"
+  },
+  {
+    "x": 1,
+    "y": 2,
+    "reserved": "NONE",
+    "ressource": "NONE"
+  },
+  {
+    "x": 2,
+    "y": 2,
+    "reserved": "NONE",
+    "ressource": "IRON:1"
+  },
+  {
+    "x": -4,
+    "y": 3,
+    "reserved": "NONE",
+    "ressource": "NONE"
+  },
+  {
+    "x": -3,
+    "y": 3,
+    "reserved": "NONE",
+    "ressource": "IRON:1"
+  },
+  {
+    "x": -2,
+    "y": 3,
+    "reserved": "NONE",
+    "ressource": "NONE"
+  },
+  {
+    "x": -1,
+    "y": 3,
+    "reserved": "NONE",
+    "ressource": "NONE"
+  },
+  {
+    "x": 0,
+    "y": 3,
+    "reserved": "NONE",
+    "ressource": "NONE"
+  },
+  {
+    "x": 1,
+    "y": 3,
+    "reserved": "OCEAN",
+    "ressource": "CARDS:2"
+  },
+  {
+    "x": -4,
+    "y": 4,
+    "reserved": "NONE",
+    "ressource": "IRON:2"
+  },
+  {
+    "x": -3,
+    "y": 4,
+    "reserved": "OCEAN",
+    "ressource": "IRON:2"
+  },
+  {
+    "x": -2,
+    "y": 4,
+    "reserved": "OCEAN",
+    "ressource": "NONE"
+  },
+  {
+    "x": -1,
+    "y": 4,
+    "reserved": "NONE",
+    "ressource": "CARDS:1"
+  },
+  {
+    "x": 0,
+    "y": 4,
+    "reserved": "OCEAN",
+    "ressource": "NONE"
+  },
+  {
+    "x": -9,
+    "y": 5,
+    "reserved": "PHOBOS",
+    "ressource": "NONE"
+  },
+  {
+    "x": -8,
+    "y": 2,
+    "reserved": "GANYMEDE",
+    "ressource": "NONE"
+  }
+]

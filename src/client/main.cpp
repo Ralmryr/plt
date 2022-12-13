@@ -72,9 +72,6 @@ int main(int argc,char* argv[])
         cout << "Condition: " << obj[i]["condition"].asString() << endl;
     }
 
-
-
-
     while (window.isOpen())
     {
         sf::Event event;

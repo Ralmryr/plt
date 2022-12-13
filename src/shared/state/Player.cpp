@@ -1,7 +1,3 @@
-//
-// Created by cleme on 21/11/22.
-//
-
 #include "Player.h"
 #include <iostream>
 
@@ -40,6 +36,6 @@ ResourceBoard Player::getResourceBoard(){
     return this->resourceBoard;
 }
 
-CardsHand Player::getCardsHand() {
+CardsHand Player::getCardsHand(){
     return this->cardsHand;
 }

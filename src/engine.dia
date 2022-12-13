@@ -4954,24 +4954,24 @@
     </dia:object>
     <dia:object type="UML - Association" version="2" id="O25">
       <dia:attribute name="obj_pos">
-        <dia:point val="147.954,24.2865"/>
+        <dia:point val="159.562,28.8368"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="147.204,22.2249;184.69,25.0865"/>
+        <dia:rectangle val="158.812,20.4581;181.353,29.6918"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
       </dia:attribute>
       <dia:attribute name="orth_points">
-        <dia:point val="147.954,24.2865"/>
-        <dia:point val="147.954,22.9699"/>
-        <dia:point val="184.49,22.9699"/>
-        <dia:point val="184.49,22.3534"/>
+        <dia:point val="159.562,28.8368"/>
+        <dia:point val="170.782,28.8368"/>
+        <dia:point val="170.782,21.2031"/>
+        <dia:point val="181.303,21.2031"/>
       </dia:attribute>
       <dia:attribute name="orth_orient">
-        <dia:enum val="1"/>
         <dia:enum val="0"/>
         <dia:enum val="1"/>
+        <dia:enum val="0"/>
       </dia:attribute>
       <dia:attribute name="orth_autoroute">
         <dia:boolean val="true"/>
@@ -5028,7 +5028,7 @@
         <dia:color val="#000000ff"/>
       </dia:attribute>
       <dia:connections>
-        <dia:connection handle="0" to="O9" connection="24"/>
+        <dia:connection handle="0" to="O9" connection="15"/>
         <dia:connection handle="1" to="O24" connection="8"/>
       </dia:connections>
     </dia:object>

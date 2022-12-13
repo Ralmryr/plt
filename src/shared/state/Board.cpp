@@ -36,6 +36,26 @@ Board::Board() {
     Tile new2Tile = Tile({-8, 2}, TileType(2));
     listTiles.push_back(new2Tile);
     listOwners.push_back(1);
+
+    //Initialize reserved spot
+    listReserved={
+            //Don't modify, it will be incoherent
+            {{-2,0},NOCTIS},
+            {{-1,0},OCEAN},
+            {{0,0},OCEAN},
+            {{1,0},OCEAN},
+            {{2,-1},OCEAN},
+            {{3,-1},OCEAN},
+            {{4,-1},OCEAN},
+            {{4,-4},OCEAN},
+            {{3,1},OCEAN},
+            {{1,3},OCEAN},
+            {{0,4},OCEAN},
+            {{-2,4},OCEAN},
+            {{-3,4},OCEAN},
+            {{-9,5},PHOBOS},
+            {{-8,2},GANYMEDE}
+    };
 }
 
 Board::~Board() {
@@ -44,7 +64,7 @@ Board::~Board() {
 
 // Adds the data from every tile
 // [ "x, y" : "type, idOwner" ]
-std::unordered_map<std::string, std::string> Board::serializeUiData() const {
+unordered_map<string, string> Board::serializeUiData() const {
     unordered_map<string, string> uiData;
     for(int i = 0; i < int(listOwners.size()); i++) {
         auto tileData = listTiles[i].serializeUiData();
@@ -53,11 +73,30 @@ std::unordered_map<std::string, std::string> Board::serializeUiData() const {
     return uiData;
 }
 
+vector<Tile> Board::getNeighbors (pair<int,int>currCoord){
+    vector<Tile> neighbors;
+    int currx=currCoord.first;
+    int curry=currCoord.second;
+    for(const auto& tile : listTiles){
+        pair<int,int> coords=tile.getCoords();
+        int x=coords.first;
+        int y= coords.second;
+        if(abs(currx-x)<=1 and abs(curry-y) and currx-x !=curry-y){
+            neighbors.push_back(tile);
+        }
+    }
+    return neighbors;
+}
+
 const std::vector<Tile> &Board::getListTiles() const {
     return listTiles;
 }
 
 const std::vector<int> &Board::getListOwners() const {
     return listOwners;
+}
+
+const std::map<std::pair<int, int>, TileType> &Board::getListReserved() const {
+    return listReserved;
 }
 

@@ -33,4 +33,12 @@ bool Tile::operator()(const Tile &tileL, const Tile &tileR) const {
     return tileL.coords.first < tileR.coords.first && tileL.coords.second < tileR.coords.second;
 }
 
+const std::pair<int, int> &Tile::getCoords() const {
+    return coords;
+}
+
+TileType Tile::getType() const {
+    return type;
+}
+
 

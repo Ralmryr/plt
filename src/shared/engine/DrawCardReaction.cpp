@@ -5,7 +5,7 @@ using namespace std;
 using namespace state;
 
 
-DrawCardReaction::DrawCardReaction (State state, int idPlayer){
+DrawCardReaction::DrawCardReaction (const state::State& state, int idPlayer){
     /*
     std::shared_ptr<state::Player> player;
      */

@@ -3625,7 +3625,7 @@
     </dia:object>
     <dia:object type="UML - Association" version="2" id="O14">
       <dia:attribute name="obj_pos">
-        <dia:point val="90.1375,25.658"/>
+        <dia:point val="89.5561,42.68"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
         <dia:rectangle val="88.8061,41.93;91.1257,53.3472"/>
@@ -3705,7 +3705,7 @@
     </dia:object>
     <dia:object type="UML - Association" version="2" id="O15">
       <dia:attribute name="obj_pos">
-        <dia:point val="90.9257,52.5472"/>
+        <dia:point val="102.776,56.6975"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
         <dia:rectangle val="102.026,55.9475;106.583,58.1159"/>
@@ -3720,6 +3720,7 @@
         <dia:point val="106.533,57.2609"/>
       </dia:attribute>
       <dia:attribute name="orth_orient">
+        <dia:enum val="0"/>
         <dia:enum val="1"/>
         <dia:enum val="0"/>
       </dia:attribute>
@@ -5930,7 +5931,7 @@
     </dia:object>
     <dia:object type="UML - Association" version="2" id="O27">
       <dia:attribute name="obj_pos">
-        <dia:point val="93.7206,1.41157"/>
+        <dia:point val="100.352,17.065"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
         <dia:rectangle val="89.5061,16.315;101.102,35.1795"/>
@@ -6536,7 +6537,7 @@
     </dia:object>
     <dia:object type="UML - Dependency" version="1" id="O35">
       <dia:attribute name="obj_pos">
-        <dia:point val="130.757,51.8054"/>
+        <dia:point val="127.197,52.5558"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
         <dia:rectangle val="112.458,52.5058;127.247,57.7109"/>
@@ -6551,9 +6552,9 @@
         <dia:point val="112.908,57.2609"/>
       </dia:attribute>
       <dia:attribute name="orth_orient">
-        <dia:enum val="1"/>
         <dia:enum val="0"/>
         <dia:enum val="1"/>
+        <dia:enum val="0"/>
       </dia:attribute>
       <dia:attribute name="orth_autoroute">
         <dia:boolean val="true"/>
@@ -6949,7 +6950,7 @@
     </dia:object>
     <dia:object type="UML - Association" version="2" id="O37">
       <dia:attribute name="obj_pos">
-        <dia:point val="17.649,19.7812"/>
+        <dia:point val="23.4323,34.3551"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
         <dia:rectangle val="22.6823,11.1399;29.8542,35.1551"/>

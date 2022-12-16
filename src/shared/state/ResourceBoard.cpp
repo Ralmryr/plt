@@ -47,3 +47,7 @@ std::unordered_map<std::string, std::string> ResourceBoard::serializeUiData() co
 std::unordered_map<Resource, int> ResourceBoard::getResourceMap(){
     return this->resourceMap;
 }
+
+void ResourceBoard::modifyResource(Resource resource, int amount) {
+    resourceMap[resource] += amount;
+}

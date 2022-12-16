@@ -14,15 +14,13 @@ ModifyResourceReaction::~ModifyResourceReaction ()= default;
 
 
 void ModifyResourceReaction::execute (){
-    auto resourceBoard = player->getResourceBoard();
-    resourceBoard.modifyResource(resType,amount);
+    player->getResourceBoard().modifyResource(resType,amount);
 }
 
 //resource gain is only forbidden when it would put a production value below 0, except for gold which is allowed to;
 bool ModifyResourceReaction::query (){
     if(resType == IRON_PROD ||resType == TITANIUM_PROD || resType == PLANT_PROD ||resType == ENERGY_PROD || resType == HEAT_PROD){
-        std::unordered_map<Resource, int> resourceCurrent = player->getResourceBoard().getResourceMap();
-        if (resourceCurrent[resType]+amount<0) return false;
+        if (player->getResourceBoard().getResourceMap()[resType]+amount<0) return false;
     }
     return true;
 }

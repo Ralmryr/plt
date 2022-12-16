@@ -44,6 +44,6 @@ std::unordered_map<std::string, std::string> ResourceBoard::serializeUiData() co
     return uiData;
 }
 
-std::unordered_map<Resource, int> ResourceBoard::getResourceMap(){
+std::unordered_map<Resource, int> ResourceBoard::getResourceMap() {
     return this->resourceMap;
 }

@@ -6,6 +6,7 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
 #include <../../extern/jsoncpp-1.8.0/json/json.h>
+#include <engine.h>
 
 using namespace render;
 using namespace state;
@@ -29,7 +30,7 @@ int main(int argc,char* argv[])
 
     scene.setScene(render::BOARD_VIEW);
 
-    auto eventManager = EventManager();
+    EventManager eventManager;
     eventManager.hookState(state);
 
 
@@ -49,6 +50,7 @@ int main(int argc,char* argv[])
     auto mouseText = Text("0, 0", sf::Vector2f(1700,50));
     int counterFps = 0;
 
+    /*
     //Testing JSON
     ifstream ifs(RESS_PATH + "cards_description.json");
     Json::Reader reader;
@@ -71,6 +73,8 @@ int main(int argc,char* argv[])
         }
         cout << "Condition: " << obj[i]["condition"].asString() << endl;
     }
+
+     */
 
     while (window.isOpen())
     {

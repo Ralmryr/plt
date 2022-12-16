@@ -5,6 +5,7 @@ using namespace std;
 using namespace state;
 
 Player::Player(int id) {
+    this->id = id;
     this->name = "Player" + to_string(id);
     this->resourceBoard = ResourceBoard();
     this->cardsHand = CardsHand();
@@ -38,4 +39,8 @@ ResourceBoard Player::getResourceBoard(){
 
 CardsHand Player::getCardsHand(){
     return this->cardsHand;
+}
+
+int Player::getId() const {
+    return this->id;
 }

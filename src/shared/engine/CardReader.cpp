@@ -72,4 +72,31 @@ void CardReader::parseCard(int idCard) {
                 break;
         }
     }
+
+    return status;
+}
+
+// Clears every table to free the shared pointers
+void CardReader::clear() {
+    instantReactions.clear();
+    permanentReactions.clear();
+    payReaction.clear();
+    listBadges.clear();
+    cost = 0;
+}
+
+const std::vector<state::Badge> &CardReader::getListBadges() const {
+    return this->listBadges;
+}
+
+int CardReader::getCost() const {
+    return this->cost;
+}
+
+const std::vector<std::shared_ptr<Reaction>> &CardReader::getInstantReactions() const {
+    return this->instantReactions;
+}
+
+const std::vector<std::shared_ptr<Reaction>> &CardReader::getPayReaction() const {
+    return this->payReaction;
 }

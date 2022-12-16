@@ -14,8 +14,7 @@ ModifyResourceReaction::~ModifyResourceReaction ()= default;
 
 
 void ModifyResourceReaction::execute (){
-    auto resourceBoard = player->getResourceBoard();
-    resourceBoard.modifyResource(resType,amount);
+    player->getResourceBoard().modifyResource(resType,amount);
 }
 
 //resource gain is only forbidden when it would put a production value below 0, except for gold which is allowed to;

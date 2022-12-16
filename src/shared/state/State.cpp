@@ -38,7 +38,7 @@ const std::shared_ptr<Board> &State::getBoard() const {
     return this->board;
 }
 
-const std::shared_ptr<Player> State::getSpecificPlayer (int idPlayer) const {
+std::shared_ptr<Player> State::getSpecificPlayer (int idPlayer) const {
     return this->listPlayers[idPlayer];
 }
 

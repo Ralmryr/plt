@@ -23,8 +23,10 @@ int main(int argc,char* argv[])
 
     // Initialize scene
     Scene scene = Scene();
+
     // Initialize state
     auto state = make_shared<State>();
+
     // Creates a bridge between the ui and the state
     scene.hookData(state->getUiDataProvider());
 
@@ -33,13 +35,10 @@ int main(int argc,char* argv[])
     EventManager eventManager;
     eventManager.hookState(state);
 
-
-//    auto eventDetails1 = EventDetails(engine::CARD_PLAYED);
-//    eventDetails1.setTilePosition({0, 0}).setIdPlayer(0);
-//    auto eventDetails2 = EventDetails(engine::TILE_PLACED);
-//    eventDetails2.setTilePosition({1, 2}).setIdPlayer(0);
-//    eventManager.notify(eventDetails1);
-//    eventManager.notify(eventDetails2);
+/*    auto newReaction = make_shared<ModifyResourceReaction>(*state, 3, state::Resource::GOLD, 0);
+    int status = newReaction->query();
+    cout << "status : " << status << endl;
+    newReaction->execute();*/
 
 
     sf::Clock clock;

@@ -35,11 +35,11 @@ int main(int argc,char* argv[])
     EventManager eventManager;
     eventManager.hookState(state);
 
-/*    auto newReaction = make_shared<ModifyResourceReaction>(*state, 3, state::Resource::GOLD, 0);
-    int status = newReaction->query();
-    cout << "status : " << status << endl;
-    newReaction->execute();*/
-
+    EventDetails eventDetails(engine::CARD_PLAYED);
+    eventDetails["idCardPlayed"] = 0;
+    cout << "Before notification" << endl;
+    eventManager.notify(eventDetails);
+    cout << "After notification" << endl;
 
     sf::Clock clock;
     sf::Time elapsedTime;
@@ -75,6 +75,7 @@ int main(int argc,char* argv[])
 
      */
 
+
     while (window.isOpen())
     {
         sf::Event event;
@@ -106,5 +107,7 @@ int main(int argc,char* argv[])
 
         window.display();
     }
-    return 0; 
+
+    cout << "End of program" << endl;
+    return 0;
 }

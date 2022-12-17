@@ -2,6 +2,7 @@
 // Created by cleme on 21/11/22.
 //
 
+#include <iostream>
 #include "ResourceBoard.h"
 
 using namespace std;
@@ -11,7 +12,7 @@ using namespace state;
 ResourceBoard::ResourceBoard() {
     // Initialize all resources at 0
     for(int res = R_FIRST+1; res != R_LAST; res++) {
-        resourceMap.insert({Resource(res), 15});
+        resourceMap.insert({Resource(res), 16});
     }
 
     resourceMap[GOLD_PROD] = 52;

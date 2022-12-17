@@ -28,20 +28,24 @@ CardReader::~CardReader() {
 int CardReader::parseCard(int idCard, const shared_ptr<state::State>& state) {
     int status = 0;
 
-    EffectMap effects = {{0, {1, 2}},
+    EffectMap effects = {{0, {15000}},
                          {1, {3, 4}}};
     BadgeMap badges = {{0, {state::BUILDING, state::B_PLANT}},
                        {1, {state::SCIENCE, state::SCIENCE}}};
     CostMap costs = {{0, 12},
                      {1, 35}};
 
-    this->listBadges = badges[idCard];
+    for (const auto &badge: badges[idCard]) {
+        this->listBadges.push_back(badge);
+    }
     this->cost = costs[idCard];
 
     // Creates the reaction to make the player pay
     auto currentPlayerId = state->getCurrentPlayer()->getId();
-    auto payReactionTmp = make_shared<ModifyResourceReaction>(*state, cost, state::GOLD, currentPlayerId);
-    payReaction.push_back(std::move(payReactionTmp));
+    auto payReactionTmp = make_shared<ModifyResourceReaction>(*state, -1, state::GOLD, currentPlayerId);
+    payReaction.push_back(payReactionTmp);
+    auto payReactionTmp2 = make_shared<ModifyResourceReaction>(*state, -2, state::GOLD, currentPlayerId);
+    payReaction.push_back(payReactionTmp2);
 
 
     // Reads the card effects and adds reaction accordingly

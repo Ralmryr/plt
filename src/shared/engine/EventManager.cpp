@@ -16,10 +16,12 @@ void addNewEvent(EventManager& eventManager, EventType eventType) {
     };
 }
 
-EventManager::EventManager() : reactionQueue(), cardReader(){
+EventManager::EventManager() : reactionQueue(){
+    cardReader = make_unique<CardReader>();
     // Adds the types to the factory to easily create new Events
     addNewEvent<BadgePlayedListener>(*this, CARD_PLAYED);
     addNewEvent<TilePlacedListener>(*this, TILE_PLACED);
+    isActionValid = true;
 }
 
 EventManager::~EventManager() {
@@ -59,12 +61,15 @@ void EventManager::notify(EventDetails &eventDetails) {
         auto payReaction = cardReader->getPayReaction();
         processReactions(payReaction);
 
-        auto instantReaction = cardReader->getInstantReactions();
-        processReactions(instantReaction);
+        //auto instantReaction = cardReader->getInstantReactions();
+        //processReactions(instantReaction);
 
         // Once all effects are triggered, executes all the commands
         reactionQueue.consume();
+        cardReader->clear();
     }
+
+    
 }
 
 ReactionQueue &EventManager::getReactionQueue() {

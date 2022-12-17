@@ -7269,7 +7269,7 @@
         <dia:point val="-14.4018,15.3575"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="-14.4518,14.3075;4.82058,60.7317"/>
+        <dia:rectangle val="-14.4518,14.3075;4.82057,60.7317"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
@@ -7531,15 +7531,15 @@
         <dia:point val="43.5837,56.0491"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="42.8337,39.2894;117.35,56.9041"/>
+        <dia:rectangle val="42.8337,39.2894;117.349,56.9041"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
       </dia:attribute>
       <dia:attribute name="orth_points">
         <dia:point val="43.5837,56.0491"/>
-        <dia:point val="117.15,56.0491"/>
-        <dia:point val="117.15,39.3394"/>
+        <dia:point val="117.149,56.0491"/>
+        <dia:point val="117.149,39.3394"/>
       </dia:attribute>
       <dia:attribute name="orth_orient">
         <dia:enum val="0"/>
@@ -8352,18 +8352,18 @@
     </dia:object>
     <dia:object type="UML - Association" version="2" id="O57">
       <dia:attribute name="obj_pos">
-        <dia:point val="27.5426,27.1391"/>
+        <dia:point val="27.5426,26.3391"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="17.65,26.3891;30.0587,49.8994"/>
+        <dia:rectangle val="17.65,25.5891;30.0587,49.0994"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
       </dia:attribute>
       <dia:attribute name="orth_points">
-        <dia:point val="27.5426,27.1391"/>
-        <dia:point val="27.5426,28.6391"/>
-        <dia:point val="17.7,28.6391"/>
+        <dia:point val="27.5426,26.3391"/>
+        <dia:point val="27.5426,30.25"/>
+        <dia:point val="17.7,30.25"/>
         <dia:point val="17.7,46.9"/>
         <dia:point val="29.8587,46.9"/>
         <dia:point val="29.8587,48.2994"/>
@@ -8430,7 +8430,7 @@
         <dia:color val="#000000ff"/>
       </dia:attribute>
       <dia:connections>
-        <dia:connection handle="0" to="O1" connection="30"/>
+        <dia:connection handle="0" to="O1" connection="28"/>
         <dia:connection handle="1" to="O43" connection="26"/>
       </dia:connections>
       <dia:childnode parent="O0"/>

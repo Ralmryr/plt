@@ -3,7 +3,7 @@
 using namespace std;
 
 engine::EventDetails::EventDetails(engine::EventType eventType) {
-
+    this->eventType = eventType;
 }
 
 engine::EventDetails::~EventDetails() {
@@ -30,5 +30,3 @@ engine::EventType engine::EventDetails::getEventType() const {
 int &engine::EventDetails::operator[](const string &key) {
     return this->detailsMap[key];
 }
-
-

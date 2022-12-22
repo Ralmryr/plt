@@ -1,3 +1,5 @@
+#include <functional>
+
 #include "CardReader.h"
 
 #include "DrawCardReaction.h"
@@ -18,6 +20,41 @@ CardReader::CardReader() {
 
 CardReader::~CardReader() {
 
+}
+
+// Helper function that gets the
+bool checkCondition(const shared_ptr<state::State> &state, const string &conditionType, int conditionValue) {
+    bool isConditionVerified = false;
+
+    if(conditionType == "minOxy") {
+        if(conditionValue >= state->getGlobalParameters()->getOxygen())
+            isConditionVerified = true;
+    }
+    else if(conditionType == "maxOxy") {
+        if(conditionValue <= state->getGlobalParameters()->getOxygen())
+            isConditionVerified = true;
+    }
+    else if(conditionType == "minOcean") {
+        if(conditionValue >= state->getGlobalParameters()->getNumberOcean())
+            isConditionVerified = true;
+    }
+    else if(conditionType == "maxOcean") {
+        if(conditionValue <= state->getGlobalParameters()->getNumberOcean())
+            isConditionVerified = true;
+    }
+    else if(conditionType == "minTemp") {
+        if(conditionValue >= state->getGlobalParameters()->getTemp())
+            isConditionVerified = true;
+    }
+    else if(conditionType == "maxTemp") {
+        if(conditionValue <= state->getGlobalParameters()->getTemp())
+            isConditionVerified = true;
+    }
+    else if(conditionType == "science") {
+
+    }
+
+    return isConditionVerified;
 }
 
 /*
@@ -42,11 +79,8 @@ int CardReader::parseCard(int idCard, const shared_ptr<state::State>& state) {
 
     // Creates the reaction to make the player pay
     auto currentPlayerId = state->getCurrentPlayer()->getId();
-    auto payReactionTmp = make_shared<ModifyResourceReaction>(*state, -1, state::GOLD, currentPlayerId);
+    auto payReactionTmp = make_shared<ModifyResourceReaction>(*state, -cost, state::GOLD, currentPlayerId);
     payReaction.push_back(payReactionTmp);
-    auto payReactionTmp2 = make_shared<ModifyResourceReaction>(*state, -2, state::GOLD, currentPlayerId);
-    payReaction.push_back(payReactionTmp2);
-
 
     // Reads the card effects and adds reaction accordingly
     shared_ptr<Reaction> newReaction;

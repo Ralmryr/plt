@@ -18,7 +18,7 @@ PlaceTileReaction::~PlaceTileReaction(){
 
 }
 
-void PlaceTileReaction::execute (){
+void PlaceTileReaction::execute() {
     Tile newTile=Tile(coords,tileType);
     vector<Tile> listTiles;
     vector<int> listOwners;
@@ -27,6 +27,7 @@ void PlaceTileReaction::execute (){
     listOwners=board->getListOwners();
     listOwners.push_back(idPlayer);
 }
+
 bool PlaceTileReaction::query () {
     vector<Tile> listTiles;
     listTiles = board->getListTiles();

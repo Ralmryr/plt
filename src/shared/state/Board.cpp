@@ -100,3 +100,66 @@ const std::map<std::pair<int, int>, TileType> &Board::getListReserved() const {
     return listReserved;
 }
 
+void Board::placeTile(std::pair<int, int> coords, state::TileType tileType, int idOwner) {
+    Tile newTile=Tile(coords,tileType);
+    listTiles.push_back(newTile);
+    listOwners.push_back(idOwner);
+}
+
+bool Board::isPossibleToPlaceTile(std::pair<int, int> coords, state::TileType tileType) {
+    pair<int, int> coordTile;
+
+    for (const auto &tile: listTiles) {
+        //Check if there is no tile on this coordinates
+        coordTile = tile.getCoords();
+        if (coords == coordTile) {
+            return false;
+        }
+    }
+
+    if (listReserved[coords]) {
+        //Check if the spot is reserved
+        if ((tileType == listReserved[coords]) || (tileType == MOHOL && listReserved[coords] == OCEAN)) {
+            return true;
+        } else return false;
+    }
+
+    //Others special conditions of placement
+    if (tileType == CITY || tileType == CAPITAL) {
+        //No adjacent city
+        vector<Tile> neighborhood = getNeighbors(coords);
+        for (const auto &neighbor: neighborhood) {
+            if (neighbor.getType() == CITY || neighbor.getType() == NOCTIS || neighbor.getType() == CAPITAL) {
+                return false;
+            }
+        }
+        return true;
+    } else if (tileType == PRESERVED) {
+        //No adjacent tile
+        vector<Tile> neighborhood = getNeighbors(coords);
+        if (neighborhood.empty()) return true;
+        else return false;
+    } else if (tileType == INDUSTRY) {
+        //Have to be adjacent to a city
+        vector<Tile> neighborhood =getNeighbors(coords);
+        for (const auto &neighbor: neighborhood) {
+            if (neighbor.getType() == CITY || neighbor.getType() == NOCTIS || neighbor.getType() == CAPITAL) {
+                return true;
+            }
+        }
+        return false;
+    } else if (tileType == ZOO) {
+        //Have to be adjacent to a forest
+        vector<Tile> neighborhood = getNeighbors(coords);
+        for (const auto &neighbor: neighborhood) {
+            if (neighbor.getType() == FOREST) {
+                return true;
+            }
+        }
+        return false;
+    }else if(tileType==MINE){
+        //Need to be on a resource
+        return true; // to implement
+    }else return true;
+}
+

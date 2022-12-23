@@ -51,3 +51,10 @@ std::unordered_map<Resource, int> ResourceBoard::getResourceMap() {
 void ResourceBoard::modifyResource(Resource resource, int amount) {
     resourceMap[resource] += amount;
 }
+
+bool ResourceBoard::isPossibleToModifyResource(Resource resource, int amount) {
+    if(resourceMap[resource]){
+        if (resourceMap[resource]+amount<0) return false;
+        else return true;
+    }else return false;
+}

@@ -5,9 +5,9 @@ using namespace std;
 using namespace state;
 
 GlobalParameters::GlobalParameters() {
-    this->temp = MIN_TEMPERATURE;
+    this->temp = 10;
     this->numberOcean = STARTING_OCEAN;
-    this->oxygen = MIN_OXYGEN;
+    this->oxygen = 5;
 }
 
 GlobalParameters::~GlobalParameters() {

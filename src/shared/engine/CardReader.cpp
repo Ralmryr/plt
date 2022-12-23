@@ -1,5 +1,8 @@
+#include <fstream>
 #include "CardReader.h"
 
+#include <../../extern/jsoncpp-1.8.0/json/json.h>
+#include "../constants.hpp"
 #include "DrawCardReaction.h"
 #include "ModifyResourceReaction.h"
 #include "PlaceTileReaction.h"
@@ -8,9 +11,26 @@
 using namespace std;
 using namespace engine;
 
-using EffectMap = std::map<int, std::vector<int>>;
-using BadgeMap = std::map<int, std::vector<state::Badge>>;
 using CostMap = std::map<int, int>;
+
+std::map<string, state::Badge> BadgeMap = {{"NONE", state::NONE},
+                                           {"BUILDING", state::BUILDING},
+                                           {"SPACE", state::SPACE},
+                                           {"B_ENERGY", state::B_ENERGY},
+                                           {"SCIENCE", state::SCIENCE},
+                                           {"JOVIAN", state::JOVIAN},
+                                           {"EARTH", state::EARTH},
+                                           {"B_PLANT", state::B_PLANT},
+                                           {"MICROBE", state::MICROBE},
+                                           {"ANIMAL", state::ANIMAL},
+                                           {"B_CITY", state::B_CITY},
+                                           {"EVENT", state::EVENT},
+                                           {"VENUS", state::VENUS}};
+
+std::map<string, int> ReactionMap = {{"IncreaseGPReaction", 0},
+                                   {"ModifyRessourceReaction", 1},
+                                   {"PlaceTileReaction", 2},
+                                   {"DrawCardReaction", 3}};
 
 CardReader::CardReader() {
 
@@ -21,39 +41,62 @@ CardReader::~CardReader() {
 }
 
 void CardReader::parseCard(int idCard) {
-    EffectMap effects = {{0, {1, 2}},
-                         {1, {3, 4}}};
-    BadgeMap badges = {{0, {state::BUILDING, state::B_PLANT}},
-                       {1, {state::SCIENCE, state::SCIENCE}}};
-    CostMap costs = {{0, 12},
-                     {1, 35}};
+    Json::Reader reader;
+    Json::Value obj;
+    ifstream ifs(RESS_PATH + "cards_description.json");
+    reader.parse(ifs, obj);
 
-    this->listBadges = badges[idCard];
-    this->cost = costs[idCard];
-
-    shared_ptr<Reaction> newReaction;
-
-    for (const auto &effect: effects[idCard]) {
-        switch (effect) {
+    this->cost = obj[idCard-1]["cost"].asInt();
+    for (int i = 0; i < obj[idCard-1]["badges"].size(); i++){
+        string badge = obj[idCard-1]["badges"][i].asString();
+        this->listBadges.push_back(BadgeMap[badge]);
+    }
+    for (int j = 0; j < obj[idCard-1]["effects"].size(); j++){
+        string effect = obj[idCard-1]["effects"][j].asString();
+        string effectType = effect.substr(0, effect.find(":"));
+        string reactionType = effect.substr(1, effect.find(":"));
+        int c = ReactionMap[reactionType];
+        shared_ptr<Reaction> newReaction;
+        switch(c){
             case 0:
                 newReaction = shared_ptr<IncreaseGPReaction>();
                 break;
             case 1:
-                newReaction = shared_ptr<ModifyResourceReaction>();
+
                 break;
             case 2:
-                newReaction = shared_ptr<PlaceTileReaction>();
+
                 break;
             case 3:
-                newReaction = shared_ptr<DrawCardReaction>();
-                break;
-            default:
-                newReaction = nullptr;
-                break;
-        }
 
-        if (newReaction != nullptr) {
-            instantReactions.push_back(std::move(newReaction));
+                break;
         }
     }
+
+    return status;
+}
+
+// Clears every table to free the shared pointers
+void CardReader::clear() {
+    instantReactions.clear();
+    permanentReactions.clear();
+    payReaction.clear();
+    listBadges.clear();
+    cost = 0;
+}
+
+const std::vector<state::Badge> &CardReader::getListBadges() const {
+    return this->listBadges;
+}
+
+int CardReader::getCost() const {
+    return this->cost;
+}
+
+const std::vector<std::shared_ptr<Reaction>> &CardReader::getInstantReactions() const {
+    return this->instantReactions;
+}
+
+const std::vector<std::shared_ptr<Reaction>> &CardReader::getPayReaction() const {
+    return this->payReaction;
 }

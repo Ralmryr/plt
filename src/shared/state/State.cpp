@@ -9,6 +9,7 @@ State::State() {
     for(int i = 0; i < 5; i++) {
         listPlayers.push_back(make_shared<Player>(i));
     }
+    currentPlayer = 0;
     board = make_shared<Board>();
     globalParameters = make_shared<GlobalParameters>();
     uiDataProvider = make_shared<RenderAPI>();
@@ -37,10 +38,14 @@ const std::shared_ptr<Board> &State::getBoard() const {
     return this->board;
 }
 
-const std::shared_ptr<Player> State::getSpecificPlayer (int idPlayer) const {
+std::shared_ptr<Player> State::getSpecificPlayer (int idPlayer) const {
     return this->listPlayers[idPlayer];
 }
 
 const std::shared_ptr<Deck>& State::getDeck() const{
     return this->deck;
+}
+
+const std::shared_ptr<Player>& State::getCurrentPlayer() const {
+    return listPlayers[currentPlayer];
 }

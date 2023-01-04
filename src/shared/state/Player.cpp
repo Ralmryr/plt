@@ -44,3 +44,11 @@ CardsHand Player::getCardsHand(){
 int Player::getId() const {
     return this->id;
 }
+
+void Player::modifyResource(Resource resource, int amount) {
+    resourceBoard.modifyResource(resource,amount);
+}
+
+bool Player::isPossibleToModifyResource(Resource resource, int amount) {
+    return resourceBoard.isPossibleToModifyResource(resource,amount);
+}

@@ -2,6 +2,8 @@
 
 #include "CardReader.h"
 
+#include <../../extern/jsoncpp-1.8.0/json/json.h>
+#include "../constants.hpp"
 #include "DrawCardReaction.h"
 #include "ModifyResourceReaction.h"
 #include "PlaceTileReaction.h"
@@ -10,9 +12,26 @@
 using namespace std;
 using namespace engine;
 
-using EffectMap = std::map<int, std::vector<int>>;
-using BadgeMap = std::map<int, std::vector<state::Badge>>;
 using CostMap = std::map<int, int>;
+
+std::map<string, state::Badge> BadgeMap = {{"NONE", state::NONE},
+                                           {"BUILDING", state::BUILDING},
+                                           {"SPACE", state::SPACE},
+                                           {"B_ENERGY", state::B_ENERGY},
+                                           {"SCIENCE", state::SCIENCE},
+                                           {"JOVIAN", state::JOVIAN},
+                                           {"EARTH", state::EARTH},
+                                           {"B_PLANT", state::B_PLANT},
+                                           {"MICROBE", state::MICROBE},
+                                           {"ANIMAL", state::ANIMAL},
+                                           {"B_CITY", state::B_CITY},
+                                           {"EVENT", state::EVENT},
+                                           {"VENUS", state::VENUS}};
+
+std::map<string, int> ReactionMap = {{"IncreaseGPReaction", 0},
+                                   {"ModifyRessourceReaction", 1},
+                                   {"PlaceTileReaction", 2},
+                                   {"DrawCardReaction", 3}};
 
 CardReader::CardReader() {
 
@@ -90,25 +109,19 @@ int CardReader::parseCard(int idCard, const shared_ptr<state::State>& state) {
                 newReaction = shared_ptr<IncreaseGPReaction>();
                 break;
             case 1:
-                newReaction = shared_ptr<ModifyResourceReaction>();
+
                 break;
             case 2:
-                newReaction = shared_ptr<PlaceTileReaction>();
+
                 break;
             case 3:
-                newReaction = shared_ptr<DrawCardReaction>();
-                break;
-            default:
-                newReaction = nullptr;
-                break;
-        }
 
-        if (newReaction != nullptr) {
-            instantReactions.push_back(std::move(newReaction));
+                break;
         }
     }
 
     return status;
+     */
 }
 
 // Clears every table to free the shared pointers

@@ -40,7 +40,9 @@ CardReader::~CardReader() {
 
 }
 
-void CardReader::parseCard(int idCard) {
+int CardReader::parseCard(int idCard, const std::shared_ptr<state::State>& state) {
+    return -1;
+    /*
     Json::Reader reader;
     Json::Value obj;
     ifstream ifs(RESS_PATH + "cards_description.json");
@@ -74,6 +76,7 @@ void CardReader::parseCard(int idCard) {
     }
 
     return status;
+     */
 }
 
 // Clears every table to free the shared pointers

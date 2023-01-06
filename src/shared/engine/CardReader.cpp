@@ -3,6 +3,7 @@
 #include "CardReader.h"
 
 #include <../../extern/jsoncpp-1.8.0/json/json.h>
+#include <iostream>
 #include "../constants.hpp"
 #include "DrawCardReaction.h"
 #include "ModifyResourceReaction.h"
@@ -12,9 +13,12 @@
 using namespace std;
 using namespace engine;
 
-using CostMap = std::map<int, int>;
+using CostMap = map<int, int>;
+using EffectMap = map<int, vector<int>>;
+using BadgeMap = map<int, vector<state::Badge>>;
 
-std::map<string, state::Badge> BadgeMap = {{"NONE", state::NONE},
+
+std::map<string, state::Badge> badgeMap = {{"NONE", state::NONE},
                                            {"BUILDING", state::BUILDING},
                                            {"SPACE", state::SPACE},
                                            {"B_ENERGY", state::B_ENERGY},
@@ -69,9 +73,6 @@ bool checkCondition(const shared_ptr<state::State> &state, const string &conditi
         if(conditionValue <= state->getGlobalParameters()->getTemp())
             isConditionVerified = true;
     }
-    else if(conditionType == "science") {
-
-    }
 
     return isConditionVerified;
 }
@@ -101,6 +102,22 @@ int CardReader::parseCard(int idCard, const shared_ptr<state::State>& state) {
     auto payReactionTmp = make_shared<ModifyResourceReaction>(*state, -cost, state::GOLD, currentPlayerId);
     payReaction.push_back(payReactionTmp);
 
+    // Temporary placeTile reaction
+    if (idCard == 0) {
+        int x, y;
+        cout << "Enter coord x then y" << endl;
+        cin >> x;
+        cin >> y;
+        pair<int, int> coords = {x, y};
+        auto tileReaction = make_shared<PlaceTileReaction>(*state, coords, state::FOREST, 3);
+        instantReactions.push_back(tileReaction);
+
+        auto gpReaction = make_shared<IncreaseGPReaction>(*state, 3, "oxygen");
+        instantReactions.push_back(gpReaction);
+        auto gpReaction2 = make_shared<IncreaseGPReaction>(*state, 6, "temperature");
+        instantReactions.push_back(gpReaction2);
+    }
+
     // Reads the card effects and adds reaction accordingly
     shared_ptr<Reaction> newReaction;
     for (const auto &effect: effects[idCard]) {
@@ -121,7 +138,6 @@ int CardReader::parseCard(int idCard, const shared_ptr<state::State>& state) {
     }
 
     return status;
-     */
 }
 
 // Clears every table to free the shared pointers

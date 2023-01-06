@@ -7,11 +7,10 @@ using namespace std;
 using namespace state;
 
 PlaceTileReaction::PlaceTileReaction(const State& state, pair<int, int> coords, TileType tileType, int idPlayer){
-    shared_ptr<Board>  currentBoard=state.getBoard();
-    this->board=currentBoard;
-    this->coords=coords;
-    this->tileType=tileType;
-    this->idPlayer=idPlayer;
+    this->board = state.getBoard();
+    this->coords = coords;
+    this->tileType = tileType;
+    this->idPlayer = idPlayer;
 }
 
 PlaceTileReaction::~PlaceTileReaction(){
@@ -24,7 +23,9 @@ void PlaceTileReaction::execute (){
 
 bool PlaceTileReaction::query () {
     board->isPossibleToPlaceTile(coords,tileType);
+    return true;
 }
+
 void PlaceTileReaction::procNotification (){
 
 }

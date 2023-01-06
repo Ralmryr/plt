@@ -61,8 +61,8 @@ void EventManager::notify(EventDetails &eventDetails) {
         auto payReaction = cardReader->getPayReaction();
         processReactions(payReaction);
 
-        //auto instantReaction = cardReader->getInstantReactions();
-        //processReactions(instantReaction);
+        auto instantReaction = cardReader->getInstantReactions();
+        processReactions(instantReaction);
 
         // Once all effects are triggered, executes all the commands
         reactionQueue.consume();

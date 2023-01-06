@@ -13,6 +13,7 @@ using namespace state;
 using namespace engine;
 using namespace std;
 
+
 int main(int argc,char* argv[])
 {
     sf::RenderWindow window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT),

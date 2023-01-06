@@ -20,12 +20,12 @@ Board::Board() {
         if(y>0) mama--;
         for (int x = joe; x <= mama; x++) {
             // 1 chance out of 3 to generate a Tile
-            if(rand()%3 == 0) continue;
+/*            if(rand()%3 == 0) continue;
             auto randTileType = rand()%3+1;
             auto randPlayer = rand()%5;
             Tile newTile = Tile({x, y}, TileType(randTileType));
             listTiles.push_back(newTile);
-            listOwners.push_back(randPlayer);
+            listOwners.push_back(randPlayer);*/
         }
     }
 
@@ -158,8 +158,8 @@ bool Board::isPossibleToPlaceTile(std::pair<int, int> coords, state::TileType ti
         }
         return false;
     }else if(tileType==MINE){
-        //Need to be on a resource
-        return true; // to implement
+        // TODO Need to be on a resource
+        return true;
     }else return true;
 }
 

@@ -7,8 +7,9 @@
 using namespace std;
 
 // This technique prevents the double call of the constructor of each class
-render::Scene::Scene() : popupBlueCards(), popupHandCards(), playerScoreDisplay(), globalParametersDisplay(), boardDisplay(), menu(), stdProject(){
+render::Scene::Scene() : boardScene(){
     engineAPI = make_shared<EngineAPI>();
+    dataProvider = make_shared<state::RenderAPI>();
 }
 
 render::Scene::~Scene() {
@@ -17,14 +18,10 @@ render::Scene::~Scene() {
 
 void render::Scene::draw(sf::RenderWindow& window) {
     if (currentScene == CARDS_HAND_VIEW || currentScene == BOARD_VIEW) {
-    boardDisplay.draw(window);
-    globalParametersDisplay.draw(window);
-    stdProject.draw(window);
-    playerScoreDisplay.draw(window);
-    menu.draw(window);
+    boardScene.draw(window);
     }
     if(currentScene == CARDS_HAND_VIEW) {
-        popupHandCards.draw(window);
+        //popupHandCards.draw(window);
     }
 }
 
@@ -34,8 +31,8 @@ void render::Scene::update() {
     if(currentScene == BOARD_VIEW) {
         // Board data
         auto boardData = dataProvider->provideBoardData();
-        boardDisplay.update(boardData);
-
+        boardScene.update(boardData);
+        /*
         // GlobalParam data
         auto globalParamData = dataProvider->provideGlobalParameters();
         globalParametersDisplay.update(globalParamData);
@@ -54,6 +51,7 @@ void render::Scene::update() {
             strResource = "resource " + to_string(++index);
         }
         menu.update(resourceData);
+         */
     }
 
     // -------------------------------------- CARDS HAND VIEW -----------------------------------
@@ -111,3 +109,5 @@ void render::Scene::handleEvent(sf::Event event) {
         engineAPI->onMouseMoved(sf::Vector2f(event.mouseMove.x, event.mouseMove.y));
     }
 }
+
+

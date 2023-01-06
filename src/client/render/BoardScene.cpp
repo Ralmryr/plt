@@ -2,6 +2,14 @@
 
 using namespace std;
 
+render::BoardScene::BoardScene() {
+
+}
+
+render::BoardScene::~BoardScene() {
+
+}
+
 void render::BoardScene::update(const unordered_map<string, string> &data) {
 
     unordered_map<string, string> playScoreData;

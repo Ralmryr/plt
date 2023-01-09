@@ -5,6 +5,7 @@ using namespace std;
 using namespace state;
 
 Player::Player(int id) {
+    this->id = id;
     this->name = "Player" + to_string(id);
     this->resourceBoard = ResourceBoard();
     this->cardsHand = CardsHand();
@@ -32,10 +33,22 @@ std::unordered_map<std::string, std::string> Player::serializeUiData() const {
     uiData.insert(cardHandData.begin(), cardHandData.end());
     return uiData;
 }
-ResourceBoard Player::getResourceBoard(){
+ResourceBoard& Player::getResourceBoard(){
     return this->resourceBoard;
 }
 
 CardsHand Player::getCardsHand(){
     return this->cardsHand;
+}
+
+int Player::getId() const {
+    return this->id;
+}
+
+void Player::modifyResource(Resource resource, int amount) {
+    resourceBoard.modifyResource(resource,amount);
+}
+
+bool Player::isPossibleToModifyResource(Resource resource, int amount) {
+    return resourceBoard.isPossibleToModifyResource(resource,amount);
 }

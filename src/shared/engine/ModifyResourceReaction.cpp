@@ -9,24 +9,22 @@ ModifyResourceReaction::ModifyResourceReaction(const state::State& state, int am
     this->player=state.getSpecificPlayer(idPlayer);
     this->amount=amount;
     this->resType=resType;
+
+    cout << "Reaction constructed" << endl;
 }
+
 ModifyResourceReaction::~ModifyResourceReaction ()= default;
 
 
 void ModifyResourceReaction::execute (){
-    auto resourceBoard = player->getResourceBoard();
-    resourceBoard.modifyResource(resType,amount);
+    player->modifyResource(resType,amount);
 }
 
 //resource gain is only forbidden when it would put a production value below 0, except for gold which is allowed to;
 bool ModifyResourceReaction::query (){
-    if(resType == IRON_PROD ||resType == TITANIUM_PROD || resType == PLANT_PROD ||resType == ENERGY_PROD || resType == HEAT_PROD){
-        std::unordered_map<Resource, int> resourceCurrent = player->getResourceBoard().getResourceMap();
-        if (resourceCurrent[resType]+amount<0) return false;
-    }
-    return true;
+    return player->isPossibleToModifyResource(resType,amount);
 }
 
 void ModifyResourceReaction::procNotification (){
-
+    cout << "Reaction destroyed" << endl;
 }

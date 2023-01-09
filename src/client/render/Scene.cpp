@@ -41,7 +41,7 @@ void render::Scene::update() {
         globalParametersDisplay.update(globalParamData);
 
         // PlayerData
-        auto playerData = dataProvider->providePlayerData(2);
+        auto playerData = dataProvider->providePlayerData(0);
 
         // Separate it into resourceData
         unordered_map<string, string> resourceData;

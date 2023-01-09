@@ -6,11 +6,13 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
 #include <../../extern/jsoncpp-1.8.0/json/json.h>
+#include <engine.h>
 
 using namespace render;
 using namespace state;
 using namespace engine;
 using namespace std;
+
 
 int main(int argc,char* argv[])
 {
@@ -22,24 +24,23 @@ int main(int argc,char* argv[])
 
     // Initialize scene
     Scene scene = Scene();
+
     // Initialize state
     auto state = make_shared<State>();
+
     // Creates a bridge between the ui and the state
     scene.hookData(state->getUiDataProvider());
 
     scene.setScene(render::BOARD_VIEW);
 
-    auto eventManager = EventManager();
+    EventManager eventManager;
     eventManager.hookState(state);
 
-
-//    auto eventDetails1 = EventDetails(engine::CARD_PLAYED);
-//    eventDetails1.setTilePosition({0, 0}).setIdPlayer(0);
-//    auto eventDetails2 = EventDetails(engine::TILE_PLACED);
-//    eventDetails2.setTilePosition({1, 2}).setIdPlayer(0);
-//    eventManager.notify(eventDetails1);
-//    eventManager.notify(eventDetails2);
-
+    EventDetails eventDetails(engine::CARD_PLAYED);
+    eventDetails["idCardPlayed"] = 0;
+    cout << "Before notification" << endl;
+    eventManager.notify(eventDetails);
+    cout << "After notification" << endl;
 
     sf::Clock clock;
     sf::Time elapsedTime;
@@ -49,6 +50,7 @@ int main(int argc,char* argv[])
     auto mouseText = Text("0, 0", sf::Vector2f(1700,50));
     int counterFps = 0;
 
+    /*
     //Testing JSON
     ifstream ifs(RESS_PATH + "cards_description.json");
     Json::Reader reader;
@@ -71,6 +73,9 @@ int main(int argc,char* argv[])
         }
         cout << "Condition: " << obj[i]["condition"].asString() << endl;
     }
+
+     */
+
 
     while (window.isOpen())
     {
@@ -103,5 +108,7 @@ int main(int argc,char* argv[])
 
         window.display();
     }
-    return 0; 
+
+    cout << "End of program" << endl;
+    return 0;
 }

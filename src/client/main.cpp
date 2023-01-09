@@ -5,7 +5,6 @@
 #include "../constants.hpp"
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
-#include <../../extern/jsoncpp-1.8.0/json/json.h>
 #include <engine.h>
 
 using namespace render;
@@ -48,33 +47,6 @@ int main(int argc,char* argv[])
     auto fpsText = Text("0", sf::Vector2f(1700, 10));
     auto mouseText = Text("0, 0", sf::Vector2f(1700,50));
     int counterFps = 0;
-
-    /*
-    //Testing JSON
-    ifstream ifs(RESS_PATH + "cards_description.json");
-    Json::Reader reader;
-    Json::Value obj;
-    reader.parse(ifs, obj);
-
-
-    for(int i = 0; i < obj.size(); i++) {
-        cout << "Id: " << obj[i]["id"].asString() << " ";
-        cout << "Cost: " << obj[i]["cost"].asString() << " ";
-        cout << "Badges: ";
-        for(int j = 0; j < obj[i]["badges"].size(); j++)
-        {
-            cout << obj[i]["badges"][j].asString() << ", ";
-        }
-        cout << "Effects: ";
-        for(int j = 0; j < obj[i]["badges"].size(); j++)
-        {
-            cout << obj[i]["effects"][j].asString() << ", ";
-        }
-        cout << "Condition: " << obj[i]["condition"].asString() << endl;
-    }
-
-     */
-
 
     while (window.isOpen())
     {

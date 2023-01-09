@@ -9,7 +9,9 @@
     "effects": [
       ""
     ],
-    "condition": ""
+    "condition": [
+      ""
+    ]
   },
   {
     "id": 2,
@@ -18,9 +20,11 @@
       "EARTH"
     ],
     "effects": [
-      "Instant:ModifiyRessourceReaction:+3:GOLD"
+      ["Instant","ModifyResource","3","GOLD"]
     ],
-    "condition": ""
+    "condition": [
+       ""
+    ]
   },
   {
     "id": 3,
@@ -29,9 +33,11 @@
       "BUILDING"
     ],
     "effects": [
-      ""
+      
     ],
-    "condition": ""
+    "condition": [
+      ""
+    ]
   },
   {
     "id": 4,
@@ -40,9 +46,11 @@
       "MICROBE"
     ],
     "effects": [
-      ""
+      
     ],
-    "condition": ""
+    "condition": [
+      ""
+    ]
   },
   {
     "id": 5,
@@ -51,12 +59,14 @@
       "PLANT"
     ],
     "effects": [
-      "Instant:ModifiyRessourceReaction:+2:PLANT_PROP",
-      "Instant:ModifiyRessourceReaction:+2:GOLD_PROD",
-      "Instant:ModifiyRessourceReaction:+2:PLANT",
-      "Instant:ModifyRessourceReaction:+2:PV"
+      ["Instant","ModifyResource","2","PLANT_PROD"],
+      ["Instant","ModifyResource","2","GOLD_PROD"],
+      ["Instant","ModifyResource","2","PLANT"],
+      ["Instant","ModifyResource","2","PV"]
     ],
-    "condition": "temp:MIN+4"
+    "condition": [
+       "minTemp","4"
+    ]
   },
   {
     "id": 6,
@@ -65,11 +75,13 @@
       "PLANT"
     ],
     "effects": [
-      "Instant:ModifiyRessourceReaction:+1:PLANT_PROD",
-      "Instant:ModifiyRessourceReaction:+2:GOLD_PROD",
-      "Instant:ModifiyRessourceReaction:+1:PLANT"
+      ["Instant","ModifyResource","1","PLANT_PROD"],
+      ["Instant","ModifyResource","2","GOLD_PROD"],
+      ["Instant","ModifyResource","1","PLANT"]
     ],
-    "condition": "temp:MIN:-6"
+    "condition": [
+      "minTemp","-6"
+    ]
   },
   {
     "id": 7,
@@ -78,9 +90,11 @@
       "PLANT"
     ],
     "effects": [
-      ""
+      
     ],
-    "condition": ""
+    "condition": [
+      ""
+    ]
   },
   {
     "id": 8,
@@ -89,10 +103,12 @@
       "PLANT"
     ],
     "effects": [
-      "Instant:ModifiyRessourceReaction:+2:PLANT_PROD",
-      "Instant:ModifiyRessourceReaction:+2:HEAT_PROD"
+      ["Instant","ModifyResource","2","PLANT_PROD"],
+      ["Instant","ModifyResource","2","HEAT_PROD"]
     ],
-    "condition": "numberOcean:MIN:2"
+    "condition": [
+      "minOcean","2"
+    ]
   },
   {
     "id": 9,
@@ -101,10 +117,12 @@
       "PLANT"
     ],
     "effects": [
-      "Instant:ModifiyRessourceReaction:+2:PLANT_PROD",
-      "Instant:ModifiyRessourceReaction:+1:PLANT"
+      ["Instant","ModifyResource","2","PLANT_PROD"],
+      ["Instant","ModifyResource","1","PLANT"]
     ],
-    "condition": "numberOcean:MIN:5"
+    "condition": [
+      "minOcean","5"
+    ]
   },
   {
     "id": 10,
@@ -113,9 +131,11 @@
       "SCIENCE"
     ],
     "effects": [
-      ""
+      
     ],
-    "condition": ""
+    "condition": [
+      ""
+    ]
   },
   {
     "id": 11,
@@ -124,9 +144,11 @@
       "SPACE"
     ],
     "effects": [
-      ""
+      
     ],
-    "condition": ""
+    "condition": [
+      ""
+    ]
   },
   {
     "id": 12,
@@ -136,9 +158,11 @@
       "MICROBE"
     ],
     "effects": [
-      ""
+      
     ],
-    "condition": ""
+    "condition": [
+      ""
+    ]
   },
   {
     "id": 13,
@@ -148,9 +172,11 @@
       "ANIMAL"
     ],
     "effects": [
-      ""
+      
     ],
-    "condition": ""
+    "condition": [
+      ""
+    ]
   },
   {
     "id": 14,
@@ -159,11 +185,13 @@
       "PLANT"
     ],
     "effects": [
-      "Instant:ModifiyRessourceReaction:+3:PLANT_PROD",
-      "Instant:ModifiyRessourceReaction:+1:PLANT",
-      "Instant:ModifyRessourceReaction:+1:PV"
+      ["Instant","ModifyResource","3","PLANT_PROD"],
+      ["Instant","ModifyResource","1","PLANT"],
+      ["Instant","ModifyResource","1","PV"]
     ],
-    "condition": "temp:MIN:-4"
+    "condition": [
+      "minTemp","-4"
+    ]
   },
   {
     "id": 15,
@@ -172,9 +200,11 @@
       "MICROBE"
     ],
     "effects": [
-      "Instant:ModifiyRessourceReaction:+1:PLANT_PROD"
+      ["Instant","ModifyResource","1","PLANT_PROD"]
     ],
-    "condition": ""
+    "condition": [
+      ""
+    ]
   },
   {
     "id": 16,
@@ -184,9 +214,11 @@
       "BUILDING"
     ],
     "effects": [
-      ""
+      
     ],
-    "condition": ""
+    "condition": [
+      ""
+    ]
   },
   {
     "id": 17,
@@ -196,10 +228,12 @@
       "EARTH"
     ],
     "effects": [
-      "Instant:ModifiyRessourceReaction:+3:TITANIUM_PROD",
-      "Instant:ModifiyRessourceReaction:+4:PV"
+      ["Instant","ModifyResource","3","TITANIUM_PROD"],
+      ["Instant","ModifyResource","4","PV"]
     ],
-    "condition": "temp:MAX:-18"
+    "condition": [
+      "maxTemp","-18"
+    ]
   },
   {
     "id": 18,
@@ -209,9 +243,11 @@
       "EVENT"
     ],
     "effects": [
-      ""
+      
     ],
-    "condition": ""
+    "condition": [
+      ""
+    ]
   },
   {
     "id": 19,
@@ -221,9 +257,11 @@
       "EVENT"
     ],
     "effects": [
-      ""
+      
     ],
-    "condition": ""
+    "condition": [
+      ""
+    ]
   },
   {
     "id": 20,
@@ -233,9 +271,12 @@
       "EVENT"
     ],
     "effects": [
-      "Instant:PlaceTileReaction:+2:OCEAN"
+      ["Instant","PlaceTile","0","0","OCEAN"],
+      ["Instant","PlaceTile","0","0","OCEAN"]
     ],
-    "condition": ""
+    "condition": [
+      ""
+    ]
   },
   {
     "id": 21,
@@ -245,9 +286,11 @@
       "EVENT"
     ],
     "effects": [
-      ""
+      
     ],
-    "condition": ""
+    "condition": [
+      ""
+    ]
   },
   {
     "id": 22,
@@ -257,9 +300,11 @@
       "EVENT"
     ],
     "effects": [
-      ""
+      
     ],
-    "condition": ""
+    "condition": [
+      ""
+    ]
   },
   {
     "id": 23,
@@ -269,9 +314,11 @@
       "EVENT"
     ],
     "effects": [
-      ""
+      
     ],
-    "condition": ""
+    "condition": [
+      ""
+    ]
   },
   {
     "id": 24,
@@ -281,10 +328,12 @@
       "SPACE"
     ],
     "effects": [
-      "Instant:ModifiyRessourceReaction:+2:TITANIUM_PROD",
-      "Instant:ModifiyRessourceReaction:+2:PV"
+      ["Instant","ModifyResource","2","TITANIUM_PROD"],
+      ["Instant","ModifyResource","2","PV"]
     ],
-    "condition": ""
+    "condition": [
+      ""
+    ]
   },
   {
     "id": 25,
@@ -294,9 +343,11 @@
       "EVENT"
     ],
     "effects": [
-      ""
+      
     ],
-    "condition": ""
+    "condition": [
+      ""
+    ]
   },
   {
     "id": 26,
@@ -305,9 +356,11 @@
       "NONE"
     ],
     "effects": [
-      ""
+      
     ],
-    "condition": ""
+    "condition": [
+      ""
+    ]
   },
   {
     "id": 27,
@@ -317,9 +370,11 @@
       "SPACE"
     ],
     "effects": [
-      ""
+      
     ],
-    "condition": ""
+    "condition": [
+      ""
+    ]
   },
   {
     "id": 28,
@@ -330,9 +385,11 @@
       "EVENT"
     ],
     "effects": [
-      ""
+      
     ],
-    "condition": ""
+    "condition": [
+      ""
+    ]
   },
   {
     "id": 29,
@@ -341,9 +398,11 @@
       "MICROBE"
     ],
     "effects": [
-      ""
+      
     ],
-    "condition": ""
+    "condition": [
+      ""
+    ]
   },
   {
     "id": 30,
@@ -352,9 +411,11 @@
       ""
     ],
     "effects": [
-      ""
+      
     ],
-    "condition": ""
+    "condition": [
+      ""
+    ]
   },
   {
     "id": 31,
@@ -363,9 +424,11 @@
       ""
     ],
     "effects": [
-      ""
+      
     ],
-    "condition": ""
+    "condition": [
+      ""
+    ]
   },
   {
     "id": 32,
@@ -374,9 +437,11 @@
       ""
     ],
     "effects": [
-      ""
+      
     ],
-    "condition": ""
+    "condition": [
+      ""
+    ]
   },
   {
     "id": 33,
@@ -385,9 +450,11 @@
       ""
     ],
     "effects": [
-      ""
+      
     ],
-    "condition": ""
+    "condition": [
+      ""
+    ]
   },
   {
     "id": 34,
@@ -396,9 +463,11 @@
       ""
     ],
     "effects": [
-      ""
+      
     ],
-    "condition": ""
+    "condition": [
+      ""
+    ]
   },
   {
     "id": 35,
@@ -407,9 +476,11 @@
       ""
     ],
     "effects": [
-      ""
+      
     ],
-    "condition": ""
+    "condition": [
+      ""
+    ]
   },
   {
     "id": 36,
@@ -418,9 +489,11 @@
       ""
     ],
     "effects": [
-      ""
+      
     ],
-    "condition": ""
+    "condition": [
+      ""
+    ]
   },
   {
     "id": 37,
@@ -429,9 +502,11 @@
       ""
     ],
     "effects": [
-      ""
+      
     ],
-    "condition": ""
+    "condition": [
+      ""
+    ]
   },
   {
     "id": 38,
@@ -440,9 +515,11 @@
       ""
     ],
     "effects": [
-      ""
+      
     ],
-    "condition": ""
+    "condition": [
+      ""
+    ]
   },
   {
     "id": 39,
@@ -451,9 +528,11 @@
       ""
     ],
     "effects": [
-      ""
+      
     ],
-    "condition": ""
+    "condition": [
+      ""
+    ]
   },
   {
     "id": 40,
@@ -462,9 +541,11 @@
       ""
     ],
     "effects": [
-      ""
+      
     ],
-    "condition": ""
+    "condition": [
+      ""
+    ]
   },
   {
     "id": 41,
@@ -473,9 +554,11 @@
       ""
     ],
     "effects": [
-      ""
+      
     ],
-    "condition": ""
+    "condition": [
+      ""
+    ]
   },
   {
     "id": 42,
@@ -484,9 +567,11 @@
       ""
     ],
     "effects": [
-      ""
+      
     ],
-    "condition": ""
+    "condition": [
+      ""
+    ]
   },
   {
     "id": 43,
@@ -495,9 +580,11 @@
       ""
     ],
     "effects": [
-      ""
+      
     ],
-    "condition": ""
+    "condition": [
+      ""
+    ]
   },
   {
     "id": 44,
@@ -506,9 +593,11 @@
       ""
     ],
     "effects": [
-      ""
+      
     ],
-    "condition": ""
+    "condition": [
+      ""
+    ]
   },
   {
     "id": 45,
@@ -517,9 +606,11 @@
       ""
     ],
     "effects": [
-      ""
+      
     ],
-    "condition": ""
+    "condition": [
+      ""
+    ]
   },
   {
     "id": 46,
@@ -528,9 +619,11 @@
       ""
     ],
     "effects": [
-      ""
+      
     ],
-    "condition": ""
+    "condition": [
+      ""
+    ]
   },
   {
     "id": 47,
@@ -539,9 +632,11 @@
       ""
     ],
     "effects": [
-      ""
+      
     ],
-    "condition": ""
+    "condition": [
+      ""
+    ]
   },
   {
     "id": 48,
@@ -550,18 +645,22 @@
       ""
     ],
     "effects": [
-      ""
+      
     ],
-    "condition": ""
+    "condition": [
+      ""
+    ]
   },
   {
     "id": 49,
     "cost": "",
     "badges": "",
     "effects": [
-      ""
+      
     ],
-    "condition": ""
+    "condition": [
+      ""
+    ]
   },
   {
     "id": 50,
@@ -570,9 +669,11 @@
       ""
     ],
     "effects": [
-      ""
+      
     ],
-    "condition": ""
+    "condition": [
+      ""
+    ]
   },
   {
     "id": 51,
@@ -581,9 +682,11 @@
       ""
     ],
     "effects": [
-      ""
+      
     ],
-    "condition": ""
+    "condition": [
+      ""
+    ]
   },
   {
     "id": 52,
@@ -592,9 +695,11 @@
       ""
     ],
     "effects": [
-      ""
+      
     ],
-    "condition": ""
+    "condition": [
+      ""
+    ]
   },
   {
     "id": 53,
@@ -603,9 +708,11 @@
       ""
     ],
     "effects": [
-      ""
+      
     ],
-    "condition": ""
+    "condition": [
+      ""
+    ]
   },
   {
     "id": 54,
@@ -614,9 +721,11 @@
       ""
     ],
     "effects": [
-      ""
+      
     ],
-    "condition": ""
+    "condition": [
+      ""
+    ]
   },
   {
     "id": 55,
@@ -625,9 +734,11 @@
       ""
     ],
     "effects": [
-      ""
+      
     ],
-    "condition": ""
+    "condition": [
+      ""
+    ]
   },
   {
     "id": 56,
@@ -636,9 +747,11 @@
       ""
     ],
     "effects": [
-      ""
+      
     ],
-    "condition": ""
+    "condition": [
+      ""
+    ]
   },
   {
     "id": 57,
@@ -647,9 +760,11 @@
       ""
     ],
     "effects": [
-      ""
+      
     ],
-    "condition": ""
+    "condition": [
+      ""
+    ]
   },
   {
     "id": 58,
@@ -658,9 +773,11 @@
       ""
     ],
     "effects": [
-      ""
+      
     ],
-    "condition": ""
+    "condition": [
+      ""
+    ]
   },
   {
     "id": 59,
@@ -669,9 +786,11 @@
       ""
     ],
     "effects": [
-      ""
+      
     ],
-    "condition": ""
+    "condition": [
+      ""
+    ]
   },
   {
     "id": 60,
@@ -680,9 +799,11 @@
       ""
     ],
     "effects": [
-      ""
+      
     ],
-    "condition": ""
+    "condition": [
+      ""
+    ]
   },
   {
     "id": 61,
@@ -691,9 +812,11 @@
       ""
     ],
     "effects": [
-      ""
+      
     ],
-    "condition": ""
+    "condition": [
+      ""
+    ]
   },
   {
     "id": 62,
@@ -702,9 +825,11 @@
       ""
     ],
     "effects": [
-      ""
+      
     ],
-    "condition": ""
+    "condition": [
+      ""
+    ]
   },
   {
     "id": 63,
@@ -713,9 +838,11 @@
       ""
     ],
     "effects": [
-      ""
+      
     ],
-    "condition": ""
+    "condition": [
+      ""
+    ]
   },
   {
     "id": 64,
@@ -724,9 +851,11 @@
       ""
     ],
     "effects": [
-      ""
+      
     ],
-    "condition": ""
+    "condition": [
+      ""
+    ]
   },
   {
     "id": 65,
@@ -735,9 +864,11 @@
       ""
     ],
     "effects": [
-      ""
+      
     ],
-    "condition": ""
+    "condition": [
+      ""
+    ]
   },
   {
     "id": 66,
@@ -746,9 +877,11 @@
       ""
     ],
     "effects": [
-      ""
+      
     ],
-    "condition": ""
+    "condition": [
+      ""
+    ]
   },
   {
     "id": 67,
@@ -757,9 +890,11 @@
       ""
     ],
     "effects": [
-      ""
+      
     ],
-    "condition": ""
+    "condition": [
+      ""
+    ]
   },
   {
     "id": 68,
@@ -768,9 +903,11 @@
       ""
     ],
     "effects": [
-      ""
+      
     ],
-    "condition": ""
+    "condition": [
+      ""
+    ]
   },
   {
     "id": 69,
@@ -779,9 +916,11 @@
       ""
     ],
     "effects": [
-      ""
+      
     ],
-    "condition": ""
+    "condition": [
+      ""
+    ]
   },
   {
     "id": 70,
@@ -792,7 +931,9 @@
     "effects": [
       ""
     ],
-    "condition": ""
+    "condition": [
+      ""
+    ]
   },
   {
     "id": 71,
@@ -801,9 +942,11 @@
       ""
     ],
     "effects": [
-      ""
+      
     ],
-    "condition": ""
+    "condition": [
+      ""
+    ]
   },
   {
     "id": 72,
@@ -812,9 +955,11 @@
       ""
     ],
     "effects": [
-      ""
+      
     ],
-    "condition": ""
+    "condition": [
+      ""
+    ]
   },
   {
     "id": 73,
@@ -823,9 +968,11 @@
       ""
     ],
     "effects": [
-      ""
+      
     ],
-    "condition": ""
+    "condition": [
+      ""
+    ]
   },
   {
     "id": 74,
@@ -834,9 +981,11 @@
       ""
     ],
     "effects": [
-      ""
+      
     ],
-    "condition": ""
+    "condition": [
+      ""
+    ]
   },
   {
     "id": 75,
@@ -845,9 +994,11 @@
       ""
     ],
     "effects": [
-      ""
+      
     ],
-    "condition": ""
+    "condition": [
+      ""
+    ]
   },
   {
     "id": 76,
@@ -856,9 +1007,11 @@
       ""
     ],
     "effects": [
-      ""
+      
     ],
-    "condition": ""
+    "condition": [
+      ""
+    ]
   },
   {
     "id": 77,
@@ -867,9 +1020,11 @@
       ""
     ],
     "effects": [
-      ""
+      
     ],
-    "condition": ""
+    "condition": [
+      ""
+    ]
   },
   {
     "id": 78,
@@ -878,9 +1033,11 @@
       ""
     ],
     "effects": [
-      ""
+      
     ],
-    "condition": ""
+    "condition": [
+      ""
+    ]
   },
   {
     "id": 79,
@@ -889,9 +1046,11 @@
       ""
     ],
     "effects": [
-      ""
+      
     ],
-    "condition": ""
+    "condition": [
+      ""
+    ]
   },
   {
     "id": 80,
@@ -900,9 +1059,11 @@
       ""
     ],
     "effects": [
-      ""
+      
     ],
-    "condition": ""
+    "condition": [
+      ""
+    ]
   },
   {
     "id": 81,
@@ -911,9 +1072,11 @@
       ""
     ],
     "effects": [
-      ""
+      
     ],
-    "condition": ""
+    "condition": [
+      ""
+    ]
   },
   {
     "id": 82,
@@ -922,9 +1085,11 @@
       ""
     ],
     "effects": [
-      ""
+      
     ],
-    "condition": ""
+    "condition": [
+      ""
+    ]
   },
   {
     "id": 83,
@@ -933,9 +1098,11 @@
       ""
     ],
     "effects": [
-      ""
+      
     ],
-    "condition": ""
+    "condition": [
+      ""
+    ]
   },
   {
     "id": 84,
@@ -944,9 +1111,11 @@
       ""
     ],
     "effects": [
-      ""
+      
     ],
-    "condition": ""
+    "condition": [
+      ""
+    ]
   },
   {
     "id": 85,
@@ -955,9 +1124,11 @@
       ""
     ],
     "effects": [
-      ""
+      
     ],
-    "condition": ""
+    "condition": [
+      ""
+    ]
   },
   {
     "id": 86,
@@ -966,9 +1137,11 @@
       ""
     ],
     "effects": [
-      ""
+      
     ],
-    "condition": ""
+    "condition": [
+      ""
+    ]
   },
   {
     "id": 87,
@@ -977,9 +1150,11 @@
       ""
     ],
     "effects": [
-      ""
+      
     ],
-    "condition": ""
+    "condition": [
+      ""
+    ]
   },
   {
     "id": 88,
@@ -988,9 +1163,11 @@
       ""
     ],
     "effects": [
-      ""
+      
     ],
-    "condition": ""
+    "condition": [
+      ""
+    ]
   },
   {
     "id": 89,
@@ -999,9 +1176,11 @@
       ""
     ],
     "effects": [
-      ""
+      
     ],
-    "condition": ""
+    "condition": [
+      ""
+    ]
   },
   {
     "id": 90,
@@ -1010,9 +1189,11 @@
       ""
     ],
     "effects": [
-      ""
+      
     ],
-    "condition": ""
+    "condition": [
+      ""
+    ]
   },
   {
     "id": 91,
@@ -1021,9 +1202,11 @@
       ""
     ],
     "effects": [
-      ""
+      
     ],
-    "condition": ""
+    "condition": [
+      ""
+    ]
   },
   {
     "id": 92,
@@ -1032,9 +1215,11 @@
       ""
     ],
     "effects": [
-      ""
+      
     ],
-    "condition": ""
+    "condition": [
+      ""
+    ]
   },
   {
     "id": 93,
@@ -1043,9 +1228,11 @@
       ""
     ],
     "effects": [
-      ""
+      
     ],
-    "condition": ""
+    "condition": [
+      ""
+    ]
   },
   {
     "id": 94,
@@ -1054,9 +1241,11 @@
       ""
     ],
     "effects": [
-      ""
+      
     ],
-    "condition": ""
+    "condition": [
+      ""
+    ]
   },
   {
     "id": 95,
@@ -1065,9 +1254,11 @@
       ""
     ],
     "effects": [
-      ""
+      
     ],
-    "condition": ""
+    "condition": [
+      ""
+    ]
   },
   {
     "id": 96,
@@ -1076,9 +1267,11 @@
       ""
     ],
     "effects": [
-      ""
+      
     ],
-    "condition": ""
+    "condition": [
+      ""
+    ]
   },
   {
     "id": 97,
@@ -1087,9 +1280,11 @@
       ""
     ],
     "effects": [
-      ""
+      
     ],
-    "condition": ""
+    "condition": [
+      ""
+    ]
   },
   {
     "id": 98,
@@ -1098,9 +1293,11 @@
       ""
     ],
     "effects": [
-      ""
+      
     ],
-    "condition": ""
+    "condition": [
+      ""
+    ]
   },
   {
     "id": 99,
@@ -1109,9 +1306,11 @@
       ""
     ],
     "effects": [
-      ""
+      
     ],
-    "condition": ""
+    "condition": [
+      ""
+    ]
   },
   {
     "id": 100,
@@ -1120,8 +1319,10 @@
       ""
     ],
     "effects": [
-      ""
+      
     ],
-    "condition": ""
+    "condition": [
+      ""
+    ]
   }
 ]

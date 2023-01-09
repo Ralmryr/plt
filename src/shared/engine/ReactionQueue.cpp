@@ -35,8 +35,8 @@ void ReactionQueue::addCheckpoint() {
 }
 
 void ReactionQueue::consume() {
-    for (int i = int(reactionQueue.size()); i != 0; i--) {
-        reactionQueue[i]->execute();
+    for (const auto &reaction: reactionQueue) {
+        reaction->execute();
     }
     this->clearAll();
 }

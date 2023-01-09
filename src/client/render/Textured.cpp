@@ -1,4 +1,5 @@
 #include "Textured.h"
+#include <algorithm>
 
 using namespace std;
 using namespace render;

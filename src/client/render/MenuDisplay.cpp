@@ -94,7 +94,7 @@ void MenuDisplay::update(const std::unordered_map<std::string,std::string>& data
         }
         // Else it is an amount of resource
         else {
-            listResourceAmount[(resIndex-1)/2]->setText(dataEl.second);
+            listResourceAmount[(resIndex - 1)/2]->setText(dataEl.second);
         }
     }
 }

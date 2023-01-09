@@ -7,8 +7,7 @@ using namespace std;
 
 
 IncreaseGPReaction::IncreaseGPReaction (const state::State& state, int amount, std::string paramName){
-    std::shared_ptr<state::GlobalParameters> currentGlobalParameters=state.getGlobalParameters();
-    this->globalParameters =currentGlobalParameters;
+    this->globalParameters = state.getGlobalParameters();
     this->amount = amount;
     this->paramName=paramName;
 }

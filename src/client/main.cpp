@@ -35,12 +35,11 @@ int main(int argc,char* argv[])
 
     EventManager eventManager;
     eventManager.hookState(state);
+    eventManager.initPermanentReactions();
 
-    EventDetails eventDetails(engine::CARD_PLAYED);
-    eventDetails["idCardPlayed"] = 0;
-    cout << "Before notification" << endl;
+    EventDetails eventDetails(engine::TILE_PLACED);
+    eventDetails["tileType"] = TileType::FOREST;
     eventManager.notify(eventDetails);
-    cout << "After notification" << endl;
 
     sf::Clock clock;
     sf::Time elapsedTime;

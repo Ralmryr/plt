@@ -163,3 +163,13 @@ bool Board::isPossibleToPlaceTile(std::pair<int, int> coords, state::TileType ti
     }else return true;
 }
 
+void Board::procNotification(TileType tileType) {
+    eventSender->notifyTilePlaced(tileType, {0, 0});
+}
+
+void Board::setEventSender(const shared_ptr<EventSender> &eventSender) {
+    this->eventSender = eventSender;
+}
+
+
+

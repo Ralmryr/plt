@@ -89,7 +89,7 @@ int CardReader::parseCard(int idCard, const shared_ptr<state::State>& state) {
                          {1, {3, 4}}};
     BadgeMap badges = {{0, {state::BUILDING, state::B_PLANT}},
                        {1, {state::SCIENCE, state::SCIENCE}}};
-    CostMap costs = {{0, 12},
+    CostMap costs = {{0, 35},
                      {1, 35}};
 
     for (const auto &badge: badges[idCard]) {
@@ -106,9 +106,7 @@ int CardReader::parseCard(int idCard, const shared_ptr<state::State>& state) {
     if (idCard == 0) {
         int x, y;
         cout << "Enter coord x then y" << endl;
-        cin >> x;
-        cin >> y;
-        pair<int, int> coords = {x, y};
+        pair<int, int> coords = {-2, 0};
         auto tileReaction = make_shared<PlaceTileReaction>(*state, coords, state::FOREST, 3);
         instantReactions.push_back(tileReaction);
 

@@ -9,9 +9,12 @@ void ai::AI::passTurn() {
     //call a skip_turn event in the eventManager
 }
 
+
+//tile placement methods and algorithms
 std::pair<int, int> AI::findBestPosition(state::TileType tile) {
     return {};
 }
+
 
 int AI::chooseBestCard() {
     return 0;

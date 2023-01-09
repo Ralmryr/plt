@@ -18,3 +18,7 @@ void ai::AdvancedAI::playTurn() {}
 int ai::AdvancedAI::chooseBestCard() {
     return 0;
 }
+
+std::pair<int,int> ai :: AdvancedAI::findBestPosition (state::TileType tile){
+
+}

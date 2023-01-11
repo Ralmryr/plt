@@ -265,14 +265,14 @@
   },
   {
     "id": 20,
-    "cost": 23,
+    "cost": 10,
     "badges": [
       "SPACE",
       "EVENT"
     ],
     "effects": [
       ["Instant","PlaceTile","0","0","OCEAN"],
-      ["Instant","PlaceTile","0","0","OCEAN"]
+      ["Instant","PlaceTile","0","1","OCEAN"]
     ],
     "condition": [
       ""

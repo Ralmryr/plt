@@ -32,13 +32,18 @@ int main(int argc,char* argv[])
 
     scene.setScene(render::BOARD_VIEW);
 
-    EventManager eventManager;
-    eventManager.hookState(state);
-    eventManager.initPermanentReactions();
+    auto eventManager = make_shared<EventManager>();
+    eventManager->hookState(state);
+    eventManager->initPermanentReactions();
 
-    EventDetails eventDetails(engine::TILE_PLACED);
-    eventDetails["tileType"] = TileType::FOREST;
-    eventManager.notify(eventDetails);
+    auto  eventSender = make_shared<EventSender>();
+    eventSender->hookEventManager(eventManager);
+
+    state->hookEventSender(eventSender);
+
+    EventDetails eventDetails(engine::CARD_PLAYED);
+    eventDetails["idCardPlayed"] = 20;
+    eventManager->notify(eventDetails);
 
     sf::Clock clock;
     sf::Time elapsedTime;

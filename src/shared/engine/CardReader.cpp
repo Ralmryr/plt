@@ -147,7 +147,7 @@ int CardReader::parseCard(int idCard, const shared_ptr<state::State>& state) {
                 break;
             case 2:
                 newReaction = make_shared<PlaceTileReaction>(*state,
-                                                             pair<int, int>(effect[2].asInt(), effect[3].asInt()),
+                                                             pair<int, int>(stoi(effect[2].asString()), stoi(effect[3].asString())),
                                                              tileTypeMap[effect[4].asString()], currentPlayerId);
                 break;
             case 3:

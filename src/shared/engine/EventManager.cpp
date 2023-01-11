@@ -5,6 +5,7 @@
 #include "BadgePlayedListener.h"
 #include "TilePlacedListener.h"
 #include "IncreaseGPReaction.h"
+#include "ModifyResourceReaction.h"
 
 using namespace std;
 using namespace engine;
@@ -89,10 +90,6 @@ void EventManager::notify(EventDetails &eventDetails) {
         if(isActionValid) {
             reactionQueue.consume();
         }
-
-        cardReader->clear();
-        reactionQueue.clearAll();
-        isActionValid = true;
     }
 
 }
@@ -124,6 +121,15 @@ void EventManager::initPermanentReactions() {
     auto forestPlacedListener = make_shared<TilePlacedListener>(*state, reactionVector,
                                                                 forestPlacedEventDetails);
     listenersMap[TILE_PLACED].push_back(forestPlacedListener);
+
+    auto addRes = make_shared<ModifyResourceReaction>(*state, 3, state::GOLD, 3);
+    auto addRes2 = make_shared<ModifyResourceReaction>(*state, 5, state::IRON, 3);
+    vector<shared_ptr<Reaction>> addResVector = {addRes, addRes2};
+    auto addResEventDetails = EventDetails(TILE_PLACED);
+    addResEventDetails["tileType"] = state::TileType::OCEAN;
+    auto addResListener = make_shared<TilePlacedListener>(*state, addResVector, addResEventDetails);
+
+    listenersMap[TILE_PLACED].push_back(addResListener);
 }
 
 /*

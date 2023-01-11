@@ -5,7 +5,6 @@
 using namespace engine;
 using namespace std;
 
-
 IncreaseGPReaction::IncreaseGPReaction (const state::State& state, int amount, std::string paramName){
     this->globalParameters = state.getGlobalParameters();
     this->amount = amount;

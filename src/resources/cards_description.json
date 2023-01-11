@@ -271,8 +271,7 @@
       "EVENT"
     ],
     "effects": [
-      ["Instant","PlaceTile","0","0","OCEAN"],
-      ["Instant","PlaceTile","0","1","OCEAN"]
+      ["Instant","PlaceTile","0","0","OCEAN"]
     ],
     "condition": [
       ""

@@ -6,24 +6,15 @@
 #include "TilePlacedListener.h"
 #include "IncreaseGPReaction.h"
 #include "ModifyResourceReaction.h"
+#include "PlaceTileReaction.h"
 
 using namespace std;
 using namespace engine;
 
 
-// Helper function to populate the eventFactory
-template<class T>
-void addNewEvent(EventManager& eventManager, EventType eventType) {
-    /*eventManager.getEventFactory()[eventType] = [] (const state::State& state, const EventDetails& eventDetails) {
-        return make_shared<T>(state, eventDetails);
-    };*/
-}
 
 EventManager::EventManager() : reactionQueue(){
     cardReader = make_unique<CardReader>();
-    // Adds the types to the factory to easily create new Events
-    addNewEvent<BadgePlayedListener>(*this, CARD_PLAYED);
-    addNewEvent<TilePlacedListener>(*this, TILE_PLACED);
     isActionValid = true;
 
 }
@@ -78,23 +69,22 @@ void EventManager::notify(EventDetails &eventDetails) {
         isActionValid = true;
     }
 
-    if(eventType == TILE_PLACED) {
+    // Then it will iterate over the different event types to see if there is any listener that is interested in the event
+    if(eventType != CARD_PLAYED) {
         vector<shared_ptr<Reaction>> reactions;
-        for (const auto &listener: listenersMap[TILE_PLACED]) {
-            reactions = listener->onNotify(*this, eventDetails);
+        for (const auto &listener: listenersMap[eventType]) {
+            auto tmpReactions = listener->onNotify(*this, eventDetails);
+            reactions.insert(reactions.end(), tmpReactions.begin(), tmpReactions.end());
         }
 
         processReactions(reactions);
-
-        // Once all effects are triggered, executes all the commands
-        if(isActionValid) {
-            reactionQueue.consume();
-        }
     }
+
+
 
 }
 
-// Checks if the reactions are allowed, and adds them to the list. It also creates the chain effects
+// Checks if the reactions are allowed, and adds them to the list. It also creates the chain effects by activating notifications
 void EventManager::processReactions(const vector<std::shared_ptr<Reaction>> &reactions) {
     if(!isActionValid) return;
 
@@ -122,9 +112,10 @@ void EventManager::initPermanentReactions() {
                                                                 forestPlacedEventDetails);
     listenersMap[TILE_PLACED].push_back(forestPlacedListener);
 
-    auto addRes = make_shared<ModifyResourceReaction>(*state, 3, state::GOLD, 3);
-    auto addRes2 = make_shared<ModifyResourceReaction>(*state, 5, state::IRON, 3);
-    vector<shared_ptr<Reaction>> addResVector = {addRes, addRes2};
+    auto addRes = make_shared<ModifyResourceReaction>(*state, 3, state::GOLD, 0);
+    auto addRes2 = make_shared<ModifyResourceReaction>(*state, 5, state::IRON, 0);
+    auto placeForest = make_shared<PlaceTileReaction>(*state, pair<int, int>(2, 1), state::TileType::FOREST, 0);
+    vector<shared_ptr<Reaction>> addResVector = {addRes, addRes2, placeForest};
     auto addResEventDetails = EventDetails(TILE_PLACED);
     addResEventDetails["tileType"] = state::TileType::OCEAN;
     auto addResListener = make_shared<TilePlacedListener>(*state, addResVector, addResEventDetails);

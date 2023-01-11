@@ -2,7 +2,7 @@
 
 using namespace std;
 
-render::BoardScene::BoardScene() {
+render::BoardScene::BoardScene(): playerScoreDisplay() , globalParametersDisplay(), boardDisplay(),menu(),stdProjectDisplay(){
 
 }
 

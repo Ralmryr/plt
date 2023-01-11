@@ -17,10 +17,11 @@ render::Scene::~Scene() {
 }
 
 void render::Scene::draw(sf::RenderWindow& window) {
-    if (currentScene == CARDS_HAND_VIEW || currentScene == BOARD_VIEW) {
-    boardScene.draw(window);
+    if (currentScene == CARDS_VIEW || currentScene == BOARD_VIEW || currentScene == BADGE_VIEW) {
+        boardScene.draw(window);
+
     }
-    if(currentScene == CARDS_HAND_VIEW) {
+    if(currentScene == CARDS_VIEW) {
         //popupHandCards.draw(window);
     }
 }
@@ -32,7 +33,8 @@ void render::Scene::update() {
         // Board data
         auto boardData = dataProvider->provideBoardData();
         boardScene.update(boardData);
-        /*
+        //TODO provide only one data
+
         // GlobalParam data
         auto globalParamData = dataProvider->provideGlobalParameters();
         globalParametersDisplay.update(globalParamData);
@@ -51,11 +53,11 @@ void render::Scene::update() {
             strResource = "resource " + to_string(++index);
         }
         menu.update(resourceData);
-         */
+
     }
 
     // -------------------------------------- CARDS HAND VIEW -----------------------------------
-    if(currentScene == CARDS_HAND_VIEW) {
+    if(currentScene == CARDS_VIEW) {
         auto playerData = dataProvider->providePlayerData(2);
 
         // Seperate it into cardsHandData
@@ -90,7 +92,7 @@ void render::Scene::setScene(render::SceneID sceneID) {
         engineAPI->loadButtons(listButtons);
     }
 
-    if(sceneID == CARDS_HAND_VIEW) {
+    if(sceneID == CARDS_VIEW) {
         auto listButtons = popupHandCards.getListButtons();
         engineAPI->loadButtons(listButtons);
     }

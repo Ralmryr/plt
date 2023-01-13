@@ -23,7 +23,7 @@ void EngineAPI::loadButtons(std::vector<std::shared_ptr<Button>> lButtons) {
     }
 }
 
-void EngineAPI::onClick(sf::Vector2f coords, Scene &scene) {
+void EngineAPI::onClick(sf::Vector2f coords, SceneManager &scene) {
     int i = 0;
     for(const auto& hitbox : listHitbox) {
         if(hitbox.contains(coords)) {
@@ -34,7 +34,7 @@ void EngineAPI::onClick(sf::Vector2f coords, Scene &scene) {
 
     // Here are treated the commands that directly influence render
     if(currentCommand == "Open Cards Hand") {
-        scene.setScene(CARDS_HAND_VIEW);
+        scene.setScene(CARDS_VIEW);
         currentCommand = "";
     }
     else if(currentCommand == "Close Cards Hand") {

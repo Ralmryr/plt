@@ -1,17 +1,24 @@
-#include "BoardScene.h"
+#include <iostream>
+#include "MainScene.h"
 
 using namespace std;
 
-render::BoardScene::BoardScene(): playerScoreDisplay() , globalParametersDisplay(), boardDisplay(),menu(),stdProjectDisplay(){
+render::MainScene::MainScene(): playerScoreDisplay() , globalParametersDisplay(), boardDisplay(),menu(),stdProjectDisplay(){
 
 }
 
-render::BoardScene::~BoardScene() {
+render::MainScene::~MainScene() {
 
 }
 
-void render::BoardScene::update(const unordered_map<string, string> &data) {
+void render::MainScene::update(const unordered_map<string, string> &data) {
 
+/*    for(const auto& element : data) {
+        cout << "{ First : " << element.first << ", Second : " << element.second << " }" << endl;
+    }
+    */
+
+    // Gather every entry that is only composed of idPlayer and gets their NT
     unordered_map<string, string> playScoreData;
     int idPlayer;
     string strIdPlayer;
@@ -24,12 +31,14 @@ void render::BoardScene::update(const unordered_map<string, string> &data) {
     }
     playerScoreDisplay.update(playScoreData);
 
+    // Gather every entry related to global parameters
     unordered_map<string, string> globalParamData;
     globalParamData["Oxygen"]=data.at("Oxygen");
     globalParamData["Temperature"]=data.at("Temperature");
     globalParamData["NumberOceans"]=data.at("NumberOceans");
     globalParametersDisplay.update(globalParamData);
 
+    // Gather every entry related to the tiles placed on board
     unordered_map<string, string> boardData;
     int x,y;
     string coords;
@@ -44,20 +53,21 @@ void render::BoardScene::update(const unordered_map<string, string> &data) {
     }
     boardDisplay.update(boardData);
 
-    unordered_map<string, string> menuData;
+    // Gather every entry "resource i" where i is the id of the resource in the enum
+    unordered_map<string, string> resourceData;
     string resource;
     for(int i = state::R_FIRST+1; i != state::R_LAST; i++) {
         resource= "resource " + to_string(i);
-        menuData[resource]=data.at(resource);
+        resourceData[resource]=data.at(resource);
     }
-    menuData["PV"]=data.at("PV");
-    menu.update(menuData);
+    resourceData["PV"]=data.at("PV");
+    menu.update(resourceData);
 }
 
-void render::BoardScene::draw(sf::RenderWindow &window) {
+void render::MainScene::draw(sf::RenderWindow &window) {
+    boardDisplay.draw(window);
     playerScoreDisplay.draw(window);
     globalParametersDisplay.draw(window);
-    boardDisplay.draw(window);
     menu.draw(window);
     stdProjectDisplay.draw(window);
 }

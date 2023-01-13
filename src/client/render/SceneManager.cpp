@@ -1,4 +1,4 @@
-#include "Scene.h"
+#include "SceneManager.h"
 #include <iostream>
 
 #include <utility>
@@ -7,58 +7,45 @@
 using namespace std;
 
 // This technique prevents the double call of the constructor of each class
-render::Scene::Scene() : boardScene(){
+render::SceneManager::SceneManager() : mainScene(), cardScene(){
     engineAPI = make_shared<EngineAPI>();
     dataProvider = make_shared<state::RenderAPI>();
 }
 
-render::Scene::~Scene() {
+render::SceneManager::~SceneManager() {
 
 }
 
-void render::Scene::draw(sf::RenderWindow& window) {
+void render::SceneManager::draw(sf::RenderWindow& window) {
     if (currentScene == CARDS_VIEW || currentScene == BOARD_VIEW || currentScene == BADGE_VIEW) {
-        boardScene.draw(window);
+        mainScene.draw(window);
 
     }
     if(currentScene == CARDS_VIEW) {
-        //popupHandCards.draw(window);
+        cardScene.draw(window);
     }
 }
 
-void render::Scene::update() {
+void render::SceneManager::update() {
 
     // ------------------------------------- BOARD VIEW -----------------------------------
     if(currentScene == BOARD_VIEW) {
         // Board data
-        auto boardData = dataProvider->provideBoardData();
-        boardScene.update(boardData);
-        //TODO provide only one data
+        auto playerData = dataProvider->providePlayerData(0);
 
-        // GlobalParam data
-        auto globalParamData = dataProvider->provideGlobalParameters();
-        globalParametersDisplay.update(globalParamData);
+        unordered_map<string, string> mainSceneData = dataProvider->provideMainSceneData();
 
-        // PlayerData
-        auto playerData = dataProvider->providePlayerData(2);
+        mainSceneData.insert(playerData.begin(), playerData.end());
 
-        // Separate it into resourceData
-        unordered_map<string, string> resourceData;
-        int index = 1;
-        string strResource = "resource " + to_string(index);
-        // While a resource is still present in the map
-        while (playerData.find(strResource) != playerData.end()) {
-            string strData = playerData.at(strResource);
-            resourceData.insert({strResource, strData});
-            strResource = "resource " + to_string(++index);
-        }
-        menu.update(resourceData);
+        mainScene.update(mainSceneData);
+
 
     }
 
+
     // -------------------------------------- CARDS HAND VIEW -----------------------------------
     if(currentScene == CARDS_VIEW) {
-        auto playerData = dataProvider->providePlayerData(2);
+        auto playerData = dataProvider->providePlayerData(0);
 
         // Seperate it into cardsHandData
         unordered_map<string, string> cardsHandData;
@@ -70,20 +57,19 @@ void render::Scene::update() {
             cardsHandData.insert({strCard, strData});
             strCard = "idCardHand " + to_string(++index);
         }
-        popupHandCards.update(cardsHandData);
+        cardScene.update(cardsHandData);
     }
-
 }
 
-void render::Scene::hookData(std::shared_ptr<state::RenderAPI> dataProvider) {
+void render::SceneManager::hookData(std::shared_ptr<state::RenderAPI> dataProvider) {
     this->dataProvider = dataProvider;
 }
 
-void render::Scene::setScene(render::SceneID sceneID) {
+void render::SceneManager::setScene(render::SceneID sceneID) {
     this->currentScene = sceneID;
     this->update();
 
-    if(sceneID == BOARD_VIEW){
+   /* if(sceneID == BOARD_VIEW){
         vector<shared_ptr<Button>> listButtons;
         auto temp = menu.getListButtons();
         listButtons.insert(listButtons.end(), temp.begin(), temp.end());
@@ -95,14 +81,14 @@ void render::Scene::setScene(render::SceneID sceneID) {
     if(sceneID == CARDS_VIEW) {
         auto listButtons = popupHandCards.getListButtons();
         engineAPI->loadButtons(listButtons);
-    }
+    } */
 }
 
-void render::Scene::print() {
-    cout << " USE COUNT : " << this->popupHandCards.closeButton.use_count() << endl;
+void render::SceneManager::print() {
+    //cout << " USE COUNT : " << this->popupHandCards.closeButton.use_count() << endl;
 }
 
-void render::Scene::handleEvent(sf::Event event) {
+void render::SceneManager::handleEvent(sf::Event event) {
 
     if(event.type == sf::Event::MouseButtonPressed){
         engineAPI->onClick(sf::Vector2f(event.mouseButton.x, event.mouseButton.y), *this);

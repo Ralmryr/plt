@@ -9,8 +9,6 @@ ModifyResourceReaction::ModifyResourceReaction(const state::State& state, int am
     this->player=state.getSpecificPlayer(idPlayer);
     this->amount=amount;
     this->resType=resType;
-
-    cout << "Reaction constructed" << endl;
 }
 
 ModifyResourceReaction::~ModifyResourceReaction ()= default;
@@ -26,5 +24,4 @@ bool ModifyResourceReaction::query (){
 }
 
 void ModifyResourceReaction::procNotification (){
-    cout << "Reaction destroyed" << endl;
 }

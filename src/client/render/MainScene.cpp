@@ -2,21 +2,26 @@
 #include "MainScene.h"
 
 using namespace std;
+using namespace render;
 
-render::MainScene::MainScene(): playerScoreDisplay() , globalParametersDisplay(), boardDisplay(),menu(),stdProjectDisplay(){
+MainScene::MainScene(){
+    playerScoreDisplay = make_unique<PlayerScoreDisplay>();
+    globalParametersDisplay = make_unique<GlobalParametersDisplay>();
+    boardDisplay = make_unique<BoardDisplay>();
+    menu = make_unique<MenuDisplay>();
+    stdProjectDisplay = make_unique<StdProjectDisplay>();
+    transparent = false;
+}
+
+MainScene::~MainScene() {
 
 }
 
-render::MainScene::~MainScene() {
+void MainScene::update(const unordered_map<string, string> &data) {
 
-}
-
-void render::MainScene::update(const unordered_map<string, string> &data) {
-
-/*    for(const auto& element : data) {
+    /*for(const auto& element : data) {
         cout << "{ First : " << element.first << ", Second : " << element.second << " }" << endl;
-    }
-    */
+    }*/
 
     // Gather every entry that is only composed of idPlayer and gets their NT
     unordered_map<string, string> playScoreData;
@@ -29,14 +34,14 @@ void render::MainScene::update(const unordered_map<string, string> &data) {
             playScoreData[strIdPlayer]=data.at(strIdPlayer);
         }
     }
-    playerScoreDisplay.update(playScoreData);
+    playerScoreDisplay->update(playScoreData);
 
     // Gather every entry related to global parameters
     unordered_map<string, string> globalParamData;
     globalParamData["Oxygen"]=data.at("Oxygen");
     globalParamData["Temperature"]=data.at("Temperature");
     globalParamData["NumberOceans"]=data.at("NumberOceans");
-    globalParametersDisplay.update(globalParamData);
+    globalParametersDisplay->update(globalParamData);
 
     // Gather every entry related to the tiles placed on board
     unordered_map<string, string> boardData;
@@ -44,14 +49,14 @@ void render::MainScene::update(const unordered_map<string, string> &data) {
     string coords;
     for(x=-4;x<5;x++){
         for(y=-4;y<5;y++){
-            coords= to_string(x) + ", " + to_string(y);
+            coords= to_string(x) + "," + to_string(y);
             if(data.find(coords)!=data.end()){
                 // there is a tile with this coordinates
                 boardData[coords]=data.at(coords);
             }
         }
     }
-    boardDisplay.update(boardData);
+    boardDisplay->update(boardData);
 
     // Gather every entry "resource i" where i is the id of the resource in the enum
     unordered_map<string, string> resourceData;
@@ -61,13 +66,24 @@ void render::MainScene::update(const unordered_map<string, string> &data) {
         resourceData[resource]=data.at(resource);
     }
     resourceData["PV"]=data.at("PV");
-    menu.update(resourceData);
+    menu->update(resourceData);
 }
 
-void render::MainScene::draw(sf::RenderWindow &window) {
-    boardDisplay.draw(window);
-    playerScoreDisplay.draw(window);
-    globalParametersDisplay.draw(window);
-    menu.draw(window);
-    stdProjectDisplay.draw(window);
+void MainScene::draw(sf::RenderWindow &window) {
+    boardDisplay->draw(window);
+    playerScoreDisplay->draw(window);
+    globalParametersDisplay->draw(window);
+    menu->draw(window);
+    stdProjectDisplay->draw(window);
+}
+
+vector<shared_ptr<Button>> MainScene::getListButtons() {
+    vector<shared_ptr<Button>> listButtons;
+
+    auto menuButtons = menu->getListButtons();
+    auto stdProjectButtons = stdProjectDisplay->getListButtons();
+
+    listButtons.insert(listButtons.end(), menuButtons.begin(), menuButtons.end());
+
+    return listButtons;
 }

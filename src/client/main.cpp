@@ -22,14 +22,15 @@ int main(int argc,char* argv[])
     window.setFramerateLimit(60);
 
     // Initialize scene
-    SceneManager scene = SceneManager();
+    SceneManager scene;
     // Initialize state
     auto state = make_shared<State>();
 
     // Creates a bridge between the ui and the state
     scene.hookData(state->getUiDataProvider());
 
-    scene.setScene(render::CARDS_VIEW);
+    //scene.setScene(render::BOARD_VIEW);
+    scene.addScene(render::BOARD_VIEW);
 
     auto eventManager = make_shared<EventManager>();
     eventManager->hookState(state);

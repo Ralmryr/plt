@@ -23,7 +23,7 @@ void EngineAPI::loadButtons(std::vector<std::shared_ptr<Button>> lButtons) {
     }
 }
 
-void EngineAPI::onClick(sf::Vector2f coords, SceneManager &scene) {
+void EngineAPI::onClick(sf::Vector2f coords, std::shared_ptr<SharedContext> sharedContext) {
     int i = 0;
     for(const auto& hitbox : listHitbox) {
         if(hitbox.contains(coords)) {
@@ -31,16 +31,16 @@ void EngineAPI::onClick(sf::Vector2f coords, SceneManager &scene) {
         }
         i++;
     }
-
+    /*
     // Here are treated the commands that directly influence render
     if(currentCommand == "Open Cards Hand") {
-        scene.setScene(CARDS_VIEW);
+        scene.addScene(CARDS_VIEW);
         currentCommand = "";
     }
     else if(currentCommand == "Close Cards Hand") {
-        scene.setScene(BOARD_VIEW);
+        scene.removeScene();
         currentCommand = "";
-    }
+    } */
 }
 
 // Returns the commands and clears it

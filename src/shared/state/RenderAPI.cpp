@@ -25,6 +25,21 @@ std::unordered_map<std::string, std::string> RenderAPI::providePlayerData(int id
     return pPlayerList[idPlayer]->serializeUiData();
 }
 
+/* [    "idPlayer" : "NT"   ]
+*/
+unordered_map<std::string, std::string> RenderAPI::provideScoreData() {
+    unordered_map<string, string> uiData;
+    int idPlayer = 0;
+    for(const auto& pPlayer : pPlayerList) {
+        auto tmp = pPlayer->serializeUiData();
+        string nt = tmp["NT"];
+        uiData.insert({to_string(idPlayer), nt});
+        idPlayer++;
+    }
+    return uiData;
+}
+
+
 /*
  * [ "x, y" : "type, idOwner" ]
  */
@@ -47,16 +62,16 @@ void RenderAPI::hookComponents(std::vector<std::shared_ptr<Player>> pPlayerList,
     this->pGlobalParameters = pGlobalParameters;
 }
 
-/* [    "idPlayer" : "NT"   ]
-*/
-unordered_map<std::string, std::string> RenderAPI::provideScoreData() {
-    unordered_map<string, string> uiData;
-    int idPlayer = 0;
-    for(const auto& pPlayer : pPlayerList) {
-        auto tmp = pPlayer->serializeUiData();
-        string nt = tmp["NT"];
-        uiData.insert({to_string(idPlayer), nt});
-        idPlayer++;
-    }
-    return uiData;
+std::unordered_map<std::string, std::string> RenderAPI::provideMainSceneData() {
+    unordered_map<string, string> boardSceneData;
+
+    auto gpData = provideGlobalParameters();
+    auto boardData = provideBoardData();
+    auto scoreData = provideScoreData();
+
+    boardSceneData.insert(gpData.begin(), gpData.end());
+    boardSceneData.insert(boardData.begin(), boardData.end());
+    boardSceneData.insert(scoreData.begin(), scoreData.end());
+
+    return boardSceneData;
 }

@@ -86,6 +86,7 @@ void MenuDisplay::update(const std::unordered_map<std::string,std::string>& data
     //update resources texts and pvtext
 
     for (const auto &dataEl: data) {
+        if(dataEl.first == "PV") continue;
         // Gets the index in the Resource enum of the current resource that is processed
         auto resIndex = stoi(dataEl.first.substr(dataEl.first.find(" ")+1));
         // It is a production if the index is even
@@ -97,6 +98,8 @@ void MenuDisplay::update(const std::unordered_map<std::string,std::string>& data
             listResourceAmount[(resIndex - 1)/2]->setText(dataEl.second);
         }
     }
+
+    pvText->setText(data.at("PV"));
 }
 
 void MenuDisplay::draw (sf::RenderWindow& window){

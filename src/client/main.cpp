@@ -22,15 +22,14 @@ int main(int argc,char* argv[])
     window.setFramerateLimit(60);
 
     // Initialize scene
-    Scene scene = Scene();
-
+    SceneManager scene = SceneManager();
     // Initialize state
     auto state = make_shared<State>();
 
     // Creates a bridge between the ui and the state
     scene.hookData(state->getUiDataProvider());
 
-    scene.setScene(render::BOARD_VIEW);
+    scene.setScene(render::CARDS_VIEW);
 
     auto eventManager = make_shared<EventManager>();
     eventManager->hookState(state);
@@ -52,6 +51,29 @@ int main(int argc,char* argv[])
     auto fpsText = Text("0", sf::Vector2f(1700, 10));
     auto mouseText = Text("0, 0", sf::Vector2f(1700,50));
     int counterFps = 0;
+    /*
+    //Testing JSON
+    ifstream ifs(RESS_PATH + "cards_description.json");
+    Json::Reader reader;
+    Json::Value obj;
+    reader.parse(ifs, obj);
+
+
+    for(int i = 0; i < obj.size(); i++) {
+        cout << "Id: " << obj[i]["id"].asString() << " ";
+        cout << "Cost: " << obj[i]["cost"].asString() << " ";
+        cout << "Badges: ";
+        for(int j = 0; j < obj[i]["badges"].size(); j++)
+        {
+            cout << obj[i]["badges"][j].asString() << ", ";
+        }
+        cout << "Effects: ";
+        for(int j = 0; j < obj[i]["badges"].size(); j++)
+        {
+            cout << obj[i]["effects"][j].asString() << ", ";
+        }
+        cout << "Condition: " << obj[i]["condition"].asString() << endl;
+    } */
 
     while (window.isOpen())
     {

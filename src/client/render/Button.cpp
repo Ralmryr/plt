@@ -5,6 +5,8 @@
 using namespace render;
 using namespace std;
 
+static int counter = 0;
+
 Button::Button() {
     this->position.x=0;
     this->position.y=0;
@@ -12,6 +14,8 @@ Button::Button() {
 }
 
 Button::Button(std::string fileName, sf::Vector2f position) {
+
+    cout << "Button create" << ++counter << endl;
 
     //Setting texture to the sprite
     auto texturePtr = texturePool.getTexturePtr(std::move(fileName));
@@ -38,6 +42,8 @@ Button::Button(string fileName, sf::Vector2f position, sf::FloatRect clickableAr
 }
 
 Button::~Button() {
+
+    cout << "Button destroyed" << endl;
 
 }
 
@@ -93,5 +99,13 @@ void Button::onMouseHover(bool hover) {
         this->sprite.setPosition(this->position);
         hovered = hover;
     }
+}
+
+void Button::setOnClickFunction(std::function<void(const std::shared_ptr<SharedContext> &)> function) {
+    onClickFunction = std::move(function);
+}
+
+void Button::onClick(const shared_ptr<SharedContext>& sharedContext) {
+    onClickFunction(sharedContext);
 }
 

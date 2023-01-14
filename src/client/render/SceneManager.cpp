@@ -5,12 +5,13 @@
 #include <iostream>
 
 using namespace std;
+using namespace render;
 
 // This technique prevents the double call of the constructor of each class
 render::SceneManager::SceneManager(){
     mainScene = make_shared<MainScene>();
     cardScene = make_shared<CardScene>();
-    engineAPI = make_shared<EngineAPI>();
+    eventHandler = make_shared<EventHandler>();
     dataProvider = make_shared<state::RenderAPI>();
 
     sceneMap.insert({SceneID::CARDS_VIEW, cardScene});
@@ -70,12 +71,8 @@ void render::SceneManager::hookData(std::shared_ptr<state::RenderAPI> dataProvid
 }
 
 void render::SceneManager::handleEvent(sf::Event event) {
-
     if(event.type == sf::Event::MouseButtonPressed){
-        engineAPI->onClick(sf::Vector2f(event.mouseButton.x, event.mouseButton.y), *this);
-    }
-    else if(event.type == sf::Event::MouseMoved) {
-        engineAPI->onMouseMoved(sf::Vector2f(event.mouseMove.x, event.mouseMove.y));
+        eventHandler->onClick(sf::Vector2f(event.mouseButton.x, event.mouseButton.y));
     }
 }
 
@@ -87,7 +84,7 @@ void render::SceneManager::addScene(render::SceneID sceneID) {
     this->currentScene = sceneIdStack.back();
     this->update();
 
-    engineAPI->loadButtons(displayedSceneStack.back()->getListButtons());
+    eventHandler->loadButtons(displayedSceneStack.back()->getListButtons());
 }
 
 // Removes the top scene
@@ -99,13 +96,17 @@ void render::SceneManager::removeScene() {
     this->currentScene = sceneIdStack.back();
     this->update();
 
-    engineAPI->loadButtons(displayedSceneStack.back()->getListButtons());
+    eventHandler->loadButtons(displayedSceneStack.back()->getListButtons());
 }
 
 // Goes back to the main scene
 void render::SceneManager::displayMainScene() {
     displayedSceneStack.clear();
     displayedSceneStack.push_back(mainScene);
+}
+
+const shared_ptr<EventHandler> &render::SceneManager::getEventHandler() const {
+    return eventHandler;
 }
 
 

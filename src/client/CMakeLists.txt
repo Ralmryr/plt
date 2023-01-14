@@ -10,7 +10,7 @@ file(GLOB_RECURSE client_sources *.cpp)
 list(REMOVE_ITEM client_sources "${CMAKE_CURRENT_SOURCE_DIR}/main.cpp")
 
 # Build the "client" library, add required include and link against dependencies
-add_library(${lib_client_target} STATIC ${client_sources} render/GlobalParametersDisplay.cpp render/MenuDisplay.cpp render/SceneManager.cpp render/PlayerScoreDisplay.cpp render/BoardDisplay.cpp render/PopupBadge.cpp render/TexturePool.cpp render/Textured.cpp render/EngineAPI.cpp render/BadgeScene.cpp render/PayScene.cpp render/CardScene.cpp render/MainScene.cpp)
+add_library(${lib_client_target} STATIC ${client_sources} render/GlobalParametersDisplay.cpp render/MenuDisplay.cpp render/SceneManager.cpp render/PlayerScoreDisplay.cpp render/BoardDisplay.cpp render/PopupBadge.cpp render/TexturePool.cpp render/Textured.cpp render/EventHandler.cpp render/BadgeScene.cpp render/PayScene.cpp render/CardScene.cpp render/MainScene.cpp render/SharedContext.cpp)
 add_dependencies(${lib_client_target} generate-headers)
 target_include_directories(${lib_client_target} PUBLIC
   ${CMAKE_CURRENT_SOURCE_DIR}

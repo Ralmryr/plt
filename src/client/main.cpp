@@ -21,25 +21,28 @@ int main(int argc,char* argv[])
 
     window.setFramerateLimit(60);
 
-    // Initialize scene
-    SceneManager scene;
     // Initialize state
     auto state = make_shared<State>();
 
-    // Creates a bridge between the ui and the state
-    scene.hookData(state->getUiDataProvider());
-
-    //scene.setScene(render::BOARD_VIEW);
-    scene.addScene(render::BOARD_VIEW);
-
+    // Initialize EventManager
     auto eventManager = make_shared<EventManager>();
     eventManager->hookState(state);
     eventManager->initPermanentReactions();
 
+    // Initialize connection between state and engine
     auto  eventSender = make_shared<EventSender>();
     eventSender->hookEventManager(eventManager);
-
     state->hookEventSender(eventSender);
+
+    // Initialize sceneManager
+    auto sceneManager = make_shared<SceneManager>();
+    sceneManager->hookData(state->getUiDataProvider());
+    sceneManager->addScene(render::CARDS_VIEW);
+
+    // Initialize sharedContext
+    auto sharedContext = make_shared<SharedContext>(sceneManager, eventManager);
+    sceneManager->getEventHandler()->hookSharedContext(sharedContext);
+
 
     EventDetails eventDetails(engine::CARD_PLAYED);
     eventDetails["idCardPlayed"] = 20;
@@ -89,10 +92,10 @@ int main(int argc,char* argv[])
                         window.close();
                     break;
             }
-            scene.handleEvent(event);
+            sceneManager->handleEvent(event);
         }
-        scene.update();
-        scene.draw(window);
+        sceneManager->update();
+        sceneManager->draw(window);
 
         // Displays mouse position and FPS
         auto mousePosition = sf::Mouse::getPosition();

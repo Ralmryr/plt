@@ -33,7 +33,9 @@ MenuDisplay :: MenuDisplay (){
     this->cardButton = make_shared<Button>("card.png",vCard);
     this->cardButton->setScale(0.55f);
     this->cardButton->updateClickableArea();
-    this->cardButton->setFunctionStr("Open Cards Hand");
+    cardButton->setOnClickFunction([](const shared_ptr<SharedContext>& sharedContext) {
+        sharedContext->getSceneManager()->addScene(CARDS_VIEW);
+    });
 
 
     this->blueCardButton = make_shared<Button>("blueCardsbutton.png",vBlueCard);

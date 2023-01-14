@@ -15,7 +15,7 @@ Button::Button() {
 
 Button::Button(std::string fileName, sf::Vector2f position) {
 
-    cout << "Button create" << ++counter << endl;
+    //cout << "Button create" << ++counter << endl;
 
     //Setting texture to the sprite
     auto texturePtr = texturePool.getTexturePtr(std::move(fileName));
@@ -42,9 +42,7 @@ Button::Button(string fileName, sf::Vector2f position, sf::FloatRect clickableAr
 }
 
 Button::~Button() {
-
     cout << "Button destroyed" << endl;
-
 }
 
 void Button::draw(sf::RenderTarget &target, sf::RenderStates states) const  {
@@ -61,6 +59,7 @@ void Button::setScale(float scale) {
     this->sprite.setScale(scale, scale);
     this->size.x = unsigned(size.x * scale);
     this->size.y = unsigned(size.y * scale);
+    updateClickableArea();
 }
 
 const sf::FloatRect &Button::getClickableArea() const {

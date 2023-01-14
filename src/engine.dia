@@ -330,10 +330,10 @@
         </dia:composite>
         <dia:composite type="umlattribute">
           <dia:attribute name="name">
-            <dia:string>#isActionValid#</dia:string>
+            <dia:string>#errorMessage#</dia:string>
           </dia:attribute>
           <dia:attribute name="type">
-            <dia:string>#bool#</dia:string>
+            <dia:string>#std::string#</dia:string>
           </dia:attribute>
           <dia:attribute name="value">
             <dia:string>##</dia:string>
@@ -2482,7 +2482,7 @@
             <dia:string>##</dia:string>
           </dia:attribute>
           <dia:attribute name="type">
-            <dia:string>#bool#</dia:string>
+            <dia:string>#std::string#</dia:string>
           </dia:attribute>
           <dia:attribute name="visibility">
             <dia:enum val="0"/>
@@ -2869,7 +2869,7 @@
             <dia:string>##</dia:string>
           </dia:attribute>
           <dia:attribute name="type">
-            <dia:string>#bool#</dia:string>
+            <dia:string>#std::string#</dia:string>
           </dia:attribute>
           <dia:attribute name="visibility">
             <dia:enum val="0"/>
@@ -3273,7 +3273,7 @@
             <dia:string>##</dia:string>
           </dia:attribute>
           <dia:attribute name="type">
-            <dia:string>#bool#</dia:string>
+            <dia:string>#std::string#</dia:string>
           </dia:attribute>
           <dia:attribute name="visibility">
             <dia:enum val="0"/>
@@ -3337,7 +3337,7 @@
         <dia:point val="122.212,33.3394"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="121.362,20.3328;147.529,33.3894"/>
+        <dia:rectangle val="121.362,20.3328;147.528,33.3894"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
@@ -3802,7 +3802,7 @@
             <dia:string>##</dia:string>
           </dia:attribute>
           <dia:attribute name="type">
-            <dia:string>#bool#</dia:string>
+            <dia:string>#std::string#</dia:string>
           </dia:attribute>
           <dia:attribute name="visibility">
             <dia:enum val="0"/>
@@ -4200,7 +4200,7 @@
             <dia:string>##</dia:string>
           </dia:attribute>
           <dia:attribute name="type">
-            <dia:string>#bool#</dia:string>
+            <dia:string>#std::string#</dia:string>
           </dia:attribute>
           <dia:attribute name="visibility">
             <dia:enum val="0"/>
@@ -7476,7 +7476,7 @@
         <dia:point val="-21.1996,29.3242"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="-21.2496,28.2742;-1.97724,61.438"/>
+        <dia:rectangle val="-21.2496,28.2742;-1.97723,61.438"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
@@ -7520,7 +7520,7 @@
         <dia:point val="-14.1361,51.7177"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="-14.1861,51.6677;-7.81111,55.3677"/>
+        <dia:rectangle val="-14.1861,51.6677;-7.8111,55.3677"/>
       </dia:attribute>
       <dia:attribute name="elem_corner">
         <dia:point val="-14.1361,51.7177"/>
@@ -7658,7 +7658,7 @@
         <dia:point val="16.0833,53.6491"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="-7.86072,52.7727;16.8333,54.5041"/>
+        <dia:rectangle val="-7.86071,52.7727;16.8333,54.5041"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
@@ -7667,7 +7667,7 @@
         <dia:point val="16.0833,53.6491"/>
         <dia:point val="3.78628,53.6491"/>
         <dia:point val="3.78628,53.5177"/>
-        <dia:point val="-7.81072,53.5177"/>
+        <dia:point val="-7.81071,53.5177"/>
       </dia:attribute>
       <dia:attribute name="orth_orient">
         <dia:enum val="0"/>

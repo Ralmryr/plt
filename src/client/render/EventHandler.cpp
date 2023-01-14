@@ -33,13 +33,6 @@ void EventHandler::onClick(sf::Vector2f coords) {
     }
 }
 
-// Returns the commands and clears it
-std::string EventHandler::provideCommandStr() {
-    auto returnStr = currentCommand;
-    currentCommand = "";
-    return returnStr;
-}
-
 void EventHandler::onMouseMoved(sf::Vector2f coords) {
     int i = 0;
     for(const auto& hitbox : listHitbox) {
@@ -53,4 +46,14 @@ void EventHandler::onMouseMoved(sf::Vector2f coords) {
 
 void EventHandler::hookSharedContext(std::shared_ptr<SharedContext> sharedContext) {
     this->sharedContext = std::move(sharedContext);
+}
+
+void EventHandler::handleEvent(sf::Event event) {
+    if(event.type == sf::Event::MouseButtonPressed){
+        onClick(sf::Vector2f(event.mouseButton.x, event.mouseButton.y));
+    }
+    else if(event.type == sf::Event::MouseMoved) {
+        onMouseMoved(sf::Vector2f(event.mouseMove.x, event.mouseMove.y));
+    }
+
 }

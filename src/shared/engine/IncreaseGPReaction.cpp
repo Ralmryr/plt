@@ -26,27 +26,28 @@ void IncreaseGPReaction::execute (){
 }
 
 
-bool IncreaseGPReaction::query (){
+string IncreaseGPReaction::query (){
     int currentParameters;
+    string errMessage;
+
     if(paramName=="oxygen"){
         currentParameters=globalParameters->getOxygen();
         if(currentParameters+amount>MAX_OXYGEN){
-            return false;
-        }else return true;
+            errMessage = "Too much oxygen";
+        }
     }else if(paramName=="temperature"){
         currentParameters=globalParameters->getTemp();
         if(currentParameters+amount>MAX_TEMPERATURE){
-            return false;
-        }else return true;
+            errMessage = "Too much temperature";
+        }
     }else if(paramName=="ocean"){
         currentParameters=globalParameters->getNumberOcean();
-        if(currentParameters+amount>MAX_OCEAN){
-            return false;
-        }else return true;
-    }else{
-        cout <<"Increase GP reaction query failed" << endl;
-        return false;
+        if(currentParameters+amount>MAX_OCEAN) {
+            errMessage = "Too much oceans";
+        }
     }
+
+    return errMessage;
 }
 void IncreaseGPReaction::procNotification () {
 }

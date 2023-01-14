@@ -20,7 +20,7 @@
       "EARTH"
     ],
     "effects": [
-      ["Instant","ModifyResource","3","GOLD"]
+      ["Instant","ModifyResource","3","GOLD_PROD"]
     ],
     "condition": [
        ""

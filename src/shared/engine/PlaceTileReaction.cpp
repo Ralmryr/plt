@@ -24,9 +24,11 @@ void PlaceTileReaction::execute (){
     board->placeTile(coords,tileType,idPlayer);
 }
 
-bool PlaceTileReaction::query () {
-    board->isPossibleToPlaceTile(coords,tileType);
-    return true;
+string PlaceTileReaction::query () {
+    if(board->isPossibleToPlaceTile(coords,tileType))
+        return "";
+    else
+        return "Can't place the tile";
 }
 
 void PlaceTileReaction::procNotification (){

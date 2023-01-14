@@ -71,9 +71,7 @@ void render::SceneManager::hookData(std::shared_ptr<state::RenderAPI> dataProvid
 }
 
 void render::SceneManager::handleEvent(sf::Event event) {
-    if(event.type == sf::Event::MouseButtonPressed){
-        eventHandler->onClick(sf::Vector2f(event.mouseButton.x, event.mouseButton.y));
-    }
+    eventHandler->handleEvent(event);
 }
 
 // Adds a scene on top of the previous one

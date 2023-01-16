@@ -1,27 +1,22 @@
 #include <iostream>
 #include <utility>
+
 #include "EventManager.h"
 #include "BadgePlayedListener.h"
 #include "TilePlacedListener.h"
+#include "IncreaseGPReaction.h"
+#include "ModifyResourceReaction.h"
+#include "PlaceTileReaction.h"
 
 using namespace std;
 using namespace engine;
 
 
-// Helper function to populate the eventFactory
-template<class T>
-void addNewEvent(EventManager& eventManager, EventType eventType) {
-    eventManager.getEventFactory()[eventType] = [] (const state::State& state, const EventDetails& eventDetails) {
-        return make_shared<T>(state, eventDetails);
-    };
-}
 
 EventManager::EventManager() : reactionQueue(){
     cardReader = make_unique<CardReader>();
-    // Adds the types to the factory to easily create new Events
-    addNewEvent<BadgePlayedListener>(*this, CARD_PLAYED);
-    addNewEvent<TilePlacedListener>(*this, TILE_PLACED);
-    isActionValid = true;
+    errorMessage = "";
+
 }
 
 EventManager::~EventManager() {
@@ -41,8 +36,8 @@ void EventManager::registerEvent(EventType eventType, shared_ptr<Listener> event
  *      - Registers permanent listeners
  */
 void EventManager::notify(EventDetails &eventDetails) {
-    // Stops an event to propagate if the previous action was invalid
-    if(!isActionValid) return;
+    // Stops an event to propagate if an action has led to an error message
+    if(!errorMessage.empty()) return;
 
     bool isOriginalEvent = false;
 
@@ -56,6 +51,7 @@ void EventManager::notify(EventDetails &eventDetails) {
     // Reacts to a card played
     if (eventType == CARD_PLAYED) {
         int idCard = eventDetails["idCardPlayed"];
+        cout << "Card played : " << idCard << endl;
         cardReader->parseCard(idCard, state);
 
         auto payReaction = cardReader->getPayReaction();
@@ -65,33 +61,35 @@ void EventManager::notify(EventDetails &eventDetails) {
         processReactions(instantReaction);
 
         // Once all effects are triggered, executes all the commands
-        reactionQueue.consume();
+        if(errorMessage.empty()) {
+            reactionQueue.consume();
+        }
+
         cardReader->clear();
+        reactionQueue.clearAll();
+        errorMessage = "";
     }
 
-    
+    // Then it will iterate over the different event types to see if there is any listener that is interested in the event
+    if(eventType != CARD_PLAYED) {
+        vector<shared_ptr<Reaction>> reactions;
+        for (const auto &listener: listenersMap[eventType]) {
+            auto tmpReactions = listener->onNotify(*this, eventDetails);
+            reactions.insert(reactions.end(), tmpReactions.begin(), tmpReactions.end());
+        }
+
+        processReactions(reactions);
+    }
 }
 
-ReactionQueue &EventManager::getReactionQueue() {
-    return reactionQueue;
-}
-
-std::map<EventType, std::function<std::shared_ptr<Listener>(const state::State &, const EventDetails &eventDetails)>>&
-EventManager::getEventFactory() {
-    return this->eventFactory;
-}
-
-void EventManager::hookState(std::shared_ptr<state::State> state) {
-    this->state = std::move(state);
-}
-
-// Checks if the reactions are allowed, and adds them to the list. It also creates the chain effects
+// Checks if the reactions are allowed, and adds them to the list. It also creates the chain effects by activating notifications
 void EventManager::processReactions(const vector<std::shared_ptr<Reaction>> &reactions) {
+    if(!errorMessage.empty()) return;
+
     for(const auto& reaction : reactions) {
-        isActionValid = reaction->query();
-        if(!isActionValid) {
-            cout << "Action not possible ! " << endl;
-            reactionQueue.clearAll();
+        errorMessage = reaction->query();
+        if(!errorMessage.empty()) {
+            cout << errorMessage << endl;
             break;
         }
         reaction->procNotification();
@@ -99,54 +97,20 @@ void EventManager::processReactions(const vector<std::shared_ptr<Reaction>> &rea
     }
 }
 
-/*
- *  Handles a notification :
- *      - Creates a new event based on the data received
- *      - Notifies all listeners of the action performed
- *      - Executes all actions if the request is valid, otherwise doesn't do anything
- *      - Registers permanent listeners
+void EventManager::hookState(std::shared_ptr<state::State> state) {
+    this->state = std::move(state);
+}
 
-void EventManager::notify(const EventDetails &eventDetails) {
-    // Stops an event to propagate if the previous action was invalid
-    if(!isActionValid) return;
+void EventManager::initPermanentReactions() {
+    auto increaseOxygenReaction = make_shared<IncreaseGPReaction>(*state, 1, "oxygen");
+    vector<shared_ptr<Reaction>> reactionVector = {increaseOxygenReaction};
+    auto forestPlacedEventDetails = EventDetails(TILE_PLACED);
+    forestPlacedEventDetails["tileType"] = state::TileType::FOREST;
+    auto forestPlacedListener = make_shared<TilePlacedListener>(*state, reactionVector,
+                                                                forestPlacedEventDetails);
+    listenersMap[TILE_PLACED].push_back(forestPlacedListener);
+}
 
-    bool isOriginalEvent = false;
-
-    // If the reactionQueue is empty, it means this call is the original one
-    if(reactionQueue.isEmpty()) {
-        isOriginalEvent = true;
-    }
-
-    // Creates a new event of the right type based on the event details received
-    EventType eventType = eventDetails.getEventType();
-    auto newEvent = eventFactory[eventType](*state, eventDetails);
-    // Trigger the event
-    isActionValid = newEvent->onNotify(*this);
-
-    // Notify everyone that was listening to this eventType
-    for(const auto& event : listenersMap[eventType]) {
-        if(!isActionValid) {
-            cout << "Can't execute action" << endl;
-            reactionQueue.clearAll();
-            break;
-        }
-        event->onNotify(*this);
-    }
-
-    // If this is the original call and all actions are valid, the queue is executed
-    if(isOriginalEvent) {
-        if(isActionValid) {
-            reactionQueue.consume();
-            reactionQueue.clearAll();
-
-            // If the event had a permanent effect
-            if(newEvent->getIsPermanent()) {
-                listenersMap[eventType].push_back(newEvent);
-            }
-        }
-            // This case is when an action was invalid and this is the last call, so we reset the flag
-        else {
-            isActionValid = true;
-        }
-    }
-} */
+std::string EventManager::getErrorMessage() {
+    return errorMessage;
+}

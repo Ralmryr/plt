@@ -20,10 +20,10 @@ void DrawCardReaction::execute (){
     this->player->getCardsHand().draw(deck);
 }
 
-bool DrawCardReaction::query (){
+string DrawCardReaction::query (){
     if (deck->getSize()!=0)
-        return true;
-    else return false;
+        return "";
+    else return "No more cards";
 }
 void DrawCardReaction::procNotification (){
 

@@ -33,7 +33,9 @@ MenuDisplay :: MenuDisplay (){
     this->cardButton = make_shared<Button>("card.png",vCard);
     this->cardButton->setScale(0.55f);
     this->cardButton->updateClickableArea();
-    this->cardButton->setFunctionStr("Open Cards Hand");
+    cardButton->setOnClickFunction([](const shared_ptr<SharedContext>& sharedContext) {
+        sharedContext->getSceneManager()->addScene(CARDS_VIEW);
+    });
 
 
     this->blueCardButton = make_shared<Button>("blueCardsbutton.png",vBlueCard);
@@ -86,6 +88,7 @@ void MenuDisplay::update(const std::unordered_map<std::string,std::string>& data
     //update resources texts and pvtext
 
     for (const auto &dataEl: data) {
+        if(dataEl.first == "PV") continue;
         // Gets the index in the Resource enum of the current resource that is processed
         auto resIndex = stoi(dataEl.first.substr(dataEl.first.find(" ")+1));
         // It is a production if the index is even
@@ -97,6 +100,8 @@ void MenuDisplay::update(const std::unordered_map<std::string,std::string>& data
             listResourceAmount[(resIndex - 1)/2]->setText(dataEl.second);
         }
     }
+
+    pvText->setText(data.at("PV"));
 }
 
 void MenuDisplay::draw (sf::RenderWindow& window){

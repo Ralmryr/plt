@@ -6,11 +6,11 @@ using namespace std;
 using namespace engine;
 
 ReactionQueue::ReactionQueue() {
-    cout << "Reaction queue created" << endl;
+
 }
 
 ReactionQueue::~ReactionQueue() {
-    cout << "Reaction queue Destroyed" << endl;
+
 }
 
 void ReactionQueue::addReaction(std::shared_ptr<Reaction> newReaction) {

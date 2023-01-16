@@ -12,7 +12,9 @@ render::PopupCard::PopupCard() {
     this->closeButton = make_shared<Button>("closeButton.png", vcloseButton);
     this->closeButton->setScale(0.3f);
     this->closeButton->updateClickableArea();
-    this->closeButton->setFunctionStr("Close Cards Hand");
+    closeButton->setOnClickFunction([](const shared_ptr<SharedContext>& sharedContext) {
+        sharedContext->getSceneManager()->removeScene();
+    });
 
     this->listComponents.push_back(this->background);
     this->listComponents.push_back(this->closeButton);
@@ -26,11 +28,11 @@ render::PopupCard::~PopupCard() {
 
 void render::PopupCard::update(const std::unordered_map<std::string, std::string>& data) {
 
-//        cout << "----------- NEW DATA -------------" << endl;
-//
-//    for (const auto &dataEl: data) {
-//        cout << "{ First : " << dataEl.first << "; Second : " << dataEl.second << " }" << endl;
-//    }
+/*        cout << "----------- NEW DATA -------------" << endl;
+
+    for (const auto &dataEl: data) {
+        cout << "{ First : " << dataEl.first << "; Second : " << dataEl.second << " }" << endl;
+    }*/
 
     if(data.size() <= listComponents.size() - 2) return;
     int i = 0;
@@ -45,8 +47,12 @@ void render::PopupCard::update(const std::unordered_map<std::string, std::string
         float y = cardSpacing.y * (i/cardsPerRow);
         auto newCard = make_shared<Button>("cards/" + filename, sf::Vector2f(x, y) + offset);
         newCard->setScale(ratio);
-        newCard->updateClickableArea();
-        newCard->setFunctionStr("Card " + to_string(i) + " Played");
+        newCard->setOnClickFunction([i](const shared_ptr<SharedContext>& sharedContext) {
+            engine::EventDetails eventDetails(engine::CARD_PLAYED);
+            eventDetails["idCardPlayed"] = i+1;
+            sharedContext->getEventManager()->notify(eventDetails);
+            sharedContext->getSceneManager()->removeScene();
+        });
         listButtons.push_back(newCard);
         listComponents.push_back(std::move(newCard));
         i++;

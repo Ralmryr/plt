@@ -22,6 +22,11 @@ State::~State() {
 
 }
 
+void State::hookEventSender(std::shared_ptr<EventSender> eventSender) {
+    board->setEventSender(eventSender);
+}
+
+
 const std::shared_ptr<RenderAPI> &State::getUiDataProvider() const {
     return this->uiDataProvider;
 }

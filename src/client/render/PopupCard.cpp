@@ -51,7 +51,7 @@ void render::PopupCard::update(const std::unordered_map<std::string, std::string
             engine::EventDetails eventDetails(engine::CARD_PLAYED);
             eventDetails["idCardPlayed"] = i+1;
             sharedContext->getEventManager()->notify(eventDetails);
-            sharedContext->getSceneManager()->removeScene();
+            sharedContext->getSceneManager()->addScene(PAY_VIEW);
         });
         listButtons.push_back(newCard);
         listComponents.push_back(std::move(newCard));

@@ -5,7 +5,6 @@
 #include "../constants.hpp"
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
-#include <../../extern/jsoncpp-1.8.0/json/json.h>
 #include <engine.h>
 
 using namespace render;
@@ -22,25 +21,27 @@ int main(int argc,char* argv[])
 
     window.setFramerateLimit(60);
 
-    // Initialize scene
-    Scene scene = Scene();
-
     // Initialize state
     auto state = make_shared<State>();
 
-    // Creates a bridge between the ui and the state
-    scene.hookData(state->getUiDataProvider());
+    // Initialize EventManager
+    auto eventManager = make_shared<EventManager>();
+    eventManager->hookState(state);
+    eventManager->initPermanentReactions();
 
-    scene.setScene(render::BOARD_VIEW);
+    // Initialize connection between state and engine
+    auto  eventSender = make_shared<EventSender>();
+    eventSender->hookEventManager(eventManager);
+    state->hookEventSender(eventSender);
 
-    EventManager eventManager;
-    eventManager.hookState(state);
+    // Initialize sceneManager
+    auto sceneManager = make_shared<SceneManager>();
+    sceneManager->hookData(state->getUiDataProvider());
+    sceneManager->addScene(render::BOARD_VIEW);
 
-    EventDetails eventDetails(engine::CARD_PLAYED);
-    eventDetails["idCardPlayed"] = 0;
-    cout << "Before notification" << endl;
-    eventManager.notify(eventDetails);
-    cout << "After notification" << endl;
+    // Initialize sharedContext
+    auto sharedContext = make_shared<SharedContext>(sceneManager, eventManager);
+    sceneManager->getEventHandler()->hookSharedContext(sharedContext);
 
     sf::Clock clock;
     sf::Time elapsedTime;
@@ -49,32 +50,6 @@ int main(int argc,char* argv[])
     auto fpsText = Text("0", sf::Vector2f(1700, 10));
     auto mouseText = Text("0, 0", sf::Vector2f(1700,50));
     int counterFps = 0;
-
-    /*
-    //Testing JSON
-    ifstream ifs(RESS_PATH + "cards_description.json");
-    Json::Reader reader;
-    Json::Value obj;
-    reader.parse(ifs, obj);
-
-
-    for(int i = 0; i < obj.size(); i++) {
-        cout << "Id: " << obj[i]["id"].asString() << " ";
-        cout << "Cost: " << obj[i]["cost"].asString() << " ";
-        cout << "Badges: ";
-        for(int j = 0; j < obj[i]["badges"].size(); j++)
-        {
-            cout << obj[i]["badges"][j].asString() << ", ";
-        }
-        cout << "Effects: ";
-        for(int j = 0; j < obj[i]["badges"].size(); j++)
-        {
-            cout << obj[i]["effects"][j].asString() << ", ";
-        }
-        cout << "Condition: " << obj[i]["condition"].asString() << endl;
-    }
-
-     */
 
 
     while (window.isOpen())
@@ -90,10 +65,10 @@ int main(int argc,char* argv[])
                         window.close();
                     break;
             }
-            scene.handleEvent(event);
+            sceneManager->handleEvent(event);
         }
-        scene.update();
-        scene.draw(window);
+        sceneManager->update();
+        sceneManager->draw(window);
 
         // Displays mouse position and FPS
         auto mousePosition = sf::Mouse::getPosition();

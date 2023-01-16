@@ -5,6 +5,8 @@
 using namespace render;
 using namespace std;
 
+static int counter = 0;
+
 Button::Button() {
     this->position.x=0;
     this->position.y=0;
@@ -12,6 +14,8 @@ Button::Button() {
 }
 
 Button::Button(std::string fileName, sf::Vector2f position) {
+
+    //cout << "Button create" << ++counter << endl;
 
     //Setting texture to the sprite
     auto texturePtr = texturePool.getTexturePtr(std::move(fileName));
@@ -32,13 +36,19 @@ Button::Button(std::string fileName, sf::Vector2f position) {
     this->hovered = false;
 }
 
+Button::Button(sf::Vector2f position, sf::FloatRect clickableArea) {
+    this->position = position;
+    this->clickableArea = clickableArea;
+    hovered = false;
+}
+
 Button::Button(string fileName, sf::Vector2f position, sf::FloatRect clickableArea) : Button(std::move(fileName), position){
     this->clickableArea = clickableArea;
     this->hovered = false;
 }
 
 Button::~Button() {
-
+    cout << "Button destroyed" << endl;
 }
 
 void Button::draw(sf::RenderTarget &target, sf::RenderStates states) const  {
@@ -55,6 +65,7 @@ void Button::setScale(float scale) {
     this->sprite.setScale(scale, scale);
     this->size.x = unsigned(size.x * scale);
     this->size.y = unsigned(size.y * scale);
+    updateClickableArea();
 }
 
 const sf::FloatRect &Button::getClickableArea() const {
@@ -93,5 +104,13 @@ void Button::onMouseHover(bool hover) {
         this->sprite.setPosition(this->position);
         hovered = hover;
     }
+}
+
+void Button::setOnClickFunction(std::function<void(const std::shared_ptr<SharedContext> &)> function) {
+    onClickFunction = std::move(function);
+}
+
+void Button::onClick(const shared_ptr<SharedContext>& sharedContext) {
+    onClickFunction(sharedContext);
 }
 

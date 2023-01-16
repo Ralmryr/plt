@@ -18,15 +18,7 @@ PopupBadge::PopupBadge() {
     this->listButtons.push_back(closeButton);
 }
 
-PopupBadge::~PopupBadge(){}
-
-void PopupBadge::open(){
-    this->isOpen = true;
-}
-
-void PopupBadge::close(){
-    this->isOpen = false;
-}
+PopupBadge::~PopupBadge() = default;
 
 void PopupBadge::update(const unordered_map<string,string>& data) {
     for (auto const &dataEl: data) {
@@ -35,60 +27,10 @@ void PopupBadge::update(const unordered_map<string,string>& data) {
         float xOriginBadge=0;
         float yOriginBadge=0;
         float indexBetweenBadges=0;
-        switch (stoi(badge)) {
-            case 1://None
-                this->listComponents.push_back(make_shared<Text>(Text(amount,
-                                                                      sf::Vector2f(xOriginBadge,yOriginBadge+0*indexBetweenBadges))));
-                break;
-            case 2://Building
-                this->listComponents.push_back(make_shared<Text>(Text(amount,
-                                                                      sf::Vector2f(xOriginBadge,yOriginBadge+1*indexBetweenBadges))));
-                break;
-            case 3://Space
-                this->listComponents.push_back(make_shared<Text>(Text(amount,
-                                                                      sf::Vector2f(xOriginBadge,yOriginBadge+2*indexBetweenBadges))));
-                break;
-            case 4://Energy
-                this->listComponents.push_back(make_shared<Text>(Text(amount,
-                                                                      sf::Vector2f(xOriginBadge,yOriginBadge+3*indexBetweenBadges))));
-                break;
-            case 5://Science
-                this->listComponents.push_back(make_shared<Text>(Text(amount,
-                                                                      sf::Vector2f(xOriginBadge,yOriginBadge+4*indexBetweenBadges))));
-                break;
-            case 6://Jovian
-                this->listComponents.push_back(make_shared<Text>(Text(amount,
-                                                                      sf::Vector2f(xOriginBadge,yOriginBadge+5*indexBetweenBadges))));
-                break;
-            case 7://Earth
-                this->listComponents.push_back(make_shared<Text>(Text(amount,
-                                                                      sf::Vector2f(xOriginBadge,yOriginBadge+6*indexBetweenBadges))));
-                break;
-            case 8://Plant
-                this->listComponents.push_back(make_shared<Text>(Text(amount,
-                                                                      sf::Vector2f(xOriginBadge,yOriginBadge+7*indexBetweenBadges))));
-                break;
-            case 9://Microbe
-                this->listComponents.push_back(make_shared<Text>(Text(amount,
-                                                                      sf::Vector2f(xOriginBadge,yOriginBadge+0*indexBetweenBadges))));
-                break;
-            case 10://Animal
-                this->listComponents.push_back(make_shared<Text>(Text(amount,
-                                                                      sf::Vector2f(xOriginBadge,yOriginBadge+9*indexBetweenBadges))));
-                break;
-            case 11://City
-                this->listComponents.push_back(make_shared<Text>(Text(amount,
-                                                                      sf::Vector2f(xOriginBadge,yOriginBadge+10*indexBetweenBadges))));
-                break;
-            case 12://Event
-                this->listComponents.push_back(make_shared<Text>(Text(amount,
-                                                                      sf::Vector2f(xOriginBadge,yOriginBadge+11*indexBetweenBadges))));
-                break;
-            case 13://Venus
-                this->listComponents.push_back(make_shared<Text>(Text(amount,
-                                                                      sf::Vector2f(xOriginBadge,yOriginBadge+12*indexBetweenBadges))));
-                break;
-        }
+
+        int badgeID = stoi(badge);
+        this->listComponents.push_back(make_shared<Text>(Text(amount,
+                                                              sf::Vector2f(xOriginBadge,yOriginBadge+(badgeID-1)*indexBetweenBadges))));
     }
 }
 
@@ -98,9 +40,8 @@ void PopupBadge::draw(sf::RenderWindow& window){
             window.draw(*component);
         }
     }
-
 }
 
-void PopupBadge::setListComponents(const std::vector<std::shared_ptr<sf::Drawable>>& listComponents){
-
+std::vector<std::shared_ptr<Button>> PopupBadge::getListButtons() {
+    return listButtons;
 }

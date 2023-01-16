@@ -1,6 +1,7 @@
 #include "Board.h"
 #include <string>
 #include <random>
+#include <iostream>
 
 using namespace std;
 using namespace state;
@@ -162,4 +163,14 @@ bool Board::isPossibleToPlaceTile(std::pair<int, int> coords, state::TileType ti
         return true;
     }else return true;
 }
+
+void Board::procNotification(TileType tileType) {
+    eventSender->notifyTilePlaced(tileType, {0, 0});
+}
+
+void Board::setEventSender(const shared_ptr<EventSender> &eventSender) {
+    this->eventSender = eventSender;
+}
+
+
 

@@ -15,8 +15,8 @@ ResourceBoard::ResourceBoard() {
         resourceMap.insert({Resource(res), 16});
     }
 
+    resourceMap[GOLD] = 100;
     resourceMap[GOLD_PROD] = 52;
-    resourceMap[IRON] = 37;
     resourceMap[HEAT] = 87;
 
     resourceMap[NT] = 20;
@@ -54,8 +54,6 @@ void ResourceBoard::modifyResource(Resource resource, int amount) {
 }
 
 bool ResourceBoard::isPossibleToModifyResource(Resource resource, int amount) {
-    if(resourceMap[resource]){
-        if (resourceMap[resource]+amount<0) return false;
-        else return true;
-    }else return false;
+    if (resourceMap[resource]+amount<0) return false;
+    else return true;
 }

@@ -2,9 +2,9 @@
 
 #include "CardReader.h"
 
-#include <../../extern/jsoncpp-1.8.0/json/json.h>
 #include <iostream>
 #include "../constants.hpp"
+#include <fstream>
 #include "DrawCardReaction.h"
 #include "ModifyResourceReaction.h"
 #include "PlaceTileReaction.h"
@@ -31,14 +31,45 @@ std::map<string, state::Badge> badgeMap = {{"NONE", state::NONE},
                                            {"B_CITY", state::B_CITY},
                                            {"EVENT", state::EVENT},
                                            {"VENUS", state::VENUS}};
+std::map<string, state::Resource> ressourceMap = {{"GOLD", state::GOLD},
+                                                  {"GOLD_PROD", state::GOLD_PROD},
+                                                  {"IRON", state::IRON},
+                                                  {"IRON_PROD", state::IRON_PROD},
+                                                  {"TITANIUM", state::TITANIUM},
+                                                  {"TITANIUM_PROD", state::TITANIUM_PROD},
+                                                  {"PLANT", state::PLANT},
+                                                  {"PLANT_PROD", state::PLANT_PROD},
+                                                  {"ENERGY", state::ENERGY},
+                                                  {"ENERGY_PROD", state::ENERGY_PROD},
+                                                  {"HEAT", state::HEAT},
+                                                  {"HEAT_PROD", state::HEAT_PROD},
+                                                  {"NT", state::NT},
+                                                  {"PV", state::PV}};
 
-std::map<string, int> ReactionMap = {{"IncreaseGPReaction", 0},
-                                   {"ModifyRessourceReaction", 1},
-                                   {"PlaceTileReaction", 2},
-                                   {"DrawCardReaction", 3}};
+std::map<string, state::TileType> tileTypeMap = {{"FOREST",state::FOREST},
+                                                 {"OCEAN",state::OCEAN},
+                                                 {"CITY",state::CITY},
+                                                 {"MINE",state::MINE},
+                                                 {"FORBIDDEN",state::FORBIDDEN},
+                                                 {"MOHOL",state::MOHOL},
+                                                 {"NUKE",state::NUKE},
+                                                 {"PRESERVED",state::PRESERVED},
+                                                 {"ZOO",state::ZOO},
+                                                 {"COMMERCIAL",state::COMMERCIAL},
+                                                 {"CAPITAL",state::CAPITAL},
+                                                 {"INDUSTRY",state::INDUSTRY},
+                                                 {"NOCTIS",state::NOCTIS},
+                                                 {"PHOBOS",state::PHOBOS},
+                                                 {"GANYMEDE",state::GANYMEDE}};
+
+std::map<string, int> reactionMap = {{"IncreaseGP", 0},
+                                   {"ModifyResource", 1},
+                                   {"PlaceTile", 2},
+                                   {"DrawCard", 3}};
 
 CardReader::CardReader() {
-
+    ifstream ifs(RESS_PATH + "cards_description.json");
+    reader.parse(ifs, cardsObj);
 }
 
 CardReader::~CardReader() {
@@ -85,59 +116,56 @@ bool checkCondition(const shared_ptr<state::State> &state, const string &conditi
 int CardReader::parseCard(int idCard, const shared_ptr<state::State>& state) {
     int status = 0;
 
-    EffectMap effects = {{0, {15000}},
-                         {1, {3, 4}}};
-    BadgeMap badges = {{0, {state::BUILDING, state::B_PLANT}},
-                       {1, {state::SCIENCE, state::SCIENCE}}};
-    CostMap costs = {{0, 12},
-                     {1, 35}};
 
-    for (const auto &badge: badges[idCard]) {
-        this->listBadges.push_back(badge);
+
+    auto effects = cardsObj[idCard-1]["effects"];
+    auto badges = cardsObj[idCard-1]["badges"];
+    this->cost = cardsObj[idCard-1]["cost"].asInt();
+    for (const auto &badge : badges){
+        this->listBadges.push_back(badgeMap[badge.asString()]);
     }
-    this->cost = costs[idCard];
+
 
     // Creates the reaction to make the player pay
     auto currentPlayerId = state->getCurrentPlayer()->getId();
     auto payReactionTmp = make_shared<ModifyResourceReaction>(*state, -cost, state::GOLD, currentPlayerId);
     payReaction.push_back(payReactionTmp);
 
-    // Temporary placeTile reaction
-    if (idCard == 0) {
-        int x, y;
-        cout << "Enter coord x then y" << endl;
-        cin >> x;
-        cin >> y;
-        pair<int, int> coords = {x, y};
-        auto tileReaction = make_shared<PlaceTileReaction>(*state, coords, state::FOREST, 3);
-        instantReactions.push_back(tileReaction);
-
-        auto gpReaction = make_shared<IncreaseGPReaction>(*state, 3, "oxygen");
-        instantReactions.push_back(gpReaction);
-        auto gpReaction2 = make_shared<IncreaseGPReaction>(*state, 6, "temperature");
-        instantReactions.push_back(gpReaction2);
-    }
 
     // Reads the card effects and adds reaction accordingly
     shared_ptr<Reaction> newReaction;
-    for (const auto &effect: effects[idCard]) {
-        switch (effect) {
+    for (const auto &effect: effects) {
+        switch (reactionMap[effect[1].asString()]) {
             case 0:
-                newReaction = shared_ptr<IncreaseGPReaction>();
+                newReaction = make_shared<IncreaseGPReaction>(*state, stoi(effect[2].asString()),
+                                                              effect[3].asString());
                 break;
             case 1:
-
+                newReaction = make_shared<ModifyResourceReaction>(*state, stoi(effect[2].asString()),
+                                                                  ressourceMap[effect[3].asString()],
+                                                                  currentPlayerId);
                 break;
             case 2:
-
+                newReaction = make_shared<PlaceTileReaction>(*state,
+                                                             pair<int, int>(stoi(effect[2].asString()), stoi(effect[3].asString())),
+                                                             tileTypeMap[effect[4].asString()], currentPlayerId);
                 break;
             case 3:
-
+                newReaction = make_shared<DrawCardReaction>(*state, currentPlayerId);
                 break;
+        }
+
+        if (effect[0].asString() == "Instant"){
+            instantReactions.push_back(newReaction);
+        }
+        else if(effect[0].asString() == "Permanent"){
+            permanentReactions.push_back(newReaction);
         }
     }
 
     return status;
+
+
 }
 
 // Clears every table to free the shared pointers

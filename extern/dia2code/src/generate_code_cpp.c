@@ -799,7 +799,7 @@ void print_include_stdlib(struct stdlib_includes* si,char* name) {
        }       
        if (!si->jsoncpp
        && (strstr(name,"Json::") == name)) {
-           print ("#include <../../extern/jsoncpp-1.8.0/json/json.h>\n");
+           print ("#include <json/json.h>\n");
            si->jsoncpp = 1;
        }
        if (!si->utility

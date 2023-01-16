@@ -5,8 +5,6 @@
 #include "BadgePlayedListener.h"
 #include "TilePlacedListener.h"
 #include "IncreaseGPReaction.h"
-#include "ModifyResourceReaction.h"
-#include "PlaceTileReaction.h"
 
 using namespace std;
 using namespace engine;

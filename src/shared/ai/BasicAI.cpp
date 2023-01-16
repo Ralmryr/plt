@@ -35,7 +35,7 @@ void ai::BasicAI::playTurn(){
 
 
 
-int ai::BasicAI::chooseBestCard() { //return the position of the card to play in hand
+int ai::BasicAI::chooseBestCard() { //return the position/cardddID ? of the card to play in hand
     bool playable=false;
     int card = 0;
     while (!playable){
@@ -53,21 +53,18 @@ std::pair<int, int> ai::BasicAI::findBestPosition(state::TileType tile) {
     std::pair<int, int> Coord;
     if(tile ==state::NOCTIS || tile ==state::GANYMEDE || tile ==state::PHOBOS){
         //place on reserved tile
+        for (const auto &key: state->getBoard()->getListReserved()) {
+            if (key.second == tile)
+                Coord = key.first;
+        }
     }
     else {
-        int x = rand() % 9 - 4;
-        int y = rand() % 9 - 4;
         bool isValid = false;
         while (!isValid) {
-            if (1)//querry pour un placement en x,y
-            {
+            Coord.first = rand() % 9 - 4;
+            Coord.second = rand() % 9 - 4;
+            if (state->getBoard()->isPossibleToPlaceTile(Coord,tile))
                 isValid = true;
-                Coord.first = x;
-                Coord.second = y;
-            } else {
-                x = rand() % 9 - 4;
-                y = rand() % 9 - 4;
-            }
         }
     }
     return Coord;

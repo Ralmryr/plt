@@ -12,6 +12,7 @@ render::SceneManager::SceneManager(){
     mainScene = make_shared<MainScene>();
     cardScene = make_shared<CardScene>();
     badgeScene = make_shared<BadgeScene>();
+    popupScene = make_shared<PayScene>();
     placeTileScene = make_shared<PlaceTileScene>();
 
     eventHandler = make_shared<EventHandler>();
@@ -67,10 +68,18 @@ void render::SceneManager::update() {
         cardScene->update(playerData);
     }
 
+    // -------------------------------------- PLACE TILE VIEW -----------------------------------
     if(currentScene == PLACE_TILE_VIEW) {
         auto boardData = dataProvider->provideBoardData();
 
         placeTileScene->update(boardData);
+    }
+
+    // -------------------------------------- PAY VIEW -----------------------------------
+    if(currentScene == PAY_VIEW) {
+        auto playerData = dataProvider->providePlayerData(0);
+
+        popupScene->update(playerData);
     }
 }
 

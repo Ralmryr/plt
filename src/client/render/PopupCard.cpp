@@ -28,13 +28,14 @@ render::PopupCard::~PopupCard() {
 
 void render::PopupCard::update(const std::unordered_map<std::string, std::string>& data) {
 
-/*        cout << "----------- NEW DATA -------------" << endl;
+        cout << "----------- NEW DATA -------------" << endl;
 
     for (const auto &dataEl: data) {
         cout << "{ First : " << dataEl.first << "; Second : " << dataEl.second << " }" << endl;
-    }*/
+    }
 
     if(data.size() <= listComponents.size() - 2) return;
+
     int i = 0;
     int cardsPerRow = 8;
     sf::Vector2f offset = {60, 50};
@@ -42,17 +43,20 @@ void render::PopupCard::update(const std::unordered_map<std::string, std::string
     float ratio = 0.55f;
     string filename;
     for(const auto& card : data) {
-        filename = "card_"+ to_string(i+1) + ".png";
+        int idCard = stoi(card.second.substr(0, card.second.find(",")));
+        filename = "card_"+ to_string(idCard+1) + ".png";
         float x = cardSpacing.x * (i%cardsPerRow);
         float y = cardSpacing.y * (i/cardsPerRow);
+
         auto newCard = make_shared<Button>("cards/" + filename, sf::Vector2f(x, y) + offset);
         newCard->setScale(ratio);
-        newCard->setOnClickFunction([i](const shared_ptr<SharedContext>& sharedContext) {
+        newCard->setOnClickFunction([idCard](const shared_ptr<SharedContext>& sharedContext) {
             engine::EventDetails eventDetails(engine::CARD_PLAYED);
-            eventDetails["idCardPlayed"] = i+1;
+            eventDetails["idCardPlayed"] = idCard+1;
             sharedContext->getEventManager()->notify(eventDetails);
             sharedContext->getSceneManager()->addScene(PAY_VIEW);
         });
+
         listButtons.push_back(newCard);
         listComponents.push_back(std::move(newCard));
         i++;

@@ -10,8 +10,9 @@ using namespace state;
 
 // Creates a list of cards with ids ranging from 70 to 79
 CardsHand::CardsHand() {
+    vector<Badge> listBadge = {EARTH, BUILDING};
     for(int i = 1; i < 24; i++) {
-        listCards.emplace_back(i);
+        listCards.emplace_back(i, 20, listBadge);
     }
 }
 
@@ -20,7 +21,7 @@ CardsHand::~CardsHand() {
 }
 
 // Returns the data of cards in hand
-// [ "idCardHand i" : "id" ]
+// [ "idCardHand i" : "id,cost,listBadges" ]
 std::unordered_map<std::string, std::string> CardsHand::serializeUiData() const {
     unordered_map<string, string> uiData;
     for(int i = 0; i < int(listCards.size()); i++) {
@@ -30,18 +31,12 @@ std::unordered_map<std::string, std::string> CardsHand::serializeUiData() const 
     return uiData;
 }
 
-void CardsHand :: draw(std::shared_ptr<Deck> deck){ //a modifier en utilisant le cardreader pour générer correctement la carte
+void CardsHand :: draw(std::shared_ptr<Deck> deck) { //a modifier en utilisant le cardreader pour générer correctement la carte
     int IDcard = rand();
-    if(deck->removeCard(IDcard)) {
-        listCards.emplace_back(Card(IDcard));
-    }
 }
 
 
-void CardsHand :: draw(std::shared_ptr<Deck> deck, int cardID){ //a modifier en utilisant le cardreader pour générer correctement la carte
-    if(deck->removeCard(cardID)) {
-        listCards.emplace_back(Card(cardID));
-    }
+void CardsHand :: draw(std::shared_ptr<Deck> deck, int cardID) { //a modifier en utilisant le cardreader pour générer correctement la carte
 }
 
 

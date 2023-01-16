@@ -36,6 +36,12 @@ Button::Button(std::string fileName, sf::Vector2f position) {
     this->hovered = false;
 }
 
+Button::Button(sf::Vector2f position, sf::FloatRect clickableArea) {
+    this->position = position;
+    this->clickableArea = clickableArea;
+    hovered = false;
+}
+
 Button::Button(string fileName, sf::Vector2f position, sf::FloatRect clickableArea) : Button(std::move(fileName), position){
     this->clickableArea = clickableArea;
     this->hovered = false;

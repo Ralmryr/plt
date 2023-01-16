@@ -110,3 +110,7 @@ void EventManager::initPermanentReactions() {
                                                                 forestPlacedEventDetails);
     listenersMap[TILE_PLACED].push_back(forestPlacedListener);
 }
+
+std::string EventManager::getErrorMessage() {
+    return errorMessage;
+}

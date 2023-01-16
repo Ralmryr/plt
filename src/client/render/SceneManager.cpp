@@ -11,11 +11,15 @@ using namespace render;
 render::SceneManager::SceneManager(){
     mainScene = make_shared<MainScene>();
     cardScene = make_shared<CardScene>();
+    badgeScene = make_shared<BadgeScene>();
+    placeTileScene = make_shared<PlaceTileScene>();
+
     eventHandler = make_shared<EventHandler>();
     dataProvider = make_shared<state::RenderAPI>();
 
     sceneMap.insert({SceneID::CARDS_VIEW, cardScene});
     sceneMap.insert({SceneID::BOARD_VIEW, mainScene});
+    sceneMap.insert({SceneID::BADGE_VIEW, badgeScene});
 }
 
 render::SceneManager::~SceneManager() {
@@ -50,9 +54,7 @@ void render::SceneManager::update() {
     if(currentScene == BOARD_VIEW) {
         // Board data
         auto playerData = dataProvider->providePlayerData(0);
-
-        unordered_map<string, string> mainSceneData = dataProvider->provideMainSceneData();
-
+        auto mainSceneData = dataProvider->provideMainSceneData();
         mainSceneData.insert(playerData.begin(), playerData.end());
 
         mainScene->update(mainSceneData);
@@ -64,10 +66,16 @@ void render::SceneManager::update() {
 
         cardScene->update(playerData);
     }
+
+    if(currentScene == PLACE_TILE_VIEW) {
+        auto boardData = dataProvider->provideBoardData();
+
+        placeTileScene->update(boardData);
+    }
 }
 
 void render::SceneManager::hookData(std::shared_ptr<state::RenderAPI> dataProvider) {
-    this->dataProvider = dataProvider;
+    this->dataProvider = std::move(dataProvider);
 }
 
 void render::SceneManager::handleEvent(sf::Event event) {

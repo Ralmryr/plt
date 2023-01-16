@@ -20,7 +20,6 @@ target_include_directories(${lib_client_target} PUBLIC
 target_link_libraries(${lib_client_target} PUBLIC
   ${SFML_LIBRARIES}
   $<TARGET_NAME:shared_static>
-  ${jsoncpp_sources}
   )
 
 # Compile "client" executable

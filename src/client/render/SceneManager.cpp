@@ -12,7 +12,7 @@ render::SceneManager::SceneManager(){
     mainScene = make_shared<MainScene>();
     cardScene = make_shared<CardScene>();
     badgeScene = make_shared<BadgeScene>();
-    popupScene = make_shared<PayScene>();
+    payScene = make_shared<PayScene>();
     placeTileScene = make_shared<PlaceTileScene>();
 
     eventHandler = make_shared<EventHandler>();
@@ -21,6 +21,7 @@ render::SceneManager::SceneManager(){
     sceneMap.insert({SceneID::CARDS_VIEW, cardScene});
     sceneMap.insert({SceneID::BOARD_VIEW, mainScene});
     sceneMap.insert({SceneID::BADGE_VIEW, badgeScene});
+    sceneMap.insert({SceneID::PAY_VIEW, payScene});
 }
 
 render::SceneManager::~SceneManager() {
@@ -79,7 +80,7 @@ void render::SceneManager::update() {
     if(currentScene == PAY_VIEW) {
         auto playerData = dataProvider->providePlayerData(0);
 
-        popupScene->update(playerData);
+        payScene->update(playerData);
     }
 }
 
@@ -122,6 +123,10 @@ void render::SceneManager::displayMainScene() {
 
 const shared_ptr<EventHandler> &render::SceneManager::getEventHandler() const {
     return eventHandler;
+}
+
+const std::shared_ptr<PayScene>& render::SceneManager::getPayScene() const {
+    return this->payScene;
 }
 
 

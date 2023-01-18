@@ -48,9 +48,6 @@ void render::PopupCard::update(const std::unordered_map<std::string, std::string
         auto newCard = make_shared<Button>("cards/" + filename, sf::Vector2f(x, y) + offset);
         newCard->setScale(ratio);
         newCard->setOnClickFunction([i](const shared_ptr<SharedContext>& sharedContext) {
-            engine::EventDetails eventDetails(engine::CARD_PLAYED);
-            eventDetails["idCardPlayed"] = i+1;
-            sharedContext->getEventManager()->notify(eventDetails);
             sharedContext->getSceneManager()->getPayScene()->setCardId(i+1);
             sharedContext->getSceneManager()->removeScene();
             sharedContext->getSceneManager()->addScene(PAY_VIEW);

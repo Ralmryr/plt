@@ -60,11 +60,10 @@ render::PopupPay::PopupPay() {
 render::PopupPay::~PopupPay() = default;
 
 void render::PopupPay::update(const std::unordered_map<std::string, std::string> &data) {
-
     float ratio = 0.55f;
     bool space, building;
     string filename;
-    filename = "card_" + data.at("idCard") + ".png";
+    filename = "card_" + data.at("idCardHand") + ".png";
     this->cardImage = make_shared<Image>(filename, vcardImage);
 }
 

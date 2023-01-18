@@ -33,7 +33,7 @@
       "BUILDING"
     ],
     "effects": [
-      
+      ["Instant","ModifyResource","7","IRON"]
     ],
     "condition": [
       ""
@@ -46,7 +46,7 @@
       "MICROBE"
     ],
     "effects": [
-      
+      ["Instant","ModifyResource","3","HEAT_PROD"]
     ],
     "condition": [
       ""

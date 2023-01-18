@@ -37,13 +37,6 @@ void EventManager::notify(EventDetails &eventDetails) {
     // Stops an event to propagate if an action has led to an error message
     if(!errorMessage.empty()) return;
 
-    bool isOriginalEvent = false;
-
-    // If the reactionQueue is empty, it means this call is the original one
-    if(reactionQueue.isEmpty()) {
-        isOriginalEvent = true;
-    }
-
     EventType eventType = eventDetails.getEventType();
 
     // Reacts to a card played
@@ -61,6 +54,7 @@ void EventManager::notify(EventDetails &eventDetails) {
         // Once all effects are triggered, executes all the commands
         if(errorMessage.empty()) {
             reactionQueue.consume();
+            state->increaseActionCount();
         }
 
         cardReader->clear();

@@ -27,14 +27,13 @@ render::PopupCard::~PopupCard() {
 }
 
 void render::PopupCard::update(const std::unordered_map<std::string, std::string>& data) {
+    if(data.size() <= listComponents.size() - 2) return;
 
-        cout << "----------- NEW DATA -------------" << endl;
+    cout << "----------- NEW DATA -------------" << endl;
 
     for (const auto &dataEl: data) {
         cout << "{ First : " << dataEl.first << "; Second : " << dataEl.second << " }" << endl;
     }
-
-    if(data.size() <= listComponents.size() - 2) return;
 
     int i = 0;
     int cardsPerRow = 8;
@@ -42,6 +41,7 @@ void render::PopupCard::update(const std::unordered_map<std::string, std::string
     sf::Vector2f cardSpacing = {230, 270};
     float ratio = 0.55f;
     string filename;
+
     for(const auto& card : data) {
         int idCard = stoi(card.second.substr(0, card.second.find(",")));
         filename = "card_"+ to_string(idCard+1) + ".png";

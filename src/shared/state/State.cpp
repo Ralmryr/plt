@@ -54,3 +54,16 @@ const std::shared_ptr<Deck>& State::getDeck() const{
 const std::shared_ptr<Player>& State::getCurrentPlayer() const {
     return listPlayers[currentPlayer];
 }
+
+void State::increaseActionCount() {
+    actionCount++;
+    if (actionCount == 2) {
+        actionCount = 0;
+        currentPlayer = (currentPlayer+1)%5;
+    }
+}
+
+void State::endTurn() {
+    currentPlayer = (currentPlayer+1)%5;
+    actionCount = 0;
+}

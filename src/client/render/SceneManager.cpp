@@ -56,6 +56,11 @@ void render::SceneManager::draw(sf::RenderWindow& window) {
 
 void render::SceneManager::update() {
 
+    /*cout << "----------- NEW DATA -------------" << endl;
+
+    for (const auto &dataEl: data) {
+        cout << "{ First : " << dataEl.first << "; Second : " << dataEl.second << " }" << endl;
+    }*/
     // ------------------------------------- TITLE VIEW -----------------------------------
     if(currentScene == TITLE_VIEW){
 

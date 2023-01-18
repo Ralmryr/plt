@@ -9,7 +9,6 @@ PlaceTileScene::PlaceTileScene() {
 
     sf::Vector2f boardButtonPos = {20.f, 20.f};
     boardButton = make_shared<Button>("popupFrame.png", boardButtonPos);
-    boardButton->setScale(0.5f);
 }
 
 std::vector<std::shared_ptr<Button>> PlaceTileScene::getListButtons() {

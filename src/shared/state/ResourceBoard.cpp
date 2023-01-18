@@ -16,8 +16,6 @@ ResourceBoard::ResourceBoard() {
     }
 
     resourceMap[GOLD] = 100;
-    resourceMap[GOLD_PROD] = 52;
-    resourceMap[HEAT] = 87;
 
     resourceMap[NT] = 20;
     resourceMap[PV] = 0;

@@ -37,20 +37,13 @@ void EventManager::notify(EventDetails &eventDetails) {
     // Stops an event to propagate if an action has led to an error message
     if(!errorMessage.empty()) return;
 
-    bool isOriginalEvent = false;
-
-    // If the reactionQueue is empty, it means this call is the original one
-    if(reactionQueue.isEmpty()) {
-        isOriginalEvent = true;
-    }
-
     EventType eventType = eventDetails.getEventType();
 
     // Reacts to a card played
     if (eventType == CARD_PLAYED) {
         int idCard = eventDetails["idCardPlayed"];
         cout << "Card played : " << idCard << endl;
-        cardReader->parseCard(idCard, state);
+        cardReader->parseCardEffects(idCard, state);
 
         auto payReaction = cardReader->getPayReaction();
         processReactions(payReaction);
@@ -61,6 +54,7 @@ void EventManager::notify(EventDetails &eventDetails) {
         // Once all effects are triggered, executes all the commands
         if(errorMessage.empty()) {
             reactionQueue.consume();
+            state->increaseActionCount();
         }
 
         cardReader->clear();

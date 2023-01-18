@@ -59,6 +59,15 @@ MenuDisplay :: MenuDisplay (){
     this->pvText->setSizeText(80);
     this->pvText->setColor(sf::Color::Black);
 
+    this->badgeButton = make_shared<Button>("badge_wild.png",vBadge);
+    this->badgeButton->setScale(1.2f);
+    this->badgeButton->updateClickableArea();
+    badgeButton->setOnClickFunction([pvText = pvText](const shared_ptr<SharedContext>& sharedContext) {
+        auto pvString = pvText->getText();
+        pvString = to_string(stoi(pvString) + 1);
+        pvText->setText(pvString);
+    });
+
     listComponents.push_back(frameImage);
     listComponents.push_back(cardButton);
     listComponents.push_back(blueCardButton);
@@ -104,7 +113,7 @@ void MenuDisplay::update(const std::unordered_map<std::string,std::string>& data
         }
     }
 
-    pvText->setText(data.at("PV"));
+    //pvText->setText(data.at("PV"));
 }
 
 void MenuDisplay::draw (sf::RenderWindow& window){

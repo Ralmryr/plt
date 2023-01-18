@@ -90,7 +90,7 @@
         <dia:point val="7.35998,-139.412"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="7.30998,-140.462;203.454,52.1943"/>
+        <dia:rectangle val="7.30998,-140.462;203.454,52.1948"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
@@ -14962,7 +14962,7 @@ class Button;#</dia:string>
         <dia:point val="94.6216,-26.9389"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="72.9572,-27.6889;95.3716,-9.169"/>
+        <dia:rectangle val="72.9572,-27.6889;95.3716,-9.914"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
@@ -15043,15 +15043,15 @@ class Button;#</dia:string>
         <dia:point val="94.6216,-26.9389"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="73.4281,-27.6889;95.3716,22.5573"/>
+        <dia:rectangle val="73.4281,-27.6889;95.3716,21.8123"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
       </dia:attribute>
       <dia:attribute name="orth_points">
         <dia:point val="94.6216,-26.9389"/>
-        <dia:point val="83.6998,-26.9389"/>
-        <dia:point val="83.6998,20.9573"/>
+        <dia:point val="83.6999,-26.9389"/>
+        <dia:point val="83.6999,20.9573"/>
         <dia:point val="73.4781,20.9573"/>
       </dia:attribute>
       <dia:attribute name="orth_orient">
@@ -15449,7 +15449,7 @@ class Button;#</dia:string>
         <dia:point val="129.555,-16.1958"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="117.887,-26.9889;130.305,-14.5958"/>
+        <dia:rectangle val="117.887,-27.6839;130.305,-15.3408"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
@@ -15530,7 +15530,7 @@ class Button;#</dia:string>
         <dia:point val="161.832,-52.1927"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="151.281,-53.0427;161.882,-16.1458"/>
+        <dia:rectangle val="151.28,-53.0427;161.882,-16.1458"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
@@ -15539,7 +15539,7 @@ class Button;#</dia:string>
         <dia:point val="161.832,-52.1927"/>
         <dia:point val="156.181,-52.1927"/>
         <dia:point val="156.181,-16.1958"/>
-        <dia:point val="151.331,-16.1958"/>
+        <dia:point val="151.33,-16.1958"/>
       </dia:attribute>
       <dia:attribute name="orth_orient">
         <dia:enum val="0"/>
@@ -15581,7 +15581,7 @@ class Button;#</dia:string>
         <dia:point val="94.6216,-26.9389"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="73.0539,-27.6889;95.3716,4.97058"/>
+        <dia:rectangle val="73.0539,-27.6889;95.3716,4.22558"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
@@ -15662,7 +15662,7 @@ class Button;#</dia:string>
         <dia:point val="173.092,-6.4621"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="151.281,-16.2458;173.842,-4.8621"/>
+        <dia:rectangle val="151.28,-16.9408;173.842,-6.0071"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
@@ -15671,7 +15671,7 @@ class Button;#</dia:string>
         <dia:point val="173.092,-6.4621"/>
         <dia:point val="161.861,-6.4621"/>
         <dia:point val="161.861,-16.1958"/>
-        <dia:point val="151.331,-16.1958"/>
+        <dia:point val="151.33,-16.1958"/>
       </dia:attribute>
       <dia:attribute name="orth_orient">
         <dia:enum val="0"/>
@@ -15743,7 +15743,7 @@ class Button;#</dia:string>
         <dia:point val="94.293,-9.1107"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="73.3778,-9.8607;95.043,21.7573"/>
+        <dia:rectangle val="73.3778,-9.8607;95.043,21.0123"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>

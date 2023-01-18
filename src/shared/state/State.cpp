@@ -13,6 +13,7 @@ State::State() {
     board = make_shared<Board>();
     globalParameters = make_shared<GlobalParameters>();
     uiDataProvider = make_shared<RenderAPI>();
+    deck = make_shared<Deck>(20);
 
     // Creates the link between the data provider and the game elements
     uiDataProvider->hookComponents(listPlayers, board, globalParameters);
@@ -53,4 +54,17 @@ const std::shared_ptr<Deck>& State::getDeck() const{
 
 const std::shared_ptr<Player>& State::getCurrentPlayer() const {
     return listPlayers[currentPlayer];
+}
+
+void State::increaseActionCount() {
+    actionCount++;
+    if (actionCount == 2) {
+        actionCount = 0;
+        currentPlayer = (currentPlayer+1)%5;
+    }
+}
+
+void State::endTurn() {
+    currentPlayer = (currentPlayer+1)%5;
+    actionCount = 0;
 }

@@ -33,7 +33,7 @@
       "BUILDING"
     ],
     "effects": [
-      
+      ["Instant","ModifyResource","7","IRON"]
     ],
     "condition": [
       ""
@@ -46,7 +46,7 @@
       "MICROBE"
     ],
     "effects": [
-      
+      ["Instant","ModifyResource","3","HEAT_PROD"]
     ],
     "condition": [
       ""
@@ -1397,6 +1397,30 @@
     ],
     "effects": [
       ["Permanent","PlaceTile","-1","-1","CITY"]
+    ],
+    "condition": [
+      ""
+    ]
+  },
+    {
+    "id": 107,
+    "cost": 0,
+    "badges": [
+      ""
+    ],
+    "effects": [
+      ["Permanent","DrawCard"],
+      ["Permanent","DrawCard"],
+      ["Permanent","DrawCard"],
+      ["Permanent","DrawCard"],
+      ["Permanent","DrawCard"],
+      ["Permanent","DrawCard"],
+      ["Permanent","DrawCard"],
+		["Permanent","DrawCard"],
+      ["Permanent","DrawCard"],
+      ["Permanent","DrawCard"],
+      ["Permanent","DrawCard"],
+      ["Permanent","DrawCard"]
     ],
     "condition": [
       ""

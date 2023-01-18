@@ -43,6 +43,10 @@ int main(int argc,char* argv[])
     auto sharedContext = make_shared<SharedContext>(sceneManager, eventManager);
     sceneManager->getEventHandler()->hookSharedContext(sharedContext);
 
+    EventDetails eventDetails(engine::CARD_PLAYED);
+    eventDetails["idCardPlayed"] = 107;
+    eventManager->notify(eventDetails);
+
     sf::Clock clock;
     sf::Time elapsedTime;
 

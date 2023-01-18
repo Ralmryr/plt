@@ -6,18 +6,19 @@ using namespace state;
 
 
 DrawCardReaction::DrawCardReaction (const state::State& state, int idPlayer){
-    /*
-    std::shared_ptr<state::Player> player;
-     */
     this->player= state.getSpecificPlayer(idPlayer);
     this->deck= state.getDeck();
 }
 
-DrawCardReaction::~DrawCardReaction ()= default;
+DrawCardReaction::~DrawCardReaction () = default;
 
 
 void DrawCardReaction::execute (){
-    this->player->getCardsHand().draw(deck);
+    CardReader cardReader;
+    int idCard = deck->drawCard();
+    cardReader.parseCardInfo(idCard);
+    auto newCard = make_shared<Card>(idCard, cardReader.getCost(), cardReader.getListBadges());
+    player->getCardsHand().addCard(newCard);
 }
 
 string DrawCardReaction::query (){

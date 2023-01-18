@@ -200,7 +200,9 @@
       "MICROBE"
     ],
     "effects": [
-      ["Instant","ModifyResource","1","PLANT_PROD"]
+      ["Instant","DrawCard"],
+      ["Instant","DrawCard"],
+      ["Instant","DrawCard"]
     ],
     "condition": [
       ""

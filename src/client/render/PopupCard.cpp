@@ -53,11 +53,17 @@ void render::PopupCard::update(const std::unordered_map<std::string, std::string
             newCard->setScale(ratio);
             newCard->setOnClickFunction([i](const shared_ptr<SharedContext>& sharedContext) {
 
-            });
-            listButtons.push_back(newCard);
-            listComponents.push_back(std::move(newCard));
-            i++;
-        }
+        auto newCard = make_shared<Button>("cards/" + filename, sf::Vector2f(x, y) + offset);
+        newCard->setScale(ratio);
+        newCard->setOnClickFunction([i](const shared_ptr<SharedContext>& sharedContext) {
+            sharedContext->getSceneManager()->getPayScene()->setCardId(i);
+            sharedContext->getSceneManager()->removeScene();
+            sharedContext->getSceneManager()->addScene(PAY_VIEW);
+        });
+
+        listButtons.push_back(newCard);
+        listComponents.push_back(std::move(newCard));
+        i++;
     }
         //------NORMAL CARDS---------
     else{

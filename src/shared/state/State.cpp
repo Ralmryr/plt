@@ -13,6 +13,7 @@ State::State() {
     board = make_shared<Board>();
     globalParameters = make_shared<GlobalParameters>();
     uiDataProvider = make_shared<RenderAPI>();
+    deck = make_shared<Deck>(20);
 
     // Creates the link between the data provider and the game elements
     uiDataProvider->hookComponents(listPlayers, board, globalParameters);

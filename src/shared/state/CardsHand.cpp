@@ -11,9 +11,9 @@ using namespace state;
 // Creates a list of cards with ids ranging from 70 to 79
 CardsHand::CardsHand() {
     vector<Badge> listBadge = {EARTH, BUILDING};
-    for(int i = 1; i < 24; i++) {
+    /*for(int i = 1; i < 24; i++) {
         listCards.emplace_back(i, 20, listBadge);
-    }
+    }*/
 }
 
 CardsHand::~CardsHand() {
@@ -25,18 +25,14 @@ CardsHand::~CardsHand() {
 std::unordered_map<std::string, std::string> CardsHand::serializeUiData() const {
     unordered_map<string, string> uiData;
     for(int i = 0; i < int(listCards.size()); i++) {
-        auto CardData = listCards[i].serializeUiData();
+        auto CardData = listCards[i]->serializeUiData();
         uiData.insert({"idCardHand " + to_string(i), CardData.second});
     }
     return uiData;
 }
 
-void CardsHand :: draw(std::shared_ptr<Deck> deck) { //a modifier en utilisant le cardreader pour générer correctement la carte
-    int IDcard = rand();
-}
-
-
-void CardsHand :: draw(std::shared_ptr<Deck> deck, int cardID) { //a modifier en utilisant le cardreader pour générer correctement la carte
+void CardsHand::addCard(std::shared_ptr<Card> card) {
+    listCards.push_back(std::move(card));
 }
 
 

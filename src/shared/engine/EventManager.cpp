@@ -43,7 +43,7 @@ void EventManager::notify(EventDetails &eventDetails) {
     if (eventType == CARD_PLAYED) {
         int idCard = eventDetails["idCardPlayed"];
         cout << "Card played : " << idCard << endl;
-        cardReader->parseCard(idCard, state);
+        cardReader->parseCardEffects(idCard, state);
 
         auto payReaction = cardReader->getPayReaction();
         processReactions(payReaction);

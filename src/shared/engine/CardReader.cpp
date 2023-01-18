@@ -109,29 +109,30 @@ bool checkCondition(const shared_ptr<state::State> &state, const string &conditi
     return isConditionVerified;
 }
 
-/*
- * Reads the content of cardID and store the information in useful data structures
- * Returns 0 if the operation was successful, 1 otherwise
- */
-
-int CardReader::parseCard(int idCard, const shared_ptr<state::State>& state) {
-    int status = 0;
-
-
-
-    auto effects = cardsObj[idCard-1]["effects"];
+void CardReader::parseCardInfo(int idCard) {
     auto badges = cardsObj[idCard-1]["badges"];
     this->cost = cardsObj[idCard-1]["cost"].asInt();
     for (const auto &badge : badges){
         this->listBadges.push_back(badgeMap[badge.asString()]);
     }
+}
 
+/*
+ * Reads the content of cardID and store the information in useful data structures
+ * Returns 0 if the operation was successful, 1 otherwise
+ */
+
+int CardReader::parseCardEffects(int idCard, const shared_ptr<state::State>& state) {
+    int status = 0;
+
+    parseCardInfo(idCard);
 
     // Creates the reaction to make the player pay
     auto currentPlayerId = state->getCurrentPlayer()->getId();
     auto payReactionTmp = make_shared<ModifyResourceReaction>(*state, -cost, state::GOLD, currentPlayerId);
     payReaction.push_back(payReactionTmp);
 
+    auto effects = cardsObj[idCard-1]["effects"];
 
     // Reads the card effects and adds reaction accordingly
     shared_ptr<Reaction> newReaction;

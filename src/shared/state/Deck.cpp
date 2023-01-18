@@ -3,6 +3,7 @@
 //
 
 #include "Deck.h"
+#include <algorithm>
 
 using namespace std;
 using namespace state;
@@ -11,7 +12,7 @@ using namespace state;
 Deck ::Deck(int size) {
     int i;
     for(i =1; i<size+1; i++){
-        this->deck.insert(i);
+        this->deck.push_back(i);
     }
 }
 
@@ -19,21 +20,23 @@ Deck :: ~Deck()= default;
 
 
 void Deck::addCard(int cardID) {
-    this->deck.insert(cardID);
+    this->deck.push_back(cardID);
 }
 
 
 bool Deck::removeCard(int cardID) {
-    if (*deck.find(cardID)==cardID) {
-        this->deck.erase(cardID);
-        return true;
-    }
-    else return false;
+
 }
 
 int Deck::getSize() {
     return deck.size();
 
+}
+
+int Deck::drawCard() {
+    auto topCard = deck.back();
+    deck.pop_back();
+    return topCard;
 }
 
 

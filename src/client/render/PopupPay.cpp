@@ -163,12 +163,13 @@ void render::PopupPay::update(const std::unordered_map<std::string, std::string>
 
     string cardData = data.at("idCardHand " + to_string(cardId));
 
+    int idCard;
     int cost;
     bool space = false, building = false;
 
     // Removes the card ID in the data
     size_t pos = cardData.find(',');
-    string idCard = cardData.substr(0, pos);
+    idCard = stoi(cardData.substr(0, pos));
     cardData.erase(0, pos + 1);
 
     // Gets cost
@@ -187,7 +188,7 @@ void render::PopupPay::update(const std::unordered_map<std::string, std::string>
     }
 
     string filename;
-    filename = "card_" + to_string(this->cardId) + ".png";
+    filename = "card_" + to_string(idCard + 1) + ".png";
     this->cardImage = make_shared<Image>("cards/" + filename, vcardImage);
     if (space){
         //Adding Buttons

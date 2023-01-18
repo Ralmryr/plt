@@ -161,9 +161,30 @@ void render::PopupPay::update(const std::unordered_map<std::string, std::string>
         }
     });
 
-    bool space, building;
-    space = true;
-    building = true;
+    string cardData = data.at("idCardHand " + to_string(cardId));
+
+    int cost;
+    bool space = false, building = false;
+
+    // Removes the card ID in the data
+    size_t pos = cardData.find(',');
+    string idCard = cardData.substr(0, pos);
+    cardData.erase(0, pos + 1);
+
+    // Gets cost
+    pos = cardData.find(',');
+    cost = stoi(cardData.substr(0, pos));
+    cardData.erase(0, pos + 1);
+
+    // Gets badges
+    while ((pos = cardData.find(',')) != std::string::npos) {
+        int badgeNumber = stoi(cardData.substr(0, pos));
+        if(badgeNumber == Badge::BUILDING)
+            building = true;
+        if(badgeNumber == Badge::SPACE)
+            space = true;
+        cardData.erase(0, pos + 1);
+    }
 
     string filename;
     filename = "card_" + to_string(this->cardId) + ".png";

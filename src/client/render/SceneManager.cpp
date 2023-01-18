@@ -9,6 +9,7 @@ using namespace render;
 
 // This technique prevents the double call of the constructor of each class
 render::SceneManager::SceneManager(){
+    titleScene = make_shared<TitleScene>();
     mainScene = make_shared<MainScene>();
     cardScene = make_shared<CardScene>(false);
     blueCardScene = make_shared<CardScene>(true);
@@ -19,6 +20,7 @@ render::SceneManager::SceneManager(){
     eventHandler = make_shared<EventHandler>();
     dataProvider = make_shared<state::RenderAPI>();
 
+    sceneMap.insert({SceneID::TITLE_VIEW, titleScene});
     sceneMap.insert({SceneID::CARDS_VIEW, cardScene});
     sceneMap.insert({SceneID::BLUE_CARD_VIEW, blueCardScene});
     sceneMap.insert({SceneID::BOARD_VIEW, mainScene});
@@ -53,6 +55,11 @@ void render::SceneManager::draw(sf::RenderWindow& window) {
 }
 
 void render::SceneManager::update() {
+
+    // ------------------------------------- TITLE VIEW -----------------------------------
+    if(currentScene == TITLE_VIEW){
+
+    }
 
     // ------------------------------------- BOARD VIEW -----------------------------------
     if(currentScene == BOARD_VIEW) {

@@ -13,9 +13,7 @@ MainScene::MainScene(){
     transparent = false;
 }
 
-MainScene::~MainScene() {
-
-}
+MainScene::~MainScene() = default;
 
 void MainScene::update(const unordered_map<string, string> &data) {
 

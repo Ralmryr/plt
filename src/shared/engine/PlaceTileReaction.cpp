@@ -14,6 +14,7 @@ PlaceTileReaction::PlaceTileReaction(const State& state, pair<int, int> coords, 
     this->coords = coords;
     this->tileType = tileType;
     this->idPlayer = idPlayer;
+    this->reactionType=engine::PlaceTile;
 }
 
 PlaceTileReaction::~PlaceTileReaction(){

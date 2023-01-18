@@ -11,6 +11,7 @@
 
 using namespace ai;
 using namespace std;
+using namespace engine;
 
 ai::HeuristicAI::HeuristicAI(std::shared_ptr<state::State> state) {
     this->state=std::move(state);
@@ -21,8 +22,65 @@ ai::HeuristicAI::~HeuristicAI()= default;
 void ai::HeuristicAI::playTurn() {}
 
 int ai::HeuristicAI::chooseBestCard() {
+    /*
+     * algo a suivre :
+     *
+     * calcule un score de rentabilité pour toutes les cartes en main
+     * calcule la rentabilité des projets std
+     * joue la carte/le projet std avec le meilleur score
+     *
+     * */
+
     return 0;
 }
+
+/*   formule de caclule du score :
+     *
+     * valeur = bonus de prod * (fonction decroissante des tours de jeu)
+     * + bonus instantanée - couts de la carte
+     *
+     * bonus de prod et instant : chaque ressource a un poid different
+     * fonction decroissante : a determiner, varie de ~4 ou 5 à 0.
+     *
+     * */
+
+bool isProd(ModifyResourceReaction reaction){
+    if(reaction.getResType()==state::GOLD_PROD
+       ||reaction.getResType()==state::IRON_PROD
+       ||reaction.getResType()==state::TITANIUM_PROD
+       ||reaction.getResType()==state::PLANT_PROD
+       ||reaction.getResType()==state::ENERGY_PROD
+       ||reaction.getResType()==state::HEAT_PROD)
+        return true;
+    else
+        return false;
+}
+
+
+
+
+int ai::HeuristicAI::calculateCardScore(int iDcard) {
+    int score=0;
+    int prodGain=0, instantGain=0, cost=0;
+    cardReader->parseCard(iDcard,state);
+    std::vector<std::shared_ptr<Reaction>> listGain = cardReader->getInstantReactions();
+
+    //calculate prod_gain :
+    //compare all gain from the card to their weight
+    //only the modifyRessourceReaction can be prod_gain
+    for(const std::shared_ptr<Reaction>& reaction : listGain){
+        if(reaction->getReactionType()==engine::ModifyResource){
+            auto temp = dynamic_pointer_cast<ModifyResourceReaction>(reaction) ;
+            if(isProd(*temp))
+                prodGain+=temp->getAmount()* getWeight(temp->getResType());
+        }
+    }
+
+
+    return score;
+}
+
+
 
 std::pair<int, int> ai::HeuristicAI::findBestPosition(state::TileType tile) {
     std::shared_ptr<state::Board> board = state->getBoard();
@@ -162,4 +220,8 @@ std::pair<int, int> ai::HeuristicAI::findBestPosition(state::TileType tile) {
         }
     }
     return Coord;
+}
+
+int HeuristicAI::getWeight(state::Resource Ressource) {
+    return 0;
 }

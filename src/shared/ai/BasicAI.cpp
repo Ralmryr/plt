@@ -9,6 +9,7 @@
 
 using namespace ai;
 using namespace std;
+using namespace engine;
 
 ai::BasicAI::BasicAI(std::shared_ptr<state::State> state) {
     this->state=std::move(state);
@@ -17,38 +18,41 @@ ai::BasicAI::~BasicAI()= default;
 
 
 void ai::BasicAI::playTurn(){
+    //check si des convertion plantes/chaleurs sont possibles
 
+    //check si des projets standarts sont possibles
 
-    int toPlay = chooseBestCard();
-    if(toPlay>=0);
-        //play(chooseBestCard())   joue la carte
-        //choosebestcar return -1 if there is no card to play
-    else passTurn();
+    if(!chooseBestCard())
+        passTurn();
 
     //do this twice because every player has up to 2 possible action
-    toPlay = chooseBestCard();
-    if(toPlay>=0);
-        //play(chooseBestCard())   joue la carte
-    else passTurn();
+    if(!chooseBestCard())
+        passTurn();
+
 
     //call an END_TURN event in manager;
 }
 
 
+//play the best card
+//return 1 if it successfully played a card
+//return 0 if there is no card to play
 
-int ai::BasicAI::chooseBestCard() { //return the cardddID of the card to play
-    bool playable=false;
-    while (!playable){
-        int i=0;
-        int iDcard = player->getCardsHand().getListCards()[i].getId();
-        if(0) //condition remplis des qu'une querry pour jouer une carte est valide
-            //lance un event de querry pour jouer la carte numero "card" de sa main.
-            i+=1;
-            //si carte > hand size, renvoie -1
-        else playable =true;
+int ai::BasicAI::chooseBestCard() {
+    string err_msg="you can t play this card";
+    int i=0;
+    std::vector<state::Card> hand = player->getCardsHand().getListCards();
+    while (!err_msg.empty()&& i!=hand.size()){
+        int iDcard = hand[i].getId();
+        EventDetails eventDetails(engine::CARD_PLAYED);
+        eventDetails["idCardPlayed"] = iDcard;
+        manager->notify(eventDetails);
+
+        err_msg=manager->getErrorMessage();
+        i+=1;
     }
-
-    return 0;
+    if(err_msg.empty()) return 1;
+    else return 0;
 }
 
 std::pair<int, int> ai::BasicAI::findBestPosition(state::TileType tile) {

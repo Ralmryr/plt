@@ -9,6 +9,7 @@ IncreaseGPReaction::IncreaseGPReaction (const state::State& state, int amount, s
     this->globalParameters = state.getGlobalParameters();
     this->amount = amount;
     this->paramName=paramName;
+    this->reactionType=engine::IncreaseGP;
 }
 
 IncreaseGPReaction::~IncreaseGPReaction (){};

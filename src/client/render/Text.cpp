@@ -49,7 +49,7 @@ void Text::setColor(const sf::Color& color) {
     this->textToDraw.setFillColor(color);
 }
 
-const std::string &Text::getText() const {
+const string& Text::getText() const {
     return this->text;
 }
 

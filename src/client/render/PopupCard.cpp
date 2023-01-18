@@ -10,7 +10,7 @@ render::PopupCard::PopupCard() {
     this->background = make_shared<Image>("popupFrame.png", vbackground);
 
     this->closeButton = make_shared<Button>("closeButton.png", vcloseButton);
-    this->closeButton->setScale(0.3f);
+    this->closeButton->setScale(0.8f);
     this->closeButton->updateClickableArea();
     closeButton->setOnClickFunction([](const shared_ptr<SharedContext>& sharedContext) {
         sharedContext->getSceneManager()->removeScene();
@@ -50,10 +50,9 @@ void render::PopupCard::update(const std::unordered_map<std::string, std::string
 
         auto newCard = make_shared<Button>("cards/" + filename, sf::Vector2f(x, y) + offset);
         newCard->setScale(ratio);
-        newCard->setOnClickFunction([idCard](const shared_ptr<SharedContext>& sharedContext) {
-            engine::EventDetails eventDetails(engine::CARD_PLAYED);
-            eventDetails["idCardPlayed"] = idCard+1;
-            sharedContext->getEventManager()->notify(eventDetails);
+        newCard->setOnClickFunction([i](const shared_ptr<SharedContext>& sharedContext) {
+            sharedContext->getSceneManager()->getPayScene()->setCardId(i+1);
+            sharedContext->getSceneManager()->removeScene();
             sharedContext->getSceneManager()->addScene(PAY_VIEW);
         });
 

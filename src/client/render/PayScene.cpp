@@ -29,6 +29,12 @@ std::vector<std::shared_ptr<Button>> PayScene::getListButtons() {
     return popupPay->getListButtons();
 }
 
+void render::PayScene::setCardId(int cardId) {
+    this->popupPay->setCardId(cardId);
+}
+
 PayScene::~PayScene() = default;
+
+
 
 

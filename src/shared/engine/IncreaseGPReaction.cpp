@@ -37,7 +37,7 @@ string IncreaseGPReaction::query (){
         }
     }else if(paramName=="temperature"){
         currentParameters=globalParameters->getTemp();
-        if(currentParameters+amount>MAX_TEMPERATURE){
+        if(currentParameters+amount>MAX_TEMPERATURE+30){
             errMessage = "Too much temperature";
         }
     }else if(paramName=="ocean"){

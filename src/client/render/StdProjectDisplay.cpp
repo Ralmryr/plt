@@ -15,7 +15,11 @@ StdProjectDisplay::StdProjectDisplay() {
     this->discardButton=make_shared<Button>("card.png",posDiscardButton);
     this->discardButton->setScale(0.1f);
     this->discardButton->updateClickableArea();
-    this->discardButton->setFunctionStr("Discard Cards STD");
+    this->discardButton->setOnClickFunction([](const shared_ptr<SharedContext>& sharedContext) {
+        engine::EventDetails eventDetails(engine::CARD_PLAYED);
+        eventDetails["idCardPlayed"] = 101;
+        sharedContext->getEventManager()->notify(eventDetails);
+    });
     listComponents.push_back(discardButton);
     listButtons.push_back(discardButton);
 
@@ -24,7 +28,11 @@ StdProjectDisplay::StdProjectDisplay() {
     this->prodEnergyButton=make_shared<Button>("megacredit.png",posProdEnergyButton);
     this->prodEnergyButton->setScale(0.09f);
     this->prodEnergyButton->updateClickableArea();
-    this->prodEnergyButton->setFunctionStr("Increase Energy STD");
+    this->prodEnergyButton->setOnClickFunction([](const shared_ptr<SharedContext>& sharedContext) {
+        engine::EventDetails eventDetails(engine::CARD_PLAYED);
+        eventDetails["idCardPlayed"] = 102;
+        sharedContext->getEventManager()->notify(eventDetails);
+    });
     listComponents.push_back(prodEnergyButton);
     listButtons.push_back(prodEnergyButton);
 
@@ -33,7 +41,11 @@ StdProjectDisplay::StdProjectDisplay() {
     this->temperatureButton=make_shared<Button>("megacredit.png",posTemperatureButton);
     this->temperatureButton->setScale(0.09f);
     this->temperatureButton->updateClickableArea();
-    this->temperatureButton->setFunctionStr("Increase Temperature STD");
+    this->temperatureButton->setOnClickFunction([](const shared_ptr<SharedContext>& sharedContext) {
+        engine::EventDetails eventDetails(engine::CARD_PLAYED);
+        eventDetails["idCardPlayed"] = 103;
+        sharedContext->getEventManager()->notify(eventDetails);
+    });
     listComponents.push_back(temperatureButton);
     listButtons.push_back(temperatureButton);
 
@@ -42,7 +54,11 @@ StdProjectDisplay::StdProjectDisplay() {
     this->oceanButton=make_shared<Button>("megacredit.png",posOceanButton);
     this->oceanButton->setScale(0.09f);
     this->oceanButton->updateClickableArea();
-    this->oceanButton->setFunctionStr("Place Ocean STD");
+    this->oceanButton->setOnClickFunction([](const shared_ptr<SharedContext>& sharedContext) {
+        engine::EventDetails eventDetails(engine::CARD_PLAYED);
+        eventDetails["idCardPlayed"] = 104;
+        sharedContext->getEventManager()->notify(eventDetails);
+    });
     listComponents.push_back(oceanButton);
     listButtons.push_back(oceanButton);
 
@@ -51,7 +67,11 @@ StdProjectDisplay::StdProjectDisplay() {
     this->forestButton= make_shared<Button>("megacredit.png",posForestButton);
     this->forestButton->setScale(0.09f);
     this->forestButton->updateClickableArea();
-    this->forestButton->setFunctionStr("Place Forest STD");
+    this->forestButton->setOnClickFunction([](const shared_ptr<SharedContext>& sharedContext) {
+        engine::EventDetails eventDetails(engine::CARD_PLAYED);
+        eventDetails["idCardPlayed"] = 105;
+        sharedContext->getEventManager()->notify(eventDetails);
+    });
     listComponents.push_back(forestButton);
     listButtons.push_back(forestButton);
 
@@ -60,7 +80,11 @@ StdProjectDisplay::StdProjectDisplay() {
     this->cityButton=make_shared<Button>("megacredit.png",posCityButton);
     this->cityButton->setScale(0.09f);
     this->cityButton->updateClickableArea();
-    this->cityButton->setFunctionStr("Place City STD");
+    this->cityButton->setOnClickFunction([](const shared_ptr<SharedContext>& sharedContext) {
+        engine::EventDetails eventDetails(engine::CARD_PLAYED);
+        eventDetails["idCardPlayed"] = 106;
+        sharedContext->getEventManager()->notify(eventDetails);
+    });
     listComponents.push_back(cityButton);
     listButtons.push_back(cityButton);
 

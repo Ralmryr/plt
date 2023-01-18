@@ -84,6 +84,7 @@ vector<shared_ptr<Button>> MainScene::getListButtons() {
     auto stdProjectButtons = stdProjectDisplay->getListButtons();
 
     listButtons.insert(listButtons.end(), menuButtons.begin(), menuButtons.end());
+    listButtons.insert(listButtons.end(), stdProjectButtons.begin(), stdProjectButtons.end());
 
     return listButtons;
 }

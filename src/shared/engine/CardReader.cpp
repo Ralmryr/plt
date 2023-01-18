@@ -67,6 +67,7 @@ std::map<string, int> reactionMap = {{"IncreaseGP", 0},
                                    {"PlaceTile", 2},
                                    {"DrawCard", 3}};
 
+
 CardReader::CardReader() {
     ifstream ifs(RESS_PATH + "cards_description.json");
     reader.parse(ifs, cardsObj);
@@ -159,7 +160,7 @@ int CardReader::parseCard(int idCard, const shared_ptr<state::State>& state) {
             instantReactions.push_back(newReaction);
         }
         else if(effect[0].asString() == "Permanent"){
-            permanentReactions.push_back(newReaction);
+            instantReactions.push_back(newReaction);
         }
     }
 

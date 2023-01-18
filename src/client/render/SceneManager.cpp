@@ -10,7 +10,8 @@ using namespace render;
 // This technique prevents the double call of the constructor of each class
 render::SceneManager::SceneManager(){
     mainScene = make_shared<MainScene>();
-    cardScene = make_shared<CardScene>();
+    cardScene = make_shared<CardScene>(false);
+    blueCardScene = make_shared<CardScene>(true);
     badgeScene = make_shared<BadgeScene>();
     payScene = make_shared<PayScene>();
     placeTileScene = make_shared<PlaceTileScene>();
@@ -19,6 +20,7 @@ render::SceneManager::SceneManager(){
     dataProvider = make_shared<state::RenderAPI>();
 
     sceneMap.insert({SceneID::CARDS_VIEW, cardScene});
+    sceneMap.insert({SceneID::BLUE_CARD_VIEW, blueCardScene});
     sceneMap.insert({SceneID::BOARD_VIEW, mainScene});
     sceneMap.insert({SceneID::BADGE_VIEW, badgeScene});
     sceneMap.insert({SceneID::PAY_VIEW, payScene});
@@ -88,6 +90,13 @@ void render::SceneManager::update() {
         auto playerData = dataProvider->providePlayerData(0);
 
         badgeScene->update(playerData);
+    }
+
+    // -------------------------------------- BADGE VIEW -----------------------------------
+    if(currentScene == BLUE_CARD_VIEW){
+        auto playerData = dataProvider->providePlayerData(0);
+
+        blueCardScene->update(playerData);
     }
 }
 

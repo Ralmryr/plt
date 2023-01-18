@@ -1323,5 +1323,83 @@
     "condition": [
       ""
     ]
+  },
+    {
+    "id": 101,
+    "cost": "",
+    "badges": [
+      ""
+    ],
+    "effects": [
+      
+    ],
+    "condition": [
+      ""
+    ]
+  },
+    {
+    "id": 102,
+    "cost": 11,
+    "badges": [
+      ""
+    ],
+    "effects": [
+	["Instant","ModifyResource","1","ENERGY_PROD"]
+    ],
+    "condition": [
+      ""
+    ]
+  },
+    {
+    "id": 103,
+    "cost": 0,
+    "badges": [
+      ""
+    ],
+    "effects": [
+       ["Permanent","IncreaseGP","1","temperature"]
+    ],
+    "condition": [
+      ""
+    ]
+  },
+    {
+    "id": 104,
+    "cost": 18,
+    "badges": [
+      ""
+    ],
+    "effects": [
+      ["Permanent","PlaceTile","1","2","OCEAN"]
+    ],
+    "condition": [
+      ""
+    ]
+  },
+    {
+    "id": 105,
+    "cost": 23,
+    "badges": [
+      ""
+    ],
+    "effects": [
+      ["Permanent","PlaceTile","-4","2","FOREST"]
+    ],
+    "condition": [
+      ""
+    ]
+  },
+    {
+    "id": 106,
+    "cost": 25,
+    "badges": [
+      ""
+    ],
+    "effects": [
+      ["Permanent","PlaceTile","-1","-1","CITY"]
+    ],
+    "condition": [
+      ""
+    ]
   }
 ]

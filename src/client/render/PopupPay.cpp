@@ -15,7 +15,7 @@ render::PopupPay::PopupPay() {
     float buttonSize = 100;
     float ressourceoffset = buttonSize + 50;
     float textoffset = 20;
-    float textSize = 40;
+    int textSize = 40;
 
     sf::Vector2f vminusButton = {705, 490};
     sf::Vector2f vplusButton = {vminusButton.x+buttonOffset, vminusButton.y};
@@ -267,7 +267,6 @@ void render::PopupPay::draw(sf::RenderWindow &window) {
     for(const auto& component : listComponents) {
         window.draw(*component);
     }
-
 }
 
 std::vector<std::shared_ptr<Button>> render::PopupPay::getListButtons() {

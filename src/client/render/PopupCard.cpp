@@ -4,7 +4,8 @@
 using namespace std;
 using namespace render;
 
-render::PopupCard::PopupCard() {
+render::PopupCard::PopupCard(bool blueCard) {
+    this->blueCard = blueCard;
     sf::Vector2f vbackground = {0, 0};
     sf::Vector2f vcloseButton = {900, 850};
     this->background = make_shared<Image>("popupFrame.png", vbackground);
@@ -22,9 +23,8 @@ render::PopupCard::PopupCard() {
     this->listButtons.push_back(closeButton);
 }
 
-render::PopupCard::~PopupCard() {
 
-}
+render::PopupCard::~PopupCard() = default;
 
 void render::PopupCard::update(const std::unordered_map<std::string, std::string>& data) {
     if(data.size() <= listComponents.size() - 2) return;
@@ -35,30 +35,53 @@ void render::PopupCard::update(const std::unordered_map<std::string, std::string
         cout << "{ First : " << dataEl.first << "; Second : " << dataEl.second << " }" << endl;
     }
 
-    int i = 0;
-    int cardsPerRow = 8;
-    sf::Vector2f offset = {60, 50};
-    sf::Vector2f cardSpacing = {230, 270};
-    float ratio = 0.55f;
-    string filename;
+    if(data.size() <= listComponents.size() - 2) return;
 
-    for(const auto& card : data) {
-        int idCard = stoi(card.second.substr(0, card.second.find(",")));
-        filename = "card_"+ to_string(idCard+1) + ".png";
-        float x = cardSpacing.x * (i%cardsPerRow);
-        float y = cardSpacing.y * (i/cardsPerRow);
+    //------BLUE CARDS---------
+    if(blueCard){
+        int i = 0;
+        int cardsPerRow = 8;
+        sf::Vector2f offset = {60, 50};
+        sf::Vector2f cardSpacing = {230, 270};
+        float ratio = 0.55f;
+        string filename;
+        for(const auto& card : data) {
+            filename = "card_"+ to_string(i+1) + ".png";
+            float x = cardSpacing.x * (i%cardsPerRow);
+            float y = cardSpacing.y * (i/cardsPerRow);
+            auto newCard = make_shared<Button>("cards/" + filename, sf::Vector2f(x, y) + offset);
+            newCard->setScale(ratio);
+            newCard->setOnClickFunction([i](const shared_ptr<SharedContext>& sharedContext) {
 
-        auto newCard = make_shared<Button>("cards/" + filename, sf::Vector2f(x, y) + offset);
-        newCard->setScale(ratio);
-        newCard->setOnClickFunction([idCard](const shared_ptr<SharedContext>& sharedContext) {
-            sharedContext->getSceneManager()->getPayScene()->setCardId(idCard+1);
-            sharedContext->getSceneManager()->removeScene();
-            sharedContext->getSceneManager()->addScene(PAY_VIEW);
-        });
-
-        listButtons.push_back(newCard);
-        listComponents.push_back(std::move(newCard));
-        i++;
+            });
+            listButtons.push_back(newCard);
+            listComponents.push_back(std::move(newCard));
+            i++;
+        }
+    }
+        //------NORMAL CARDS---------
+    else{
+        int i = 0;
+        int cardsPerRow = 8;
+        sf::Vector2f offset = {60, 50};
+        sf::Vector2f cardSpacing = {230, 270};
+        float ratio = 0.55f;
+        string filename;
+        for(const auto& card : data) {
+            filename = "card_"+ to_string(i+1) + ".png";
+            float x = cardSpacing.x * (i%cardsPerRow);
+            float y = cardSpacing.y * (i/cardsPerRow);
+            auto newCard = make_shared<Button>("cards/" + filename, sf::Vector2f(x, y) + offset);
+            newCard->setScale(ratio);
+            newCard->setOnClickFunction([i](const shared_ptr<SharedContext>& sharedContext) {
+                sharedContext->getSceneManager()->getPayScene()->setCardId(i+1);
+                sharedContext->getSceneManager()->removeScene();
+                sharedContext->getSceneManager()->addScene(PAY_VIEW);
+            });
+            listButtons.push_back(newCard);
+            listComponents.push_back(std::move(newCard));
+            i++;
+        }
     }
 }
 

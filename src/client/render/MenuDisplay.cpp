@@ -41,8 +41,17 @@ MenuDisplay :: MenuDisplay (){
     this->blueCardButton = make_shared<Button>("blueCardsbutton.png",vBlueCard);
     this->blueCardButton->setSize(sizeBlueCardButton);
     this->blueCardButton->updateClickableArea();
-    this->blueCardButton->setFunctionStr("Open Cards Blue");
+    this->blueCardButton->setOnClickFunction([](const shared_ptr<SharedContext>& sharedContext) {
+        sharedContext->getSceneManager()->addScene(BLUE_CARD_VIEW);
+    });
 
+
+    this->badgeButton = make_shared<Button>("badge_wild.png",vBadge);
+    this->badgeButton->setScale(1.2f);
+    this->badgeButton->updateClickableArea();
+    this->badgeButton->setOnClickFunction([](const shared_ptr<SharedContext>& sharedContext) {
+        sharedContext->getSceneManager()->addScene(BADGE_VIEW);
+    });
     //define all texts
 
     this->badgeText = make_shared<Text>("Badges",posBadgeText);

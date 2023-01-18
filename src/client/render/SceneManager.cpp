@@ -82,6 +82,13 @@ void render::SceneManager::update() {
 
         payScene->update(playerData);
     }
+
+    // -------------------------------------- BADGE VIEW -----------------------------------
+    if(currentScene == BADGE_VIEW){
+        auto playerData = dataProvider->providePlayerData(0);
+
+        badgeScene->update(playerData);
+    }
 }
 
 void render::SceneManager::hookData(std::shared_ptr<state::RenderAPI> dataProvider) {

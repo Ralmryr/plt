@@ -47,8 +47,9 @@ MenuDisplay :: MenuDisplay (){
     this->badgeButton = make_shared<Button>("badge_wild.png",vBadge);
     this->badgeButton->setScale(1.2f);
     this->badgeButton->updateClickableArea();
-    this->badgeButton->setFunctionStr("Open Badge Popup");
-
+    this->badgeButton->setOnClickFunction([](const shared_ptr<SharedContext>& sharedContext) {
+        sharedContext->getSceneManager()->addScene(BADGE_VIEW);
+    });
     //define all texts
 
     this->badgeText = make_shared<Text>("Badges",posBadgeText);

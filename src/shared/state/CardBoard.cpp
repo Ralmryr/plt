@@ -11,6 +11,9 @@ CardBoard::CardBoard() {
     for(int i = B_FIRST+1; i != B_LAST; i++) {
         badgesPlayed.insert({Badge(i), 0});
     }
+    badgesPlayed[B_ENERGY] = 7;
+    badgesPlayed[EVENT] = 2;
+
 }
 
 CardBoard::~CardBoard() {
@@ -28,7 +31,7 @@ std::unordered_map<std::string, std::string> CardBoard::serializeUiData() const{
     }
     for(int i = B_FIRST+1; i != B_LAST; i++) {
         auto amount = badgesPlayed.at(Badge(i));
-        auto strBadgeData = to_string(i) + "," + to_string(amount);
+        auto strBadgeData = to_string(amount);
         uiData.insert({"badge " + to_string(i), strBadgeData});
     }
     return uiData;

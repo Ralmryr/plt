@@ -25,4 +25,13 @@ const int STARTING_OXYGEN = MIN_OXYGEN;
 const int MAX_OCEAN = 9;
 const int STARTING_OCEAN = 0;
 
+//---------AI CONSTANTS-------------
+const int FOREST_ADJACENCY_VALUE_C = 10;
+const int OCEAN_ADJACENCY_VALUE = 2;
+const int CITY_ADJACENCY_VALUE_F = 10;
+const int CARD_BONUS_PLACEMENT = 4;
+const int IRON_BONUS_PLACEMENT = 2;
+const int TITANIUM_BONUS_PLACEMENT = 3;
+const int PLANT_BONUS_PLACEMENT = 1;
+
 #endif //PLT_CONSTANTS_HPP

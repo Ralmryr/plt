@@ -22,6 +22,7 @@ void ai::BasicAI::playTurn(){
     int toPlay = chooseBestCard();
     if(toPlay>=0);
         //play(chooseBestCard())   joue la carte
+        //choosebestcar return -1 if there is no card to play
     else passTurn();
 
     //do this twice because every player has up to 2 possible action
@@ -35,18 +36,19 @@ void ai::BasicAI::playTurn(){
 
 
 
-int ai::BasicAI::chooseBestCard() { //return the position/cardddID ? of the card to play in hand
+int ai::BasicAI::chooseBestCard() { //return the cardddID of the card to play
     bool playable=false;
-    int card = 0;
     while (!playable){
+        int i=0;
+        int iDcard = player->getCardsHand().getListCards()[i].getId();
         if(0) //condition remplis des qu'une querry pour jouer une carte est valide
             //lance un event de querry pour jouer la carte numero "card" de sa main.
-            card+=1;
+            i+=1;
             //si carte > hand size, renvoie -1
         else playable =true;
     }
 
-    return card;
+    return 0;
 }
 
 std::pair<int, int> ai::BasicAI::findBestPosition(state::TileType tile) {

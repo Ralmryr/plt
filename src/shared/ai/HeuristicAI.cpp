@@ -3,16 +3,11 @@
 //
 
 #include "HeuristicAI.h"
+#include "../../constants.hpp"
 #include <algorithm>
 
 //adjacency score value for deciding placement on board (see finBestPosition)
-#define FOREST_ADJACENCY_VALUE_C 10
-#define OCEAN_ADJACENCY_VALUE 2
-#define CITY_ADJACENCY_VALUE_F 10
-#define CARD_BONUS_PLACEMENT 4
-#define IRON_BONUS_PLACEMENT 2
-#define TITANIUM_BONUS_PLACEMENT 3
-#define PLANT_BONUS_PLACEMENT 1
+
 
 using namespace ai;
 using namespace std;
@@ -61,8 +56,7 @@ std::pair<int, int> ai::HeuristicAI::findBestPosition(state::TileType tile) {
         }
     }
 
-    if (tile == state::FOREST) { ///A FINIR !!!!!!!!!!!!!!!!!!!!!
-        //il faut encore detecter uniquement les cite qui appartiennent au joueur
+    if (tile == state::FOREST) {
         //look for your cities on the board
         //return the coord adjacent to the most of your cities
 
@@ -72,7 +66,7 @@ std::pair<int, int> ai::HeuristicAI::findBestPosition(state::TileType tile) {
                 for (int j = 0; j < listTile.size(); j++) {
                     auto it = adjacency.find(neighbour[j].getCoords());
                     if (it == adjacency.end()) {
-                        if(listOwner[i]==state->getCurrentPlayer()->getId())
+                        if(listOwner[i]==player->getId())
                             adjacency.insert({neighbour[j].getCoords(), CITY_ADJACENCY_VALUE_F});
                         else
                             adjacency.insert({neighbour[j].getCoords(), -CITY_ADJACENCY_VALUE_F});

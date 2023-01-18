@@ -15,10 +15,25 @@ void render::PayScene::update(const std::unordered_map<std::string, std::string>
     // While the player still has cards in his hands
     while (data.find(strCard) != data.end()) {
         string strData = data.at(strCard);
-        cardsHandData.insert({strCard, strData});
+
+        // Gets the cardID and deletes it from data
+        size_t pos = strData.find(',');
+        string idCardStr = strData.substr(0, pos);
+        strData.erase(0, pos + 1);
+
+        // The data looks like [ "id" : "cost,listBadge" ]
+        cardsHandData.insert({idCardStr, strData});
         strCard = "idCardHand " + to_string(++index);
     }
-    popupPay->update(data);
+
+    auto ironStr = "resource " + to_string(state::IRON);
+    auto goldStr = "resource " + to_string(state::GOLD);
+    auto titaniumStr = "resource " + to_string(state::TITANIUM);
+    cardsHandData.insert({ironStr, data.at(ironStr)});
+    cardsHandData.insert({goldStr, data.at(goldStr)});
+    cardsHandData.insert({titaniumStr, data.at(titaniumStr)});
+
+    popupPay->update(cardsHandData);
 }
 
 void render::PayScene::draw(sf::RenderWindow &window) {

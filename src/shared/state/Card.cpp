@@ -20,9 +20,9 @@ Card::~Card() {
 std::pair<std::string, std::string> Card::serializeUiData() const {
     std::pair<string, string> uiData;
     uiData.first = "idCard";
-    string data = to_string(id) + "," + to_string(cost);
+    string data = to_string(id) + "," + to_string(cost) + ",";
     for (const auto &badge: listBadges) {
-        data += "," + to_string(badge);
+        data += to_string(badge) + ",";
     }
     uiData.second = data;
     return uiData;

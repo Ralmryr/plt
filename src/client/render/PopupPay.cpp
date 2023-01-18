@@ -8,6 +8,10 @@ using namespace state;
 
 sf::Vector2f vcardImage = {330,315};
 
+// Transforms [ "<key> i" : "id,cost,badges" ] into [ "id" : "cost,badges" ]
+// key will be either "idCardBoard" or "idCardHand"
+unordered_map<string, string> separateCardData(const unordered_map<string, string> &data, string key);
+
 render::PopupPay::PopupPay() {
     this->opened = false;
     this->cardSize={331,441};
@@ -161,19 +165,13 @@ void render::PopupPay::update(const std::unordered_map<std::string, std::string>
         }
     });
 
-    string cardData = data.at("idCardHand " + to_string(cardId));
+    string cardData = data.at(to_string(cardId));
 
-    int idCard;
     int cost;
     bool space = false, building = false;
 
-    // Removes the card ID in the data
-    size_t pos = cardData.find(',');
-    idCard = stoi(cardData.substr(0, pos));
-    cardData.erase(0, pos + 1);
-
     // Gets cost
-    pos = cardData.find(',');
+    size_t pos = cardData.find(',');
     cost = stoi(cardData.substr(0, pos));
     cardData.erase(0, pos + 1);
 
@@ -188,7 +186,7 @@ void render::PopupPay::update(const std::unordered_map<std::string, std::string>
     }
 
     string filename;
-    filename = "card_" + to_string(idCard + 1) + ".png";
+    filename = "card_" + to_string(cardId) + ".png";
     this->cardImage = make_shared<Image>("cards/" + filename, vcardImage);
     if (space){
         //Adding Buttons
@@ -207,13 +205,13 @@ void render::PopupPay::update(const std::unordered_map<std::string, std::string>
         //Setting Plus and minus function
         this->plusButtonSpace->setOnClickFunction([titaniumTotal = titaniumTotal, data = data, total = total](const shared_ptr<SharedContext>& sharedContext) {
             if(stoi(titaniumTotal->getText())+2 < stoi(data.at("resource " + to_string(TITANIUM)))) {
-                titaniumTotal->setText(to_string(stoi(titaniumTotal->getText()) + 3));
+                titaniumTotal->setText(to_string(stoi(titaniumTotal->getText()) + 1));
                 total->setText(to_string(stoi(total->getText()) + 3));
             }
         });
         this->minusButtonSpace->setOnClickFunction([titaniumTotal = titaniumTotal, data = data, total = total](const shared_ptr<SharedContext>& sharedContext) {
             if(stoi(titaniumTotal->getText())-2 > 0) {
-                titaniumTotal->setText(to_string(stoi(titaniumTotal->getText()) - 3));
+                titaniumTotal->setText(to_string(stoi(titaniumTotal->getText()) - 1));
                 total->setText(to_string(stoi(total->getText()) - 3));
             }
         });
@@ -236,13 +234,13 @@ void render::PopupPay::update(const std::unordered_map<std::string, std::string>
         //Setting Plus and minus function
         this->plusButtonBuilding->setOnClickFunction([ironTotal = ironTotal, data = data, total = total](const shared_ptr<SharedContext>& sharedContext) {
             if(stoi(ironTotal->getText())+1 < stoi(data.at("resource " + to_string(IRON)))) {
-                ironTotal->setText(to_string(stoi(ironTotal->getText()) + 2));
+            ironTotal->setText(to_string(stoi(ironTotal->getText()) + 1));
                 total->setText(to_string(stoi(total->getText()) + 2));
             }
         });
         this->minusButtonBuilding->setOnClickFunction([ironTotal = ironTotal, data = data, total = total](const shared_ptr<SharedContext>& sharedContext) {
             if(stoi(ironTotal->getText())-1 > 0) {
-                ironTotal->setText(to_string(stoi(ironTotal->getText()) - 2));
+                ironTotal->setText(to_string(stoi(ironTotal->getText()) - 1));
                 total->setText(to_string(stoi(total->getText()) - 2));
             }
         });
@@ -280,4 +278,27 @@ void render::PopupPay::setCardId(int cardId) {
 
 int render::PopupPay::getCardId() const {
     return this->cardId;
+}
+
+unordered_map<string, string> separateCardData(const unordered_map<string, string> &data, string key) {
+    unordered_map<string, string> returnData;
+
+    key += " ";
+    int index = 0;
+    string strCard = key + to_string(index);
+    // While the player still has cards in his hands
+    while (data.find(strCard) != data.end()) {
+        string strData = data.at(strCard);
+
+        // Gets the cardID and deletes it from data
+        size_t pos = strData.find(',');
+        string idCardStr = strData.substr(0, pos);
+        strData.erase(0, pos + 1);
+
+        // The data looks like [ "id" : "cost,listBadge" ]
+        returnData.insert({idCardStr, strData});
+        strCard = key + to_string(++index);
+    }
+
+    return returnData;
 }

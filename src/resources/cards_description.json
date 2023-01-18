@@ -200,9 +200,7 @@
       "MICROBE"
     ],
     "effects": [
-      ["Instant","DrawCard"],
-      ["Instant","DrawCard"],
-      ["Instant","DrawCard"]
+      ["Instant","ModifyResource","1","PLANT_PROD"]
     ],
     "condition": [
       ""
@@ -1399,6 +1397,30 @@
     ],
     "effects": [
       ["Permanent","PlaceTile","-1","-1","CITY"]
+    ],
+    "condition": [
+      ""
+    ]
+  },
+    {
+    "id": 107,
+    "cost": 0,
+    "badges": [
+      ""
+    ],
+    "effects": [
+      ["Permanent","DrawCard"],
+      ["Permanent","DrawCard"],
+      ["Permanent","DrawCard"],
+      ["Permanent","DrawCard"],
+      ["Permanent","DrawCard"],
+      ["Permanent","DrawCard"],
+      ["Permanent","DrawCard"],
+		["Permanent","DrawCard"],
+      ["Permanent","DrawCard"],
+      ["Permanent","DrawCard"],
+      ["Permanent","DrawCard"],
+      ["Permanent","DrawCard"]
     ],
     "condition": [
       ""

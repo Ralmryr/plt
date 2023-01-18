@@ -1,5 +1,7 @@
 #include "BaseScene.h"
 
+using namespace std;
+
 void render::BaseScene::setTransparent(bool transparent) {
     this->transparent = transparent;
 }

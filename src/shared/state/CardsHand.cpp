@@ -3,12 +3,12 @@
 //
 
 #include "CardsHand.h"
+#include <algorithm>
 
 using namespace std;
 using namespace state;
 
 
-// Creates a list of cards with ids ranging from 70 to 79
 CardsHand::CardsHand() {
     vector<Badge> listBadge = {EARTH, BUILDING};
     /*for(int i = 1; i < 24; i++) {
@@ -33,6 +33,13 @@ std::unordered_map<std::string, std::string> CardsHand::serializeUiData() const 
 
 void CardsHand::addCard(std::shared_ptr<Card> card) {
     listCards.push_back(std::move(card));
+}
+
+void CardsHand::removeCard(int cardID) {
+    auto newEnd = remove_if(listCards.begin(), listCards.end(), [cardID](const shared_ptr<Card>& card){
+        return card->getId() == cardID;
+    });
+    listCards.erase(newEnd, listCards.end());
 }
 
 

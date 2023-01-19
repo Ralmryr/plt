@@ -27,7 +27,13 @@ render::PopupCard::PopupCard(bool blueCard) {
 render::PopupCard::~PopupCard() = default;
 
 void render::PopupCard::update(const std::unordered_map<std::string, std::string>& data) {
-    if(data.size() <= listComponents.size() - 2) return;
+    if(data.size() == listComponents.size() - 2) return;
+
+    listButtons.clear();
+    listButtons.push_back(closeButton);
+    listComponents.clear();
+    listComponents.push_back(background);
+    listComponents.push_back(closeButton);
 
     cout << "----------- NEW DATA -------------" << endl;
 

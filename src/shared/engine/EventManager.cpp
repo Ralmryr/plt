@@ -5,6 +5,7 @@
 #include "BadgePlayedListener.h"
 #include "TilePlacedListener.h"
 #include "IncreaseGPReaction.h"
+#include "ModifyResourceReaction.h"
 
 using namespace std;
 using namespace engine;
@@ -45,7 +46,20 @@ void EventManager::notify(EventDetails &eventDetails) {
         cout << "Card played : " << idCard << endl;
         cardReader->parseCardEffects(idCard, state);
 
-        auto payReaction = cardReader->getPayReaction();
+        // Handles the reaction to pay the card
+        int currentPlayerId = state->getCurrentPlayer()->getId();
+        int cardCost = cardReader->getCost();
+        int goldAmount = eventDetails["GoldAmount"];
+        int ironAmount = eventDetails["IronAmount"];
+        int titaniumAmount = eventDetails["TitaniumAmount"];
+
+        if(goldAmount + ironAmount*2 + titaniumAmount*3 < cardCost)
+            errorMessage = "Didn't pay the price of card";
+
+        vector<shared_ptr<Reaction>> payReaction;
+        payReaction.push_back(make_shared<ModifyResourceReaction>(*state, -goldAmount, state::GOLD, currentPlayerId));
+        payReaction.push_back(make_shared<ModifyResourceReaction>(*state, -ironAmount, state::IRON, currentPlayerId));
+        payReaction.push_back(make_shared<ModifyResourceReaction>(*state, -titaniumAmount, state::TITANIUM, currentPlayerId));
         processReactions(payReaction);
 
         auto instantReaction = cardReader->getInstantReactions();
@@ -54,6 +68,7 @@ void EventManager::notify(EventDetails &eventDetails) {
         // Once all effects are triggered, executes all the commands
         if(errorMessage.empty()) {
             reactionQueue.consume();
+            state->getCurrentPlayer()->getCardsHand().removeCard(idCard);
             state->increaseActionCount();
         }
 

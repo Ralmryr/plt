@@ -27,3 +27,7 @@ std::pair<std::string, std::string> Card::serializeUiData() const {
     uiData.second = data;
     return uiData;
 }
+
+int Card::getId() const {
+    return id;
+}

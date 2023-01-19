@@ -104,7 +104,7 @@ void MenuDisplay::update(const std::unordered_map<std::string,std::string>& data
         }
     }
 
-    //pvText->setText(data.at("PV"));
+    pvText->setText(data.at("PV"));
 }
 
 void MenuDisplay::draw (sf::RenderWindow& window){

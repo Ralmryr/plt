@@ -127,10 +127,9 @@ int CardReader::parseCardEffects(int idCard, const shared_ptr<state::State>& sta
 
     parseCardInfo(idCard);
 
+    int currentPlayerId = state->getCurrentPlayer()->getId();
+
     // Creates the reaction to make the player pay
-    auto currentPlayerId = state->getCurrentPlayer()->getId();
-    auto payReactionTmp = make_shared<ModifyResourceReaction>(*state, -cost, state::GOLD, currentPlayerId);
-    payReaction.push_back(payReactionTmp);
 
     auto effects = cardsObj[idCard-1]["effects"];
 

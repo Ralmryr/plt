@@ -21,8 +21,11 @@ RenderAPI::~RenderAPI() {
  *      "badge i" : "badge, amount"
  *      "idCardHand i" : "id" ]
  */
-std::unordered_map<std::string, std::string> RenderAPI::providePlayerData(int idPlayer) {
-    return pPlayerList[idPlayer]->serializeUiData();
+std::unordered_map<std::string, std::string> RenderAPI::providePlayerData(int idPlayer = -1) {
+    if(idPlayer == -1)
+        return pState->getCurrentPlayer()->serializeUiData();
+    else
+        return pPlayerList[idPlayer]->serializeUiData();
 }
 
 /* [    "idPlayer" : "NT"   ]
@@ -55,11 +58,11 @@ std::unordered_map<std::string, std::string> RenderAPI::provideGlobalParameters(
     return pGlobalParameters->serializeUiData();
 }
 
-void RenderAPI::hookComponents(std::vector<std::shared_ptr<Player>> pPlayerList, std::shared_ptr<Board> pBoard,
-                               std::shared_ptr<GlobalParameters> pGlobalParameters) {
-    this->pPlayerList = pPlayerList;
-    this->pBoard = pBoard;
-    this->pGlobalParameters = pGlobalParameters;
+void RenderAPI::hookComponents(const std::shared_ptr<State>& state) {
+    this->pPlayerList = state->getListPlayers();
+    this->pBoard = state->getBoard();
+    this->pGlobalParameters = state->getGlobalParameters();
+    this->pState = state;
 }
 
 std::unordered_map<std::string, std::string> RenderAPI::provideMainSceneData() {

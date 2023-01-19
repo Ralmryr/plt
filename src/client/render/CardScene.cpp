@@ -5,7 +5,7 @@ using namespace render;
 
 // Transforms [ "<key> i" : "id,cost,badges" ] into [ "id" : "cost,badges" ]
 // key will be either "idCardBoard" or "idCardHand"
-static unordered_map<string, string> separateCardData(const unordered_map<string, string> &data, string key);
+unordered_map<string, string> separateCardData(const unordered_map<string, string> &data, string key);
 
 render::CardScene::CardScene(bool blueCard) {
     this->blueCard = blueCard;
@@ -41,7 +41,7 @@ vector<std::shared_ptr<Button>> render::CardScene::getListButtons() {
     return popupCards->getListButtons();
 }
 
-static unordered_map<string, string> separateCardData(const unordered_map<string, string> &data, string key) {
+unordered_map<string, string> separateCardData(const unordered_map<string, string> &data, string key) {
     unordered_map<string, string> returnData;
 
     key += " ";

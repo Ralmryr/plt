@@ -8,10 +8,6 @@ using namespace state;
 
 sf::Vector2f vcardImage = {330,315};
 
-// Transforms [ "<key> i" : "id,cost,badges" ] into [ "id" : "cost,badges" ]
-// key will be either "idCardBoard" or "idCardHand"
-unordered_map<string, string> separateCardData(const unordered_map<string, string> &data, string key);
-
 render::PopupPay::PopupPay() {
     this->opened = false;
     this->cardSize={331,441};
@@ -45,25 +41,12 @@ render::PopupPay::PopupPay() {
     this->background = make_shared<Image>("popupFrame.png", vbackground);
     this->listBaseComponents.push_back(this->background);
 
-    //Close Button
-    this->closeButton = make_shared<Button>("closeButton.png", vcloseButton);
-    this->closeButton->setScale(0.8f);
-    this->closeButton->updateClickableArea();
-    this->closeButton->setOnClickFunction([listComponents = &listComponents, opened = &opened](const shared_ptr<SharedContext>& sharedContext) {
-        *opened = false;
-        listComponents->clear();
-        sharedContext->getSceneManager()->removeScene();
-    });
-    this->listBaseComponents.push_back(this->closeButton);
-    this->listButtons.push_back(this->closeButton);
-
     //Gold Total
     this->goldTotal = make_shared<Text>("0",vgoldTotal);
     this->goldTotal->setSizeText(textSize);
     this->goldTotal->setColor(sf::Color::White);
     this->listBaseComponents.push_back(goldTotal);
     this->listText.push_back(goldTotal);
-
 
     //Iron Total
     this->ironTotal = make_shared<Text>("0",vironTotal);
@@ -78,9 +61,9 @@ render::PopupPay::PopupPay() {
     //Total
     this->total = make_shared<Text>("0",vtotal);
     this->total->setSizeText(textSize+15);
-    this->total->setColor(sf::Color::White);
+    this->total->setColor(sf::Color::Red);
     this->listBaseComponents.push_back(total);
-    this->listText.push_back(goldTotal);
+    this->listText.push_back(total);
 
     //Pay Button
     this->payButton = make_shared<Button>("payButton.png", vpayButton);
@@ -143,39 +126,42 @@ render::PopupPay::PopupPay() {
     this->ironImage = make_shared<Image>("steel.png", vironImage);
     this->ironImage->setScale(0.17f);
 
+    //Close Button
+    this->closeButton = make_shared<Button>("closeButton.png", vcloseButton);
+    this->closeButton->setScale(0.8f);
+    this->closeButton->updateClickableArea();
+    this->closeButton->setOnClickFunction([listComponents = &listComponents, opened = &opened, listText = &listText, total = total](const shared_ptr<SharedContext>& sharedContext) {
+        *opened = false;
+        for(const auto& text : *listText)
+            text->setText(to_string(0));
+        total->setColor(sf::Color::Red);
+        listComponents->clear();
+        sharedContext->getSceneManager()->removeScene();
+    });
+    this->listBaseComponents.push_back(this->closeButton);
+    this->listButtons.push_back(this->closeButton);
 
 }
 
 render::PopupPay::~PopupPay() = default;
 
 void render::PopupPay::update(const std::unordered_map<std::string, std::string> &data) {
+    // Code that needs to be executed only once
     if(opened) return;
     opened = true;
-    //Setting Plus and minus function
-    this->plusButton->setOnClickFunction([goldTotal = goldTotal, data = data, total = total](const shared_ptr<SharedContext>& sharedContext) {
-        if(stoi(goldTotal->getText()) < stoi(data.at("resource " + to_string(GOLD)))) {
-            goldTotal->setText(to_string(stoi(goldTotal->getText()) + 1));
-            total->setText(to_string(stoi(total->getText()) + 1));
-        }
-    });
-    this->minusButton->setOnClickFunction([goldTotal = goldTotal, data = data, total = total](const shared_ptr<SharedContext>& sharedContext) {
-        if(stoi(goldTotal->getText()) > 0) {
-            goldTotal->setText(to_string(stoi(goldTotal->getText()) - 1));
-            total->setText(to_string(stoi(total->getText()) - 1));
-        }
-    });
 
+    // "cost,badge1,badge2,...,badgeN"
     string cardData = data.at(to_string(cardId));
 
     int cost;
     bool space = false, building = false;
 
-    // Gets cost
+    // Parse cost from cardData and removes it
     size_t pos = cardData.find(',');
     cost = stoi(cardData.substr(0, pos));
-    cardData.erase(0, pos + 1);
+    cardData.erase(0, pos + 1); // "badge1,badge2,...,badge"
 
-    // Gets badges
+    // Parse badges from cardData and removes them
     while ((pos = cardData.find(',')) != std::string::npos) {
         int badgeNumber = stoi(cardData.substr(0, pos));
         if(badgeNumber == Badge::BUILDING)
@@ -188,6 +174,39 @@ void render::PopupPay::update(const std::unordered_map<std::string, std::string>
     string filename;
     filename = "card_" + to_string(cardId) + ".png";
     this->cardImage = make_shared<Image>("cards/" + filename, vcardImage);
+
+    auto updateTextFct = [total = total, cost](Text &text, int amount, int resValue, int max = 999) {
+        int newResourceAmount = stoi(text.getText()) + amount;
+        int newTotalValue = stoi(total->getText()) + amount*resValue;
+        if(newResourceAmount <= max && newResourceAmount >= 0) {
+            text.setText(to_string(newResourceAmount));
+            total->setText(to_string(newTotalValue));
+        }
+
+        if(newTotalValue >= cost)
+            total->setColor(sf::Color::Green);
+        else
+            total->setColor(sf::Color::Red);
+    };
+
+    int GOLD_VALUE = 1;
+    int IRON_VALUE = 2;
+    int TITANIUM_VALUE = 3;
+
+    //Setting Plus and minus for Gold
+    this->plusButton->setOnClickFunction([goldTotal = goldTotal, total = total, updateTextFct, cost, data, GOLD_VALUE](const shared_ptr<SharedContext>& sharedContext) {
+        bool enoughToPayCard = stoi(total->getText()) >= cost;
+        int playerGold = stoi(data.at("resource " + to_string(GOLD)));
+
+        if(!enoughToPayCard) {
+            updateTextFct(*goldTotal, 1, GOLD_VALUE, playerGold);
+        }
+    });
+    this->minusButton->setOnClickFunction([goldTotal = goldTotal, total = total, updateTextFct, GOLD_VALUE](const shared_ptr<SharedContext>& sharedContext) {
+        updateTextFct(*goldTotal, -1, GOLD_VALUE);
+    });
+
+    // If the card has a space badge, the player is able to pay with titanium
     if (space){
         //Adding Buttons
         this->listComponents.push_back(minusButtonSpace);
@@ -203,20 +222,21 @@ void render::PopupPay::update(const std::unordered_map<std::string, std::string>
         this->listText.push_back(titaniumTotal);
 
         //Setting Plus and minus function
-        this->plusButtonSpace->setOnClickFunction([titaniumTotal = titaniumTotal, data = data, total = total](const shared_ptr<SharedContext>& sharedContext) {
-            if(stoi(titaniumTotal->getText())+2 < stoi(data.at("resource " + to_string(TITANIUM)))) {
-                titaniumTotal->setText(to_string(stoi(titaniumTotal->getText()) + 1));
-                total->setText(to_string(stoi(total->getText()) + 3));
+        this->plusButtonSpace->setOnClickFunction([titaniumTotal = titaniumTotal, total = total, updateTextFct, cost, data, TITANIUM_VALUE](const shared_ptr<SharedContext>& sharedContext) {
+            bool enoughToPayCard = stoi(total->getText()) >= cost;
+            int playerTitanium = stoi(data.at("resource " + to_string(GOLD)));
+
+            if(!enoughToPayCard) {
+                updateTextFct(*titaniumTotal, 1, TITANIUM_VALUE, playerTitanium);
             }
         });
-        this->minusButtonSpace->setOnClickFunction([titaniumTotal = titaniumTotal, data = data, total = total](const shared_ptr<SharedContext>& sharedContext) {
-            if(stoi(titaniumTotal->getText())-2 > 0) {
-                titaniumTotal->setText(to_string(stoi(titaniumTotal->getText()) - 1));
-                total->setText(to_string(stoi(total->getText()) - 3));
-            }
+        this->minusButtonSpace->setOnClickFunction([titaniumTotal = titaniumTotal, total = total, updateTextFct, TITANIUM_VALUE](const shared_ptr<SharedContext>& sharedContext) {
+            updateTextFct(*titaniumTotal, -1, TITANIUM_VALUE);
         });
 
     }
+
+    // If the card has a building badge, the player is able to pay with iron
     if (building){
         //Adding Buttons
         this->listComponents.push_back(minusButtonBuilding);
@@ -232,29 +252,29 @@ void render::PopupPay::update(const std::unordered_map<std::string, std::string>
         this->listText.push_back(ironTotal);
 
         //Setting Plus and minus function
-        this->plusButtonBuilding->setOnClickFunction([ironTotal = ironTotal, data = data, total = total](const shared_ptr<SharedContext>& sharedContext) {
-            if(stoi(ironTotal->getText())+1 < stoi(data.at("resource " + to_string(IRON)))) {
-            ironTotal->setText(to_string(stoi(ironTotal->getText()) + 1));
-                total->setText(to_string(stoi(total->getText()) + 2));
+        this->plusButtonBuilding->setOnClickFunction([ironTotal = ironTotal, total = total, updateTextFct, cost, data, IRON_VALUE](const shared_ptr<SharedContext>& sharedContext) {
+            bool enoughToPayCard = stoi(total->getText()) >= cost;
+            int playerIron = stoi(data.at("resource " + to_string(GOLD)));
+
+            if(!enoughToPayCard) {
+                updateTextFct(*ironTotal, 1, IRON_VALUE, playerIron);
             }
         });
-        this->minusButtonBuilding->setOnClickFunction([ironTotal = ironTotal, data = data, total = total](const shared_ptr<SharedContext>& sharedContext) {
-            if(stoi(ironTotal->getText())-1 > 0) {
-                ironTotal->setText(to_string(stoi(ironTotal->getText()) - 1));
-                total->setText(to_string(stoi(total->getText()) - 2));
-            }
+        this->minusButtonBuilding->setOnClickFunction([ironTotal = ironTotal, total = total, updateTextFct, IRON_VALUE](const shared_ptr<SharedContext>& sharedContext) {
+            updateTextFct(*ironTotal, -1, IRON_VALUE);
         });
     }
-    this->payButton->setOnClickFunction([cardId = &cardId, opened = &opened, listComponents = &listComponents](const shared_ptr<SharedContext>& sharedContext) {
-        if(true) {
+
+    auto payButtonFunction = [cardId = cardId, closeButton = closeButton, total = total, cost](const shared_ptr<SharedContext>& sharedContext) {
+        bool enoughToPayCard = stoi(total->getText()) >= cost;
+        if(enoughToPayCard) {
             engine::EventDetails eventDetails(engine::CARD_PLAYED);
-            eventDetails["idCardPlayed"] = *cardId;
+            eventDetails["idCardPlayed"] = cardId;
             sharedContext->getEventManager()->notify(eventDetails);
-            *opened = false;
-            listComponents->clear();
-            sharedContext->getSceneManager()->removeScene();
+            closeButton->onClick(sharedContext);
         }
-    });
+    };
+    this->payButton->setOnClickFunction(payButtonFunction);
 
     this->listComponents.push_back(this->cardImage);
 }
@@ -278,27 +298,4 @@ void render::PopupPay::setCardId(int cardId) {
 
 int render::PopupPay::getCardId() const {
     return this->cardId;
-}
-
-unordered_map<string, string> separateCardData(const unordered_map<string, string> &data, string key) {
-    unordered_map<string, string> returnData;
-
-    key += " ";
-    int index = 0;
-    string strCard = key + to_string(index);
-    // While the player still has cards in his hands
-    while (data.find(strCard) != data.end()) {
-        string strData = data.at(strCard);
-
-        // Gets the cardID and deletes it from data
-        size_t pos = strData.find(',');
-        string idCardStr = strData.substr(0, pos);
-        strData.erase(0, pos + 1);
-
-        // The data looks like [ "id" : "cost,listBadge" ]
-        returnData.insert({idCardStr, strData});
-        strCard = key + to_string(++index);
-    }
-
-    return returnData;
 }

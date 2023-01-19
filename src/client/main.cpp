@@ -23,6 +23,8 @@ int main(int argc,char* argv[])
 
     // Initialize state
     auto state = make_shared<State>();
+    auto renderAPI = make_shared<RenderAPI>();
+    renderAPI->hookComponents(state);
 
     // Initialize EventManager
     auto eventManager = make_shared<EventManager>();
@@ -36,7 +38,7 @@ int main(int argc,char* argv[])
 
     // Initialize sceneManager
     auto sceneManager = make_shared<SceneManager>();
-    sceneManager->hookData(state->getUiDataProvider());
+    sceneManager->hookData(renderAPI);
     sceneManager->addScene(render::BOARD_VIEW);
 
     // Initialize sharedContext

@@ -12,11 +12,7 @@ State::State() {
     currentPlayer = 0;
     board = make_shared<Board>();
     globalParameters = make_shared<GlobalParameters>();
-    uiDataProvider = make_shared<RenderAPI>();
     deck = make_shared<Deck>(20);
-
-    // Creates the link between the data provider and the game elements
-    uiDataProvider->hookComponents(listPlayers, board, globalParameters);
 }
 
 State::~State() {
@@ -25,11 +21,6 @@ State::~State() {
 
 void State::hookEventSender(std::shared_ptr<EventSender> eventSender) {
     board->setEventSender(eventSender);
-}
-
-
-const std::shared_ptr<RenderAPI> &State::getUiDataProvider() const {
-    return this->uiDataProvider;
 }
 
 const std::vector<std::shared_ptr<Player>> &State::getListPlayers() const {

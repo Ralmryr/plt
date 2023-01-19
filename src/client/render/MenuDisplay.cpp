@@ -52,21 +52,12 @@ MenuDisplay :: MenuDisplay (){
     this->badgeButton->setOnClickFunction([](const shared_ptr<SharedContext>& sharedContext) {
         sharedContext->getSceneManager()->addScene(BADGE_VIEW);
     });
-    //define all texts
 
+    //define all texts
     this->badgeText = make_shared<Text>("Badges",posBadgeText);
     this->pvText = make_shared<Text>("0",posPVText);
     this->pvText->setSizeText(80);
     this->pvText->setColor(sf::Color::Black);
-
-    this->badgeButton = make_shared<Button>("badge_wild.png",vBadge);
-    this->badgeButton->setScale(1.2f);
-    this->badgeButton->updateClickableArea();
-    badgeButton->setOnClickFunction([pvText = pvText](const shared_ptr<SharedContext>& sharedContext) {
-        auto pvString = pvText->getText();
-        pvString = to_string(stoi(pvString) + 1);
-        pvText->setText(pvString);
-    });
 
     listComponents.push_back(frameImage);
     listComponents.push_back(cardButton);

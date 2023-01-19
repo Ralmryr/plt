@@ -5,6 +5,11 @@ using namespace std;
 using namespace render;
 using namespace std;
 
+render::BadgeScene::BadgeScene() {
+    popupBadge = make_unique<PopupBadge>();
+    transparent = true;
+}
+
 void render::BadgeScene::update(const std::unordered_map<std::string, std::string> &data) {
     // Seperate it into badgeData
 
@@ -22,11 +27,6 @@ void render::BadgeScene::update(const std::unordered_map<std::string, std::strin
 
 void render::BadgeScene::draw(sf::RenderWindow &window) {
     popupBadge->draw(window);
-}
-
-render::BadgeScene::BadgeScene() {
-    popupBadge = make_unique<PopupBadge>();
-    transparent = true;
 }
 
 std::vector<std::shared_ptr<Button>> BadgeScene::getListButtons() {

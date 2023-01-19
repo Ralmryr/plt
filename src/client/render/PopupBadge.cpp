@@ -34,7 +34,6 @@ PopupBadge::PopupBadge() {
     this->closeButton->updateClickableArea();
     this->closeButton->setOnClickFunction([listComponents = &listComponents, opened = &opened](const shared_ptr<SharedContext>& sharedContext) {
         *opened = false;
-        listComponents->clear();
         sharedContext->getSceneManager()->removeScene();
     });
     this->listComponents.push_back(closeButton);

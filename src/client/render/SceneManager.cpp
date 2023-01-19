@@ -60,7 +60,6 @@ void render::SceneManager::update() {
         cout << "{ First : " << dataEl.first << "; Second : " << dataEl.second << " }" << endl;
     }*/
 
-    // ------------------------------------- BOARD VIEW -----------------------------------
     if(currentScene == BOARD_VIEW) {
         // Board data
         auto playerData = dataProvider->providePlayerData(0);
@@ -70,35 +69,30 @@ void render::SceneManager::update() {
         mainScene->update(mainSceneData);
     }
 
-    // -------------------------------------- CARDS HAND VIEW -----------------------------------
     if(currentScene == CARDS_VIEW) {
         auto playerData = dataProvider->providePlayerData(0);
 
         cardScene->update(playerData);
     }
 
-    // -------------------------------------- PLACE TILE VIEW -----------------------------------
     if(currentScene == PLACE_TILE_VIEW) {
         auto boardData = dataProvider->provideBoardData();
 
         placeTileScene->update(boardData);
     }
 
-    // -------------------------------------- PAY VIEW -----------------------------------
     if(currentScene == PAY_VIEW) {
         auto playerData = dataProvider->providePlayerData(0);
 
         payScene->update(playerData);
     }
 
-    // -------------------------------------- BADGE VIEW -----------------------------------
     if(currentScene == BADGE_VIEW){
         auto playerData = dataProvider->providePlayerData(0);
 
         badgeScene->update(playerData);
     }
 
-    // -------------------------------------- BADGE VIEW -----------------------------------
     if(currentScene == BLUE_CARD_VIEW){
         auto playerData = dataProvider->providePlayerData(0);
 
@@ -114,7 +108,7 @@ void render::SceneManager::handleEvent(sf::Event event) {
     eventHandler->handleEvent(event);
 }
 
-// Adds a scene on top of the previous one
+// Adds a scene on top of the previous one, and loads the buttons
 void render::SceneManager::addScene(render::SceneID sceneID) {
     displayedSceneStack.push_back(sceneMap[sceneID]);
     sceneIdStack.push_back(sceneID);

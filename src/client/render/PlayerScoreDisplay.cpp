@@ -4,6 +4,8 @@
 using namespace render;
 using namespace std;
 
+sf::Vector2f varrow = {300,50};
+
 PlayerScoreDisplay::PlayerScoreDisplay(){
     //Setting positions for components
     sf::Vector2f vframe = {0, 0};
@@ -11,10 +13,15 @@ PlayerScoreDisplay::PlayerScoreDisplay(){
 
     //Initializing images
     this->frameImage = make_shared<Image>("scorePlayerFrameImage.png", vframe);
+    this->arrowImage = make_shared<Image>("turnArrow.png", varrow);
+    this->arrowImage->setScale(0.1f);
+
     //Initializing texts
     this->titleText = make_shared<Text>("Niveau de terraformation", vtitle);
+
     // Add them to the component list
     this->listComponents.push_back(this->frameImage);
+    this->listComponents.push_back(this->arrowImage);
     this->listComponents.push_back(this->titleText);
 
     sf::Color arrayColors[5] = {sf::Color::Blue,
@@ -49,13 +56,18 @@ PlayerScoreDisplay::~PlayerScoreDisplay() {
 }
 
 void PlayerScoreDisplay::update(const std::unordered_map<std::string, std::string>& data){
+    auto dataMap = data;
+    int idCurrentPlayer = stoi(data.at("idPlayer"));
+    dataMap.erase("idPlayer");
+
 
     // Updates the score for each player
-    for (const auto &dataEl: data) {
+    for (const auto &dataEl: dataMap) {
         int idPlayer = stoi(dataEl.first);
-
         listScorePlayer[idPlayer]->setText(dataEl.second);
     }
+
+    arrowImage->setPosition({varrow.x, varrow.y+70*idCurrentPlayer});
 }
 
 void PlayerScoreDisplay::draw(sf::RenderWindow &window) {

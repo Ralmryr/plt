@@ -19,13 +19,21 @@ RenderAPI::~RenderAPI() {
  *  [   "resource i" : "amount"
  *      "idCardBoard i" : "id"
  *      "badge i" : "badge, amount"
- *      "idCardHand i" : "id" ]
+ *      "idCardHand i" : "id"
+ *      "idPlayer" : "id"
+ *      ]
  */
 std::unordered_map<std::string, std::string> RenderAPI::providePlayerData(int idPlayer = -1) {
-    if(idPlayer == -1)
-        return pState->getCurrentPlayer()->serializeUiData();
-    else
-        return pPlayerList[idPlayer]->serializeUiData();
+    if(idPlayer == -1) {
+        auto dataMap = pState->getCurrentPlayer()->serializeUiData();
+        dataMap.insert({"idPlayer", to_string(pState->getCurrentPlayer()->getId())});
+        return dataMap;
+    }
+    else {
+        auto dataMap = pState->getCurrentPlayer()->serializeUiData();
+        dataMap.insert({"idPlayer", to_string(idPlayer)});
+        return dataMap;
+    }
 }
 
 /* [    "idPlayer" : "NT"   ]

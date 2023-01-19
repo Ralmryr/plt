@@ -32,7 +32,7 @@ OptionScene::OptionScene() {
     this->confirmButton->setScale(0.3f);
     this->confirmButton->updateClickableArea();
     this->confirmButton->setOnClickFunction([](const shared_ptr<SharedContext>& sharedContext) {
-        
+
         sharedContext->getSceneManager()->removeScene();
     });
     this->listComponents.push_back(this->confirmButton);

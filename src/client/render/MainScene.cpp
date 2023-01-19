@@ -32,6 +32,7 @@ void MainScene::update(const unordered_map<string, string> &data) {
             playScoreData[strIdPlayer]=data.at(strIdPlayer);
         }
     }
+    playScoreData.insert({"idPlayer", data.at("idPlayer")});
     playerScoreDisplay->update(playScoreData);
 
     // Gather every entry related to global parameters

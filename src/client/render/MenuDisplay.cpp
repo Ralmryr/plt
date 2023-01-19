@@ -15,7 +15,7 @@ MenuDisplay :: MenuDisplay (){
     sf::Vector2f vCard = {900, 810};
     sf::Vector2f vBlueCard = {1225, 870};
     sf::Vector2f vBadge = {1475, 900};
-    sf::Vector2f vEndTurn = {1765, 10};
+    sf::Vector2f vEndTurn = {1620, 10};
 
     //define the size of all sprites
     sf::Vector2u sizeBlueCardButton = {150, 200};
@@ -55,10 +55,10 @@ MenuDisplay :: MenuDisplay (){
     });
 
     this->endTurnButton = make_shared<Button>("endTurnButton.png",vEndTurn);
-    this->endTurnButton->setScale(0.8f);
+    this->endTurnButton->setScale(0.3f);
     this->endTurnButton->updateClickableArea();
     this->endTurnButton->setOnClickFunction([](const shared_ptr<SharedContext>& sharedContext) {
-        engine::EventDetails eventDetails(engine::CARD_PLAYED);
+        engine::EventDetails eventDetails(engine::FORCE_END_TURN);
         sharedContext->getEventManager()->notify(eventDetails);
     });
 
@@ -75,6 +75,7 @@ MenuDisplay :: MenuDisplay (){
     listComponents.push_back(blueCardButton);
     listComponents.push_back(badgeButton);
     listComponents.push_back(pvText);
+    listComponents.push_back(endTurnButton);
 
     // Initialize production of resources texts
     for(int i = 0; i < 6; i++){
@@ -94,6 +95,7 @@ MenuDisplay :: MenuDisplay (){
     listButtons.push_back(cardButton);
     listButtons.push_back(blueCardButton);
     listButtons.push_back(badgeButton);
+    listButtons.push_back(endTurnButton);
 }
 
 MenuDisplay::~MenuDisplay() = default;

@@ -76,15 +76,16 @@ void render::SceneManager::update() {
 
     if(currentScene == BOARD_VIEW) {
         // Board data
-        auto playerData = dataProvider->providePlayerData(0);
+        auto playerData = dataProvider->providePlayerData(-1);
         auto mainSceneData = dataProvider->provideMainSceneData();
         mainSceneData.insert(playerData.begin(), playerData.end());
+
 
         mainScene->update(mainSceneData);
     }
 
     if(currentScene == CARDS_VIEW) {
-        auto playerData = dataProvider->providePlayerData(0);
+        auto playerData = dataProvider->providePlayerData(-1);
 
         cardScene->update(playerData);
     }
@@ -96,19 +97,19 @@ void render::SceneManager::update() {
     }
 
     if(currentScene == PAY_VIEW) {
-        auto playerData = dataProvider->providePlayerData(0);
+        auto playerData = dataProvider->providePlayerData(-1);
 
         payScene->update(playerData);
     }
 
     if(currentScene == BADGE_VIEW){
-        auto playerData = dataProvider->providePlayerData(0);
+        auto playerData = dataProvider->providePlayerData(-1);
 
         badgeScene->update(playerData);
     }
 
     if(currentScene == BLUE_CARD_VIEW){
-        auto playerData = dataProvider->providePlayerData(0);
+        auto playerData = dataProvider->providePlayerData(-1);
 
         blueCardScene->update(playerData);
     }

@@ -9,6 +9,7 @@ IncreaseGPReaction::IncreaseGPReaction (const state::State& state, int amount, s
     this->globalParameters = state.getGlobalParameters();
     this->amount = amount;
     this->paramName=paramName;
+    this->reactionType=engine::IncreaseGP;
 }
 
 IncreaseGPReaction::~IncreaseGPReaction (){};
@@ -50,4 +51,12 @@ string IncreaseGPReaction::query (){
     return errMessage;
 }
 void IncreaseGPReaction::procNotification () {
+}
+
+const std::string &IncreaseGPReaction::getParamName() const {
+    return paramName;
+}
+
+int IncreaseGPReaction::getAmount() const {
+    return amount;
 }

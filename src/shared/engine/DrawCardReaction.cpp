@@ -8,6 +8,7 @@ using namespace state;
 DrawCardReaction::DrawCardReaction (const state::State& state, int idPlayer){
     this->player= state.getSpecificPlayer(idPlayer);
     this->deck= state.getDeck();
+    this->reactionType=engine::DrawCard;
 }
 
 DrawCardReaction::~DrawCardReaction () = default;

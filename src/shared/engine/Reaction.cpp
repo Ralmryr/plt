@@ -11,3 +11,7 @@ engine::Reaction::~Reaction() {
 
 }
 
+engine::ReactionType engine::Reaction::getReactionType() const {
+    return this->reactionType;
+}
+

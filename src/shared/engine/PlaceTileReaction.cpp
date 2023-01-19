@@ -14,6 +14,7 @@ PlaceTileReaction::PlaceTileReaction(const State& state, pair<int, int> coords, 
     this->coords = coords;
     this->tileType = tileType;
     this->idPlayer = idPlayer;
+    this->reactionType=engine::PlaceTile;
 }
 
 PlaceTileReaction::~PlaceTileReaction(){
@@ -33,4 +34,8 @@ string PlaceTileReaction::query () {
 
 void PlaceTileReaction::procNotification (){
     board->procNotification(tileType);
+}
+
+state::TileType PlaceTileReaction::getTileType() const {
+    return tileType;
 }

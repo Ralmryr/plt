@@ -3,22 +3,58 @@
 //
 
 #include "HeuristicAI.h"
+#include "../../constants.hpp"
 #include <algorithm>
 
 //adjacency score value for deciding placement on board (see finBestPosition)
-#define FOREST_ADJACENCY_VALUE_C 10
-#define OCEAN_ADJACENCY_VALUE 2
-#define CITY_ADJACENCY_VALUE_F 10
-#define CARD_BONUS_PLACEMENT 4
-#define IRON_BONUS_PLACEMENT 2
-#define TITANIUM_BONUS_PLACEMENT 3
-#define PLANT_BONUS_PLACEMENT 1
+
 
 using namespace ai;
 using namespace std;
+using namespace engine;
+
+
 
 ai::HeuristicAI::HeuristicAI(std::shared_ptr<state::State> state) {
     this->state=std::move(state);
+    this->resourceWeightMap =
+            {{state::GOLD_PROD,1},
+             {state::IRON_PROD,2},
+             {state::TITANIUM_PROD,2},
+             {state::PLANT_PROD,2},
+             {state::ENERGY_PROD,2},
+             {state::HEAT_PROD,2},
+
+             {state::GOLD,1},
+             {state::IRON,2},
+             {state::TITANIUM,2},
+             {state::PLANT,2},
+             {state::ENERGY,2},
+             {state::HEAT,2},
+
+             {state::NT,6},
+             {state::PV,5}};
+    this->tileWeightMap=
+            {{state::FOREST,20},
+             {state::CITY,20},
+             {state::OCEAN,20},
+             {state::MINE,20},
+             {state::FORBIDDEN,20},
+             {state::MOHOL,20},
+             {state::NUKE,20},
+             {state::PRESERVED,20},
+             {state::ZOO,20},
+             {state::COMMERCIAL,20},
+             {state::CAPITAL,20},
+             {state::INDUSTRY,20},
+             {state::NOCTIS,20},
+             {state::PHOBOS,20},
+             {state::GANYMEDE,20},
+             };
+    this->otherWeightMap=
+            {{"Card",3},
+             {"oxygen",10},
+             {"temperature",11},};
 }
 
 ai::HeuristicAI::~HeuristicAI()= default;
@@ -26,8 +62,94 @@ ai::HeuristicAI::~HeuristicAI()= default;
 void ai::HeuristicAI::playTurn() {}
 
 int ai::HeuristicAI::chooseBestCard() {
+    /*
+     * algo a suivre :
+     *
+     * calcule un score de rentabilité pour toutes les cartes en main
+     * calcule la rentabilité des projets std
+     * joue la carte/le projet std avec le meilleur score
+     *
+     * */
+
     return 0;
 }
+
+/*   formule de caclule du score :
+     *
+     * valeur = bonus de prod * (fonction decroissante des tours de jeu)
+     * + bonus instantanée - couts de la carte
+     *
+     * bonus de prod et instant : chaque ressource a un poid different
+     * fonction decroissante : a determiner, varie de ~4 ou 5 à 0.
+     *
+     * */
+
+bool isProd(const ModifyResourceReaction& reaction){
+    if(reaction.getResType()==state::GOLD_PROD
+       ||reaction.getResType()==state::IRON_PROD
+       ||reaction.getResType()==state::TITANIUM_PROD
+       ||reaction.getResType()==state::PLANT_PROD
+       ||reaction.getResType()==state::ENERGY_PROD
+       ||reaction.getResType()==state::HEAT_PROD)
+        return true;
+    else
+        return false;
+}
+
+
+//parameter of this function may vary for different heuristic AI
+//starts >2, tends toward 0
+//begin at Nb = 0
+//reach 0 around Nb = 12
+int decreasingFunction(int NbGeneration){
+
+
+}
+
+int ai::HeuristicAI::calculateCardScore(int iDcard) {
+    int score=0;
+    int prodGain=0, instantGain=0, cost=0;
+    cardReader->parseCard(iDcard,state);
+    std::vector<std::shared_ptr<Reaction>> listGain = cardReader->getInstantReactions();
+
+    //calculate prod_gain :
+    //compare all gain from the card to their weight
+    //only the modifyRessourceReaction can be prod_gain
+    for(const std::shared_ptr<Reaction>& reaction : listGain){
+        if(reaction->getReactionType()==engine::ModifyResource){
+            auto temp = dynamic_pointer_cast<ModifyResourceReaction>(reaction) ;
+            if(isProd(*temp))
+                prodGain+=temp->getAmount()* resourceWeightMap[temp->getResType()];
+            else
+                instantGain +=temp->getAmount()* resourceWeightMap[temp->getResType()];
+        }
+        else if(reaction->getReactionType()==engine::DrawCard){
+            instantGain += otherWeightMap["Card"];
+        }
+        else if(reaction->getReactionType()==engine::IncreaseGP){
+            auto temp = dynamic_pointer_cast<IncreaseGPReaction>(reaction) ;
+            instantGain +=temp->getAmount()* otherWeightMap[temp->getParamName()];
+
+        }
+        else if(reaction->getReactionType()==engine::PlaceTile){
+            auto temp = dynamic_pointer_cast<engine::PlaceTileReaction>(reaction) ;
+            instantGain += tileWeightMap[temp->getTileType()];
+
+            //instantGain+=CARD_INSTANT_GAIN;
+        }
+    }
+
+    cost=cardReader->getCost();
+    if(!cardReader->checkCondition(iDcard,state))
+        cost+=1000;
+
+    score = prodGain* decreasingFunction(1)+instantGain-cost;
+
+
+    return score;
+}
+
+
 
 std::pair<int, int> ai::HeuristicAI::findBestPosition(state::TileType tile) {
     std::shared_ptr<state::Board> board = state->getBoard();
@@ -61,8 +183,7 @@ std::pair<int, int> ai::HeuristicAI::findBestPosition(state::TileType tile) {
         }
     }
 
-    if (tile == state::FOREST) { ///A FINIR !!!!!!!!!!!!!!!!!!!!!
-        //il faut encore detecter uniquement les cite qui appartiennent au joueur
+    if (tile == state::FOREST) {
         //look for your cities on the board
         //return the coord adjacent to the most of your cities
 
@@ -72,7 +193,7 @@ std::pair<int, int> ai::HeuristicAI::findBestPosition(state::TileType tile) {
                 for (int j = 0; j < listTile.size(); j++) {
                     auto it = adjacency.find(neighbour[j].getCoords());
                     if (it == adjacency.end()) {
-                        if(listOwner[i]==state->getCurrentPlayer()->getId())
+                        if(listOwner[i]==player->getId())
                             adjacency.insert({neighbour[j].getCoords(), CITY_ADJACENCY_VALUE_F});
                         else
                             adjacency.insert({neighbour[j].getCoords(), -CITY_ADJACENCY_VALUE_F});
@@ -169,3 +290,5 @@ std::pair<int, int> ai::HeuristicAI::findBestPosition(state::TileType tile) {
     }
     return Coord;
 }
+
+

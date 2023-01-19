@@ -78,8 +78,12 @@ CardReader::~CardReader() {
 }
 
 // Helper function that gets the
-bool checkCondition(const shared_ptr<state::State> &state, const string &conditionType, int conditionValue) {
+bool CardReader::checkCondition(int idCard, const shared_ptr<state::State>& state) {
     bool isConditionVerified = false;
+
+    auto conditionType = cardsObj[idCard-1]["condition"][0].asString();
+    auto conditionValue = cardsObj[idCard-1]["condition"][1].asInt();
+
 
     if(conditionType == "minOxy") {
         if(conditionValue >= state->getGlobalParameters()->getOxygen())

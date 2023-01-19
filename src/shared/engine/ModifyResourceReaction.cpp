@@ -12,6 +12,7 @@ ModifyResourceReaction::ModifyResourceReaction(const state::State& state, int am
         player=state.getSpecificPlayer(idPlayer);
     this->amount=amount;
     this->resType=resType;
+    this->reactionType=engine::ModifyResource;
 }
 
 ModifyResourceReaction::~ModifyResourceReaction ()= default;
@@ -32,3 +33,13 @@ string ModifyResourceReaction::query (){
 void ModifyResourceReaction::procNotification (){
 
 }
+
+int ModifyResourceReaction::getAmount() const {
+    return this->amount;
+}
+
+state::Resource ModifyResourceReaction::getResType() const {
+    return this->resType;
+}
+
+

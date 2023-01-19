@@ -55,7 +55,12 @@ void State::increaseActionCount() {
     }
 }
 
-void State::endTurn() {
+void State::nextPlayer() {
     currentPlayer = (currentPlayer+1)%5;
     actionCount = 0;
+}
+
+void State::forceEndTurn() {
+    getCurrentPlayer()->setForcedEndTurn(true);
+    nextPlayer();
 }

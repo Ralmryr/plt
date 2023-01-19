@@ -87,6 +87,11 @@ void EventManager::notify(EventDetails &eventDetails) {
 
         processReactions(reactions);
     }
+
+    //Forcing end turn
+    if(eventType == FORCE_END_TURN){
+        state->forceEndTurn();
+    }
 }
 
 // Checks if the reactions are allowed, and adds them to the list. It also creates the chain effects by activating notifications

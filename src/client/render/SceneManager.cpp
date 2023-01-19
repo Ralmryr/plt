@@ -9,6 +9,8 @@ using namespace render;
 
 // This technique prevents the double call of the constructor of each class
 render::SceneManager::SceneManager(){
+    titleScene = make_shared<TitleScene>();
+    optionScene = make_shared<OptionScene>();
     mainScene = make_shared<MainScene>();
     cardScene = make_shared<CardScene>(false);
     blueCardScene = make_shared<CardScene>(true);
@@ -16,9 +18,12 @@ render::SceneManager::SceneManager(){
     payScene = make_shared<PayScene>();
     placeTileScene = make_shared<PlaceTileScene>();
 
+
     eventHandler = make_shared<EventHandler>();
     dataProvider = make_shared<state::RenderAPI>();
 
+    sceneMap.insert({SceneID::TITLE_VIEW, titleScene});
+    sceneMap.insert({SceneID::OPTION_VIEW, optionScene});
     sceneMap.insert({SceneID::CARDS_VIEW, cardScene});
     sceneMap.insert({SceneID::BLUE_CARD_VIEW, blueCardScene});
     sceneMap.insert({SceneID::BOARD_VIEW, mainScene});
@@ -59,6 +64,15 @@ void render::SceneManager::update() {
     for (const auto &dataEl: data) {
         cout << "{ First : " << dataEl.first << "; Second : " << dataEl.second << " }" << endl;
     }*/
+    // ------------------------------------- TITLE VIEW -----------------------------------
+    if(currentScene == TITLE_VIEW){
+
+    }
+
+    // ------------------------------------- OPTION VIEW -----------------------------------
+    if(currentScene == OPTION_VIEW){
+
+    }
 
     if(currentScene == BOARD_VIEW) {
         // Board data

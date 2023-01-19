@@ -15,6 +15,7 @@ MenuDisplay :: MenuDisplay (){
     sf::Vector2f vCard = {900, 810};
     sf::Vector2f vBlueCard = {1225, 870};
     sf::Vector2f vBadge = {1475, 900};
+    sf::Vector2f vEndTurn = {1765, 10};
 
     //define the size of all sprites
     sf::Vector2u sizeBlueCardButton = {150, 200};
@@ -52,6 +53,16 @@ MenuDisplay :: MenuDisplay (){
     this->badgeButton->setOnClickFunction([](const shared_ptr<SharedContext>& sharedContext) {
         sharedContext->getSceneManager()->addScene(BADGE_VIEW);
     });
+
+    this->endTurnButton = make_shared<Button>("endTurnButton.png",vEndTurn);
+    this->endTurnButton->setScale(0.8f);
+    this->endTurnButton->updateClickableArea();
+    this->endTurnButton->setOnClickFunction([](const shared_ptr<SharedContext>& sharedContext) {
+        engine::EventDetails eventDetails(engine::CARD_PLAYED);
+        sharedContext->getEventManager()->notify(eventDetails);
+    });
+
+    //define all texts
 
     //define all texts
     this->badgeText = make_shared<Text>("Badges",posBadgeText);

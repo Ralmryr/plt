@@ -52,3 +52,7 @@ void Player::modifyResource(Resource resource, int amount) {
 bool Player::isPossibleToModifyResource(Resource resource, int amount) {
     return resourceBoard.isPossibleToModifyResource(resource,amount);
 }
+
+void Player::setForcedEndTurn(bool forcedEndTurn) {
+    this->forcedEndTurn = forcedEndTurn;
+}

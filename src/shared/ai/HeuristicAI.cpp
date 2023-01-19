@@ -59,8 +59,21 @@ ai::HeuristicAI::HeuristicAI(std::shared_ptr<state::State> state) {
 
 ai::HeuristicAI::~HeuristicAI()= default;
 
-void ai::HeuristicAI::playTurn() {}
+void ai::HeuristicAI::playTurn() {
+    int action_left = 2;
 
+    while(action_left>0){
+        if(!chooseBestCard())
+            passTurn();//end its turn
+
+        action_left-=1;
+    }
+}
+
+
+//play the best card
+//return 1 if it successfully played a card
+//return 0 if there is no card to play
 int ai::HeuristicAI::chooseBestCard() {
     /*
      * algo a suivre :
@@ -70,6 +83,33 @@ int ai::HeuristicAI::chooseBestCard() {
      * joue la carte/le projet std avec le meilleur score
      *
      * */
+    std::vector<std::pair<int,int>> CardScores;
+    string err_msg="you can t play this card";
+    const std::vector<std::shared_ptr<state::Card>> hand = player->getCardsHand().getListCards();
+    for(const auto & i : hand)
+        CardScores.insert(CardScores.end(),{i->getId(), calculateCardScore(i->getId())});
+
+    //do the same operation on the standart project
+    for(int j=101;j<106;j++)
+        CardScores.insert(CardScores.end(),{j, calculateCardScore(j)});
+
+
+    //sort the scores to quickly find the best one
+    std::sort(CardScores.begin(), CardScores.end(),[](const auto &x, const auto &y) { return x.second < y.second; });
+
+    int i=0;
+    while (!err_msg.empty()&& i!=CardScores.size()){
+        int IdToPlay = CardScores[i].first;
+        EventDetails eventDetails(engine::CARD_PLAYED);
+        eventDetails["idCardPlayed"] = IdToPlay;
+        manager->notify(eventDetails);
+
+        err_msg=manager->getErrorMessage();
+        i+=1;
+    }
+    if(err_msg.empty()) return 1;
+    else return 0;
+
 
     return 0;
 }

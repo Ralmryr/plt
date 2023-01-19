@@ -6,7 +6,9 @@ using namespace std;
 
 
 void ai::AI::passTurn() {
-    //call a skip_turn event in the eventManager
+    //call a forcce end turn event in the eventManager
+    engine::EventDetails eventDetails(engine::FORCE_END_TURN);
+    manager->notify(eventDetails);
 }
 
 

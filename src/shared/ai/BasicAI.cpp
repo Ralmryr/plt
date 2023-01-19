@@ -18,19 +18,16 @@ ai::BasicAI::~BasicAI()= default;
 
 
 void ai::BasicAI::playTurn(){
-    //check si des convertion plantes/chaleurs sont possibles
+    int action_left = 2;
 
-    //check si des projets standarts sont possibles
+    while(action_left>0){
+        //check si des convertion plantes/chaleurs sont possibles
+        //check si des projets standarts sont possibles
+        if(!chooseBestCard())
+            passTurn();//end its turn
 
-    if(!chooseBestCard())
-        passTurn();
-
-    //do this twice because every player has up to 2 possible action
-    if(!chooseBestCard())
-        passTurn();
-
-
-    //call an END_TURN event in manager;
+        action_left-=1;
+    }
 }
 
 
@@ -41,7 +38,7 @@ void ai::BasicAI::playTurn(){
 int ai::BasicAI::chooseBestCard() {
     string err_msg="you can t play this card";
     int i=0;
-    /*const std::vector<std::shared_ptr<state::Card>> hand = player->getCardsHand().getListCards();
+    const std::vector<std::shared_ptr<state::Card>> hand = player->getCardsHand().getListCards();
     while (!err_msg.empty()&& i!=hand.size()){
         int iDcard = hand[i]->getId();
         EventDetails eventDetails(engine::CARD_PLAYED);
@@ -50,11 +47,12 @@ int ai::BasicAI::chooseBestCard() {
 
         err_msg=manager->getErrorMessage();
         i+=1;
-    }*/
+    }
     if(err_msg.empty()) return 1;
     else return 0;
 }
 
+//function to call whenever a tile needs to be placed on the board
 std::pair<int, int> ai::BasicAI::findBestPosition(state::TileType tile) {
     std::pair<int, int> Coord;
     if(tile ==state::NOCTIS || tile ==state::GANYMEDE || tile ==state::PHOBOS){

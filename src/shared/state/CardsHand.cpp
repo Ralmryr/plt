@@ -42,6 +42,10 @@ void CardsHand::removeCard(int cardID) {
     listCards.erase(newEnd, listCards.end());
 }
 
+const std::vector<std::shared_ptr<Card>> &CardsHand::getListCards() const {
+    return listCards;
+}
+
 
 
 

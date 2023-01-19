@@ -35,3 +35,7 @@ string PlaceTileReaction::query () {
 void PlaceTileReaction::procNotification (){
     board->procNotification(tileType);
 }
+
+state::TileType PlaceTileReaction::getTileType() const {
+    return tileType;
+}

@@ -13,8 +13,48 @@ using namespace ai;
 using namespace std;
 using namespace engine;
 
+
+
 ai::HeuristicAI::HeuristicAI(std::shared_ptr<state::State> state) {
     this->state=std::move(state);
+    this->resourceWeightMap =
+            {{state::GOLD_PROD,1},
+             {state::IRON_PROD,2},
+             {state::TITANIUM_PROD,2},
+             {state::PLANT_PROD,2},
+             {state::ENERGY_PROD,2},
+             {state::HEAT_PROD,2},
+
+             {state::GOLD,1},
+             {state::IRON,2},
+             {state::TITANIUM,2},
+             {state::PLANT,2},
+             {state::ENERGY,2},
+             {state::HEAT,2},
+
+             {state::NT,6},
+             {state::PV,5}};
+    this->tileWeightMap=
+            {{state::FOREST,20},
+             {state::CITY,20},
+             {state::OCEAN,20},
+             {state::MINE,20},
+             {state::FORBIDDEN,20},
+             {state::MOHOL,20},
+             {state::NUKE,20},
+             {state::PRESERVED,20},
+             {state::ZOO,20},
+             {state::COMMERCIAL,20},
+             {state::CAPITAL,20},
+             {state::INDUSTRY,20},
+             {state::NOCTIS,20},
+             {state::PHOBOS,20},
+             {state::GANYMEDE,20},
+             };
+    this->otherWeightMap=
+            {{"Card",3},
+             {"oxygen",10},
+             {"temperature",11},};
 }
 
 ai::HeuristicAI::~HeuristicAI()= default;
@@ -44,7 +84,7 @@ int ai::HeuristicAI::chooseBestCard() {
      *
      * */
 
-bool isProd(ModifyResourceReaction reaction){
+bool isProd(const ModifyResourceReaction& reaction){
     if(reaction.getResType()==state::GOLD_PROD
        ||reaction.getResType()==state::IRON_PROD
        ||reaction.getResType()==state::TITANIUM_PROD
@@ -57,7 +97,14 @@ bool isProd(ModifyResourceReaction reaction){
 }
 
 
+//parameter of this function may vary for different heuristic AI
+//starts >2, tends toward 0
+//begin at Nb = 0
+//reach 0 around Nb = 12
+int decreasingFunction(int NbGeneration){
 
+
+}
 
 int ai::HeuristicAI::calculateCardScore(int iDcard) {
     int score=0;
@@ -72,9 +119,31 @@ int ai::HeuristicAI::calculateCardScore(int iDcard) {
         if(reaction->getReactionType()==engine::ModifyResource){
             auto temp = dynamic_pointer_cast<ModifyResourceReaction>(reaction) ;
             if(isProd(*temp))
-                prodGain+=temp->getAmount()* getWeight(temp->getResType());
+                prodGain+=temp->getAmount()* resourceWeightMap[temp->getResType()];
+            else
+                instantGain +=temp->getAmount()* resourceWeightMap[temp->getResType()];
+        }
+        else if(reaction->getReactionType()==engine::DrawCard){
+            instantGain += otherWeightMap["Card"];
+        }
+        else if(reaction->getReactionType()==engine::IncreaseGP){
+            auto temp = dynamic_pointer_cast<IncreaseGPReaction>(reaction) ;
+            instantGain +=temp->getAmount()* otherWeightMap[temp->getParamName()];
+
+        }
+        else if(reaction->getReactionType()==engine::PlaceTile){
+            auto temp = dynamic_pointer_cast<engine::PlaceTileReaction>(reaction) ;
+            instantGain += tileWeightMap[temp->getTileType()];
+
+            //instantGain+=CARD_INSTANT_GAIN;
         }
     }
+
+    cost=cardReader->getCost();
+    if(!cardReader->checkCondition(iDcard,state))
+        cost+=1000;
+
+    score = prodGain* decreasingFunction(1)+instantGain-cost;
 
 
     return score;
@@ -222,6 +291,4 @@ std::pair<int, int> ai::HeuristicAI::findBestPosition(state::TileType tile) {
     return Coord;
 }
 
-int HeuristicAI::getWeight(state::Resource Ressource) {
-    return 0;
-}
+

@@ -52,3 +52,11 @@ string IncreaseGPReaction::query (){
 }
 void IncreaseGPReaction::procNotification () {
 }
+
+const std::string &IncreaseGPReaction::getParamName() const {
+    return paramName;
+}
+
+int IncreaseGPReaction::getAmount() const {
+    return amount;
+}

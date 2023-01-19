@@ -8,7 +8,7 @@ TitleScene::TitleScene() {
     float offset = 100;
 
     sf::Vector2f vbackground = {0,0};
-    sf::Vector2f vplayButton = {750,500};
+    sf::Vector2f vplayButton = {850,600};
     sf::Vector2f vquitButton = {1850,0};
 
     //Background

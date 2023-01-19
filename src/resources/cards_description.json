@@ -1357,7 +1357,7 @@
       ""
     ],
     "effects": [
-       ["Permanent","IncreaseGP","1","temperature"]
+       ["Instant","IncreaseGP","1","temperature"]
     ],
     "condition": [
       ""
@@ -1370,7 +1370,7 @@
       ""
     ],
     "effects": [
-      ["Permanent","PlaceTile","1","2","OCEAN"]
+      ["Instant","PlaceTile","1","2","OCEAN"]
     ],
     "condition": [
       ""
@@ -1383,7 +1383,7 @@
       ""
     ],
     "effects": [
-      ["Permanent","PlaceTile","-4","2","FOREST"]
+      ["Instant","PlaceTile","-4","2","FOREST"]
     ],
     "condition": [
       ""
@@ -1396,7 +1396,7 @@
       ""
     ],
     "effects": [
-      ["Permanent","PlaceTile","-1","-1","CITY"]
+      ["Instant","PlaceTile","-1","-1","CITY"]
     ],
     "condition": [
       ""
@@ -1416,7 +1416,7 @@
       ["Permanent","DrawCard"],
       ["Permanent","DrawCard"],
       ["Permanent","DrawCard"],
-		["Permanent","DrawCard"],
+      ["Permanent","DrawCard"],
       ["Permanent","DrawCard"],
       ["Permanent","DrawCard"],
       ["Permanent","DrawCard"],

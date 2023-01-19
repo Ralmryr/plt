@@ -70,6 +70,7 @@ StdProjectDisplay::StdProjectDisplay() {
     this->forestButton->setOnClickFunction([](const shared_ptr<SharedContext>& sharedContext) {
         engine::EventDetails eventDetails(engine::CARD_PLAYED);
         eventDetails["idCardPlayed"] = 105;
+        eventDetails["GoldAmount"] = 25;
         sharedContext->getEventManager()->notify(eventDetails);
     });
     listComponents.push_back(forestButton);

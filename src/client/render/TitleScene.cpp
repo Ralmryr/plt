@@ -10,6 +10,7 @@ TitleScene::TitleScene() {
     sf::Vector2f vbackground = {0,0};
     sf::Vector2f vplayButton = {850,600};
     sf::Vector2f vquitButton = {1850,0};
+    sf::Vector2f voptionButton = {10,10};
 
     //Background
     this->background = make_shared<Image>("titleScene.png", vbackground);
@@ -34,6 +35,16 @@ TitleScene::TitleScene() {
     });
     this->listComponents.push_back(this->quitButton);
     this->listButtons.push_back(this->quitButton);
+
+    //Option Button
+    this->optionButton = make_shared<Button>("optionButton.png", voptionButton);
+    this->optionButton->setScale(0.5f);
+    this->optionButton->updateClickableArea();
+    this->optionButton->setOnClickFunction([](const shared_ptr<SharedContext>& sharedContext) {
+        sharedContext->getSceneManager()->addScene(OPTION_VIEW);
+    });
+    this->listComponents.push_back(this->optionButton);
+    this->listButtons.push_back(this->optionButton);
 
 }
 

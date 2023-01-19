@@ -39,7 +39,7 @@ int main(int argc,char* argv[])
     // Initialize sceneManager
     auto sceneManager = make_shared<SceneManager>();
     sceneManager->hookData(renderAPI);
-    sceneManager->addScene(render::BOARD_VIEW);
+    sceneManager->addScene(render::TITLE_VIEW);
 
     // Initialize sharedContext
     auto sharedContext = make_shared<SharedContext>(sceneManager, eventManager);

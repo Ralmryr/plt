@@ -41,9 +41,9 @@ void ai::BasicAI::playTurn(){
 int ai::BasicAI::chooseBestCard() {
     string err_msg="you can t play this card";
     int i=0;
-    /*std::vector<state::Card> hand = player->getCardsHand().getListCards();
+    /*const std::vector<std::shared_ptr<state::Card>> hand = player->getCardsHand().getListCards();
     while (!err_msg.empty()&& i!=hand.size()){
-        int iDcard = hand[i].getId();
+        int iDcard = hand[i]->getId();
         EventDetails eventDetails(engine::CARD_PLAYED);
         eventDetails["idCardPlayed"] = iDcard;
         manager->notify(eventDetails);

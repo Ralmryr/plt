@@ -109,7 +109,7 @@ int decreasingFunction(int NbGeneration){
 int ai::HeuristicAI::calculateCardScore(int iDcard) {
     int score=0;
     int prodGain=0, instantGain=0, cost=0;
-    cardReader->parseCard(iDcard,state);
+    cardReader->parseCardEffects(iDcard,state);
     std::vector<std::shared_ptr<Reaction>> listGain = cardReader->getInstantReactions();
 
     //calculate prod_gain :

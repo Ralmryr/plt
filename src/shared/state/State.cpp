@@ -50,8 +50,7 @@ const std::shared_ptr<Player>& State::getCurrentPlayer() const {
 void State::increaseActionCount() {
     actionCount++;
     if (actionCount == 2) {
-        actionCount = 0;
-        currentPlayer = (currentPlayer+1)%5;
+        nextPlayer();
     }
 }
 

@@ -24,6 +24,13 @@ void PlaceTileScene::draw(sf::RenderWindow &window) {
     window.draw(*boardButton);
 }
 
+void PlaceTileScene::onClick(sf::Vector2f mousePos) {
+    auto mouseX = mousePos.x;
+    auto mouseY = mousePos.y;
+
+
+}
+
 PlaceTileScene::~PlaceTileScene() = default;
 
 

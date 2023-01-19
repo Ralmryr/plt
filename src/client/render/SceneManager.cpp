@@ -121,6 +121,9 @@ void render::SceneManager::hookData(std::shared_ptr<state::RenderAPI> dataProvid
 
 void render::SceneManager::handleEvent(sf::Event event) {
     eventHandler->handleEvent(event);
+    if (currentScene == PLACE_TILE_VIEW) {
+
+    }
 }
 
 // Adds a scene on top of the previous one, and loads the buttons

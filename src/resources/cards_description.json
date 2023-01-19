@@ -7,7 +7,7 @@
       "SCIENCE"
     ],
     "effects": [
-      ""
+      ["Instant","ModifyResource","1","PV"]
     ],
     "condition": [
       ""

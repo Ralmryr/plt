@@ -21,7 +21,7 @@ TitleScene::TitleScene() {
     this->playButton->setScale(0.4f);
     this->playButton->updateClickableArea();
     this->playButton->setOnClickFunction([](const shared_ptr<SharedContext>& sharedContext) {
-        sharedContext->getSceneManager()->addScene(PLACE_TILE_VIEW);
+        sharedContext->getSceneManager()->addScene(BOARD_VIEW);
     });
     this->listComponents.push_back(this->playButton);
     this->listButtons.push_back(this->playButton);

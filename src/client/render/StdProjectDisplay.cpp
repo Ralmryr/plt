@@ -31,7 +31,7 @@ StdProjectDisplay::StdProjectDisplay() {
     this->prodEnergyButton->updateClickableArea();
     this->prodEnergyButton->setOnClickFunction([](const shared_ptr<SharedContext>& sharedContext) {
         engine::EventDetails eventDetails(engine::CARD_PLAYED);
-        eventDetails["idCardPlayed"] = 163;
+        eventDetails["idCardPlayed"] = 162;
         eventDetails["GoldAmount"] = 11;
         sharedContext->getEventManager()->notify(eventDetails);
     });
@@ -45,7 +45,7 @@ StdProjectDisplay::StdProjectDisplay() {
     this->temperatureButton->updateClickableArea();
     this->temperatureButton->setOnClickFunction([](const shared_ptr<SharedContext>& sharedContext) {
         engine::EventDetails eventDetails(engine::CARD_PLAYED);
-        eventDetails["idCardPlayed"] = 164;
+        eventDetails["idCardPlayed"] = 163;
         eventDetails["GoldAmount"] = 14;
         sharedContext->getEventManager()->notify(eventDetails);
     });
@@ -59,7 +59,7 @@ StdProjectDisplay::StdProjectDisplay() {
     this->oceanButton->updateClickableArea();
     this->oceanButton->setOnClickFunction([](const shared_ptr<SharedContext>& sharedContext) {
         engine::EventDetails eventDetails(engine::CARD_PLAYED);
-        eventDetails["idCardPlayed"] = 165;
+        eventDetails["idCardPlayed"] = 164;
         eventDetails["GoldAmount"] = 18;
         sharedContext->getEventManager()->notify(eventDetails);
     });
@@ -73,7 +73,7 @@ StdProjectDisplay::StdProjectDisplay() {
     this->forestButton->updateClickableArea();
     this->forestButton->setOnClickFunction([](const shared_ptr<SharedContext>& sharedContext) {
         engine::EventDetails eventDetails(engine::CARD_PLAYED);
-        eventDetails["idCardPlayed"] = 166;
+        eventDetails["idCardPlayed"] = 165;
         eventDetails["GoldAmount"] = 23;
         sharedContext->getEventManager()->notify(eventDetails);
     });
@@ -87,7 +87,7 @@ StdProjectDisplay::StdProjectDisplay() {
     this->cityButton->updateClickableArea();
     this->cityButton->setOnClickFunction([](const shared_ptr<SharedContext>& sharedContext) {
         engine::EventDetails eventDetails(engine::CARD_PLAYED);
-        eventDetails["idCardPlayed"] = 167;
+        eventDetails["idCardPlayed"] = 166;
         eventDetails["GoldAmount"] = 25;
         sharedContext->getEventManager()->notify(eventDetails);
     });

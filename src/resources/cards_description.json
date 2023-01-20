@@ -2387,7 +2387,7 @@
   },
     {
     "id": 165,
-    "cost": 166,
+    "cost": 23,
     "badges": [
       ""
     ],
@@ -2399,7 +2399,7 @@
     ]
   },
     {
-    "id": 167,
+    "id": 166,
     "cost": 25,
     "badges": [
       ""
@@ -2412,12 +2412,23 @@
     ]
   },
     {
-    "id": 168,
+    "id": 167,
     "cost": 0,
     "badges": [
       ""
     ],
     "effects": [
+      ["Permanent","DrawCard"],
+      ["Permanent","DrawCard"],
+      ["Permanent","DrawCard"],
+      ["Permanent","DrawCard"],
+      ["Permanent","DrawCard"],
+      ["Permanent","DrawCard"],
+      ["Permanent","DrawCard"],
+      ["Permanent","DrawCard"],
+      ["Permanent","DrawCard"],
+      ["Permanent","DrawCard"],
+      ["Permanent","DrawCard"],
       ["Permanent","DrawCard"],
       ["Permanent","DrawCard"],
       ["Permanent","DrawCard"],

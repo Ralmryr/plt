@@ -35,11 +35,11 @@ void render::PopupCard::update(const std::unordered_map<std::string, std::string
     listComponents.push_back(background);
     listComponents.push_back(closeButton);
 
-    cout << "----------- NEW DATA -------------" << endl;
+/*    cout << "----------- NEW DATA -------------" << endl;
 
     for (const auto &dataEl: data) {
         cout << "{ First : " << dataEl.first << "; Second : " << dataEl.second << " }" << endl;
-    }
+    }*/
 
     //------BLUE CARDS---------
     if(blueCard){
@@ -47,7 +47,7 @@ void render::PopupCard::update(const std::unordered_map<std::string, std::string
         int cardsPerRow = 8;
         sf::Vector2f offset = {60, 50};
         sf::Vector2f cardSpacing = {230, 270};
-        float ratio = 0.55f;
+        float ratio = 0.75f;
         string filename;
         for(const auto& card : data) {
             auto cardData = card.second;
@@ -77,7 +77,7 @@ void render::PopupCard::update(const std::unordered_map<std::string, std::string
         int cardsPerRow = 8;
         sf::Vector2f offset = {60, 50};
         sf::Vector2f cardSpacing = {230, 270};
-        float ratio = 0.55f;
+        float ratio = 0.75f;
         string filename;
         for(const auto& card : data) {
             auto cardData = card.second;

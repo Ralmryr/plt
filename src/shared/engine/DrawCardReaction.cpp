@@ -1,4 +1,6 @@
 #include "DrawCardReaction.h"
+#include <iostream>
+
 
 using namespace engine;
 using namespace std;
@@ -16,6 +18,7 @@ DrawCardReaction::~DrawCardReaction () = default;
 void DrawCardReaction::execute (){
     CardReader cardReader;
     int idCard = deck->drawCard();
+    cout << idCard << ", " << endl;
     cardReader.parseCardInfo(idCard);
     auto newCard = make_shared<Card>(idCard, cardReader.getCost(), cardReader.getListBadges());
     player->getCardsHand().addCard(newCard);

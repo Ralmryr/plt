@@ -1,4 +1,5 @@
 #include "State.h"
+#include <iostream>
 
 using namespace state;
 using namespace std;
@@ -6,15 +7,13 @@ using namespace std;
 
 State::State() {
     //Instantiate all players
-    for(int i = 0; i < 5; i++) {
+    for (int i = 0; i < 5; i++) {
         listPlayers.push_back(make_shared<Player>(i));
     }
     currentPlayer = 0;
     board = make_shared<Board>();
     globalParameters = make_shared<GlobalParameters>();
     deck = make_shared<Deck>(120);
-    for(const auto element : deck->getDeck())
-        std::printf("%d, ",element);
 }
 
 State::~State() {

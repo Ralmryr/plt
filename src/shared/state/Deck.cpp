@@ -11,16 +11,15 @@ using namespace state;
 
 //generate a deck of the given size
 Deck ::Deck(int size) {
+    //remove cards that couldn't be implemented then shuffle the dec
+    std::vector<int> RemovedCard = {0,3,9,10,11,24,25,26,27,28,30,31,32,42,100,101,104,108,109,119,61,64,65,66,67,72,81,83,84,87,90};
+
     int i;
-    for(i =1; i<size+1; i++){
-        this->deck.push_back(i);
+    for(i = 0; i<size; i++){
+        if(std::count(RemovedCard.begin(), RemovedCard.end(),i) == 0)
+            this->deck.push_back(i);
     }
 
-    //remove cards that couldn't be implemented then shuffle the deck
-    std::vector<int> RemovedCard={0,3,9,10,11,24,25,26,27,28,30,31,32,42,100,101,104,108,109,119,61,64,65,66,67,72,81,83,84,87};
-    for(auto j:RemovedCard){
-       deck.erase(deck.begin()+j-1);
-    }
     std::shuffle(deck.begin(), deck.end(), std::random_device{});
 }
 

@@ -21,14 +21,14 @@ using BadgeMap = map<int, vector<state::Badge>>;
 std::map<string, state::Badge> badgeMap = {{"NONE", state::NONE},
                                            {"BUILDING", state::BUILDING},
                                            {"SPACE", state::SPACE},
-                                           {"B_ENERGY", state::B_ENERGY},
+                                           {"ENERGY", state::B_ENERGY},
                                            {"SCIENCE", state::SCIENCE},
                                            {"JOVIAN", state::JOVIAN},
                                            {"EARTH", state::EARTH},
-                                           {"B_PLANT", state::B_PLANT},
+                                           {"PLANT", state::B_PLANT},
                                            {"MICROBE", state::MICROBE},
                                            {"ANIMAL", state::ANIMAL},
-                                           {"B_CITY", state::B_CITY},
+                                           {"CITY", state::B_CITY},
                                            {"EVENT", state::EVENT},
                                            {"VENUS", state::VENUS}};
 std::map<string, state::Resource> ressourceMap = {{"GOLD", state::GOLD},
@@ -110,8 +110,11 @@ bool checkCondition(const shared_ptr<state::State> &state, const string &conditi
 }
 
 void CardReader::parseCardInfo(int idCard) {
-    auto badges = cardsObj[idCard-1]["badges"];
-    this->cost = cardsObj[idCard-1]["cost"].asInt();
+    cout << "card id : " << idCard;
+    auto badges = cardsObj[idCard]["badges"];
+    string costStr = cardsObj[idCard]["cost"].asString();
+    cout << ", card cost : " << costStr;
+    this->cost = cardsObj[idCard]["cost"].asInt();
     for (const auto &badge : badges){
         this->listBadges.push_back(badgeMap[badge.asString()]);
     }
@@ -131,7 +134,7 @@ int CardReader::parseCardEffects(int idCard, const shared_ptr<state::State>& sta
 
     // Creates the reaction to make the player pay
 
-    auto effects = cardsObj[idCard-1]["effects"];
+    auto effects = cardsObj[idCard]["effects"];
 
     // Reads the card effects and adds reaction accordingly
     shared_ptr<Reaction> newReaction;

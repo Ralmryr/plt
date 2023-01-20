@@ -737,7 +737,7 @@
   },
   {
     "id": 51,
-    "cost": "15",
+    "cost": 15,
     "badges": [
       "SPACE","CITY"
     ],
@@ -753,7 +753,7 @@
   },
   {
     "id": 52,
-    "cost": "16",
+    "cost": 16,
     "badges": [
       "BUILDING","CITY"
     ],
@@ -768,7 +768,7 @@
   },
   {
     "id": 53,
-    "cost": "13",
+    "cost": 13,
     "badges": [
       "BUILDING","CITY"
     ],
@@ -783,7 +783,7 @@
   },
   {
     "id": 54,
-    "cost": "18",
+    "cost": 18,
     "badges": [
       "BUILDING","CITY"
     ],
@@ -798,7 +798,7 @@
   },
   {
     "id": 55,
-    "cost": "20",
+    "cost": 20,
     "badges": [
       "SPACE","CITY","JOVIAN"
     ],
@@ -812,7 +812,7 @@
   },
   {
     "id": 56,
-    "cost": "24",
+    "cost": 24,
     "badges": [
       "EARTH","SPACE","EVENT"
     ],
@@ -825,7 +825,7 @@
   },
   {
     "id": 57,
-    "cost": "6",
+    "cost": 6,
     "badges": [
       ""
     ],
@@ -839,7 +839,7 @@
   },
   {
     "id": 58,
-    "cost": "8",
+    "cost": 8,
     "badges": [
       "VENUS"
     ],
@@ -852,7 +852,7 @@
   },
   {
     "id": 59,
-    "cost": "4",
+    "cost": 4,
     "badges": [
       "ENERGY","BUILDING"
     ],
@@ -867,7 +867,7 @@
   },
   {
     "id": 60,
-    "cost": "21",
+    "cost": 21,
     "badges": [
       "EVENT","SPACE"
     ],
@@ -895,7 +895,7 @@
   },
   {
     "id": 62,
-    "cost": "7",
+    "cost": 7,
     "badges": [
       "EARTH","EVENT"
     ],
@@ -909,7 +909,7 @@
   },
   {
     "id": 63,
-    "cost": "12",
+    "cost": 12,
     "badges": [
       "JOVIAN","SPACE"
     ],
@@ -975,7 +975,7 @@
   },
   {
     "id": 68,
-    "cost": "6",
+    "cost": 6,
     "badges": [
       ""
     ],
@@ -989,7 +989,7 @@
   },
   {
     "id": 69,
-    "cost": "13",
+    "cost": 13,
     "badges": [
       "JOVIAN"
     ],
@@ -1003,7 +1003,7 @@
   },
   {
     "id": 70,
-    "cost": "5",
+    "cost": 5,
     "badges": [
       "ENERGY"
     ],
@@ -1017,7 +1017,7 @@
   },
   {
     "id": 71,
-    "cost": "8",
+    "cost": 8,
     "badges": [
       "BUILDING"
     ],
@@ -1030,7 +1030,7 @@
   },
   {
     "id": 72,
-    "cost": "7",
+    "cost": 7,
     "badges": [
       "EARTH","EVENT"
     ],
@@ -1043,7 +1043,7 @@
   },
   {
     "id": 73,
-    "cost": "8",
+    "cost": 8,
     "badges": [
       "EARTH"
     ],
@@ -1056,7 +1056,7 @@
   },
   {
     "id": 74,
-    "cost": "8",
+    "cost": 8,
     "badges": [
       "SCIENCE","ENERGY"
     ],
@@ -1070,7 +1070,7 @@
   },
   {
     "id": 75,
-    "cost": "15",
+    "cost": 15,
     "badges": [
       "SPACE","EVENT"
     ],
@@ -1084,7 +1084,7 @@
   },
   {
     "id": 76,
-    "cost": "24",
+    "cost": 24,
     "badges": [
       "CITY","BUILDING"
     ],
@@ -1101,7 +1101,7 @@
   },
   {
     "id": 77,
-    "cost": "17",
+    "cost": 17,
     "badges": [
       "PLANT"
     ],
@@ -1117,7 +1117,7 @@
   },
   {
     "id": 78,
-    "cost": "5",
+    "cost": 5,
     "badges": [
       "EVENT","SCIENCE","SPACE"
     ],
@@ -1131,7 +1131,7 @@
   },
   {
     "id": 79,
-    "cost": "5",
+    "cost": 5,
     "badges": [
       "EVENT"
     ],
@@ -1144,7 +1144,7 @@
   },
   {
     "id": 80,
-    "cost": "31",
+    "cost": 31,
     "badges": [
       "EVENT","SPACE"
     ],
@@ -1172,7 +1172,7 @@
   },
   {
     "id": 82,
-    "cost": "5",
+    "cost": 5,
     "badges": [
       "BUILDING"
     ],
@@ -1213,7 +1213,7 @@
   },
   {
     "id": 85,
-    "cost": "15",
+    "cost": 15,
     "badges": [
       "ENERGY"
     ],
@@ -1226,7 +1226,7 @@
   },
   {
     "id": 86,
-    "cost": "20",
+    "cost": 20,
     "badges": [
       "JOVIAN","SPACE"
     ],
@@ -1241,7 +1241,7 @@
   },
   {
     "id": 87,
-    "cost": "11",
+    "cost": 11,
     "badges": [
       "PLANT","MICROBE","ANIMAL"
     ],
@@ -1254,7 +1254,7 @@
   },
   {
     "id": 88,
-    "cost": "14",
+    "cost": 14,
     "badges": [
       "SCIENCE","ENERGY","BUILDING"
     ],
@@ -1267,7 +1267,7 @@
   },
   {
     "id": 89,
-    "cost": "11",
+    "cost": 11,
     "badges": [
       "SCIENCE","SPACE","ENERGY"
     ],

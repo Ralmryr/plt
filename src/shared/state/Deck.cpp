@@ -12,7 +12,7 @@ using namespace state;
 //generate a deck of the given size
 Deck ::Deck(int size) {
     //remove cards that couldn't be implemented then shuffle the dec
-    std::vector<int> RemovedCard = {0,3,9,10,11,24,25,26,27,28,30,31,32,42,100,101,104,108,109,119,61,64,65,66,67,72,81,83,84,87,90};
+    std::vector<int> RemovedCard = {0,3,9,10,11,20,24,25,26,27,28,30,31,32,42,100,101,104,108,109,119,61,64,65,66,67,72,81,83,84,87,90};
 
     int i;
     for(i = 0; i<size; i++){

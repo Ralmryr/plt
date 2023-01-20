@@ -15,6 +15,7 @@ using namespace std;
 
 int main(int argc,char* argv[])
 {
+    int NbPlayer =5;
     sf::RenderWindow window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT),
                             "Terraforming Mars",
                             sf::Style::Fullscreen);
@@ -22,7 +23,7 @@ int main(int argc,char* argv[])
     window.setFramerateLimit(60);
 
     // Initialize state
-    auto state = make_shared<State>();
+    auto state = make_shared<State>(NbPlayer);
     auto renderAPI = make_shared<RenderAPI>();
     renderAPI->hookComponents(state);
 

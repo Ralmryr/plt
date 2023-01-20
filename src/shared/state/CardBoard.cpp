@@ -6,8 +6,9 @@ using namespace state;
 // Creates a list of cards with ids ranging from 80 to 89
 CardBoard::CardBoard() {
     vector<Badge> listBadge = {EARTH, BUILDING};
-    for(int i = 1; i < 24; i++) {
-        listCards.emplace_back(i, 20, listBadge);
+    std::vector<int> baseBlueCards={53,43,36,6,110};
+    for(auto element : baseBlueCards) {
+        listCards.emplace_back(element, 20, listBadge);
     }
     for(int i = B_FIRST+1; i != B_LAST; i++) {
         badgesPlayed.insert({Badge(i), 0});

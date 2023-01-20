@@ -56,7 +56,7 @@
       ""
     ],
     "condition": [
-      "minOxy","3"
+      "minOxy",3
     ]
   },
   {
@@ -72,7 +72,7 @@
       ["Instant","ModifyResource","2","PV"]
     ],
     "condition": [
-       "minTemp","4"
+       "minTemp",4
     ]
   },
   {
@@ -88,7 +88,7 @@
       ["Instant","ModifyResource","2","PV"]
     ],
     "condition": [
-      "minTemp","-6"
+      "minTemp",-6
     ]
   },
   {
@@ -101,7 +101,7 @@
       ["Instant","ModifyResource","1","PLANT"]
     ],
     "condition": [
-      "maxTemp","-12"
+      "maxTemp",-12
     ]
   },
   {
@@ -115,7 +115,7 @@
       ["Instant","ModifyResource","1","PLANT"]
     ],
     "condition": [
-      "minOcean","5"
+      "minOcean",5
     ]
   },
   {
@@ -186,7 +186,7 @@
       ["Instant","ModifyResource","1","PV"]
     ],
     "condition": [
-      "minTemp","-4"
+      "minTemp",-4
     ]
   },
   {
@@ -199,7 +199,7 @@
       ["Instant","ModifyResource","1","PLANT_PROD"]
     ],
     "condition": [
-      "maxTemp","-18"
+      "maxTemp",-18
     ]
   },
   {
@@ -246,7 +246,7 @@
       ["Instant","ModifyResource","1","PLANT_PROD"]
     ],
     "condition": [
-      "maxTemp","-18"
+      "maxTemp",-18
     ]
   },
   {
@@ -380,7 +380,7 @@
       
     ],
     "condition": [
-      "minOxy","4"
+      "minOxy",4
     ]
   },
   {
@@ -451,7 +451,7 @@
       
     ],
     "condition": [
-      "minOxy","9"
+      "minOxy",9
     ]
   },
   {
@@ -493,7 +493,7 @@
       ["Instant","ModifyResource","1","PLANT"]
     ],
     "condition": [
-      "minTemp","-14"
+      "minTemp",-14
     ]
   },
   {
@@ -507,7 +507,7 @@
       ["Instant","ModifyResource","2","PLANT"]
     ],
     "condition": [
-      "miniTemp","-10"
+      "minTemp",-10
     ]
   },
   {
@@ -549,7 +549,7 @@
       ["Instant","ModifyResource","2","PV"]
     ],
     "condition": [
-      "maxOxy","5"
+      "maxOxy",5
     ]
   },
   {
@@ -563,7 +563,7 @@
       ["Instant","PlaceTile","-2","0","CAPITAL"]
     ],
     "condition": [
-      "minOcean","4"
+      "minOcean",4
     ]
   },
   {
@@ -632,7 +632,7 @@
       ["Instant","ModifyResource","1","PV"]
     ],
     "condition": [
-      "maxOxy","8"
+      "maxOxy",8
     ]
   },
   {
@@ -763,7 +763,7 @@
       ["instant","PlaceTileReaction","CITY","-10","-10"]
     ],
     "condition": [
-      "maxOxy","9"
+      "maxOxy",9
     ]
   },
   {
@@ -862,7 +862,7 @@
       ["instant","ModifyResourceReaction","-1","PV"]
     ],
     "condition": [
-      "minOxy","6"
+      "minOxy",6
     ]
   },
   {
@@ -998,7 +998,7 @@
       ["instant","ModifyResourceOther","-1","TITANIUM_PROD"]
     ],
     "condition": [
-      "minSpace","2"
+      "minSpace",2
     ]
   },
   {

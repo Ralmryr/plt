@@ -132,6 +132,14 @@ int CardReader::parseCardEffects(int idCard, const shared_ptr<state::State>& sta
 
     int currentPlayerId = state->getCurrentPlayer()->getId();
 
+    //check if the card is playable
+
+    /*bool playable = checkCondition(state,cardsObj[idCard]["condition"][0].asString(),cardsObj[idCard]["condition"][1].asInt());
+    if(!playable){
+        printf("prerequis non remplis");
+        return 1;
+    }*/
+
     // Creates the reaction to make the player pay
 
     auto effects = cardsObj[idCard]["effects"];

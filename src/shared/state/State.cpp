@@ -5,15 +5,18 @@ using namespace state;
 using namespace std;
 
 
-State::State() {
+State::State(int Players) {
     //Instantiate all players
-    for (int i = 0; i < 5; i++) {
+    nbPlayers=Players;
+    for (int i = 0; i < nbPlayers; i++) {
         listPlayers.push_back(make_shared<Player>(i));
     }
     currentPlayer = 0;
     board = make_shared<Board>();
     globalParameters = make_shared<GlobalParameters>();
     deck = make_shared<Deck>(120);
+
+    nbGeneration=1;
 }
 
 State::~State() {
@@ -56,7 +59,7 @@ void State::increaseActionCount() {
 }
 
 void State::nextPlayer() {
-    currentPlayer = (currentPlayer+1)%5;
+    currentPlayer = (currentPlayer+1)%nbPlayers;
     actionCount = 0;
 }
 
@@ -64,3 +67,9 @@ void State::forceEndTurn() {
     getCurrentPlayer()->setForcedEndTurn(true);
     nextPlayer();
 }
+
+int State::getNbPlayers() const {
+    return nbPlayers;
+}
+
+

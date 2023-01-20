@@ -12,7 +12,9 @@ State::State() {
     currentPlayer = 0;
     board = make_shared<Board>();
     globalParameters = make_shared<GlobalParameters>();
-    deck = make_shared<Deck>(20);
+    deck = make_shared<Deck>(120);
+    for(const auto element : deck->getDeck())
+        std::printf("%d, ",element);
 }
 
 State::~State() {

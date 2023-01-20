@@ -46,7 +46,7 @@ int main(int argc,char* argv[])
     sceneManager->getEventHandler()->hookSharedContext(sharedContext);
 
     EventDetails eventDetails(engine::CARD_PLAYED);
-    eventDetails["idCardPlayed"] = 107;
+    eventDetails["idCardPlayed"] = 168;
     eventManager->notify(eventDetails);
 
     sf::Clock clock;

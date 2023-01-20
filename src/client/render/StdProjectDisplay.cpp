@@ -17,7 +17,8 @@ StdProjectDisplay::StdProjectDisplay() {
     this->discardButton->updateClickableArea();
     this->discardButton->setOnClickFunction([](const shared_ptr<SharedContext>& sharedContext) {
         engine::EventDetails eventDetails(engine::CARD_PLAYED);
-        eventDetails["idCardPlayed"] = 101;
+        eventDetails["idCardPlayed"] = 162;
+
         sharedContext->getEventManager()->notify(eventDetails);
     });
     listComponents.push_back(discardButton);
@@ -30,7 +31,8 @@ StdProjectDisplay::StdProjectDisplay() {
     this->prodEnergyButton->updateClickableArea();
     this->prodEnergyButton->setOnClickFunction([](const shared_ptr<SharedContext>& sharedContext) {
         engine::EventDetails eventDetails(engine::CARD_PLAYED);
-        eventDetails["idCardPlayed"] = 102;
+        eventDetails["idCardPlayed"] = 163;
+        eventDetails["GoldAmount"] = 11;
         sharedContext->getEventManager()->notify(eventDetails);
     });
     listComponents.push_back(prodEnergyButton);
@@ -43,7 +45,8 @@ StdProjectDisplay::StdProjectDisplay() {
     this->temperatureButton->updateClickableArea();
     this->temperatureButton->setOnClickFunction([](const shared_ptr<SharedContext>& sharedContext) {
         engine::EventDetails eventDetails(engine::CARD_PLAYED);
-        eventDetails["idCardPlayed"] = 103;
+        eventDetails["idCardPlayed"] = 164;
+        eventDetails["GoldAmount"] = 14;
         sharedContext->getEventManager()->notify(eventDetails);
     });
     listComponents.push_back(temperatureButton);
@@ -56,7 +59,8 @@ StdProjectDisplay::StdProjectDisplay() {
     this->oceanButton->updateClickableArea();
     this->oceanButton->setOnClickFunction([](const shared_ptr<SharedContext>& sharedContext) {
         engine::EventDetails eventDetails(engine::CARD_PLAYED);
-        eventDetails["idCardPlayed"] = 104;
+        eventDetails["idCardPlayed"] = 165;
+        eventDetails["GoldAmount"] = 18;
         sharedContext->getEventManager()->notify(eventDetails);
     });
     listComponents.push_back(oceanButton);
@@ -69,8 +73,8 @@ StdProjectDisplay::StdProjectDisplay() {
     this->forestButton->updateClickableArea();
     this->forestButton->setOnClickFunction([](const shared_ptr<SharedContext>& sharedContext) {
         engine::EventDetails eventDetails(engine::CARD_PLAYED);
-        eventDetails["idCardPlayed"] = 105;
-        eventDetails["GoldAmount"] = 25;
+        eventDetails["idCardPlayed"] = 166;
+        eventDetails["GoldAmount"] = 23;
         sharedContext->getEventManager()->notify(eventDetails);
     });
     listComponents.push_back(forestButton);
@@ -83,7 +87,8 @@ StdProjectDisplay::StdProjectDisplay() {
     this->cityButton->updateClickableArea();
     this->cityButton->setOnClickFunction([](const shared_ptr<SharedContext>& sharedContext) {
         engine::EventDetails eventDetails(engine::CARD_PLAYED);
-        eventDetails["idCardPlayed"] = 106;
+        eventDetails["idCardPlayed"] = 167;
+        eventDetails["GoldAmount"] = 25;
         sharedContext->getEventManager()->notify(eventDetails);
     });
     listComponents.push_back(cityButton);

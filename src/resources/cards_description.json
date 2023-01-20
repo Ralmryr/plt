@@ -7,7 +7,12 @@
       "SCIENCE"
     ],
     "effects": [
-      ["Instant","ModifyResource","1","PV"]
+      ["Instant","ModifyResource","1","PV"],
+      ["Instant","RemoveCard"],
+      ["Instant","DrawCard"],
+      ["Instant","DrawCard"],
+      ["Instant","DrawCard"],
+      ["Instant","DrawCardOthers"]
     ],
     "condition": [
       ""
@@ -33,7 +38,9 @@
       "BUILDING"
     ],
     "effects": [
-      ["Instant","ModifyResource","7","IRON"]
+      ["Action","ModifyResource","-4","ENERGY"],
+      ["Action","ModifyResource","2","IRON"],
+      ["Action","IncreaseGP","1","oxygen"]
     ],
     "condition": [
       ""
@@ -46,10 +53,10 @@
       "MICROBE"
     ],
     "effects": [
-      ["Instant","ModifyResource","3","HEAT_PROD"]
+      ""
     ],
     "condition": [
-      ""
+      "minOxy","3"
     ]
   },
   {
@@ -77,7 +84,8 @@
     "effects": [
       ["Instant","ModifyResource","1","PLANT_PROD"],
       ["Instant","ModifyResource","2","GOLD_PROD"],
-      ["Instant","ModifyResource","1","PLANT"]
+      ["Instant","ModifyResource","1","PLANT"],
+      ["Instant","ModifyResource","2","PV"]
     ],
     "condition": [
       "minTemp","-6"
@@ -90,28 +98,14 @@
       "PLANT"
     ],
     "effects": [
-      
+      ["Instant","ModifyResource","1","PLANT"]
     ],
     "condition": [
-      ""
+      "maxTemp","-12"
     ]
   },
   {
     "id": 7,
-    "cost": 12,
-    "badges": [
-      "PLANT"
-    ],
-    "effects": [
-      ["Instant","ModifyResource","2","PLANT_PROD"],
-      ["Instant","ModifyResource","2","HEAT_PROD"]
-    ],
-    "condition": [
-      "minOcean","2"
-    ]
-  },
-  {
-    "id": 8,
     "cost": 10,
     "badges": [
       "PLANT"
@@ -125,33 +119,20 @@
     ]
   },
   {
-    "id": 9,
+    "id": 8,
     "cost": 9,
     "badges": [
       "SCIENCE"
     ],
     "effects": [
-      
+      ""
     ],
     "condition": [
       ""
     ]
   },
   {
-    "id": 10,
-    "cost": 3,
-    "badges": [
-      "SPACE"
-    ],
-    "effects": [
-      
-    ],
-    "condition": [
-      ""
-    ]
-  },
-  {
-    "id": 11,
+    "id": 9,
     "cost": 9,
     "badges": [
       "SCIENCE",
@@ -165,7 +146,7 @@
     ]
   },
   {
-    "id": 12,
+    "id": 10,
     "cost": 10,
     "badges": [
       "EARTH",
@@ -179,13 +160,28 @@
     ]
   },
   {
-    "id": 13,
+    "id": 11,
+    "cost": 15,
+    "badges": [
+      "VENUS",
+      "ANIMAL",
+      "SCIENCE"
+    ],
+    "effects": [
+
+    ],
+    "condition": [
+      ""
+    ]
+  },
+  {
+    "id": 12,
     "cost": 13,
     "badges": [
       "PLANT"
     ],
     "effects": [
-      ["Instant","ModifyResource","3","PLANT_PROD"],
+      ["Instant","ModifyResource","1","PLANT_PROD"],
       ["Instant","ModifyResource","1","PLANT"],
       ["Instant","ModifyResource","1","PV"]
     ],
@@ -194,7 +190,7 @@
     ]
   },
   {
-    "id": 14,
+    "id": 13,
     "cost": 6,
     "badges": [
       "MICROBE"
@@ -203,18 +199,36 @@
       ["Instant","ModifyResource","1","PLANT_PROD"]
     ],
     "condition": [
-      ""
+      "maxTemp","-18"
     ]
   },
   {
-    "id": 15,
+    "id": 14,
     "cost": 27,
     "badges": [
       "SPACE",
       "BUILDING"
     ],
     "effects": [
-      
+      ["Action","ModifyResource","-1","IRON"],
+      ["Action","ModifyResource","5","GOLD"],
+      ["Instant","ModifyResource","2","PV"],
+      ["Instant","ModifyResource","1","TITANIUM_PROD"]
+    ],
+    "condition": [
+      ""
+    ]
+  },
+  {
+    "id": 15,
+    "cost": 14,
+    "badges": [
+      "SPACE",
+      "EVENT"
+    ],
+    "effects": [
+      ["Instant","IncreaseGP","1","temperature"],
+      ["Instant","ModifyResource","2","TITANIUM"]
     ],
     "condition": [
       ""
@@ -222,14 +236,14 @@
   },
   {
     "id": 16,
-    "cost": 43,
+    "cost": 26,
     "badges": [
       "SPACE",
-      "EARTH"
+      "EVENT"
     ],
     "effects": [
-      ["Instant","ModifyResource","3","TITANIUM_PROD"],
-      ["Instant","ModifyResource","4","PV"]
+      ["Instant","ModifyResource","3","HEAT_PROD"],
+      ["Instant","ModifyResource","1","PLANT_PROD"]
     ],
     "condition": [
       "maxTemp","-18"
@@ -237,13 +251,14 @@
   },
   {
     "id": 17,
-    "cost": 14,
+    "cost": 23,
     "badges": [
       "SPACE",
       "EVENT"
     ],
     "effects": [
-      
+      ["Instant","PlaceTile","-10","-10","OCEAN"],
+      ["Instant","PlaceTile","-10","-10","OCEAN"]
     ],
     "condition": [
       ""
@@ -251,13 +266,15 @@
   },
   {
     "id": 18,
-    "cost": 16,
+    "cost": 36,
     "badges": [
       "SPACE",
       "EVENT"
     ],
     "effects": [
-      
+      ["Instant","IncreaseGP","2","temperature"],
+      ["Instant","PlaceTile","-10","-10","OCEAN"],
+      ["Instant","PlaceTile","-10","-10","OCEAN"]
     ],
     "condition": [
       ""
@@ -265,13 +282,14 @@
   },
   {
     "id": 19,
-    "cost": 10,
+    "cost": 27,
     "badges": [
       "SPACE",
       "EVENT"
     ],
     "effects": [
-      ["Instant","PlaceTile","0","0","OCEAN"]
+      ["Instant","IncreaseGP","2","temperature"],
+      ["Instant","ModifyResource","4","TITANIUM"]
     ],
     "condition": [
       ""
@@ -279,13 +297,13 @@
   },
   {
     "id": 20,
-    "cost": 36,
+    "cost": 16,
     "badges": [
       "SPACE",
       "EVENT"
     ],
     "effects": [
-      
+      ""
     ],
     "condition": [
       ""
@@ -293,13 +311,15 @@
   },
   {
     "id": 21,
-    "cost": 27,
+    "cost": 31,
     "badges": [
       "SPACE",
       "EVENT"
     ],
     "effects": [
-      
+      ["Instant","ModifyResource","2","NT"],
+      ["Instant","IncreaseGP","1","PV"],
+      ["Instant","ModifyResource","2","PLANT_PROD"]
     ],
     "condition": [
       ""
@@ -307,20 +327,6 @@
   },
   {
     "id": 22,
-    "cost": 31,
-    "badges": [
-      "SPACE",
-      "EVENT"
-    ],
-    "effects": [
-      
-    ],
-    "condition": [
-      ""
-    ]
-  },
-  {
-    "id": 23,
     "cost": 30,
     "badges": [
       "JOVIAN",
@@ -335,48 +341,7 @@
     ]
   },
   {
-    "id": 24,
-    "cost": 2,
-    "badges": [
-      "EARTH",
-      "EVENT"
-    ],
-    "effects": [
-      
-    ],
-    "condition": [
-      ""
-    ]
-  },
-  {
-    "id": 25,
-    "cost": 11,
-    "badges": [
-      "NONE"
-    ],
-    "effects": [
-      
-    ],
-    "condition": [
-      ""
-    ]
-  },
-  {
-    "id": 26,
-    "cost": 25,
-    "badges": [
-      "JOVIAN",
-      "SPACE"
-    ],
-    "effects": [
-      
-    ],
-    "condition": [
-      ""
-    ]
-  },
-  {
-    "id": 27,
+    "id": 23,
     "cost": 23,
     "badges": [
       "EARTH",
@@ -384,14 +349,15 @@
       "EVENT"
     ],
     "effects": [
-      
+      ["Instant","ModifyResource","1","NT"],
+      ["Instant","ModifyResource","4","PLANT"]
     ],
     "condition": [
       ""
     ]
   },
   {
-    "id": 28,
+    "id": 24,
     "cost": 11,
     "badges": [
       "MICROBE"
@@ -404,13 +370,72 @@
     ]
   },
   {
-    "id": 29,
-    "cost": "",
+    "id": 25,
+    "cost": 8,
     "badges": [
-      ""
+      "SCIENCE",
+      "MICROBE"
     ],
     "effects": [
       
+    ],
+    "condition": [
+      "minOxy","4"
+    ]
+  },
+  {
+    "id": 26,
+    "cost": 6,
+    "badges": [
+      "VENUS",
+      "MICROBE"
+    ],
+    "effects": [
+      
+    ],
+    "condition": [
+      ""
+    ]
+  },
+  {
+    "id": 27,
+    "cost": 21,
+    "badges": [
+      "VENUS"
+    ],
+    "effects": [
+      
+    ],
+    "condition": [
+      ""
+    ]
+  },
+  {
+    "id": 28,
+    "cost": 18,
+    "badges": [
+      "CITY",
+      "VENUS"
+    ],
+    "effects": [
+      
+    ],
+    "condition": [
+      ""
+    ]
+  },
+  {
+    "id": 29,
+    "cost": 11,
+    "badges": [
+      "CITY",
+      "BUILDING"
+    ],
+    "effects": [
+      ["Instant","ModifyResource","-1","ENERGY_PROD"],
+      ["Instant","ModifyResource","3","GOLD"],
+      ["Instant","ModifyResource","-2","PV"],
+      ["Instant","PlaceTile","-10","-10","CITY"]
     ],
     "condition": [
       ""
@@ -418,22 +443,23 @@
   },
   {
     "id": 30,
-    "cost": "",
+    "cost": 30,
     "badges": [
-      ""
+      "ANIMAL"
     ],
     "effects": [
       
     ],
     "condition": [
-      ""
+      "minOxy","9"
     ]
   },
   {
     "id": 31,
-    "cost": "",
+    "cost": 14,
     "badges": [
-      ""
+      "PLANT",
+      "VENUS"
     ],
     "effects": [
       
@@ -444,12 +470,13 @@
   },
   {
     "id": 32,
-    "cost": "",
+    "cost": 1,
     "badges": [
-      ""
+      "EVENT"
     ],
     "effects": [
-      
+      ["Instant","ModifyResource","2","IRON"],
+      ["Instant","ModifyResourceOther","-2","IRON"]
     ],
     "condition": [
       ""
@@ -457,38 +484,42 @@
   },
   {
     "id": 33,
-    "cost": "",
+    "cost": 6,
     "badges": [
-      ""
+      "PLANT"
     ],
     "effects": [
-      
+      ["Instant","ModifyResource","1","PLANT_PROD"],
+      ["Instant","ModifyResource","1","PLANT"]
     ],
     "condition": [
-      ""
+      "minTemp","-14"
     ]
   },
   {
     "id": 34,
-    "cost": "",
+    "cost": 10,
     "badges": [
-      ""
+      "PLANT"
     ],
     "effects": [
-      
+      ["Instant","ModifyResource","2","PLANT_PROD"],
+      ["Instant","ModifyResource","2","PLANT"]
     ],
     "condition": [
-      ""
+      "miniTemp","-10"
     ]
   },
   {
     "id": 35,
-    "cost": "",
+    "cost": 13,
     "badges": [
-      ""
+      "BUILDING"
     ],
     "effects": [
-      
+      ["Instant","ModifyResource","-2","HEAT_PROD"],
+      ["Instant","ModifyResource","3","GOLD"],
+      ["Instant","ModifyResource","2","PV"]
     ],
     "condition": [
       ""
@@ -496,9 +527,9 @@
   },
   {
     "id": 36,
-    "cost": "",
+    "cost": 1,
     "badges": [
-      ""
+      "EARTH"
     ],
     "effects": [
       
@@ -509,38 +540,41 @@
   },
   {
     "id": 37,
-    "cost": "",
+    "cost": 8,
     "badges": [
-      ""
+      "JOVIAN",
+      "BUILDING"
     ],
     "effects": [
-      
+      ["Instant","ModifyResource","2","PV"]
     ],
     "condition": [
-      ""
+      "maxOxy","5"
     ]
   },
   {
     "id": 38,
-    "cost": "",
+    "cost": 26,
     "badges": [
-      ""
+      "CITY",
+      "BUILDING"
     ],
     "effects": [
-      
+      ["Instant","PlaceTile","-2","0","CAPITAL"]
     ],
     "condition": [
-      ""
+      "minOcean","4"
     ]
   },
   {
     "id": 39,
-    "cost": "",
+    "cost": 6,
     "badges": [
-      ""
+      "BUILDING"
     ],
     "effects": [
-      
+      ["Instant","ModifyResource","-1","ENERGY_PROD"],
+      ["Instant","ModifyResource","3","HEAT_PROD"]
     ],
     "condition": [
       ""
@@ -548,12 +582,12 @@
   },
   {
     "id": 40,
-    "cost": "",
+    "cost": 4,
     "badges": [
-      ""
+      "BUILDING"
     ],
     "effects": [
-      
+      ["Instant","PlaceTileIron","-10","-10","MINE"]
     ],
     "condition": [
       ""
@@ -561,12 +595,12 @@
   },
   {
     "id": 41,
-    "cost": "",
+    "cost": 8,
     "badges": [
-      ""
+      "EARTH"
     ],
     "effects": [
-      
+      ["Instant","ModifyResourceWithBadge","1","GOLD","1","EARTH"]
     ],
     "condition": [
       ""
@@ -574,12 +608,12 @@
   },
   {
     "id": 42,
-    "cost": "",
+    "cost": 11,
     "badges": [
-      ""
+      "VENUS"
     ],
     "effects": [
-      
+      ""
     ],
     "condition": [
       ""
@@ -587,25 +621,28 @@
   },
   {
     "id": 43,
-    "cost": "",
+    "cost": 17,
     "badges": [
-      ""
+      "BUILDING"
     ],
     "effects": [
-      
+      ["Action","ModifyResource","-1","PLANT"],
+      ["Instant","ModifyResource","7","GOLD"],
+      ["Instant","ModifyResource","4","PLANT"],
+      ["Instant","ModifyResource","1","PV"]
     ],
     "condition": [
-      ""
+      "maxOxy","8"
     ]
   },
   {
     "id": 44,
-    "cost": "",
+    "cost": 23,
     "badges": [
-      ""
+      "EARTH"
     ],
     "effects": [
-      
+      ["Instant","ModifyResource","2","PV"]
     ],
     "condition": [
       ""
@@ -613,12 +650,13 @@
   },
   {
     "id": 45,
-    "cost": "",
+    "cost": 4,
     "badges": [
-      ""
+      "ENERGY",
+      "BUILDING"
     ],
     "effects": [
-      
+      ["Instant","ModifyResource","1","ENERGY_PROD"]
     ],
     "condition": [
       ""
@@ -626,12 +664,14 @@
   },
   {
     "id": 46,
-    "cost": "",
+    "cost": 7,
     "badges": [
-      ""
+      "ENERGY",
+      "BUILDING"
     ],
     "effects": [
-      
+      ["Instant","ModifyResource","-1","GOLD_PROD"],
+      ["Instant","ModifyResource","2","ENERGY_PROD"]
     ],
     "condition": [
       ""
@@ -639,12 +679,14 @@
   },
   {
     "id": 47,
-    "cost": "",
+    "cost": 11,
     "badges": [
-      ""
+      "SCIENCE",
+      "BUILDING"
     ],
     "effects": [
-      
+      ["Action","ModifyResource","-1","ENERGY"],
+      ["Action","DrawCard"]
     ],
     "condition": [
       ""
@@ -652,10 +694,12 @@
   },
   {
     "id": 48,
-    "cost": "",
-    "badges": "",
+    "cost": 4,
+    "badges": "BUILDING",
     "effects": [
-      
+      ["Action","ModifyResource","-7","GOLD"],
+      ["Instant","ModifyResource","1","IRON_PROD"],
+      ["Instant","PlaceTile","-10","-10","INDUSTRY"]
     ],
     "condition": [
       ""
@@ -663,12 +707,14 @@
   },
   {
     "id": 49,
-    "cost": "",
+    "cost": 15,
     "badges": [
-      ""
+      "JOVIAN",
+      "SPACE"
     ],
     "effects": [
-      
+      ["Instant","ModifyResource","1","TITANIUM_PROD"],
+      ["Instant","ModifyResource","1","PV"]
     ],
     "condition": [
       ""
@@ -676,12 +722,14 @@
   },
   {
     "id": 50,
-    "cost": "",
+    "cost": 13,
     "badges": [
-      ""
+      "ENERGY",
+      "BUILDING"
     ],
     "effects": [
-      
+      ["Instant","ModifyResource","1","ENERGY_PROD"],
+      ["Instant","IncreaseGP","1","temperature"]
     ],
     "condition": [
       ""
@@ -689,38 +737,45 @@
   },
   {
     "id": 51,
-    "cost": "",
+    "cost": 15,
     "badges": [
-      ""
+      "SPACE","CITY"
     ],
     "effects": [
-      
+      ["instant","ModifyResourceReaction","-1","ENERGY_PROD"],
+      ["instant","ModifyResourceReaction","1","TITANIUM_PROD"],
+      ["instant","PlaceTileReaction","CITY","-10","-10"],
+      ["instant","ModifyResourceReaction","3","PV"]
     ],
     "condition": [
-      ""
+      "minScience","4"
     ]
   },
   {
     "id": 52,
-    "cost": "",
+    "cost": 16,
     "badges": [
-      ""
+      "BUILDING","CITY"
     ],
     "effects": [
-      
+      ["instant","ModifyResourceReaction","-1","ENERGY_PROD"],
+      ["instant","ModifyResourceReaction","3","GOLD_PROD"],
+      ["instant","PlaceTileReaction","CITY","-10","-10"]
     ],
     "condition": [
-      ""
+      "maxOxy","9"
     ]
   },
   {
     "id": 53,
-    "cost": "",
+    "cost": 13,
     "badges": [
-      ""
+      "BUILDING","CITY"
     ],
     "effects": [
-      
+      ["instant","ModifyResourceReaction","-1","ENERGY_PROD"],
+      ["instant","ModifyResourceReaction","-2","GOLD_PROD"],
+      ["instant","PlaceTileReaction","CITY","-10","-10"]
     ],
     "condition": [
       ""
@@ -728,12 +783,14 @@
   },
   {
     "id": 54,
-    "cost": "",
+    "cost": 18,
     "badges": [
-      ""
+      "BUILDING","CITY"
     ],
     "effects": [
-      
+      ["instant","ModifyResourceReaction","-2","ENERGY_PROD"],
+      ["instant","ModifyResourceReaction","2","IRON_PROD"],
+      ["instant","PlaceTileReaction","CITY","-10","-10"]
     ],
     "condition": [
       ""
@@ -741,12 +798,13 @@
   },
   {
     "id": 55,
-    "cost": "",
+    "cost": 20,
     "badges": [
-      ""
+      "SPACE","CITY","JOVIAN"
     ],
     "effects": [
-      
+      ["instant","PlaceTileReaction","CITY"],
+      ["instant","ModifyResourceWithBadge","1","PV","1","JOVIAN"]
     ],
     "condition": [
       ""
@@ -754,38 +812,39 @@
   },
   {
     "id": 56,
-    "cost": "",
+    "cost": 24,
     "badges": [
-      ""
+      "EARTH","SPACE","EVENT"
     ],
     "effects": [
-      
+      ["instant","ModifyResourceReaction","4","PV"]
     ],
     "condition": [
-      ""
+      "minScience","5"
     ]
   },
   {
     "id": 57,
-    "cost": "",
+    "cost": 6,
     "badges": [
       ""
     ],
     "effects": [
-      
+      ["instant","ModifyResourceReaction","1","GOLD_PROD"],
+      ["instant","ModifyResourceReaction","1","PV"]
     ],
     "condition": [
-      ""
+      "minCity","2"
     ]
   },
   {
     "id": 58,
-    "cost": "",
+    "cost": 8,
     "badges": [
-      ""
+      "VENUS"
     ],
     "effects": [
-      
+      ["instant","ModifyResourceReaction","2","GOLD_PROD"]
     ],
     "condition": [
       ""
@@ -793,25 +852,29 @@
   },
   {
     "id": 59,
-    "cost": "",
+    "cost": 4,
     "badges": [
-      ""
+      "ENERGY","BUILDING"
     ],
     "effects": [
-      
+      ["instant","ModifyResourceReaction","2","ENERGY_PROD"],
+      ["instant","ModifyResourceOther","-1","HEAT_PROD"],
+      ["instant","ModifyResourceReaction","-1","PV"]
     ],
     "condition": [
-      ""
+      "minOxy","6"
     ]
   },
   {
     "id": 60,
-    "cost": "",
+    "cost": 21,
     "badges": [
-      ""
+      "EVENT","SPACE"
     ],
     "effects": [
-      
+      ["instant","ModifyResourceOther","-3","PLANT"],
+      ["instant","IncreaseGPReaction","1","TEMPERATURE"],
+      ["instant","PlaceTileReaction","OCEAN","-10","-10"]
     ],
     "condition": [
       ""
@@ -832,12 +895,13 @@
   },
   {
     "id": 62,
-    "cost": "",
+    "cost": 7,
     "badges": [
-      ""
+      "EARTH","EVENT"
     ],
     "effects": [
-      
+      ["instant","ModifyResourceReaction","-2","PV"],
+      ["instant","ModifyResourceReaction","2","NT"]
     ],
     "condition": [
       ""
@@ -845,12 +909,13 @@
   },
   {
     "id": 63,
-    "cost": "",
+    "cost": 12,
     "badges": [
-      ""
+      "JOVIAN","SPACE"
     ],
     "effects": [
-      
+      ["instant","ModifyResourceReaction","1","PV"],
+      ["instant","ModifyResourceWithBadge","1","GOLD_PROD","1","EARTH"]
     ],
     "condition": [
       ""
@@ -910,51 +975,54 @@
   },
   {
     "id": 68,
-    "cost": "",
+    "cost": 6,
     "badges": [
       ""
     ],
     "effects": [
-      
+      ["instant","ModifyResourceReaction","1","IRON_PROD"],
+      ["instant","ModifyResourceOther","-1","IRON_PROD"]
     ],
     "condition": [
-      ""
+      "minBuilding","2"
     ]
   },
   {
     "id": 69,
-    "cost": "",
+    "cost": 13,
     "badges": [
-      ""
+      "JOVIAN"
     ],
     "effects": [
-      ""
+      ["instant","ModifyResourceReaction","1","TITANIUM_PROD"],
+      ["instant","ModifyResourceOther","-1","TITANIUM_PROD"]
     ],
     "condition": [
-      ""
+      "minSpace","2"
     ]
   },
   {
     "id": 70,
-    "cost": "",
+    "cost": 5,
     "badges": [
-      ""
+      "ENERGY"
     ],
     "effects": [
-      
+      ["instant","ModifyResourceReaction","1","ENERGY_PROD"],
+      ["instant","ModifyResourceOther","-1","ENERGY_PROD"]
     ],
     "condition": [
-      ""
+      "minEnergy","2"
     ]
   },
   {
     "id": 71,
-    "cost": "",
+    "cost": 8,
     "badges": [
-      ""
+      "BUILDING"
     ],
     "effects": [
-      
+      ["instant","ModifyResourceOther","1","PV"]
     ],
     "condition": [
       ""
@@ -962,9 +1030,9 @@
   },
   {
     "id": 72,
-    "cost": "",
+    "cost": 7,
     "badges": [
-      ""
+      "EARTH","EVENT"
     ],
     "effects": [
       
@@ -975,38 +1043,40 @@
   },
   {
     "id": 73,
-    "cost": "",
+    "cost": 8,
     "badges": [
-      ""
+      "EARTH"
     ],
     "effects": [
-      
+      ["instant","ModifyResourceReaction","4","GOLD_PROD"]
     ],
     "condition": [
-      ""
+      "minNT","25"
     ]
   },
   {
     "id": 74,
-    "cost": "",
+    "cost": 8,
     "badges": [
-      ""
+      "SCIENCE","ENERGY"
     ],
     "effects": [
-      
+      ["instant","ModifyResourceReaction","6","ENERGY_PROD"]
+
     ],
     "condition": [
-      ""
+      "minScience","5"
     ]
   },
   {
     "id": 75,
-    "cost": "",
+    "cost": 15,
     "badges": [
-      ""
+      "SPACE","EVENT"
     ],
     "effects": [
-      
+      ["instant","PlaceTileReaction","OCEAN","-10","-10"],
+      ["instant","DrawCard"]
     ],
     "condition": [
       ""
@@ -1014,38 +1084,46 @@
   },
   {
     "id": 76,
-    "cost": "",
+    "cost": 24,
     "badges": [
-      ""
+      "CITY","BUILDING"
     ],
     "effects": [
-      
+      ["instant","PlaceTileReaction","CITY","-10","-10"],
+      ["instant","ModifyResourceReaction","-1","ENERGY_PROD"],
+      ["instant","ModifyResourceReaction","3","GOLD_PROD"],
+      ["instant","ModifyResourceReaction","3","PLANT"],
+      ["instant","ModifyResourceReaction","-1","PV"]
     ],
     "condition": [
-      ""
+      "maxOxy","7"
     ]
   },
   {
     "id": 77,
-    "cost": "",
+    "cost": 17,
     "badges": [
-      ""
+      "PLANT"
     ],
     "effects": [
-      
+      ["instant","ModifyResourceReaction","2","GOLD_PROD"],
+      ["instant","ModifyResourceReaction","3","PLANT_PROD"],
+      ["instant","ModifyResourceReaction","2","PLANT"],
+      ["instant","ModifyResourceReaction","1","PV"]
     ],
     "condition": [
-      ""
+      "minOcean","6"
     ]
   },
   {
     "id": 78,
-    "cost": "",
+    "cost": 5,
     "badges": [
-      ""
+      "EVENT","SCIENCE","SPACE"
     ],
     "effects": [
-      
+      ["instant","DrawCard"],
+      ["instant","DrawCard"]
     ],
     "condition": [
       ""
@@ -1053,12 +1131,12 @@
   },
   {
     "id": 79,
-    "cost": "",
+    "cost": 5,
     "badges": [
-      ""
+      "EVENT"
     ],
     "effects": [
-      
+      ["instant","ModifyResourceReaction","5","IRON"]
     ],
     "condition": [
       ""
@@ -1066,12 +1144,14 @@
   },
   {
     "id": 80,
-    "cost": "",
+    "cost": 31,
     "badges": [
-      ""
+      "EVENT","SPACE"
     ],
     "effects": [
-      
+      ["instant","ModifyResourceReaction","4","TITANIUM"],
+      ["instant","ModifyResourceOther","-8","PLANT"],
+      ["instant","IncreaseGPReaction","3","TEMPERATURE"]
     ],
     "condition": [
       ""
@@ -1092,12 +1172,14 @@
   },
   {
     "id": 82,
-    "cost": "",
+    "cost": 5,
     "badges": [
-      ""
+      "BUILDING"
     ],
     "effects": [
-      
+      ["instant","ModifyResourceReaction","-2","ENERGY_PROD"],
+      ["instant","ModifyResourceReaction","1","PLANT_PROD"],
+      ["instant","ModifyResourceReaction","1","NT"]
     ],
     "condition": [
       ""
@@ -1131,12 +1213,12 @@
   },
   {
     "id": 85,
-    "cost": "",
+    "cost": 15,
     "badges": [
-      ""
+      "ENERGY"
     ],
     "effects": [
-      
+      ["instant","ModifyResourceWithBadge","1","ENERGY_PROD","1","ENERGY"]
     ],
     "condition": [
       ""
@@ -1144,51 +1226,54 @@
   },
   {
     "id": 86,
-    "cost": "",
+    "cost": 20,
     "badges": [
-      ""
+      "JOVIAN","SPACE"
     ],
     "effects": [
-      
+      ["instant","ModifyResourceReaction","1","PV"],
+      ["instant","IncreaseGPReaction","2","TEMPERATURE"]
+
     ],
     "condition": [
-      ""
+      "minScience","3"
     ]
   },
   {
     "id": 87,
-    "cost": "",
+    "cost": 11,
     "badges": [
-      ""
+      "PLANT","MICROBE","ANIMAL"
     ],
     "effects": [
-      
+      ["instant","ModifyResourceReaction","3","PV"]
     ],
     "condition": [
-      ""
+      "minPlantMicrobeAnimal","1"
     ]
   },
   {
     "id": 88,
-    "cost": "",
+    "cost": 14,
     "badges": [
-      ""
+      "SCIENCE","ENERGY","BUILDING"
     ],
     "effects": [
-      
+      ["instant","ModifyResourceReaction","3","ENERGY_PROD"]
     ],
     "condition": [
-      ""
+      "minEnergy","2"
     ]
   },
   {
     "id": 89,
-    "cost": "",
+    "cost": 11,
     "badges": [
-      ""
+      "SCIENCE","SPACE","ENERGY"
     ],
     "effects": [
-      
+      ["instant","ModifyResourceReaction","1","ENERGY_PROD"],
+      ["instant","ModifyResourceReaction","2","TITANIUM"]
     ],
     "condition": [
       ""
@@ -1209,25 +1294,28 @@
   },
   {
     "id": 91,
-    "cost": "",
+    "cost": 8,
     "badges": [
-      ""
+      "ENERGY"
     ],
     "effects": [
-      
+      ["Instant","ModifyResource","1","ENERGY_PROD"],
+      ["Instant","ModifyResource","1","PV"]
     ],
     "condition": [
-      ""
+      "minOcean","3"
     ]
   },
   {
     "id": 92,
-    "cost": "",
+    "cost": 10,
     "badges": [
-      ""
+      "ENERGY",
+      "BUILDING"
     ],
     "effects": [
-      
+      ["Instant","ModifyResource","-2","GOLD_PROD"],
+      ["Instant","ModifyResource","3","ENERGY_PROD"]
     ],
     "condition": [
       ""
@@ -1235,12 +1323,14 @@
   },
   {
     "id": 93,
-    "cost": "",
+    "cost": 11,
     "badges": [
-      ""
+      "ENERGY",
+      "BUILDING"
     ],
     "effects": [
-      
+      ["Instant","ModifyResource","1","ENERGY_PROD"],
+      ["Instant","ModifyResource","1","PV"]
     ],
     "condition": [
       ""
@@ -1248,51 +1338,60 @@
   },
   {
     "id": 94,
-    "cost": "",
+    "cost": 18,
     "badges": [
-      ""
+      "ENERGY",
+      "BUILDING"
     ],
     "effects": [
-      
+      ["Instant","ModifyResource","3","ENERGY_PROD"],
+      ["Instant","ModifyResource","1","PV"]
     ],
     "condition": [
-      ""
+      "minScience","2"
     ]
   },
   {
     "id": 95,
-    "cost": "",
+    "cost": 11,
     "badges": [
-      ""
+      "NONE"
     ],
     "effects": [
-      
+      ["Instant","ModifyResource","-1","GOLD"],
+      ["Instant","ModifyResource","-1","HEAT_PROD"],
+      ["Instant","ModifyResource","2","PLANT_PROD"]
     ],
     "condition": [
-      ""
+      "minOcean","3"
     ]
   },
   {
     "id": 96,
-    "cost": "",
+    "cost": 6,
     "badges": [
-      ""
+      "ENERGY",
+      "BUILDING"
     ],
     "effects": [
-      
+      ["Instant","ModifyResource","1","ENERGY_PROD"],
+      ["Instant","ModifyResource","1","PV"]
     ],
     "condition": [
-      ""
+      "minOxy","7"
     ]
   },
   {
     "id": 97,
-    "cost": "",
+    "cost": 17,
     "badges": [
-      ""
+      "SCIENCE",
+      "JOVIAN"
     ],
     "effects": [
-      
+      ["Instant","DrawCard"],
+      ["Instant","DrawCard"],
+      ["Instant","ModifyResource","2","PV"]
     ],
     "condition": [
       ""
@@ -1300,9 +1399,39 @@
   },
   {
     "id": 98,
-    "cost": "",
+    "cost": 12,
     "badges": [
+      "EVENT"
+    ],
+    "effects": [
+      ["Instant","IncreaseGP","1","oxygen"],
+      ["Instant","ModifyResource","2","IRON"]
+    ],
+    "condition": [
       ""
+    ]
+  },
+  {
+    "id": 99,
+    "cost": 6,
+    "badges": [
+      "BUIDING"
+    ],
+    "effects": [
+      ["Action","ModifyResource","-10","GOLD"],
+      ["Instant","ModifyResource","2","HEAT_PROD"]
+    ],
+    "condition": [
+      ""
+    ]
+  },
+    {
+    "id": 100,
+    "cost": 11,
+    "badges": [
+      "SPACE",
+      "VENUS",
+      "ENERGY"
     ],
     "effects": [
       
@@ -1312,33 +1441,913 @@
     ]
   },
   {
-    "id": 99,
-    "cost": "",
-    "badges": [
-      ""
-    ],
-    "effects": [
-      
-    ],
-    "condition": [
-      ""
-    ]
-  },
-    {
-    "id": 100,
-    "cost": "",
-    "badges": [
-      ""
-    ],
-    "effects": [
-      
-    ],
-    "condition": [
-      ""
-    ]
-  },
-    {
     "id": 101,
+    "cost": 21,
+    "badges": [
+      "SPACE",
+      "VENUS"
+    ],
+    "effects": [
+
+    ],
+    "condition": [
+      ""
+    ]
+  },
+  {
+    "id": 102,
+    "cost": 13,
+    "badges": [
+      "SCIENCE",
+      "ENERGY"
+    ],
+    "effects": [
+      ["Instant","ModifyResource","4","ENERGY_PROD"]
+    ],
+    "condition": [
+      "minScience","4"
+    ]
+  },
+  {
+    "id": 103,
+    "cost": 8,
+    "badges": [
+      "EVENT"
+    ],
+    "effects": [
+      ["Instant","PlaceTile","-10","-10","OCEAN"]
+    ],
+    "condition": [
+      "minTemp","-8"
+    ]
+  },
+  {
+    "id": 104,
+    "cost": 3,
+    "badges": [
+      "VENUS",
+      "MICROBE"
+    ],
+    "effects": [
+
+    ],
+    "condition": [
+      "minScience","2"
+    ]
+  },
+  {
+    "id": 105,
+    "cost": 13,
+    "badges": [
+      "EARTH",
+      "ENERGY"
+    ],
+    "effects": [
+      ["Instant","ModifyResource","-2","GOLD_PROD"],
+      ["Instant","ModifyResource","2","HEAT_PROD"],
+      ["Instant","ModifyResource","2","ENERGY_PROD"]
+    ],
+    "condition": [
+      ""
+    ]
+  },
+  {
+    "id": 106,
+    "cost": 10,
+    "badges": [
+      "PLANT",
+      "BUILDING"
+    ],
+    "effects": [
+      ["Instant","ModifyResource","1","GOLD_PROD"],
+      ["Instant","ModifyResource","2","PLANT"],
+      ["Instant","ModifyResource","1","PV"]
+    ],
+    "condition": [
+      "minOxy","-20"
+    ]
+  },
+  {
+    "id": 107,
+    "cost": 18,
+    "badges": [
+      "EVENT"
+    ],
+    "effects": [
+      ["Instant","IncreaseGP","2","temperature"],
+      ["Instant","PlaceTile","-10","-10","MOHOL"]
+    ],
+    "condition": [
+      ""
+    ]
+  },
+  {
+    "id": 108,
+    "cost": 12,
+    "badges": [
+      "SPACE"
+    ],
+    "effects": [
+
+    ],
+    "condition": [
+      ""
+    ]
+  },
+  {
+    "id": 109,
+    "cost": 9,
+    "badges": [
+      "MICROBE"
+    ],
+    "effects": [
+
+    ],
+    "condition": [
+      "minOxy","4"
+    ]
+  },
+  {
+    "id": 110,
+    "cost": 7,
+    "badges": [
+      "SPACE"
+    ],
+    "effects": [
+
+    ],
+    "condition": [
+      ""
+    ]
+  },
+  {
+    "id": 111,
+    "cost": 11,
+    "badges": [
+      "EVENT"
+    ],
+    "effects": [
+      ["Instant","PlaceTile","-10","-10","OCEAN"]
+    ],
+    "condition": [
+      "minTemp","2"
+    ]
+  },
+  {
+    "id": 112,
+    "cost": 32,
+    "badges": [
+      "JOVIAN",
+      "SPACE",
+      "ENERGY"
+    ],
+    "effects": [
+      ["Instant","ModifyResource","3","HEAT_PROD"],
+      ["Instant","ModifyResource","3","ENERGY_PROD"],
+      ["Instant","ModifyResource","1","PV"]
+    ],
+    "condition": [
+      "minJovian","1"
+    ]
+  },
+  {
+    "id": 113,
+    "cost": 20,
+    "badges": [
+      "BUILDING"
+    ],
+    "effects": [
+      ["Instant","ModifyResource","-4","ENERGY_PROD"],
+      ["Instant","ModifyResource","2","PLANT_PROD"],
+      ["Instant","ModifyResource","3","NT"]
+    ],
+    "condition": [
+      ""
+    ]
+  },
+  {
+    "id": 114,
+    "cost": 4,
+    "badges": [
+      "VENUS",
+      "VENUS"
+    ],
+    "effects": [
+      ["Instant","ModifyResource","2","GOLD_PROD"]
+    ],
+    "condition": [
+      "minVenus","2"
+    ]
+  },
+  {
+    "id": 115,
+    "cost": 12,
+    "badges": [
+      "ENERGY",
+      "BUILDING"
+    ],
+    "effects": [
+      ["Instant","ModifyResource","2","ENERGY_PROD"],
+      ["Instant","ModifyResource","1","PV"]
+    ],
+    "condition": [
+      "minOcean","4"
+    ]
+  },
+  {
+    "id": 116,
+    "cost": 36,
+    "badges": [
+      "EARTH",
+      "SPACE",
+      "EVENT"
+    ],
+    "effects": [
+      ["Instant","PlaceTile","-10","-10","OCEAN"],
+      ["Instant","DrawCard"],
+      ["Instant","DrawCard"],
+      ["Instant","ModifyResource","5","PLANT"],
+      ["Instant","ModifyResource","2","PV"]
+    ],
+    "condition": [
+      ""
+    ]
+  },
+  {
+    "id": 117,
+    "cost": 6,
+    "badges": [
+      "EARTH"
+    ],
+    "effects": [
+
+    ],
+    "condition": [
+      ""
+    ]
+  },
+  {
+    "id": 118,
+    "cost": 1,
+    "badges": [
+      "ENERGY",
+      "BUILDING"
+    ],
+    "effects": [
+      ["Instant","ModifyResource","-1","GOLD_PROD"],
+      ["Instant","ModifyResource","1","ENERGY_PROD"]
+    ],
+    "condition": [
+      ""
+    ]
+  },
+  {
+    "id": 119,
+    "cost": 9,
+    "badges": [
+      "SCIENCE"
+    ],
+    "effects": [
+
+    ],
+    "condition": [
+      ""
+    ]
+  },
+  {
+    "id": 120,
+    "cost": 20,
+    "badges": [
+      "CITY",
+      "BUILDING"
+    ],
+    "effects": [
+      ["Instant","ModifyResource","-2","ENERGY_PROD"],
+      ["Instant","ModifyResourceWithBadge","1","GOLD","1","VENUS"],
+      ["Instant","ModifyResourceWithBadge","1","GOLD","1","EARTH"],
+      ["Instant","PlaceTile","-10","-10","CITY"]
+    ],
+    "condition": [
+      ""
+    ]
+  },
+  {
+    "id": 121,
+    "cost": 11,
+    "badges": [
+      "SPACE",
+      "VENUS",
+      "ENERGY"
+    ],
+    "effects": [
+
+    ],
+    "condition": [
+      ""
+    ]
+  },
+  {
+    "id": 122,
+    "cost": 11,
+    "badges": [
+      "SPACE",
+      "VENUS",
+      "ENERGY"
+    ],
+    "effects": [
+
+    ],
+    "condition": [
+      ""
+    ]
+  },
+  {
+    "id": 123,
+    "cost": 11,
+    "badges": [
+      "SPACE",
+      "VENUS",
+      "ENERGY"
+    ],
+    "effects": [
+
+    ],
+    "condition": [
+      ""
+    ]
+  },
+  {
+    "id": 124,
+    "cost": 11,
+    "badges": [
+      "SPACE",
+      "VENUS",
+      "ENERGY"
+    ],
+    "effects": [
+
+    ],
+    "condition": [
+      ""
+    ]
+  },
+  {
+    "id": 125,
+    "cost": 11,
+    "badges": [
+      "SPACE",
+      "VENUS",
+      "ENERGY"
+    ],
+    "effects": [
+
+    ],
+    "condition": [
+      ""
+    ]
+  },
+  {
+    "id": 126,
+    "cost": 11,
+    "badges": [
+      "SPACE",
+      "VENUS",
+      "ENERGY"
+    ],
+    "effects": [
+
+    ],
+    "condition": [
+      ""
+    ]
+  },
+  {
+    "id": 127,
+    "cost": 11,
+    "badges": [
+      "SPACE",
+      "VENUS",
+      "ENERGY"
+    ],
+    "effects": [
+
+    ],
+    "condition": [
+      ""
+    ]
+  },
+  {
+    "id": 128,
+    "cost": 11,
+    "badges": [
+      "SPACE",
+      "VENUS",
+      "ENERGY"
+    ],
+    "effects": [
+
+    ],
+    "condition": [
+      ""
+    ]
+  },
+  {
+    "id": 129,
+    "cost": 11,
+    "badges": [
+      "SPACE",
+      "VENUS",
+      "ENERGY"
+    ],
+    "effects": [
+
+    ],
+    "condition": [
+      ""
+    ]
+  },
+  {
+    "id": 130,
+    "cost": 11,
+    "badges": [
+      "SPACE",
+      "VENUS",
+      "ENERGY"
+    ],
+    "effects": [
+
+    ],
+    "condition": [
+      ""
+    ]
+  },
+  {
+    "id": 131,
+    "cost": 11,
+    "badges": [
+      "SPACE",
+      "VENUS",
+      "ENERGY"
+    ],
+    "effects": [
+
+    ],
+    "condition": [
+      ""
+    ]
+  },
+  {
+    "id": 132,
+    "cost": 11,
+    "badges": [
+      "SPACE",
+      "VENUS",
+      "ENERGY"
+    ],
+    "effects": [
+
+    ],
+    "condition": [
+      ""
+    ]
+  },
+  {
+    "id": 133,
+    "cost": 11,
+    "badges": [
+      "SPACE",
+      "VENUS",
+      "ENERGY"
+    ],
+    "effects": [
+
+    ],
+    "condition": [
+      ""
+    ]
+  },
+  {
+    "id": 134,
+    "cost": 11,
+    "badges": [
+      "SPACE",
+      "VENUS",
+      "ENERGY"
+    ],
+    "effects": [
+
+    ],
+    "condition": [
+      ""
+    ]
+  },
+  {
+    "id": 135,
+    "cost": 11,
+    "badges": [
+      "SPACE",
+      "VENUS",
+      "ENERGY"
+    ],
+    "effects": [
+
+    ],
+    "condition": [
+      ""
+    ]
+  },
+  {
+    "id": 136,
+    "cost": 11,
+    "badges": [
+      "SPACE",
+      "VENUS",
+      "ENERGY"
+    ],
+    "effects": [
+
+    ],
+    "condition": [
+      ""
+    ]
+  },
+  {
+    "id": 137,
+    "cost": 11,
+    "badges": [
+      "SPACE",
+      "VENUS",
+      "ENERGY"
+    ],
+    "effects": [
+
+    ],
+    "condition": [
+      ""
+    ]
+  },
+  {
+    "id": 138,
+    "cost": 11,
+    "badges": [
+      "SPACE",
+      "VENUS",
+      "ENERGY"
+    ],
+    "effects": [
+
+    ],
+    "condition": [
+      ""
+    ]
+  },
+  {
+    "id": 139,
+    "cost": 11,
+    "badges": [
+      "SPACE",
+      "VENUS",
+      "ENERGY"
+    ],
+    "effects": [
+
+    ],
+    "condition": [
+      ""
+    ]
+  },
+  {
+    "id": 140,
+    "cost": 11,
+    "badges": [
+      "SPACE",
+      "VENUS",
+      "ENERGY"
+    ],
+    "effects": [
+
+    ],
+    "condition": [
+      ""
+    ]
+  },
+  {
+    "id": 141,
+    "cost": 11,
+    "badges": [
+      "SPACE",
+      "VENUS",
+      "ENERGY"
+    ],
+    "effects": [
+
+    ],
+    "condition": [
+      ""
+    ]
+  },
+  {
+    "id": 142,
+    "cost": 11,
+    "badges": [
+      "SPACE",
+      "VENUS",
+      "ENERGY"
+    ],
+    "effects": [
+
+    ],
+    "condition": [
+      ""
+    ]
+  },
+  {
+    "id": 143,
+    "cost": 11,
+    "badges": [
+      "SPACE",
+      "VENUS",
+      "ENERGY"
+    ],
+    "effects": [
+
+    ],
+    "condition": [
+      ""
+    ]
+  },
+  {
+    "id": 144,
+    "cost": 11,
+    "badges": [
+      "SPACE",
+      "VENUS",
+      "ENERGY"
+    ],
+    "effects": [
+
+    ],
+    "condition": [
+      ""
+    ]
+  },
+  {
+    "id": 145,
+    "cost": 11,
+    "badges": [
+      "SPACE",
+      "VENUS",
+      "ENERGY"
+    ],
+    "effects": [
+
+    ],
+    "condition": [
+      ""
+    ]
+  },
+  {
+    "id": 146,
+    "cost": 11,
+    "badges": [
+      "SPACE",
+      "VENUS",
+      "ENERGY"
+    ],
+    "effects": [
+
+    ],
+    "condition": [
+      ""
+    ]
+  },
+  {
+    "id": 147,
+    "cost": 11,
+    "badges": [
+      "SPACE",
+      "VENUS",
+      "ENERGY"
+    ],
+    "effects": [
+
+    ],
+    "condition": [
+      ""
+    ]
+  },
+  {
+    "id": 148,
+    "cost": 11,
+    "badges": [
+      "SPACE",
+      "VENUS",
+      "ENERGY"
+    ],
+    "effects": [
+
+    ],
+    "condition": [
+      ""
+    ]
+  },
+  {
+    "id": 149,
+    "cost": 11,
+    "badges": [
+      "SPACE",
+      "VENUS",
+      "ENERGY"
+    ],
+    "effects": [
+
+    ],
+    "condition": [
+      ""
+    ]
+  },
+  {
+    "id": 150,
+    "cost": 11,
+    "badges": [
+      "SPACE",
+      "VENUS",
+      "ENERGY"
+    ],
+    "effects": [
+
+    ],
+    "condition": [
+      ""
+    ]
+  },
+  {
+    "id": 151,
+    "cost": 11,
+    "badges": [
+      "SPACE",
+      "VENUS",
+      "ENERGY"
+    ],
+    "effects": [
+
+    ],
+    "condition": [
+      ""
+    ]
+  },
+  {
+    "id": 152,
+    "cost": 11,
+    "badges": [
+      "SPACE",
+      "VENUS",
+      "ENERGY"
+    ],
+    "effects": [
+
+    ],
+    "condition": [
+      ""
+    ]
+  },
+  {
+    "id": 153,
+    "cost": 11,
+    "badges": [
+      "SPACE",
+      "VENUS",
+      "ENERGY"
+    ],
+    "effects": [
+
+    ],
+    "condition": [
+      ""
+    ]
+  },
+  {
+    "id": 154,
+    "cost": 11,
+    "badges": [
+      "SPACE",
+      "VENUS",
+      "ENERGY"
+    ],
+    "effects": [
+
+    ],
+    "condition": [
+      ""
+    ]
+  },
+  {
+    "id": 155,
+    "cost": 11,
+    "badges": [
+      "SPACE",
+      "VENUS",
+      "ENERGY"
+    ],
+    "effects": [
+
+    ],
+    "condition": [
+      ""
+    ]
+  },
+  {
+    "id": 156,
+    "cost": 11,
+    "badges": [
+      "SPACE",
+      "VENUS",
+      "ENERGY"
+    ],
+    "effects": [
+
+    ],
+    "condition": [
+      ""
+    ]
+  },
+  {
+    "id": 157,
+    "cost": 11,
+    "badges": [
+      "SPACE",
+      "VENUS",
+      "ENERGY"
+    ],
+    "effects": [
+
+    ],
+    "condition": [
+      ""
+    ]
+  },
+  {
+    "id": 158,
+    "cost": 11,
+    "badges": [
+      "SPACE",
+      "VENUS",
+      "ENERGY"
+    ],
+    "effects": [
+
+    ],
+    "condition": [
+      ""
+    ]
+  },
+  {
+    "id": 159,
+    "cost": 11,
+    "badges": [
+      "SPACE",
+      "VENUS",
+      "ENERGY"
+    ],
+    "effects": [
+
+    ],
+    "condition": [
+      ""
+    ]
+  },
+  {
+    "id": 160,
+    "cost": 11,
+    "badges": [
+      "SPACE",
+      "VENUS",
+      "ENERGY"
+    ],
+    "effects": [
+
+    ],
+    "condition": [
+      ""
+    ]
+  },
+  {
+    "id": 161,
+    "cost": 11,
+    "badges": [
+      "SPACE",
+      "VENUS",
+      "ENERGY"
+    ],
+    "effects": [
+
+    ],
+    "condition": [
+      ""
+    ]
+  },
+    {
+    "id": 162,
     "cost": 11,
     "badges": [
       ""
@@ -1351,7 +2360,7 @@
     ]
   },
     {
-    "id": 102,
+    "id": 163,
     "cost": 0,
     "badges": [
       ""
@@ -1364,7 +2373,7 @@
     ]
   },
     {
-    "id": 103,
+    "id": 164,
     "cost": 18,
     "badges": [
       ""
@@ -1377,8 +2386,8 @@
     ]
   },
     {
-    "id": 104,
-    "cost": 23,
+    "id": 165,
+    "cost": 166,
     "badges": [
       ""
     ],
@@ -1390,7 +2399,7 @@
     ]
   },
     {
-    "id": 105,
+    "id": 167,
     "cost": 25,
     "badges": [
       ""
@@ -1403,7 +2412,7 @@
     ]
   },
     {
-    "id": 106,
+    "id": 168,
     "cost": 0,
     "badges": [
       ""

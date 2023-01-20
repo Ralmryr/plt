@@ -29,6 +29,7 @@ render::SceneManager::SceneManager(){
     sceneMap.insert({SceneID::BOARD_VIEW, mainScene});
     sceneMap.insert({SceneID::BADGE_VIEW, badgeScene});
     sceneMap.insert({SceneID::PAY_VIEW, payScene});
+    sceneMap.insert({SceneID::PLACE_TILE_VIEW, placeTileScene});
 }
 
 render::SceneManager::~SceneManager() {
@@ -122,7 +123,9 @@ void render::SceneManager::hookData(std::shared_ptr<state::RenderAPI> dataProvid
 void render::SceneManager::handleEvent(sf::Event event) {
     eventHandler->handleEvent(event);
     if (currentScene == PLACE_TILE_VIEW) {
-
+        if(event.type == sf::Event::MouseButtonPressed){
+            placeTileScene->onClick(sf::Vector2f(event.mouseButton.x, event.mouseButton.y));
+        }
     }
 }
 

@@ -53,8 +53,8 @@ int main(int argc,char* argv[])
     sf::Time elapsedTime;
 
     // Assets to display FPS and mouse position
-    auto fpsText = Text("0", sf::Vector2f(1700, 10));
-    auto mouseText = Text("0, 0", sf::Vector2f(1700,50));
+    auto fpsText = Text("0", sf::Vector2f(1300, 10));
+    auto mouseText = Text("0, 0", sf::Vector2f(1300,50));
     int counterFps = 0;
 
 

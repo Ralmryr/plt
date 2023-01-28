@@ -5,12 +5,17 @@ using namespace state;
 
 // Creates a list of cards with ids ranging from 80 to 89
 CardBoard::CardBoard() {
-    for(int i = 0; i < 10; i++) {
-        listCards.emplace_back(80 + i);
+    vector<Badge> listBadge = {EARTH, BUILDING};
+    std::vector<int> baseBlueCards={53,43,36,6,110};
+    for(auto element : baseBlueCards) {
+        listCards.emplace_back(element, 20, listBadge);
     }
     for(int i = B_FIRST+1; i != B_LAST; i++) {
         badgesPlayed.insert({Badge(i), 0});
     }
+    badgesPlayed[B_ENERGY] = 7;
+    badgesPlayed[EVENT] = 2;
+
 }
 
 CardBoard::~CardBoard() {
@@ -28,7 +33,7 @@ std::unordered_map<std::string, std::string> CardBoard::serializeUiData() const{
     }
     for(int i = B_FIRST+1; i != B_LAST; i++) {
         auto amount = badgesPlayed.at(Badge(i));
-        auto strBadgeData = to_string(i) + "," + to_string(amount);
+        auto strBadgeData = to_string(amount);
         uiData.insert({"badge " + to_string(i), strBadgeData});
     }
     return uiData;

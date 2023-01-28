@@ -68,7 +68,7 @@
 struct umlattribute {
     char name[SMALL_BUFFER];
     char value[SMALL_BUFFER];
-    char type [SMALL_BUFFER];
+    char type [LARGE_BUFFER];
     char comment [LARGE_BUFFER];
     char visibility;
     char isabstract;
@@ -105,7 +105,7 @@ typedef umlopnode *umloplist;
 
 struct umltemplate {
     char name[SMALL_BUFFER];
-    char type[SMALL_BUFFER];
+    char type[LARGE_BUFFER];
 };
 typedef struct umltemplate umltemplate;
 

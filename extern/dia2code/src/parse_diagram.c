@@ -28,7 +28,7 @@ static unsigned anon_cnt = 0;
 static char *sscanfmt()
 {
     static char buf[16];
-    sprintf (buf, "#%%%d[^#]#", SMALL_BUFFER - 1);
+    sprintf (buf, "#%%%d[^#]#", LARGE_BUFFER - 1);
     return buf;
 }
 
@@ -202,7 +202,7 @@ void parse_attribute(xmlNodePtr node, umlattribute *tmp) {
             }
         } else if ( eq("type", nodename)) {
             if (node->xmlChildrenNode->xmlChildrenNode != NULL) {
-                parse_dia_string(node->xmlChildrenNode, tmp->type);
+                parse_dia_string_large(node->xmlChildrenNode, tmp->type);
             } else {
                 tmp->type[0] = 0;
             }
@@ -311,7 +311,7 @@ void make_javabean_methods(umlclass *myself) {
             parameter = NEW (umlattrnode);
 
             sprintf(parameter->key.name, "value");
-            strncpy(parameter->key.type, attrlist->key.type, SMALL_BUFFER);
+            strncpy(parameter->key.type, attrlist->key.type, LARGE_BUFFER);
             parameter->key.value[0] = 0;
             parameter->key.isstatic = 0;
             parameter->key.isconstant = 0;
@@ -361,7 +361,7 @@ void make_javabean_methods(umlclass *myself) {
             operation->key.attr.isconstant = 0;
             operation->key.attr.visibility = '0';
             operation->key.attr.value[0] = 0;
-            strncpy(operation->key.attr.type, attrlist->key.type, SMALL_BUFFER - 1);
+            strncpy(operation->key.attr.type, attrlist->key.type, LARGE_BUFFER - 1);
             operation->next = NULL;
 
             myself->operations = insert_operation(operation, myself->operations);

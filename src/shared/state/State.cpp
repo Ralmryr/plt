@@ -1,26 +1,75 @@
 #include "State.h"
+#include <iostream>
 
 using namespace state;
 using namespace std;
 
 
-State::State() {
+State::State(int Players) {
     //Instantiate all players
-    for(int i = 0; i < 5; i++) {
+    nbPlayers=Players;
+    for (int i = 0; i < nbPlayers; i++) {
         listPlayers.push_back(make_shared<Player>(i));
     }
+    currentPlayer = 0;
     board = make_shared<Board>();
     globalParameters = make_shared<GlobalParameters>();
-    uiDataProvider = make_shared<RenderAPI>();
+    deck = make_shared<Deck>(120);
 
-    // Creates the link between the data provider and the game elements
-    uiDataProvider->hookComponents(listPlayers, board, globalParameters);
+    nbGeneration=1;
 }
 
 State::~State() {
 
 }
 
-const std::shared_ptr<RenderAPI> &State::getUiDataProvider() const {
-    return this->uiDataProvider;
+void State::hookEventSender(std::shared_ptr<EventSender> eventSender) {
+    board->setEventSender(eventSender);
 }
+
+const std::vector<std::shared_ptr<Player>> &State::getListPlayers() const {
+    return this->listPlayers;
+}
+
+const std::shared_ptr<GlobalParameters> &State::getGlobalParameters() const {
+    return this->globalParameters;
+}
+
+const std::shared_ptr<Board> &State::getBoard() const {
+    return this->board;
+}
+
+std::shared_ptr<Player> State::getSpecificPlayer (int idPlayer) const {
+    return this->listPlayers[idPlayer];
+}
+
+const std::shared_ptr<Deck>& State::getDeck() const{
+    return this->deck;
+}
+
+const std::shared_ptr<Player>& State::getCurrentPlayer() const {
+    return listPlayers[currentPlayer];
+}
+
+void State::increaseActionCount() {
+    actionCount++;
+    if (actionCount == 2) {
+        nextPlayer();
+    }
+}
+
+void State::nextPlayer() {
+    currentPlayer = (currentPlayer+1)%nbPlayers;
+    actionCount = 0;
+}
+
+void State::forceEndTurn() {
+    getCurrentPlayer()->setForcedEndTurn(true);
+    nextPlayer();
+}
+
+int State::getNbPlayers() const {
+    return nbPlayers;
+}
+
+

@@ -143,7 +143,7 @@ has_oo_class (declaration *d)
 static char *
 cppname (char *name)
 {
-    static char buf[SMALL_BUFFER];
+    static char buf[LARGE_BUFFER];
     if (use_corba) {
         if (eq (name, "boolean") ||
             eq (name, "char") ||
@@ -696,6 +696,7 @@ struct stdlib_includes {
    int random;
    int sfmlGraphics;
    int jsoncpp;
+   int utility;
 };
 
 void print_include_stdlib(struct stdlib_includes* si,char* name) {
@@ -800,7 +801,12 @@ void print_include_stdlib(struct stdlib_includes* si,char* name) {
        && (strstr(name,"Json::") == name)) {
            print ("#include <json/json.h>\n");
            si->jsoncpp = 1;
-       }       
+       }
+       if (!si->utility
+       && (strstr(name, "std::pair") == name)) {
+           print("#include <utility>\n");
+           si->utility = 1;
+       }
     }
 }
 

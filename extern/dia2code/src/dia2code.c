@@ -610,7 +610,7 @@ void d2c_parse_impl(FILE *f, char *cmt_start, char *cmt_end)
     endless_string *es=NULL;
     long line = 0;
     int preserve=0;
-    char fmtbuf[SMALL_BUFFER];
+    char fmtbuf[LARGE_BUFFER];
 
     d2c_impl_list_destroy();
 

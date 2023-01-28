@@ -1,16 +1,13 @@
-//
-// Created by cleme on 21/11/22.
-//
-
 #include "GlobalParameters.h"
+#include "../constants.hpp"
 
 using namespace std;
 using namespace state;
 
 GlobalParameters::GlobalParameters() {
-    this->temp = 6;
-    this->numberOcean = 4;
-    this->oxygen = 7;
+    this->temp = 0;
+    this->numberOcean = STARTING_OCEAN;
+    this->oxygen = 0;
 }
 
 GlobalParameters::~GlobalParameters() {
@@ -28,4 +25,24 @@ std::unordered_map<std::string, std::string> GlobalParameters::serializeUiData()
     uiData.insert({"NumberOceans", to_string(numberOcean)});
 
     return uiData;
+}
+
+int GlobalParameters::getOxygen() const {
+    return oxygen;
+}
+void GlobalParameters::setOxygen(int oxygen) {
+    this->oxygen=oxygen;
+}
+
+int GlobalParameters::getTemp() const{
+    return temp;
+}
+void GlobalParameters::setTemp(int temp){
+    this->temp=temp;
+}
+int GlobalParameters::getNumberOcean() const{
+    return numberOcean;
+}
+void GlobalParameters::setNumberOcean(int numberOcean){
+    this->numberOcean=numberOcean;
 }

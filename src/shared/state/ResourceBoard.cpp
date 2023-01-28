@@ -2,6 +2,7 @@
 // Created by cleme on 21/11/22.
 //
 
+#include <iostream>
 #include "ResourceBoard.h"
 
 using namespace std;
@@ -11,12 +12,10 @@ using namespace state;
 ResourceBoard::ResourceBoard() {
     // Initialize all resources at 0
     for(int res = R_FIRST+1; res != R_LAST; res++) {
-        resourceMap.insert({Resource(res), 15});
+        resourceMap.insert({Resource(res), 16});
     }
 
-    resourceMap[GOLD_PROD] = 52;
-    resourceMap[IRON] = 37;
-    resourceMap[HEAT] = 87;
+    resourceMap[GOLD] = 100;
 
     resourceMap[NT] = 20;
     resourceMap[PV] = 0;
@@ -42,4 +41,17 @@ std::unordered_map<std::string, std::string> ResourceBoard::serializeUiData() co
     uiData.insert({"NT", to_string(resourceMap.at(NT))});
 
     return uiData;
+}
+
+std::unordered_map<Resource, int> ResourceBoard::getResourceMap() {
+    return this->resourceMap;
+}
+
+void ResourceBoard::modifyResource(Resource resource, int amount) {
+    resourceMap[resource] += amount;
+}
+
+bool ResourceBoard::isPossibleToModifyResource(Resource resource, int amount) {
+    if (resourceMap[resource]+amount<0) return false;
+    else return true;
 }

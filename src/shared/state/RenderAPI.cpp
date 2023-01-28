@@ -19,11 +19,37 @@ RenderAPI::~RenderAPI() {
  *  [   "resource i" : "amount"
  *      "idCardBoard i" : "id"
  *      "badge i" : "badge, amount"
- *      "idCardHand i" : "id" ]
+ *      "idCardHand i" : "id"
+ *      "idPlayer" : "id"
+ *      ]
  */
-std::unordered_map<std::string, std::string> RenderAPI::providePlayerData(int idPlayer) {
-    return pPlayerList[idPlayer]->serializeUiData();
+std::unordered_map<std::string, std::string> RenderAPI::providePlayerData(int idPlayer = -1) {
+    if(idPlayer == -1) {
+        auto dataMap = pState->getCurrentPlayer()->serializeUiData();
+        dataMap.insert({"idPlayer", to_string(pState->getCurrentPlayer()->getId())});
+        return dataMap;
+    }
+    else {
+        auto dataMap = pState->getCurrentPlayer()->serializeUiData();
+        dataMap.insert({"idPlayer", to_string(idPlayer)});
+        return dataMap;
+    }
 }
+
+/* [    "idPlayer" : "NT"   ]
+*/
+unordered_map<std::string, std::string> RenderAPI::provideScoreData() {
+    unordered_map<string, string> uiData;
+    int idPlayer = 0;
+    for(const auto& pPlayer : pPlayerList) {
+        auto tmp = pPlayer->serializeUiData();
+        string nt = tmp["NT"];
+        uiData.insert({to_string(idPlayer), nt});
+        idPlayer++;
+    }
+    return uiData;
+}
+
 
 /*
  * [ "x, y" : "type, idOwner" ]
@@ -40,23 +66,23 @@ std::unordered_map<std::string, std::string> RenderAPI::provideGlobalParameters(
     return pGlobalParameters->serializeUiData();
 }
 
-void RenderAPI::hookComponents(std::vector<std::shared_ptr<Player>> pPlayerList, std::shared_ptr<Board> pBoard,
-                               std::shared_ptr<GlobalParameters> pGlobalParameters) {
-    this->pPlayerList = pPlayerList;
-    this->pBoard = pBoard;
-    this->pGlobalParameters = pGlobalParameters;
+void RenderAPI::hookComponents(const std::shared_ptr<State>& state) {
+    this->pPlayerList = state->getListPlayers();
+    this->pBoard = state->getBoard();
+    this->pGlobalParameters = state->getGlobalParameters();
+    this->pState = state;
 }
 
-/* [    "idPlayer" : "NT"   ]
-*/
-unordered_map<std::string, std::string> RenderAPI::provideScoreData() {
-    unordered_map<string, string> uiData;
-    int idPlayer = 0;
-    for(const auto& pPlayer : pPlayerList) {
-        auto tmp = pPlayer->serializeUiData();
-        string nt = tmp["NT"];
-        uiData.insert({to_string(idPlayer), nt});
-        idPlayer++;
-    }
-    return uiData;
+std::unordered_map<std::string, std::string> RenderAPI::provideMainSceneData() {
+    unordered_map<string, string> boardSceneData;
+
+    auto gpData = provideGlobalParameters();
+    auto boardData = provideBoardData();
+    auto scoreData = provideScoreData();
+
+    boardSceneData.insert(gpData.begin(), gpData.end());
+    boardSceneData.insert(boardData.begin(), boardData.end());
+    boardSceneData.insert(scoreData.begin(), scoreData.end());
+
+    return boardSceneData;
 }

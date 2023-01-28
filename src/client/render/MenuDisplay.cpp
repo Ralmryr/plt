@@ -15,13 +15,10 @@ MenuDisplay :: MenuDisplay (){
     sf::Vector2f vCard = {900, 810};
     sf::Vector2f vBlueCard = {1225, 870};
     sf::Vector2f vBadge = {1475, 900};
-    sf::Vector2f vPoints;
+    sf::Vector2f vEndTurn = {1620, 10};
 
     //define the size of all sprites
-    //sf::Vector2u sizeFrame = {1920, 230};
-    //sf::Vector2u sizeRessource;
     sf::Vector2u sizeBlueCardButton = {150, 200};
-    sf::Vector2u sizeBadgeButton;
 
     //define all texts positions
 
@@ -34,34 +31,51 @@ MenuDisplay :: MenuDisplay (){
     this->frameImage = make_shared<Image>("menuFrame.png",vframe);
 
     //define buttons
-
-    ClickableArea cardClick = ClickableArea();
-    cardClick.setPosition(vCard);
-    this->cardButton = make_shared<Button>("card.png",cardClick,vCard);
+    this->cardButton = make_shared<Button>("card.png",vCard);
     this->cardButton->setScale(0.55f);
+    this->cardButton->updateClickableArea();
+    cardButton->setOnClickFunction([](const shared_ptr<SharedContext>& sharedContext) {
+        sharedContext->getSceneManager()->addScene(CARDS_VIEW);
+    });
 
-    ClickableArea BlueCardClick = ClickableArea();
-    BlueCardClick.setPosition(vBlueCard);
-    this->blueCardButton = make_shared<Button>("blueCardsbutton.png",BlueCardClick,vBlueCard);
+
+    this->blueCardButton = make_shared<Button>("blueCardsbutton.png",vBlueCard);
     this->blueCardButton->setSize(sizeBlueCardButton);
+    this->blueCardButton->updateClickableArea();
+    this->blueCardButton->setOnClickFunction([](const shared_ptr<SharedContext>& sharedContext) {
+        sharedContext->getSceneManager()->addScene(BLUE_CARD_VIEW);
+    });
 
-    ClickableArea BadgeClick = ClickableArea();
-    BadgeClick.setPosition(vBadge);
-    this->badgeButton = make_shared<Button>("badge_wild.png",BadgeClick,vBadge);
+
+    this->badgeButton = make_shared<Button>("badge_wild.png",vBadge);
     this->badgeButton->setScale(1.2f);
+    this->badgeButton->updateClickableArea();
+    this->badgeButton->setOnClickFunction([](const shared_ptr<SharedContext>& sharedContext) {
+        sharedContext->getSceneManager()->addScene(BADGE_VIEW);
+    });
+
+    this->endTurnButton = make_shared<Button>("endTurnButton.png",vEndTurn);
+    this->endTurnButton->setScale(0.3f);
+    this->endTurnButton->updateClickableArea();
+    this->endTurnButton->setOnClickFunction([](const shared_ptr<SharedContext>& sharedContext) {
+        engine::EventDetails eventDetails(engine::FORCE_END_TURN);
+        sharedContext->getEventManager()->notify(eventDetails);
+    });
 
     //define all texts
 
+    //define all texts
     this->badgeText = make_shared<Text>("Badges",posBadgeText);
     this->pvText = make_shared<Text>("0",posPVText);
     this->pvText->setSizeText(80);
-    this->pvText->setColor(COLOR_BLACK);
+    this->pvText->setColor(sf::Color::Black);
 
     listComponents.push_back(frameImage);
     listComponents.push_back(cardButton);
     listComponents.push_back(blueCardButton);
     listComponents.push_back(badgeButton);
     listComponents.push_back(pvText);
+    listComponents.push_back(endTurnButton);
 
     // Initialize production of resources texts
     for(int i = 0; i < 6; i++){
@@ -77,6 +91,11 @@ MenuDisplay :: MenuDisplay (){
         listResourceAmount.push_back(make_shared<Text>("100", textPos));
         listComponents.push_back(listResourceAmount.back());
     }
+
+    listButtons.push_back(cardButton);
+    listButtons.push_back(blueCardButton);
+    listButtons.push_back(badgeButton);
+    listButtons.push_back(endTurnButton);
 }
 
 MenuDisplay::~MenuDisplay() = default;
@@ -85,6 +104,7 @@ void MenuDisplay::update(const std::unordered_map<std::string,std::string>& data
     //update resources texts and pvtext
 
     for (const auto &dataEl: data) {
+        if(dataEl.first == "PV") continue;
         // Gets the index in the Resource enum of the current resource that is processed
         auto resIndex = stoi(dataEl.first.substr(dataEl.first.find(" ")+1));
         // It is a production if the index is even
@@ -93,11 +113,11 @@ void MenuDisplay::update(const std::unordered_map<std::string,std::string>& data
         }
         // Else it is an amount of resource
         else {
-            listResourceAmount[(resIndex-1)/2]->setText(dataEl.second);
+            listResourceAmount[(resIndex - 1)/2]->setText(dataEl.second);
         }
     }
 
-
+    pvText->setText(data.at("PV"));
 }
 
 void MenuDisplay::draw (sf::RenderWindow& window){
@@ -105,6 +125,10 @@ void MenuDisplay::draw (sf::RenderWindow& window){
         window.draw(*component);
     }
 
+}
+
+std::vector<std::shared_ptr<Button>> MenuDisplay::getListButtons() {
+    return this->listButtons;
 }
 
 

@@ -10,6 +10,7 @@ Player::Player(int id) {
     this->resourceBoard = ResourceBoard();
     this->cardsHand = CardsHand();
     this->cardBoard = CardBoard();
+    this->forcedEndTurn = false;
 }
 
 Player::~Player() {
@@ -55,4 +56,8 @@ bool Player::isPossibleToModifyResource(Resource resource, int amount) {
 
 void Player::setForcedEndTurn(bool forcedEndTurn) {
     this->forcedEndTurn = forcedEndTurn;
+}
+
+bool Player::getForcedEndTurn() const {
+    return forcedEndTurn;
 }

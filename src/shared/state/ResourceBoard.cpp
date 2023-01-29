@@ -55,3 +55,10 @@ bool ResourceBoard::isPossibleToModifyResource(Resource resource, int amount) {
     if (resourceMap[resource]+amount<0) return false;
     else return true;
 }
+
+void ResourceBoard::produceResources() {
+    for(int res = R_FIRST+1; res != R_LAST; res +=2 ) {
+        int prod = resourceMap[Resource(res+1)];
+        resourceMap[Resource(res)] += prod;
+    }
+}
